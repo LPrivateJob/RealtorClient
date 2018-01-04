@@ -1,4 +1,4 @@
-package com.installment.realtor;
+package com.realtor.jx;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

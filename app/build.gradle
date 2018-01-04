@@ -4,7 +4,7 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
-        applicationId "com.installment.realtor"
+        applicationId "com.realtor.jx"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode VERSION_CODE as int
@@ -16,16 +16,16 @@ android {
     }
     signingConfigs {
         debug { // debug使用正式签名
-            keyAlias 'realtor'
-            keyPassword 'installment'
-            storeFile file("../realtor.jks")
-            storePassword 'installment'
+            keyAlias 'jx'
+            keyPassword 'realtorjx'
+            storeFile file("../jx.jks")
+            storePassword 'realtorjx'
         }
         release {
-            keyAlias 'realtor'
-            keyPassword 'installment'
-            storeFile file("../realtor.jks")
-            storePassword 'installment'
+            keyAlias 'jx'
+            keyPassword 'realtorjx'
+            storeFile file("../jx.jks")
+            storePassword 'realtorjx'
         }
     }
     buildTypes {
@@ -63,7 +63,7 @@ android {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile "com.android.support:appcompat-v7:${rootProject.ext.supportLibraryVersion}"
     compile "com.android.support:recyclerview-v7:${rootProject.ext.supportLibraryVersion}"
     compile "com.android.support:design:${rootProject.ext.supportLibraryVersion}"
