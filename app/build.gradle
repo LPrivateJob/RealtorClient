@@ -1,28 +1,80 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
         applicationId "com.installment.realtor"
-        minSdkVersion 16
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode VERSION_CODE as int
+        versionName VERSION_NAME
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    signingConfigs {
+        debug { // debug使用正式签名
+            keyAlias 'realtor'
+            keyPassword 'installment'
+            storeFile file("../realtor.jks")
+            storePassword 'installment'
+        }
+        release {
+            keyAlias 'realtor'
+            keyPassword 'installment'
+            storeFile file("../realtor.jks")
+            storePassword 'installment'
+        }
     }
     buildTypes {
         release {
+            minifyEnabled true//定义是否运行混淆
+            zipAlignEnabled true
+            shrinkResources false
+            signingConfig signingConfigs.release
+            proguardFiles 'proguard-rules.pro'
+            debuggable false
+        }
+        debug {
+            versionNameSuffix "-debug"
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            zipAlignEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.debug
+            proguardFiles 'proguard-rules.pro'
+            debuggable true
+        }
+    }
+    flavorDimensions 'environment'
+    productFlavors {
+        Test {
+            buildConfigField "String", "V_TAG", "\"" + getName() + "\""
+            buildConfigField "String", "SERVER_ADD", TEST_ADDRESS
+            dimension "environment"
+        }
+        Product {
+            buildConfigField "String", "V_TAG", "\"\""
+            buildConfigField "String", "SERVER_ADD", PRODUCT_ADDRESS
+            dimension "environment"
         }
     }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    compile "com.android.support:appcompat-v7:${rootProject.ext.supportLibraryVersion}"
+    compile "com.android.support:recyclerview-v7:${rootProject.ext.supportLibraryVersion}"
+    compile "com.android.support:design:${rootProject.ext.supportLibraryVersion}"
+    // retrofit
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    // retsrofit 解析器
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    // EventBus
+    compile 'org.greenrobot:eventbus:3.1.1'
+    // okhttp log打印
+    compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    //Walle
+    compile 'com.meituan.android.walle:library:1.1.5'
 }
