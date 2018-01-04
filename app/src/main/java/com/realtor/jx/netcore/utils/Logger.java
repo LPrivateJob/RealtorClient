@@ -2,7 +2,8 @@ package com.realtor.jx.netcore.utils;
 
 import android.util.Log;
 
-import com.yingu.am.BuildConfig;
+
+import com.realtor.jx.BuildConfig;
 
 import java.io.FileOutputStream;
 

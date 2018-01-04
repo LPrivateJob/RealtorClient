@@ -5,6 +5,7 @@ package com.realtor.jx.netcore.api;
  * created at 2018/1/4 15:09
  */
 public interface ApiKeys {
+    public static final String MSG = "msg";
     //B
     public static final String BIND_ID = "bindId";
     public static final String BUSINESS_NO = "businessNo";

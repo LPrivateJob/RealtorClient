@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/RealtorClient.iml" filepath="$PROJECT_DIR$/RealtorClient.iml" />
+      <module fileurl="file://F:\GitHub\RealtorClient\RealtorClient.iml" filepath="F:\GitHub\RealtorClient\RealtorClient.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://F:\GitHub\RealtorClient\app\app.iml" filepath="F:\GitHub\RealtorClient\app\app.iml" />
     </modules>
   </component>
 </project>
