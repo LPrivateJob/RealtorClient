@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <declare-styleable name="ContractListPagerIndicator">
+        <attr name="txtFontSize" format="dimension"/>
+        <attr name="txtNormalColor" format="color"/>
+        <attr name="txtSelectColor" format="color"/>
+        <attr name="visibleCount" format="integer" />
+        <attr name="indicatorNormalColor" format="color"/>
+        <attr name="indicatorSelectColor" format="color"/>
+        <attr name="indicatorHeight" format="dimension"/>
+        <attr name="indicatorMarginBottom" format="dimension"/>
+    </declare-styleable>
+</resources>

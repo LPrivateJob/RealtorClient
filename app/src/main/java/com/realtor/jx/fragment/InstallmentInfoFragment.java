@@ -10,7 +10,7 @@ import com.realtor.jx.base.BaseFragment;
  * autour: lewish
  * created at: 2018/1/6 10:35
 */
-public class StagingInfoFragment extends BaseFragment {
+public class InstallmentInfoFragment extends BaseFragment {
     @Override
     protected void initView(View rootView, Bundle savedInstanceState) {
 

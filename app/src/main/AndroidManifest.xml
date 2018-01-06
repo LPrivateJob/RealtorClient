@@ -25,8 +25,15 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.InstallmentPreviewActvity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activity.BillActivity" />
-        <activity android:name=".activity.QRcodeActivity" />
+        <activity android:name=".activity.BillActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.QRcodeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.RejectedActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.CommitContractActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.ModifyPasswordActivity" />
     </application>
 
 </manifest>
