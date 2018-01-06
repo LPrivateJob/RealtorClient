@@ -2,6 +2,7 @@ package com.realtor.jx.activity;
 
 import android.os.Bundle;
 
+import com.realtor.jx.R;
 import com.realtor.jx.base.BaseActivity;
 
 /**
@@ -17,6 +18,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected int getLayoutResource() {
-        return 0;
+        return R.layout.activity_main;
     }
 }
