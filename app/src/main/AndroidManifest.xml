@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.realtor.jx.MainActivity">
+        <activity android:name="com.realtor.jx.activity.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,8 +21,6 @@
             android:screenOrientation="portrait">
         </activity>
         <activity android:name=".activity.LoginActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.MainActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.InstallmentPreviewActvity"
             android:screenOrientation="portrait"/>

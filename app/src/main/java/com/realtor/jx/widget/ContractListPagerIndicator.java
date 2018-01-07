@@ -26,7 +26,6 @@ import java.util.List;
  * created at: 2018/1/6 15:02
 */
 public class ContractListPagerIndicator extends LinearLayout {
-    private static final String TAG = "ProductListPagerIndicat";
     private static final String DEFAULT_TXT_NORMAL_COLOR = "#ffcdd4";
     private static final String DEFAULT_TXT_SELECT_COLOR = "#ffffff";
     private static final String DEFAULT_INDICATOR_NORMAL_COLOR = "#d20000";
@@ -56,9 +55,6 @@ public class ContractListPagerIndicator extends LinearLayout {
     private ViewPager mViewPager;
     private OnPageChangeListener mOnPageChangeListener;
     private List<String> mTabTitles;
-    private int leftM;
-    private int aboutInterval = 0;
-    private int lineWidth = 0;
 
     public ContractListPagerIndicator(Context context) {
         this(context, null);
@@ -80,9 +76,6 @@ public class ContractListPagerIndicator extends LinearLayout {
         typedArray.recycle();
         tabWidth = getScreenWidth() / mTabVisibleCount;
         initPaint();
-        leftM = context.getResources().getDimensionPixelSize(R.dimen.x222);
-        aboutInterval = context.getResources().getDimensionPixelSize(R.dimen.x34);
-        lineWidth = context.getResources().getDimensionPixelSize(R.dimen.x120);
     }
 
     private void initPaint() {
@@ -116,7 +109,7 @@ public class ContractListPagerIndicator extends LinearLayout {
 //        canvas.drawLine(0, tabHeight-5, tabWidth * childCount, tabHeight-5, mPaint);
         //画红线
         mPaint.setColor(mIndicatorSelectColor);
-        canvas.drawLine(mLineTranslationX, tabHeight - mIndicatorMarginBottom, mLineTranslationX + lineWidth, tabHeight - mIndicatorMarginBottom, mPaint);
+        canvas.drawLine(mLineTranslationX, tabHeight - mIndicatorMarginBottom, mLineTranslationX + tabWidth, tabHeight - mIndicatorMarginBottom, mPaint);
         super.dispatchDraw(canvas);
     }
 
@@ -126,7 +119,6 @@ public class ContractListPagerIndicator extends LinearLayout {
         tabHeight = h;
     }
 
-
     /**
      * 滑动
      *
@@ -135,11 +127,7 @@ public class ContractListPagerIndicator extends LinearLayout {
      */
     public void scroll(int position, float offset) {
         //红线要移动的距离
-        if (position == 0) {
-            mLineTranslationX = ((int) (tabWidth * ((offset / 2) + position)) + leftM);
-        } else {
-            mLineTranslationX = (int) (((offset / 2) + position) + aboutInterval + tabWidth);
-        }
+        mLineTranslationX = (int) (tabWidth * (offset + position));
         // 容器滚动，当移动到倒数最后一个的时候，开始滚动
         if ((position < (childCount - 2)) && position >= (mTabVisibleCount - 2) && offset > 0 && getChildCount() > mTabVisibleCount) {
             if (mTabVisibleCount != 1) {
@@ -163,27 +151,21 @@ public class ContractListPagerIndicator extends LinearLayout {
             this.mTabTitles = datas;
             childCount = datas.size();
             tabWidth = getScreenWidth() / mTabVisibleCount;
-            for (int i = 0; i < mTabTitles.size(); i++) {
-                String title = mTabTitles.get(i);
-                addView(generateTextView(title, i));
+            for (String title : mTabTitles) {
+                // 添加view
+                addView(generateTextView(title));
             }
         }
         // 设置item的click事件
         setItemClickEvent();
     }
 
-    private TextView generateTextView(String text, int position) {
+    private TextView generateTextView(String text) {
         TextView tv = new TextView(getContext());
         LayoutParams lp = new LayoutParams(
                 LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         lp.width = getScreenWidth() / mTabVisibleCount;
-        if (position == 0) {
-            tv.setGravity(Gravity.END | Gravity.CENTER_VERTICAL);
-            tv.setPadding(0, 0, aboutInterval, 0);
-        } else {
-            tv.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
-            tv.setPadding(getContext().getResources().getDimensionPixelSize(R.dimen.x34), 0, 0, 0);
-        }
+        tv.setGravity(Gravity.CENTER);
         tv.setTextColor(mTxtNormalColor);
         tv.setText(text);
         tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, mTxtFontSize);

@@ -3,26 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.realtor.jx.MainActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
-
-
+    <com.realtor.jx.widget.ContractListPagerIndicator
+        android:id="@+id/mPagerIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y90"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:background="@color/white"
+        app:indicatorHeight="@dimen/y2"
+        app:indicatorNormalColor="#ffffff"
+        app:indicatorSelectColor="#f5cc3f"
+        app:txtFontSize="@dimen/x36"
+        app:txtNormalColor="#cccccc"
+        app:txtSelectColor="#666666" />
 
     <RelativeLayout
         android:id="@+id/rl1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/y8"
-        android:paddingBottom="@dimen/y8"
+        android:layout_alignParentBottom="true"
         android:background="@color/white"
-        android:layout_alignParentBottom="true">
+        android:paddingBottom="@dimen/y8"
+        android:paddingTop="@dimen/y12">
 
         <TextView
+            android:id="@+id/mTvContract"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -32,16 +39,19 @@
             android:text="合同" />
 
         <TextView
+            android:id="@+id/mTvMine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="@dimen/x51"
             android:drawablePadding="@dimen/y4"
             android:drawableTop="@drawable/bottom_mine"
-            android:text="合同" />
+            android:text="我的" />
 
     </RelativeLayout>
+
     <TextView
+        android:id="@+id/mTvNew"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -51,4 +61,13 @@
         android:gravity="center"
         android:paddingBottom="@dimen/y8"
         android:text="新建" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/mViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/rl1"
+        android:layout_below="@id/mPagerIndicator" />
+
+
 </RelativeLayout>
