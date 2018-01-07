@@ -23,8 +23,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/y12"
-            android:textSize="@dimen/x26"
-            android:text="待修改" />
+            android:text="待修改"
+            android:textSize="@dimen/x26" />
     </LinearLayout>
 
     <View
@@ -36,7 +36,7 @@
     <RelativeLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="0.78"
+        android:layout_weight="0.6"
         android:paddingLeft="@dimen/x76">
 
         <RelativeLayout
@@ -91,10 +91,39 @@
             <TextView
                 android:id="@+id/mTvContentReviewingTime"
                 style="@style/ContractListItemContent"
-                android:layout_toRightOf="@id/mTvTitleReviewingTime"
                 android:layout_alignBaseline="@id/mTvTitleReviewingTime"
                 android:layout_alignLeft="@id/mTvContentRenter"
-                android:text="2016-01-12 11.01.32"/>
+                android:layout_toRightOf="@id/mTvTitleReviewingTime"
+                android:text="2016-01-12 " />
         </RelativeLayout>
     </RelativeLayout>
+
+    <View
+        android:layout_width="@dimen/x2"
+        android:layout_height="@dimen/y156"
+        android:layout_gravity="center_vertical"
+        android:background="#e6e6e6" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.18"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/ContractListItemContent"
+            android:text="逾" />
+
+        <TextView
+            android:id="@+id/mTvOverDueTime"
+            android:textColor="#ff0000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="30" />
+
+        <TextView
+            style="@style/ContractListItemContent"
+            android:text="天" />
+    </LinearLayout>
 </LinearLayout>
