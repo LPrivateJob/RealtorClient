@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/head_height">
+
+    <!--<view-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/y1"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:background="#e6e6e6" />-->
+
+    <ImageView
+        android:id="@+id/mIvBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:padding="@dimen/y30"
+        android:paddingLeft="@dimen/x30"
+        android:src="@drawable/back" />
+
+    <TextView
+        android:id="@+id/mTvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="租住信息"
+        android:textColor="#333333"
+        android:textSize="@dimen/x36" />
+
+    <ImageView
+        android:id="@+id/mIvDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:padding="@dimen/y30"
+        android:paddingLeft="@dimen/x30"
+        android:src="@drawable/delete" />
+
+
+</RelativeLayout>

@@ -10,4 +10,8 @@
         <attr name="indicatorHeight" format="dimension"/>
         <attr name="indicatorMarginBottom" format="dimension"/>
     </declare-styleable>
+    <declare-styleable name="Header">
+        <attr name="isShowDelete" format="boolean"/>
+        <attr name="title" format="string"/>
+    </declare-styleable>
 </resources>
