@@ -33,7 +33,7 @@ public class ContractListPagerIndicator extends LinearLayout {
     private static final float DEFAULT_TXT_FONT_SIZE = 40;
 
     private static final int DEFAULT_INDICATOR_HEIGHT = 3;//dp
-    private static final int DEFAULT_INDICATOR_MARGIN_BOTTOM = 3;//dp
+    private static final int DEFAULT_INDICATOR_MARGIN_BOTTOM = 0;//dp
     private static final int DEFAULT_TAB_COUNT = 2;
 
     private Paint mPaint;

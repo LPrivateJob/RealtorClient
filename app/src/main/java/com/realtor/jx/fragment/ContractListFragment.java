@@ -53,7 +53,7 @@ public class ContractListFragment extends BaseFragment {
         mRecView = findViewById(R.id.mRecView);
         mRefreshLayout = findViewById(R.id.mRefreshLayout);
 
-        mRecView.addItemDecoration(new DividerItemDecoration(mActivity, DividerItemDecoration.ORIENTATION_HORIZONTAL, mActivity.getResources().getColor(R.color.whitesmoke), 3));
+        mRecView.addItemDecoration(new DividerItemDecoration(mActivity, DividerItemDecoration.ORIENTATION_HORIZONTAL, mActivity.getResources().getColor(R.color.white), 10));
         mContractListAdapter = new ContractListAdapter(mActivity, mDatas);
         mRecView.setAdapter(mContractListAdapter);
         mRecView.setLayoutManager(new LinearLayoutManager(mActivity, LinearLayoutManager.VERTICAL, false));

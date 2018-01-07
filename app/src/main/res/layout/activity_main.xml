@@ -20,12 +20,13 @@
         android:layout_below="@id/mRlHead"
         android:background="@color/white"
         android:orientation="horizontal"
-        app:indicatorHeight="@dimen/y2"
+        app:indicatorHeight="@dimen/y5"
         app:indicatorNormalColor="#ffffff"
         app:indicatorSelectColor="#f5cc3f"
         app:txtFontSize="@dimen/x36"
         app:txtNormalColor="#cccccc"
-        app:txtSelectColor="#666666" />
+        app:txtSelectColor="#666666"
+        android:layout_marginBottom="@dimen/y10"/>
 
     <RelativeLayout
         android:id="@+id/rl1"
@@ -58,6 +59,13 @@
 
     </RelativeLayout>
 
+    <android.support.v4.view.ViewPager
+        android:id="@+id/mViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/rl1"
+        android:layout_below="@id/mPagerIndicator" />
+
     <TextView
         android:id="@+id/mTvNew"
         android:layout_width="wrap_content"
@@ -70,10 +78,5 @@
         android:paddingBottom="@dimen/y8"
         android:text="新建" />
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/mViewPager"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/rl1"
-        android:layout_below="@id/mPagerIndicator" />
+
 </RelativeLayout>

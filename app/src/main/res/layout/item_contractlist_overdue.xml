@@ -2,6 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/x20"
+    android:layout_marginRight="@dimen/x20"
+    android:background="@drawable/bg_item_contractlist"
     android:minHeight="@dimen/y250"
     android:orientation="horizontal">
 
@@ -117,10 +120,10 @@
 
         <TextView
             android:id="@+id/mTvOverDueTime"
-            android:textColor="#ff0000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="30" />
+            android:text="30"
+            android:textColor="#ff0000" />
 
         <TextView
             style="@style/ContractListItemContent"

@@ -2,6 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/x20"
+    android:layout_marginRight="@dimen/x20"
+    android:background="@drawable/bg_item_contractlist"
     android:minHeight="@dimen/y250"
     android:orientation="horizontal">
 
@@ -23,8 +26,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/y12"
-            android:textSize="@dimen/x26"
-            android:text="待修改" />
+            android:text="待修改"
+            android:textSize="@dimen/x26" />
     </LinearLayout>
 
     <View
@@ -91,10 +94,10 @@
             <TextView
                 android:id="@+id/mTvContentReviewingTime"
                 style="@style/ContractListItemContent"
-                android:layout_toRightOf="@id/mTvTitleReviewingTime"
                 android:layout_alignBaseline="@id/mTvTitleReviewingTime"
                 android:layout_alignLeft="@id/mTvContentRenter"
-                android:text="2016-01-12 11.01.32"/>
+                android:layout_toRightOf="@id/mTvTitleReviewingTime"
+                android:text="2016-01-12 11.01.32" />
         </RelativeLayout>
     </RelativeLayout>
 </LinearLayout>
