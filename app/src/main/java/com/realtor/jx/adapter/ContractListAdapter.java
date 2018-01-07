@@ -34,9 +34,4 @@ public class ContractListAdapter extends RecyclerViewMultiItemAdapter {
     public void convert(ViewHolder holder, Object o) {
 
     }
-
-    @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
-    }
 }

@@ -23,9 +23,6 @@ import java.util.List;
  * created at: 2018/1/6 14:42
  */
 public class MainActivity extends BaseActivity {
-    private TextView mTvContract;
-    private TextView mTvNew;
-    private TextView mTvMine;
     private ViewPager mViewPager;
     private List<String> mTitles = Arrays.asList("全部", "逾期");
     private ContractListPagerIndicator mPagerIndicator;
@@ -33,9 +30,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-        mTvContract = findView(R.id.mTvContract);
-        mTvNew = findViewById(R.id.mTvNew);
-        mTvMine = findView(R.id.mTvMine);
         mPagerIndicator = findView(R.id.mPagerIndicator);
         mViewPager = findView(R.id.mViewPager);
 
@@ -71,13 +65,16 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initListener() {
         super.initListener();
-        mTvContract.setOnClickListener(v -> {
+        /**
+         * 走新建合同流程
+         */
+        findViewById(R.id.mTvNew).setOnClickListener(v -> {
 
         });
-        mTvNew.setOnClickListener(v -> {
-
-        });
-        mTvMine.setOnClickListener(v -> {
+        /**
+         * 走到我的页面
+         */
+        findView(R.id.mTvMine).setOnClickListener(v -> {
 
         });
     }
