@@ -3,9 +3,13 @@ package com.realtor.jx.fragment;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.realtor.jx.R;
 import com.realtor.jx.base.BaseFragment;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
 
 import org.w3c.dom.Text;
 
@@ -17,6 +21,8 @@ import org.w3c.dom.Text;
 public class ContractListFragment extends BaseFragment {
     private String content;
     private TextView mTv1;
+    private SmartRefreshLayout mRefreshLayout;
+
     public static ContractListFragment newInstance(String mStrContractType) {
         ContractListFragment instance = new ContractListFragment();
         Bundle bundle = new Bundle();
@@ -34,7 +40,24 @@ public class ContractListFragment extends BaseFragment {
     @Override
     protected void initView(View rootView, Bundle savedInstanceState) {
         mTv1 = findViewById(R.id.mTv1);
+        mRefreshLayout = findViewById(R.id.mRefreshLayout);
         mTv1.setText(content);
+    }
+
+    @Override
+    protected void initListener() {
+        super.initListener();
+        mRefreshLayout.setOnRefreshLoadmoreListener(new OnRefreshLoadmoreListener() {
+            @Override
+            public void onLoadmore(RefreshLayout refreshlayout) {
+                Toast.makeText(mActivity, "onLoadmore", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onRefresh(RefreshLayout refreshlayout) {
+                Toast.makeText(mActivity, "onRefresh", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

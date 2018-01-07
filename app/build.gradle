@@ -80,4 +80,6 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.1.1'
     //Walle
     compile 'com.meituan.android.walle:library:1.1.5'
+    //SmartRefreshLayout
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
 }
