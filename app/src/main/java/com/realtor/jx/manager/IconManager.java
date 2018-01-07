@@ -25,6 +25,7 @@ public class IconManager {
 
     private static SparseArray<String> nameMap = new SparseArray<>();
     private static ArrayMap<String, Integer> drawableMap = new ArrayMap<>();
+    private static ArrayMap<String, String> colorMap = new ArrayMap<>();
 
     static {
         nameMap.put(1, "还款中");
@@ -48,6 +49,17 @@ public class IconManager {
         drawableMap.put("未发起清退", R.drawable.icon_weiqingdtui);
         drawableMap.put("已发起清退", R.drawable.icon_qingtui);
         drawableMap.put("清退结算", R.drawable.icon_qingtuijiesuan);
+
+        colorMap.put("还款中", "#f19924");
+        colorMap.put("待修改","#248ef1");
+        colorMap.put("待扫码","#d0719f");
+        colorMap.put("待审核","#1f9f88");
+        colorMap.put("审核中","#e4b925");
+        colorMap.put("审核拒绝","#b02de3");
+        colorMap.put("已还清","009b00");
+        colorMap.put("未发起清退","#d84207");
+        colorMap.put("已发起清退", "#54a40e");
+        colorMap.put("清退结算","#d7710d");
     }
 
     public String getName(int type) {
@@ -57,5 +69,9 @@ public class IconManager {
     @DrawableRes
     public int getIcon(int type) {
         return drawableMap.get(nameMap.get(type));
+    }
+
+    public String getColor(int type){
+        return colorMap.get(nameMap.get(type));
     }
 }

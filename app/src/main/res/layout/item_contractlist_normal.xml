@@ -1,6 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:minHeight="@dimen/y250"
+    android:orientation="horizontal">
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2.5"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/mIvIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_alter" />
+
+        <TextView
+            android:id="@+id/mTvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y12"
+            android:textSize="@dimen/x26"
+            android:text="待修改" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="@dimen/x2"
+        android:layout_height="@dimen/y200"
+        android:layout_gravity="center_vertical"
+        android:background="#e6e6e6" />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="7.5"
+        android:paddingLeft="@dimen/x76">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true">
+
+            <TextView
+                android:id="@+id/mTvTitleRenter"
+                style="@style/ContractListItemTitle"
+                android:drawableLeft="@drawable/icon_man"
+                android:drawablePadding="@dimen/x19"
+                android:text="租客" />
+
+            <TextView
+                android:id="@+id/mTvContentRenter"
+                style="@style/ContractListItemContent"
+                android:layout_alignBaseline="@id/mTvTitleRenter"
+                android:layout_marginLeft="@dimen/x90"
+                android:layout_toRightOf="@id/mTvTitleRenter"
+                android:text="吉星租客" />
+
+            <TextView
+                android:id="@+id/mTvTitlePhone"
+                style="@style/ContractListItemTitle"
+                android:layout_alignLeft="@id/mTvTitleRenter"
+                android:layout_below="@id/mTvTitleRenter"
+                android:layout_marginTop="@dimen/y27"
+                android:drawableLeft="@drawable/icon_phone"
+                android:drawablePadding="@dimen/x19"
+                android:text="电话" />
+
+            <TextView
+                android:id="@+id/mTvContentPhone"
+                style="@style/ContractListItemContent"
+                android:layout_alignBaseline="@id/mTvTitlePhone"
+                android:layout_alignLeft="@id/mTvContentRenter"
+                android:layout_toRightOf="@id/mTvTitlePhone"
+                android:text="18255628953" />
+
+            <TextView
+                android:id="@+id/mTvTitleReviewingTime"
+                style="@style/ContractListItemTitle"
+                android:layout_alignLeft="@id/mTvTitlePhone"
+                android:layout_below="@id/mTvTitlePhone"
+                android:layout_marginTop="@dimen/y30"
+                android:drawableLeft="@drawable/icon_time"
+                android:drawablePadding="@dimen/x19"
+                android:text="审核时间" />
+
+            <TextView
+                android:id="@+id/mTvContentReviewingTime"
+                style="@style/ContractListItemContent"
+                android:layout_toRightOf="@id/mTvTitleReviewingTime"
+                android:layout_alignBaseline="@id/mTvTitleReviewingTime"
+                android:layout_alignLeft="@id/mTvContentRenter"
+                android:text="2016-01-12 11.01.32"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>
