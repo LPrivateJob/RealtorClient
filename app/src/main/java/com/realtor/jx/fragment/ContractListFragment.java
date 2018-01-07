@@ -3,7 +3,6 @@ package com.realtor.jx.fragment;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.realtor.jx.R;
@@ -12,7 +11,6 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
 
-import org.w3c.dom.Text;
 
 /**
  * description: 合同列表页Fragment
