@@ -12,13 +12,12 @@
         app:srlEnableLoadmore="true"
         android:layout_weight="1">
 
-        <TextView
-            android:id="@+id/mTv1"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/mRecView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="合同列表页" />
+            android:divider="@color/white"
+            android:dividerHeight="3dp" />
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
 </LinearLayout>

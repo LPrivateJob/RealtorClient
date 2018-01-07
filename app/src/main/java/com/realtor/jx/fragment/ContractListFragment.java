@@ -1,6 +1,7 @@
 package com.realtor.jx.fragment;
 
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,8 +21,8 @@ import org.w3c.dom.Text;
  */
 public class ContractListFragment extends BaseFragment {
     private String content;
-    private TextView mTv1;
     private SmartRefreshLayout mRefreshLayout;
+    private RecyclerView mRecView;
 
     public static ContractListFragment newInstance(String mStrContractType) {
         ContractListFragment instance = new ContractListFragment();
@@ -39,9 +40,8 @@ public class ContractListFragment extends BaseFragment {
 
     @Override
     protected void initView(View rootView, Bundle savedInstanceState) {
-        mTv1 = findViewById(R.id.mTv1);
+        mRecView = findViewById(R.id.mRecView);
         mRefreshLayout = findViewById(R.id.mRefreshLayout);
-        mTv1.setText(content);
     }
 
     @Override
