@@ -10,26 +10,109 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/y50"
         android:layout_alignParentTop="true"
+        android:layout_marginBottom="@dimen/y39"
         android:background="#e6e6e6"
         android:gravity="center_vertical"
         android:paddingLeft="@dimen/x20"
-        android:text="租户信息"
-        android:layout_marginBottom="@dimen/y39"/>
+        android:text="租户信息" />
 
     <TextView
         android:id="@+id/mTvTitleRenterName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/CommitContractItemTitle"
         android:layout_below="@id/mTvTop"
-        android:text="姓名"
-        android:layout_marginLeft="@dimen/x75"/>
+        android:layout_marginLeft="@dimen/x75"
+        android:layout_marginTop="0dp"
+        android:text="姓名" />
+
     <EditText
         android:id="@+id/mEtContentRenterName"
-        android:textColorHint="#e6e6e6"
-        android:layout_toRightOf="@id/mTvTitleRenterName"
+        style="@style/CommitContractItemContent"
         android:layout_alignBaseline="@id/mTvTitleRenterName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/x22"
-        android:hint="请输入内容"/>
+        android:layout_marginLeft="@dimen/x100"
+        android:layout_toRightOf="@id/mTvTitleRenterName"
+        android:hint="请输入内容" />
+
+    <TextView
+        android:id="@+id/mTvTitlePhone"
+        style="@style/CommitContractItemTitle"
+        android:layout_alignLeft="@id/mTvTitleRenterName"
+        android:layout_below="@id/mTvTitleRenterName"
+        android:text="手机号码" />
+
+    <EditText
+        android:id="@+id/mEtContentPhone"
+        style="@style/CommitContractItemContent"
+        android:layout_alignBaseline="@id/mTvTitlePhone"
+        android:layout_alignLeft="@id/mEtContentRenterName"
+        android:hint="请输入内容" />
+
+    <TextView
+        android:id="@+id/mTvTitleIDNum"
+        style="@style/CommitContractItemTitle"
+        android:layout_alignLeft="@id/mTvTitleRenterName"
+        android:layout_below="@id/mTvTitlePhone"
+        android:text="身份证号" />
+
+    <EditText
+        android:id="@+id/mEtContentIDNum"
+        style="@style/CommitContractItemContent"
+        android:layout_alignBaseline="@id/mTvTitleIDNum"
+        android:layout_alignLeft="@id/mEtContentRenterName"
+        android:hint="请输入内容" />
+
+    <TextView
+        android:id="@+id/mTvTitleRenterMethod"
+        style="@style/CommitContractItemTitle"
+        android:layout_alignLeft="@id/mTvTitleRenterName"
+        android:layout_below="@id/mTvTitleIDNum"
+        android:text="租住方式" />
+
+    <TextView
+        android:id="@+id/mTvTitleCity"
+        style="@style/CommitContractItemTitle"
+        android:layout_alignLeft="@id/mTvTitleRenterName"
+        android:layout_below="@id/mTvTitleRenterMethod"
+        android:text="所在城市" />
+
+    <TextView
+        android:id="@+id/mTvTitleCommunity"
+        style="@style/CommitContractItemTitle"
+        android:layout_alignLeft="@id/mTvTitleRenterName"
+        android:layout_below="@id/mTvTitleCity"
+        android:text="小区名称" />
+
+    <EditText
+        android:id="@+id/mEtContentCommunity"
+        style="@style/CommitContractItemContent"
+        android:layout_alignBaseline="@id/mTvTitleCommunity"
+        android:layout_alignLeft="@id/mEtContentRenterName"
+        android:hint="请输入内容" />
+
+    <TextView
+        android:id="@+id/mTvTitleHouseNum"
+        style="@style/CommitContractItemTitle"
+        android:layout_alignLeft="@id/mTvTitleRenterName"
+        android:layout_below="@id/mTvTitleCommunity"
+        android:text="门牌号" />
+
+    <EditText
+        android:id="@+id/mEtContentHouseNum"
+        style="@style/CommitContractItemContent"
+        android:layout_alignBaseline="@id/mTvTitleHouseNum"
+        android:layout_alignLeft="@id/mEtContentRenterName"
+        android:hint="请输入内容" />
+
+    <TextView
+        android:id="@+id/mTvTitleRoomNum"
+        style="@style/CommitContractItemTitle"
+        android:layout_alignLeft="@id/mTvTitleRenterName"
+        android:layout_below="@id/mTvTitleHouseNum"
+        android:text="房间号" />
+
+    <EditText
+        android:id="@+id/mEtContentRoomNum"
+        style="@style/CommitContractItemContent"
+        android:layout_alignBaseline="@id/mTvTitleRoomNum"
+        android:layout_alignLeft="@id/mEtContentRenterName"
+        android:hint="请输入内容" />
 </RelativeLayout>

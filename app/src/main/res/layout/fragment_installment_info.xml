@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/y10">
+
+    <TextView
+        android:id="@+id/mTvTop"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y50"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="@dimen/y39"
+        android:background="#e6e6e6"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/x20"
+        android:text="分期信息" />
+
+    <TextView
+        android:id="@+id/mTvTitleMonthlyRent"
+        style="@style/CommitContractItemTitle"
+        android:layout_below="@id/mTvTop"
+        android:layout_marginLeft="@dimen/x75"
+        android:layout_marginTop="0dp"
+        android:text="月租金" />
+
+    <EditText
+        android:id="@+id/mEtContentMonthlyRent"
+        style="@style/CommitContractItemContent"
+        android:layout_alignBaseline="@id/mTvTitleMonthlyRent"
+        android:layout_marginLeft="@dimen/x100"
+        android:layout_toRightOf="@id/mTvTitleMonthlyRent"
+        android:hint="请输入内容" />
+
+    <TextView
+        android:id="@+id/mTvTitleLeaseFrom"
+        style="@style/CommitContractItemTitle"
+        android:layout_alignLeft="@id/mTvTitleMonthlyRent"
+        android:layout_below="@id/mTvTitleMonthlyRent"
+        android:text="起租日" />
+
+    <EditText
+        android:id="@+id/mEtContentLeaseFrom"
+        style="@style/CommitContractItemContent"
+        android:layout_alignBaseline="@id/mTvTitleLeaseFrom"
+        android:layout_alignLeft="@id/mEtContentMonthlyRent"
+        android:hint="请输入内容" />
+
+    <TextView
+        android:id="@+id/mTvTitleLeaseTo"
+        style="@style/CommitContractItemTitle"
+        android:layout_alignLeft="@id/mTvTitleMonthlyRent"
+        android:layout_below="@id/mTvTitleLeaseFrom"
+        android:text="到租日" />
+
+    <EditText
+        android:id="@+id/mEtContentLeaseTo"
+        style="@style/CommitContractItemContent"
+        android:layout_alignBaseline="@id/mTvTitleLeaseTo"
+        android:layout_alignLeft="@id/mEtContentMonthlyRent"
+        android:hint="请输入内容" />
+
+    <TextView
+        android:id="@+id/mTvTitleServiceFeeBear"
+        style="@style/CommitContractItemTitle"
+        android:layout_alignLeft="@id/mTvTitleMonthlyRent"
+        android:layout_below="@id/mTvTitleLeaseTo"
+        android:text="服务费承担方" />
+
+    <TextView
+        android:id="@+id/mTvTitleDownPaymentsMethod"
+        style="@style/CommitContractItemTitle"
+        android:layout_alignLeft="@id/mTvTitleMonthlyRent"
+        android:layout_below="@id/mTvTitleServiceFeeBear"
+        android:text="租客首付方式" />
+
+    <TextView
+        android:id="@+id/mTvTitlePlatformPaymentMethod"
+        style="@style/CommitContractItemTitle"
+        android:layout_alignLeft="@id/mTvTitleMonthlyRent"
+        android:layout_below="@id/mTvTitleDownPaymentsMethod"
+        android:text="平台付款方式" />
+
+
+    <TextView
+        android:id="@+id/mTvTitleRepaymentPeriod"
+        style="@style/CommitContractItemTitle"
+        android:layout_alignLeft="@id/mTvTitleMonthlyRent"
+        android:layout_below="@id/mTvTitlePlatformPaymentMethod"
+        android:text="还款期数" />
+
+    <EditText
+        android:id="@+id/mEtContentRepaymentPeriod"
+        style="@style/CommitContractItemContent"
+        android:layout_alignBaseline="@id/mTvTitleRepaymentPeriod"
+        android:layout_alignLeft="@id/mEtContentMonthlyRent"
+        android:hint="请输入内容" />
+
+    <TextView
+        android:id="@+id/mTvTitleAccountNum"
+        style="@style/CommitContractItemTitle"
+        android:layout_alignLeft="@id/mTvTitleMonthlyRent"
+        android:layout_below="@id/mTvTitleRepaymentPeriod"
+        android:text="台账号（选填）" />
+
+    <EditText
+        android:id="@+id/mEtContentAccountNum"
+        style="@style/CommitContractItemContent"
+        android:layout_alignBaseline="@id/mTvTitleAccountNum"
+        android:layout_alignLeft="@id/mEtContentMonthlyRent"
+        android:hint="请输入内容" />
+
+    <TextView
+        android:id="@+id/mTvTitleRemarks"
+        style="@style/CommitContractItemTitle"
+        android:layout_alignLeft="@id/mTvTitleMonthlyRent"
+        android:layout_below="@id/mTvTitleAccountNum"
+        android:text="备注" />
+
+    <EditText
+        android:id="@+id/mEtContentRemarks"
+        style="@style/CommitContractItemContent"
+        android:layout_alignBaseline="@id/mTvTitleRemarks"
+        android:layout_alignLeft="@id/mEtContentMonthlyRent"
+        android:hint="请输入内容" />
+</RelativeLayout>

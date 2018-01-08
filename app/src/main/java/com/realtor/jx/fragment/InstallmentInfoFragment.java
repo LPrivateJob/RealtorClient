@@ -3,6 +3,7 @@ package com.realtor.jx.fragment;
 import android.os.Bundle;
 import android.view.View;
 
+import com.realtor.jx.R;
 import com.realtor.jx.base.BaseFragment;
 
 /**
@@ -18,6 +19,6 @@ public class InstallmentInfoFragment extends BaseFragment {
 
     @Override
     protected int getLayoutResource() {
-        return 0;
+        return R.layout.fragment_installment_info;
     }
 }
