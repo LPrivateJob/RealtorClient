@@ -12,26 +12,8 @@
         app:isShowDelete="false"
         app:title="租住信息" />
 
-    <RelativeLayout
+    <com.realtor.jx.widget.CommitContractStepIndicator
+        android:id="@+id/mStepIndicator"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icon_location"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="租客地址信息"
-                android:textSize="@dimen/x15"
-                android:textColor="#333333"
-                android:layout_marginTop="@dimen/y9"/>
-        </LinearLayout>
-    </RelativeLayout>
+        android:layout_height="wrap_content"/>
 </LinearLayout>

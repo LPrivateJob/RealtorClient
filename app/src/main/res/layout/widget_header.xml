@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/head_height">
 
-    <!--<view-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="@dimen/y1"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:background="#e6e6e6" />-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"
+        android:layout_alignParentBottom="true"
+        android:background="#e6e6e6" />
 
     <ImageView
         android:id="@+id/mIvBack"

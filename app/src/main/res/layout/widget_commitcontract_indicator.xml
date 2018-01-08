@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/y170"
+    android:paddingLeft="@dimen/x50"
+    android:paddingRight="@dimen/x50">
+
+
+    <LinearLayout
+        android:id="@+id/mLLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_location" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y9"
+            android:text="租户地址信息"
+            android:textColor="#333333"
+            android:textSize="@dimen/x15" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/mLAging"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/mIvAging"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_aging_todo" />
+
+        <TextView
+            android:id="@+id/mTvAging"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y9"
+            android:text="分期信息"
+            android:textColor="#333333"
+            android:textSize="@dimen/x15" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/mLPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/mIvPhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_photo_todo" />
+
+        <TextView
+            android:id="@+id/mTvPhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y9"
+            android:text="上传照片"
+            android:textColor="#333333"
+            android:textSize="@dimen/x15" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y2"
+        android:layout_marginLeft="@dimen/x35"
+        android:layout_marginTop="@dimen/y70"
+        android:layout_marginRight="@dimen/x35"
+        android:layout_toLeftOf="@id/mLAging"
+        android:layout_toRightOf="@id/mLLocation"
+        android:background="@color/lineColor" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y2"
+        android:layout_marginTop="@dimen/y70"
+        android:layout_marginLeft="@dimen/x35"
+        android:layout_marginRight="@dimen/x35"
+        android:layout_toLeftOf="@id/mLPhoto"
+        android:layout_toRightOf="@id/mLAging"
+        android:background="@color/lineColor" />
+
+    <View
+        android:layout_width="@dimen/x710"
+        android:layout_height="@dimen/y2"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/lineColor" />
+</RelativeLayout>
