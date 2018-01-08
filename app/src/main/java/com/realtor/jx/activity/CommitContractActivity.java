@@ -11,6 +11,7 @@ import com.realtor.jx.R;
 import com.realtor.jx.base.BaseActivity;
 import com.realtor.jx.base.BaseFragment;
 import com.realtor.jx.entity.Constants;
+import com.realtor.jx.fragment.RenterInfoFragment;
 import com.realtor.jx.widget.CommitContractStepIndicator;
 import com.realtor.jx.widget.Header;
 
@@ -34,6 +35,7 @@ public class CommitContractActivity extends BaseActivity {
     protected void initView(Bundle savedInstanceState) {
         mHeader = findView(R.id.mHeader);
         mStepIndicator = findView(R.id.mStepIndicator);
+        addFragment(R.id.mFragmentLayout,new RenterInfoFragment());
     }
 
     @Override
