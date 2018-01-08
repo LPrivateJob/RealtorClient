@@ -3,6 +3,7 @@ package com.realtor.jx.fragment;
 import android.os.Bundle;
 import android.view.View;
 
+import com.realtor.jx.R;
 import com.realtor.jx.base.BaseFragment;
 
 /**
@@ -11,7 +12,7 @@ import com.realtor.jx.base.BaseFragment;
  * created at: 2018/1/6 10:33
 */
 
-public class LeasingInfoFragment extends BaseFragment {
+public class RenterInfoFragment extends BaseFragment {
     @Override
     protected void initView(View rootView, Bundle savedInstanceState) {
 
@@ -19,6 +20,6 @@ public class LeasingInfoFragment extends BaseFragment {
 
     @Override
     protected int getLayoutResource() {
-        return 0;
+        return R.layout.fragment_renter_info;
     }
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/y10">
+
+    <TextView
+        android:id="@+id/mTvTop"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y50"
+        android:layout_alignParentTop="true"
+        android:background="#e6e6e6"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/x20"
+        android:text="租户信息"
+        android:layout_marginBottom="@dimen/y39"/>
+
+    <TextView
+        android:id="@+id/mTvTitleRenterName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mTvTop"
+        android:text="姓名"
+        android:layout_marginLeft="@dimen/x75"/>
+    <EditText
+        android:id="@+id/mEtContentRenterName"
+        android:textColorHint="#e6e6e6"
+        android:layout_toRightOf="@id/mTvTitleRenterName"
+        android:layout_alignBaseline="@id/mTvTitleRenterName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/x22"
+        android:hint="请输入内容"/>
+</RelativeLayout>
