@@ -15,5 +15,10 @@
     <com.realtor.jx.widget.CommitContractStepIndicator
         android:id="@+id/mStepIndicator"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
+
+    <FrameLayout
+        android:id="@+id/mFragmentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>
