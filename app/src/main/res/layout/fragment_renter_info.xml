@@ -67,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/mTvTitleRenterName"
         android:layout_below="@id/mTvTitleIDNum"
-        android:layout_marginTop="@dimen/x50"
+        android:layout_marginTop="@dimen/x45"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -89,6 +89,7 @@
     <TextView
         android:id="@+id/mTvTitleCity"
         style="@style/CommitContractItemTitle"
+        android:layout_marginTop="@dimen/y43"
         android:layout_alignLeft="@id/mTvTitleRenterName"
         android:layout_below="@id/mLLRenterMethod"
         android:text="所在城市" />
