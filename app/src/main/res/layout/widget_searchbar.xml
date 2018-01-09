@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/y46"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_widget_searchbar_left"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/mIvSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x30"
+            android:src="@drawable/icon_search" />
+
+        <EditText
+            android:id="@+id/mEtInput"
+            android:layout_width="@dimen/x200"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x27"
+            android:layout_toRightOf="@id/mIvSearch"
+            android:background="@null"
+            android:hint="请输入搜索内容"
+            android:textSize="@dimen/x20" />
+
+        <ImageView
+            android:id="@+id/mIvClear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/x10"
+            android:layout_marginRight="@dimen/x20"
+            android:src="@drawable/icon_empty" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/mTvSearch"
+        android:layout_width="@dimen/x100"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_widget_searchbar_right"
+        android:gravity="center"
+        android:text="搜索"
+        android:textColor="#666666"
+        android:textSize="@dimen/x20" />
+</LinearLayout>

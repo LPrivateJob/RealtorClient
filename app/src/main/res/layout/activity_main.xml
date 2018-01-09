@@ -6,6 +6,30 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/head_height"
+        android:background="#ffffff"
+        android:layout_alignParentTop="true">
+
+        <com.realtor.jx.widget.SearchBar
+            android:id="@+id/mSearchBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x80" />
+        <ImageView
+            android:id="@+id/mIvFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_filter"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/x80"
+            android:padding="@dimen/x25"/>
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/mRlHead"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y100"
@@ -18,6 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/y90"
         android:layout_below="@id/mRlHead"
+        android:layout_marginBottom="@dimen/y10"
         android:background="@color/white"
         android:orientation="horizontal"
         app:indicatorHeight="@dimen/y5"
@@ -25,8 +50,7 @@
         app:indicatorSelectColor="#f5cc3f"
         app:txtFontSize="@dimen/x36"
         app:txtNormalColor="#cccccc"
-        app:txtSelectColor="#666666"
-        android:layout_marginBottom="@dimen/y10"/>
+        app:txtSelectColor="#666666" />
 
     <RelativeLayout
         android:id="@+id/rl1"
