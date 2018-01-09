@@ -115,6 +115,8 @@ public class CommitContractActivity extends BaseActivity {
             if (mFragmentManager.getBackStackEntryCount() == 1) {
                 finish();
                 return true;
+            }else {
+
             }
         }
         return super.onKeyDown(keyCode, event);
