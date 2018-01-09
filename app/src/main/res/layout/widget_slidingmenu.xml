@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RadioButton
+            style="@style/SlidingMenuItem"
+            android:text="全部"/>
+        <RadioButton
+            style="@style/SlidingMenuItem"
+            android:text="待修改"/>
+        <RadioButton
+            style="@style/SlidingMenuItem"
+            android:text="待扫码"/>
+        <RadioButton
+            style="@style/SlidingMenuItem"
+            android:text="待审核"/>
+        <RadioButton
+            style="@style/SlidingMenuItem"
+            android:text="审核拒绝"/>
+        <RadioButton
+            style="@style/SlidingMenuItem"
+            android:text="还款中"/>
+        <RadioButton
+            style="@style/SlidingMenuItem"
+            android:text="已还清"/>
+        <RadioButton
+            style="@style/SlidingMenuItem"
+            android:text="已违约"/>
+    </RadioGroup>
+</LinearLayout>
