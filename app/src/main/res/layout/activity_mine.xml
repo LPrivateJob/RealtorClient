@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.realtor.jx.widget.Header
+        android:id="@+id/mHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        app:title="我的"
+        />
+
+    <RelativeLayout
+        android:id="@+id/mLRealtorInfo"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y230"
+        android:layout_below="@id/mHeader"
+        android:background="#f2f2f2">
+
+        <ImageView
+            android:id="@+id/mIvAvatar"
+            android:layout_width="@dimen/x142"
+            android:layout_height="@dimen/y142"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x75"
+            android:src="@drawable/head_photo" />
+
+        <LinearLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x32"
+            android:layout_toRightOf="@id/mIvAvatar"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/mTvRealtorName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="张三"
+                android:textColor="#333333"
+                android:textSize="@dimen/x36" />
+
+            <TextView
+                android:id="@+id/mTvPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y29"
+                android:text="手机号:15810290000"
+                android:textColor="#333333"
+                android:textSize="@dimen/x20" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/mRlChangePassword"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y90"
+        android:layout_below="@id/mLRealtorInfo"
+        android:layout_marginTop="@dimen/y30"
+        android:background="#f2f2f2">
+        <TextView
+            android:id="@+id/mTvModifyPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/icon_change_password"
+            android:drawablePadding="@dimen/x20"
+            android:layout_marginLeft="@dimen/x75"
+            android:text="修改密码"
+            android:layout_centerVertical="true"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_right"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x81"/>
+    </RelativeLayout>
+    <TextView
+        android:layout_width="@dimen/x470"
+        android:layout_height="@dimen/y98"
+        android:background="@drawable/bg_tv_logout"
+        android:textSize="@dimen/x36"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:text="退出登录"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/y150"
+        android:layout_centerHorizontal="true"/>
+</RelativeLayout>
