@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#00ffffff">
+
+    <RelativeLayout
+        android:id="@+id/rl1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:paddingBottom="@dimen/y8"
+        android:paddingTop="@dimen/y12">
+
+        <TextView
+            android:id="@+id/mTvContract"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/x51"
+            android:drawablePadding="@dimen/y4"
+            android:drawableTop="@drawable/icon_bottom_contract_normal"
+            android:text="合同"
+            android:textColor="#8c8c8c" />
+
+        <TextView
+            android:id="@+id/mTvMine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/x51"
+            android:drawablePadding="@dimen/y4"
+            android:drawableTop="@drawable/icon_bottom_mine_normal"
+            android:text="我的"
+            android:textColor="#8c8c8c" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/mTvNew"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:drawablePadding="@dimen/y4"
+        android:drawableTop="@drawable/bottom_new"
+        android:gravity="center"
+        android:paddingBottom="@dimen/y8"
+        android:text="新建" />
+
+</RelativeLayout>

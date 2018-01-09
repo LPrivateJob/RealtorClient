@@ -3,6 +3,7 @@
     package="com.realtor.jx">
 
     <application
+        android:name=".base.RealtorClientApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"

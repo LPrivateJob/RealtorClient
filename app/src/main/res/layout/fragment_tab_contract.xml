@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/mRlHead"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/head_height"
+        android:layout_alignParentTop="true"
+        android:background="#ffffff">
+
+        <com.realtor.jx.widget.SearchBar
+            android:id="@+id/mSearchBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x80" />
+
+        <ImageView
+            android:id="@+id/mIvFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x80"
+            android:padding="@dimen/x25"
+            android:src="@drawable/icon_filter" />
+    </RelativeLayout>
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/mDrawerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/rl1"
+        android:layout_below="@id/mRlHead">
+        <!--主布局-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.realtor.jx.widget.ContractListPagerIndicator
+                android:id="@+id/mPagerIndicator"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y90"
+                android:layout_below="@id/mRlHead"
+                android:layout_marginBottom="@dimen/y10"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                app:indicatorHeight="@dimen/y5"
+                app:indicatorNormalColor="#ffffff"
+                app:indicatorSelectColor="#f5cc3f"
+                app:txtFontSize="@dimen/x36"
+                app:txtNormalColor="#cccccc"
+                app:txtSelectColor="#666666" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/mViewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        <!--侧滑布局-->
+        <com.realtor.jx.widget.SlidingMenu
+            android:id="@+id/mSlidingMenu"
+            android:layout_width="@dimen/x466"
+            android:layout_height="match_parent"
+            android:layout_gravity="right" />
+    </android.support.v4.widget.DrawerLayout>
+</RelativeLayout>

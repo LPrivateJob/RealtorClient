@@ -5,116 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:id="@+id/mRlHead"
+    <com.realtor.jx.widget.BottomTabLayout
+        android:id="@+id/mBottomTabLayout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/head_height"
-        android:layout_alignParentTop="true"
-        android:background="#ffffff">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
 
-        <com.realtor.jx.widget.SearchBar
-            android:id="@+id/mSearchBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/x80" />
-
-        <ImageView
-            android:id="@+id/mIvFilter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/x80"
-            android:padding="@dimen/x25"
-            android:src="@drawable/icon_filter" />
-    </RelativeLayout>
-
-    <android.support.v4.widget.DrawerLayout
-        android:id="@+id/mDrawerLayout"
+    <FrameLayout
+        android:id="@+id/mFragmentLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/rl1"
-        android:layout_below="@id/mRlHead">
-        <!--主布局-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <com.realtor.jx.widget.ContractListPagerIndicator
-                android:id="@+id/mPagerIndicator"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/y90"
-                android:layout_below="@id/mRlHead"
-                android:layout_marginBottom="@dimen/y10"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                app:indicatorHeight="@dimen/y5"
-                app:indicatorNormalColor="#ffffff"
-                app:indicatorSelectColor="#f5cc3f"
-                app:txtFontSize="@dimen/x36"
-                app:txtNormalColor="#cccccc"
-                app:txtSelectColor="#666666" />
-
-            <android.support.v4.view.ViewPager
-                android:id="@+id/mViewPager"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </LinearLayout>
-        <!--侧滑布局-->
-        <com.realtor.jx.widget.SlidingMenu
-            android:id="@+id/mSlidingMenu"
-            android:layout_width="@dimen/x466"
-            android:layout_height="match_parent"
-            android:layout_gravity="right" />
-    </android.support.v4.widget.DrawerLayout>
-
-
-    <RelativeLayout
-        android:id="@+id/rl1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/white"
-        android:paddingBottom="@dimen/y8"
-        android:paddingTop="@dimen/y12">
-
-        <TextView
-            android:id="@+id/mTvContract"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="@dimen/x51"
-            android:drawablePadding="@dimen/y4"
-            android:drawableTop="@drawable/bottom_contract"
-            android:text="合同" />
-
-        <TextView
-            android:id="@+id/mTvMine"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/x51"
-            android:drawablePadding="@dimen/y4"
-            android:drawableTop="@drawable/bottom_mine"
-            android:text="我的" />
-
-    </RelativeLayout>
-
-
-    <TextView
-        android:id="@+id/mTvNew"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:drawablePadding="@dimen/y4"
-        android:drawableTop="@drawable/bottom_new"
-        android:gravity="center"
-        android:paddingBottom="@dimen/y8"
-        android:text="新建" />
+        android:layout_above="@id/mBottomTabLayout"
+        android:layout_alignParentTop="true" />
 
 
 </RelativeLayout>
