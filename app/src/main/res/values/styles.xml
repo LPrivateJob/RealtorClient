@@ -44,4 +44,12 @@
         <item name="android:textColorHint">#e6e6e6</item>
         <item name="android:textSize">@dimen/x22</item>
     </style>
+
+    <style name="BottomButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/y98</item>
+        <item name="android:textSize">@dimen/x36</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:gravity">center</item>
+    </style>
 </resources>

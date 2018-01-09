@@ -93,6 +93,17 @@
         android:layout_below="@id/mLLRenterMethod"
         android:text="所在城市" />
 
+    <EditText
+        android:id="@+id/mEtContentCity"
+        style="@style/CommitContractItemContent"
+        android:layout_alignBaseline="@id/mTvTitleCity"
+        android:layout_alignLeft="@id/mEtContentRenterName"
+        android:drawableRight="@drawable/arrow_down"
+        android:drawablePadding="@dimen/x50"
+        android:editable="false"
+        android:hint="请输入内容" />
+
+
     <TextView
         android:id="@+id/mTvTitleCommunity"
         style="@style/CommitContractItemTitle"

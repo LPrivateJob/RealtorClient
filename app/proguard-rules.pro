@@ -125,3 +125,8 @@
 #--GSON--
 -dontwarn com.google.**
 -keep class com.google.gson.* {*;}
+
+-keepattributes InnerClasses,Signature
+-keepattributes *Annotation*
+
+-keep class cn.qqtheme.framework.entity.** { *;}

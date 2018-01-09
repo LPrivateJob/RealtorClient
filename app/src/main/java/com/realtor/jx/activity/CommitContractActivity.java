@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.view.KeyEvent;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.realtor.jx.R;
 import com.realtor.jx.base.BaseActivity;
 import com.realtor.jx.base.BaseFragment;
 import com.realtor.jx.entity.Constants;
+import com.realtor.jx.fragment.InstallmentInfoFragment;
 import com.realtor.jx.fragment.RenterInfoFragment;
 import com.realtor.jx.widget.CommitContractStepIndicator;
 import com.realtor.jx.widget.Header;
@@ -23,7 +25,9 @@ import com.realtor.jx.widget.Header;
 public class CommitContractActivity extends BaseActivity {
     private Header mHeader;
     private CommitContractStepIndicator mStepIndicator;
+    private Button mBtnNext;
     private FragmentManager mFragmentManager = getSupportFragmentManager();
+    private CommitContractStepIndicator.STEP mStep = CommitContractStepIndicator.STEP.LOCATION;
 
     public static void open(Activity act, CommitContractStepIndicator.STEP step) {
         Intent intent = new Intent(act, CommitContractActivity.class);
@@ -35,6 +39,8 @@ public class CommitContractActivity extends BaseActivity {
     protected void initView(Bundle savedInstanceState) {
         mHeader = findView(R.id.mHeader);
         mStepIndicator = findView(R.id.mStepIndicator);
+        mBtnNext = findView(R.id.mBtnNext);
+        mStepIndicator.refreshUi(mStep);
         addFragment(R.id.mFragmentLayout,new RenterInfoFragment());
     }
 
@@ -49,6 +55,21 @@ public class CommitContractActivity extends BaseActivity {
             @Override
             public void onDeleteClick() {
 
+            }
+        });
+        mBtnNext.setOnClickListener(v->{
+            switch (mStep) {
+                case LOCATION:
+                    mStep = CommitContractStepIndicator.STEP.AGING;
+                    addFragment(R.id.mFragmentLayout,new InstallmentInfoFragment());
+                    mStepIndicator.refreshUi(mStep);
+                    break;
+                case AGING:
+
+                    break;
+                case PHOTO:
+
+                    break;
             }
         });
     }

@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.realtor.jx.R;
 
+import static com.realtor.jx.widget.CommitContractStepIndicator.STEP.LOCATION;
+
 /**
  * author: sundong
  * created at 2018/1/8 14:47
@@ -27,7 +29,6 @@ public class CommitContractStepIndicator extends RelativeLayout {
     private TextView mTvPhoto;
     private ImageView mIvAging;
     private ImageView mIvPhoto;
-    private STEP mStep = STEP.LOCATION;
 
     public CommitContractStepIndicator(Context context) {
         this(context, null);
@@ -46,28 +47,28 @@ public class CommitContractStepIndicator extends RelativeLayout {
         mIvAging = findViewById(R.id.mIvAging);
         mIvPhoto = findViewById(R.id.mIvPhoto);
 
-        refreshUi(mStep);
+        refreshUi(LOCATION);
     }
 
-    private void refreshUi(STEP mStep) {
-        switch (this.mStep) {
+    public void refreshUi(STEP mStep) {
+        switch (mStep) {
             case LOCATION:
                 mTvAging.setTextColor(Color.parseColor(NORMAL_COLOR));
                 mTvPhoto.setTextColor(Color.parseColor(NORMAL_COLOR));
-                mIvAging.setBackgroundResource(R.drawable.icon_aging_todo);
-                mIvPhoto.setBackgroundResource(R.drawable.icon_photo_todo);
+                mIvAging.setImageResource(R.drawable.icon_aging_todo);
+                mIvPhoto.setImageResource(R.drawable.icon_photo_todo);
                 break;
             case AGING:
                 mTvAging.setTextColor(Color.parseColor(SELECTED_COLOR));
                 mTvPhoto.setTextColor(Color.parseColor(NORMAL_COLOR));
-                mIvAging.setBackgroundResource(R.drawable.icon_aging_done);
-                mIvPhoto.setBackgroundResource(R.drawable.icon_photo_todo);
+                mIvAging.setImageResource(R.drawable.icon_aging_done);
+                mIvPhoto.setImageResource(R.drawable.icon_photo_todo);
                 break;
             case PHOTO:
                 mTvAging.setTextColor(Color.parseColor(SELECTED_COLOR));
                 mTvPhoto.setTextColor(Color.parseColor(SELECTED_COLOR));
-                mIvAging.setBackgroundResource(R.drawable.icon_aging_done);
-                mIvPhoto.setBackgroundResource(R.drawable.icon_photo_done);
+                mIvAging.setImageResource(R.drawable.icon_aging_done);
+                mIvPhoto.setImageResource(R.drawable.icon_photo_done);
                 break;
         }
     }

@@ -44,6 +44,9 @@
         style="@style/CommitContractItemContent"
         android:layout_alignBaseline="@id/mTvTitleLeaseFrom"
         android:layout_alignLeft="@id/mEtContentMonthlyRent"
+        android:drawableRight="@drawable/arrow_down"
+        android:drawablePadding="@dimen/x50"
+        android:editable="false"
         android:hint="请输入内容" />
 
     <TextView
@@ -58,6 +61,9 @@
         style="@style/CommitContractItemContent"
         android:layout_alignBaseline="@id/mTvTitleLeaseTo"
         android:layout_alignLeft="@id/mEtContentMonthlyRent"
+        android:drawableRight="@drawable/arrow_down"
+        android:drawablePadding="@dimen/x50"
+        android:editable="false"
         android:hint="请输入内容" />
 
     <TextView
