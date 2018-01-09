@@ -4,15 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.ImageView;
 
 import com.realtor.jx.R;
 import com.realtor.jx.base.BaseActivity;
 import com.realtor.jx.base.baseadapter.fragmentAdapter.CommonFragmentPagerAdapter;
 import com.realtor.jx.fragment.ContractListFragment;
 import com.realtor.jx.widget.ContractListPagerIndicator;
+import com.realtor.jx.widget.SearchBar;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,6 +23,8 @@ import java.util.List;
  * created at: 2018/1/6 14:42
  */
 public class MainActivity extends BaseActivity {
+    private SearchBar mSearchBar;
+    private ImageView mIvFilter;
     private ViewPager mViewPager;
     private List<String> mTitles = Arrays.asList("全部", "逾期");
     private ContractListPagerIndicator mPagerIndicator;
@@ -31,6 +32,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
+        mSearchBar = findView(R.id.mSearchBar);
+        mIvFilter = findViewById(R.id.mIvFilter);
         mPagerIndicator = findView(R.id.mPagerIndicator);
         mViewPager = findView(R.id.mViewPager);
 
@@ -70,7 +73,7 @@ public class MainActivity extends BaseActivity {
          * 走新建合同流程
          */
         findViewById(R.id.mTvNew).setOnClickListener(v -> {
-            startActivity(new Intent(this,CommitContractActivity.class));
+            startActivity(new Intent(this, CommitContractActivity.class));
         });
         /**
          * 走到我的页面
