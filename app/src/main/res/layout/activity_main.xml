@@ -64,6 +64,11 @@
                 android:layout_height="match_parent" />
         </LinearLayout>
         <!--侧滑布局-->
+        <com.realtor.jx.widget.SlidingMenu
+            android:id="@+id/mSlidingMenu"
+            android:layout_width="@dimen/x466"
+            android:layout_height="match_parent"
+            android:layout_gravity="right" />
     </android.support.v4.widget.DrawerLayout>
 
 

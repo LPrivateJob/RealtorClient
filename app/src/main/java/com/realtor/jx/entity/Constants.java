@@ -22,4 +22,14 @@ public class Constants {
     public static final String EXTRA_CODE = "code";
     public static final String EXTRA_PASSWORD = "password";
     public static final String EXTRA_TXT = "key_txt";
+
+    public static final int CONTRACT_STATE_WAITMODIFY = 1;
+    public static final int CONTRACT_STATE_WAITSCANQRCODE = 2;
+    public static final int CONTRACT_STATE_WAITREVIEW = 3;
+    public static final int CONTRACT_STATE_INREVIEW = 4;
+    public static final int CONTRACT_STATE_INREPAYMENT = 5;
+    public static final int CONTRACT_STATE_SETTLED = 6;
+    public static final int CONTRACT_STATE_RENEGE = 7;
+    public static final int CONTRACT_STATE_REJECT = 7;
+
 }

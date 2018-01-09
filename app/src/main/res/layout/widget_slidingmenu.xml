@@ -3,32 +3,56 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <RadioGroup
+        android:id="@+id/mRgFilter"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <RadioButton
+            android:id="@+id/mRbAll"
             style="@style/SlidingMenuItem"
-            android:text="全部"/>
+            android:text="全部" />
+
         <RadioButton
+            android:id="@+id/mRbWaitModify"
             style="@style/SlidingMenuItem"
-            android:text="待修改"/>
+            android:text="待修改" />
+
         <RadioButton
+            android:id="@+id/mRbWaitReview"
             style="@style/SlidingMenuItem"
-            android:text="待扫码"/>
+            android:text="待审核" />
+
         <RadioButton
+            android:id="@+id/mRbInReview"
             style="@style/SlidingMenuItem"
-            android:text="待审核"/>
+            android:text="审核中" />
+
         <RadioButton
+            android:id="@+id/mRbWaitScanQRcode"
             style="@style/SlidingMenuItem"
-            android:text="审核拒绝"/>
+            android:text="待扫码" />
+
+
         <RadioButton
+            android:id="@+id/mRbReject"
             style="@style/SlidingMenuItem"
-            android:text="还款中"/>
+            android:text="审核拒绝" />
+
         <RadioButton
+            android:id="@+id/mRbInRepayment"
             style="@style/SlidingMenuItem"
-            android:text="已还清"/>
+            android:text="还款中" />
+
         <RadioButton
+            android:id="@+id/mRbSettled"
             style="@style/SlidingMenuItem"
-            android:text="已违约"/>
+            android:text="已还清" />
+
+        <RadioButton
+            android:id="@+id/mRbRenege"
+            style="@style/SlidingMenuItem"
+            android:text="已违约" />
     </RadioGroup>
 </LinearLayout>
