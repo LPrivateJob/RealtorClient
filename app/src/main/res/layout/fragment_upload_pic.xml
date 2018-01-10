@@ -10,84 +10,127 @@
 
         <TextView
             android:id="@+id/mTvRenterInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:paddingLeft="@dimen/x20"
-            android:text="租户信息"
-            android:textColor="#999999"
-            android:textSize="@dimen/x28" />
+            style="@style/UpLoadPicTitleTv"
+            android:text="租户信息" />
 
         <TextView
-            android:id="@+id/mTvRenterInfoExtra"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/UpLoadPicTitleExtraTv"
             android:layout_alignBaseline="@id/mTvRenterInfo"
-            android:layout_marginLeft="@dimen/x15"
             android:layout_toRightOf="@id/mTvRenterInfo"
-            android:text="(请上传租户和公寓签署的租赁合同)"
-            android:textColor="#999999"
-            android:textSize="@dimen/x20" />
+            android:text="(请上传租户和公寓签署的租赁合同)" />
     </RelativeLayout>
 
     <ImageView
         android:id="@+id/mIvLeasingContractPH"
-        android:layout_width="@dimen/x180"
-        android:layout_height="@dimen/y180"
+        style="@style/UpLoadPicImageView"
         android:layout_below="@id/mLLContract"
         android:layout_marginLeft="@dimen/x75"
         android:background="@drawable/icon_specimen_contract" />
 
     <ImageView
         android:id="@+id/mIvAddLeasingContract"
-        android:layout_width="@dimen/x180"
-        android:layout_height="@dimen/y180"
+        style="@style/UpLoadPicImageView"
         android:layout_alignBottom="@id/mIvLeasingContractPH"
         android:layout_marginLeft="@dimen/x20"
         android:layout_toRightOf="@id/mIvLeasingContractPH"
         android:background="@drawable/icon_specimen_contract" />
+
     <!--业主身份证-->
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/mLLIDCard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/mIvLeasingContractPH"
-        android:layout_marginBottom="@dimen/y20"
-        android:layout_marginTop="@dimen/y20"
-        android:background="#e6e6e6">
+        style="@style/UpLoadPicTitle"
+        android:layout_below="@id/mIvLeasingContractPH">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/y50"
-            android:gravity="center_vertical"
-            android:paddingLeft="@dimen/x20"
-            android:text="业主身份证"
-            android:textColor="#999999"
-            android:textSize="@dimen/x28" />
+            android:id="@+id/mTvIDCardInfo"
+            style="@style/UpLoadPicTitleTv"
+            android:text="业主身份证" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/x15"
-            android:text="(选填)"
-            android:textColor="#999999"
-            android:textSize="@dimen/x20" />
-    </LinearLayout>
+            style="@style/UpLoadPicTitleExtraTv"
+            android:layout_alignBaseline="@id/mTvIDCardInfo"
+            android:layout_toRightOf="@id/mTvIDCardInfo"
+            android:text="(选填)" />
+    </RelativeLayout>
 
     <ImageView
         android:id="@+id/mIvIDCardPH"
-        android:layout_width="@dimen/x180"
-        android:layout_height="@dimen/y180"
+        style="@style/UpLoadPicImageView"
         android:layout_below="@id/mLLIDCard"
         android:layout_marginLeft="@dimen/x75"
         android:background="@drawable/icon_specimen_id" />
 
     <ImageView
         android:id="@+id/mIvAddIDCard"
-        android:layout_width="@dimen/x180"
-        android:layout_height="@dimen/y180"
+        style="@style/UpLoadPicImageView"
         android:layout_alignBottom="@id/mIvIDCardPH"
         android:layout_marginLeft="@dimen/x20"
         android:layout_toRightOf="@id/mIvIDCardPH"
         android:background="@drawable/icon_specimen_id" />
+
+    <!--房产证-->
+    <RelativeLayout
+        android:id="@+id/mLLPOC"
+        style="@style/UpLoadPicTitle"
+        android:layout_below="@id/mIvIDCardPH">
+
+        <TextView
+            android:id="@+id/mTvPOCInfo"
+            style="@style/UpLoadPicTitleTv"
+            android:text="房产证" />
+
+        <TextView
+            style="@style/UpLoadPicTitleExtraTv"
+            android:layout_alignBaseline="@id/mTvPOCInfo"
+            android:layout_toRightOf="@id/mTvPOCInfo"
+            android:text="(选填)" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/mIvPOCPH"
+        style="@style/UpLoadPicImageView"
+        android:layout_below="@id/mLLPOC"
+        android:layout_marginLeft="@dimen/x75"
+        android:background="@drawable/icon_specimen_house" />
+
+    <ImageView
+        android:id="@+id/mIvAddPOC"
+        style="@style/UpLoadPicImageView"
+        android:layout_alignBottom="@id/mIvPOCPH"
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_toRightOf="@id/mIvPOCPH"
+        android:background="@drawable/icon_specimen_house" />
+
+    <!--代理合同-->
+    <RelativeLayout
+        android:id="@+id/mLLAgencyContract"
+        style="@style/UpLoadPicTitle"
+        android:layout_below="@id/mIvPOCPH">
+
+        <TextView
+            android:id="@+id/mTvAgencyContractInfo"
+            style="@style/UpLoadPicTitleTv"
+            android:text="代理合同" />
+
+        <TextView
+            style="@style/UpLoadPicTitleExtraTv"
+            android:layout_alignBaseline="@id/mTvAgencyContractInfo"
+            android:layout_toRightOf="@id/mTvAgencyContractInfo"
+            android:text="(选填)" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/mIvAgencyContractPH"
+        style="@style/UpLoadPicImageView"
+        android:layout_below="@id/mLLAgencyContract"
+        android:layout_marginLeft="@dimen/x75"
+        android:background="@drawable/icon_specimen_agency" />
+
+    <ImageView
+        android:id="@+id/mIvAddAgencyContract"
+        style="@style/UpLoadPicImageView"
+        android:layout_alignBottom="@id/mIvAgencyContractPH"
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_toRightOf="@id/mIvAgencyContractPH"
+        android:background="@drawable/icon_specimen_agency" />
 </RelativeLayout>
