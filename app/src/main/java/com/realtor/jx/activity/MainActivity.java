@@ -3,21 +3,15 @@ package com.realtor.jx.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
-import android.view.Gravity;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.realtor.jx.R;
 import com.realtor.jx.base.BaseActivity;
 import com.realtor.jx.base.baseadapter.fragmentAdapter.CommonFragmentPagerAdapter;
-import com.realtor.jx.fragment.ContractListFragment;
+import com.realtor.jx.fragment.tab.TabContractFragment;
+import com.realtor.jx.fragment.tab.TabMineFragment;
+import com.realtor.jx.widget.BanSlideViewPager;
 import com.realtor.jx.widget.BottomTabLayout;
-import com.realtor.jx.widget.ContractListPagerIndicator;
-import com.realtor.jx.widget.SearchBar;
-import com.realtor.jx.widget.SlidingMenu;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,10 +24,18 @@ import java.util.List;
  */
 public class MainActivity extends BaseActivity {
     private BottomTabLayout mBottomTabLayout;
+    private BanSlideViewPager mViewPager;
+    private List<Fragment> fragments = new ArrayList<>();
+    private List<String> mTitles = Arrays.asList("合同", "我的");
 
     @Override
     protected void initView(Bundle savedInstanceState) {
         mBottomTabLayout = findViewById(R.id.mBottomTabLayout);
+        mViewPager = findViewById(R.id.mViewPager);
+        fragments.add(new TabContractFragment());
+        fragments.add(new TabMineFragment());
+        mViewPager.setAdapter(new CommonFragmentPagerAdapter(getSupportFragmentManager(), fragments, mTitles));
+        mViewPager.setCurrentItem(0);
     }
 
     @Override
@@ -42,11 +44,13 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onContractTabSelect() {
                 Toast.makeText(MainActivity.this, "onContractTabSelect", Toast.LENGTH_SHORT).show();
+                mViewPager.setCurrentItem(0);
             }
 
             @Override
             public void onMineTabSelect() {
                 Toast.makeText(MainActivity.this, "onMineTabSelect", Toast.LENGTH_SHORT).show();
+                mViewPager.setCurrentItem(1);
             }
 
             @Override
