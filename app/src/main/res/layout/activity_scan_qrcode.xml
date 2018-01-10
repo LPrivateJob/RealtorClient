@@ -18,15 +18,16 @@
         android:layout_below="@id/mHeader"
         android:fillViewport="true">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/mIvQRCode"
                 android:layout_width="@dimen/x440"
                 android:layout_height="@dimen/y440"
-                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/y10"
                 android:background="@mipmap/ic_launcher" />
 
@@ -34,40 +35,23 @@
                 android:id="@+id/mTvTips"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/mIvQRCode"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/y19"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/y20"
+                android:layout_marginBottom="@dimen/y20"
                 android:text="请租户在72小时内用微信扫二维码完善确认"
                 android:textColor="#666666"
                 android:textSize="@dimen/x20" />
 
-            <TextView
-                android:id="@+id/mTvTitleContractInfo"
-                style="@style/ScanQRCodeTitle"
-                android:layout_below="@id/mTvTips"
-                android:layout_marginTop="@dimen/y30"
-                android:text="合同信息" />
+            <com.realtor.jx.widget.ContractInfoShowView
+                android:id="@+id/mContractInfoShowView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <TextView
-                android:id="@+id/mTvTitleContractNum"
-                style="@style/ScanQRCodeItemTitle"
-                android:layout_below="@id/mTvTitleContractInfo"
-                android:layout_marginBottom="@dimen/y39"
-                android:layout_marginTop="@dimen/y39"
-                android:text="合同编号" />
-
-            <TextView
-                android:id="@+id/mTvContentContractNum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@id/mTvTitleContractNum"
-                android:layout_below="@id/mTvTitleContractInfo"
-                android:layout_marginLeft="@dimen/x74"
-                android:layout_toRightOf="@id/mTvTitleContractNum"
-                android:text="20171121001"
-                android:textColor="#333333"
-                android:textSize="@dimen/x22" />
-        </RelativeLayout>
+                style="@style/BottomButton"
+                android:background="#ff0000"
+                android:text="返回首页" />
+        </LinearLayout>
     </ScrollView>
 
 </RelativeLayout>

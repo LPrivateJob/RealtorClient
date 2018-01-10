@@ -12,11 +12,7 @@
         android:theme="@style/AppTheme">
         <activity android:name="com.realtor.jx.activity.MainActivity"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".activity.ContractDetailActivity"
             android:screenOrientation="portrait">
@@ -28,7 +24,13 @@
         <activity android:name=".activity.BillActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.WaitScanQRCodeActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".activity.RejectedActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.CommitContractActivity"

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <!--合同信息-->
+    <RelativeLayout
+        android:id="@+id/mRlContractInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/mTvTitleContractInfo"
+            style="@style/ScanQRCodeTitle"
+            android:layout_below="@id/mTvTips"
+            android:text="合同信息" />
+
+        <TextView
+            android:id="@+id/mTvTitleContractNum"
+            style="@style/ScanQRCodeItemTitle"
+            android:layout_below="@id/mTvTitleContractInfo"
+            android:layout_marginBottom="@dimen/y39"
+            android:layout_marginTop="@dimen/y39"
+            android:text="合同编号" />
+
+        <TextView
+            android:id="@+id/mTvContentContractNum"
+            style="@style/CommitContractItemContent"
+            android:layout_alignBaseline="@id/mTvTitleContractNum"
+            android:layout_below="@id/mTvTitleContractInfo"
+            android:layout_marginLeft="@dimen/x74"
+            android:layout_toRightOf="@id/mTvTitleContractNum"
+            android:text="20171121001" />
+    </RelativeLayout>
+    <!--租户信息-->
+    <RelativeLayout
+        android:id="@+id/mRlRenterInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/y39">
+
+        <TextView
+            android:id="@+id/mTvTitleRenterInfo"
+            style="@style/ScanQRCodeTitle"
+            android:text="租户信息" />
+
+        <TextView
+            android:id="@+id/mTvTitleName"
+            style="@style/ScanQRCodeItemTitle"
+            android:layout_below="@id/mTvTitleRenterInfo"
+            android:text="姓名" />
+
+        <TextView
+            android:id="@+id/mTvContentName"
+            style="@style/CommitContractItemContent"
+            android:layout_alignBaseline="@id/mTvTitleName"
+            android:layout_marginLeft="@dimen/x116"
+            android:layout_toRightOf="@id/mTvTitleName"
+            android:text="张三" />
+
+        <TextView
+            android:id="@+id/mTvTitlePhoneNum"
+            style="@style/ScanQRCodeItemTitle"
+            android:layout_below="@id/mTvTitleName"
+            android:text="手机号" />
+
+        <TextView
+            android:id="@+id/mTvContentPhoneNum"
+            style="@style/CommitContractItemContent"
+            android:layout_alignBaseline="@id/mTvTitlePhoneNum"
+            android:layout_alignLeft="@id/mTvContentName"
+            android:text="18266458373" />
+
+        <TextView
+            android:id="@+id/mTvTitleIDCardNum"
+            style="@style/ScanQRCodeItemTitle"
+            android:layout_below="@id/mTvTitlePhoneNum"
+            android:text="身份证号" />
+
+        <TextView
+            android:id="@+id/mTvContentIDCardNum"
+            style="@style/CommitContractItemContent"
+            android:layout_alignBaseline="@id/mTvTitleIDCardNum"
+            android:layout_alignLeft="@id/mTvContentName"
+            android:text="370292828282828282" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/mRlAgingInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/mTvTitleAgingInfo"
+            style="@style/ScanQRCodeTitle"
+            android:text="分期信息" />
+
+        <TextView
+            android:id="@+id/mTvTitleMonthlyRent"
+            style="@style/ScanQRCodeItemTitle"
+            android:layout_below="@id/mTvTitleAgingInfo"
+            android:text="月租金" />
+
+        <TextView
+            android:id="@+id/mTvContentMonthlyRent"
+            style="@style/CommitContractItemContent"
+            android:layout_alignBaseline="@id/mTvTitleMonthlyRent"
+            android:layout_marginLeft="@dimen/x95"
+            android:layout_toRightOf="@id/mTvTitleMonthlyRent"
+            android:text="600" />
+
+        <TextView
+            android:id="@+id/mTvTitleLeaseFrom"
+            style="@style/ScanQRCodeItemTitle"
+            android:layout_below="@id/mTvTitleMonthlyRent"
+            android:text="起租日" />
+
+        <TextView
+            android:id="@+id/mTvContentLeaseFrom"
+            style="@style/CommitContractItemContent"
+            android:layout_alignBaseline="@id/mTvTitleLeaseFrom"
+            android:layout_alignLeft="@id/mTvContentMonthlyRent"
+            android:text="2017-11-10" />
+
+        <TextView
+            android:id="@+id/mTvTitleLeaseTo"
+            style="@style/ScanQRCodeItemTitle"
+            android:layout_below="@id/mTvTitleLeaseFrom"
+            android:text="到租日" />
+
+        <TextView
+            android:id="@+id/mTvContentLeaseTo"
+            style="@style/CommitContractItemContent"
+            android:layout_alignBaseline="@id/mTvTitleLeaseTo"
+            android:layout_alignLeft="@id/mTvContentMonthlyRent"
+            android:text="2018-11-10" />
+
+        <TextView
+            android:id="@+id/mTvTitleTenancy"
+            style="@style/ScanQRCodeItemTitle"
+            android:layout_below="@id/mTvTitleLeaseTo"
+            android:text="租期" />
+
+        <TextView
+            android:id="@+id/mTvContentTenancy"
+            style="@style/CommitContractItemContent"
+            android:layout_alignBaseline="@id/mTvTitleTenancy"
+            android:layout_alignLeft="@id/mTvContentMonthlyRent"
+            android:text="11月10天" />
+
+        <TextView
+            android:id="@+id/mTvTitleServiceFeeBear"
+            style="@style/ScanQRCodeItemTitle"
+            android:layout_below="@id/mTvTitleTenancy"
+            android:text="服务费承担方" />
+
+        <TextView
+            android:id="@+id/mTvContentServiceFeeBear"
+            style="@style/CommitContractItemContent"
+            android:layout_alignBaseline="@id/mTvTitleServiceFeeBear"
+            android:layout_alignLeft="@id/mTvContentMonthlyRent"
+            android:text="租客" />
+
+        <TextView
+            android:id="@+id/mTvTitleDownPaymentsMethod"
+            style="@style/ScanQRCodeItemTitle"
+            android:layout_below="@id/mTvTitleServiceFeeBear"
+            android:text="租客首付方式" />
+
+        <TextView
+            android:id="@+id/mTvContentDownPaymentsMethod"
+            style="@style/CommitContractItemContent"
+            android:layout_alignBaseline="@id/mTvTitleDownPaymentsMethod"
+            android:layout_alignLeft="@id/mTvContentMonthlyRent"
+            android:text="押一付一" />
+
+        <TextView
+            android:id="@+id/mTvTitlePlatformPaymentMethod"
+            style="@style/ScanQRCodeItemTitle"
+            android:layout_below="@id/mTvTitleDownPaymentsMethod"
+            android:text="平台付款方式" />
+
+        <TextView
+            android:id="@+id/mTvContentPlatformPaymentMethod"
+            style="@style/CommitContractItemContent"
+            android:layout_alignBaseline="@id/mTvTitlePlatformPaymentMethod"
+            android:layout_alignLeft="@id/mTvContentMonthlyRent"
+            android:text="季付" />
+
+        <TextView
+            android:id="@+id/mTvTitleAccountNum"
+            style="@style/ScanQRCodeItemTitle"
+            android:layout_below="@id/mTvTitlePlatformPaymentMethod"
+            android:text="台帐号(选填)" />
+
+        <TextView
+            android:id="@+id/mTvContentAccountNum"
+            style="@style/CommitContractItemContent"
+            android:layout_alignBaseline="@id/mTvTitleAccountNum"
+            android:layout_alignLeft="@id/mTvContentMonthlyRent"
+            android:text="吉星A" />
+
+        <TextView
+            android:id="@+id/mTvTitleRemarks"
+            style="@style/ScanQRCodeItemTitle"
+            android:layout_below="@id/mTvTitleAccountNum"
+            android:text="备注" />
+
+        <TextView
+            android:id="@+id/mTvContentRemarks"
+            style="@style/CommitContractItemContent"
+            android:layout_alignBaseline="@id/mTvTitleRemarks"
+            android:layout_alignLeft="@id/mTvContentMonthlyRent"
+            android:text="吉星A" />
+    </RelativeLayout>
+</LinearLayout>

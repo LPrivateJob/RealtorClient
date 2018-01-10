@@ -114,7 +114,14 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginLeft">@dimen/x74</item>
+        <item name="android:layout_marginTop">@dimen/y39</item>
         <item name="android:textColor">#666666</item>
+        <item name="android:textSize">@dimen/x22</item>
+    </style>
+    <style name="ScanQRCodeItemContent">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#333333</item>
         <item name="android:textSize">@dimen/x22</item>
     </style>
 </resources>
