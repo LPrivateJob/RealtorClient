@@ -2,14 +2,15 @@ package com.realtor.jx.activity;
 
 import android.os.Bundle;
 
+import com.realtor.jx.R;
 import com.realtor.jx.base.BaseActivity;
 
 /**
- * description: 带扫码页
+ * description: 待扫码页
  * autour: lewish
  * created at: 2018/1/6 14:48
-*/
-public class QRcodeActivity extends BaseActivity {
+ */
+public class WaitScanQRCodeActivity extends BaseActivity {
     @Override
     protected void initView(Bundle savedInstanceState) {
 
@@ -17,6 +18,8 @@ public class QRcodeActivity extends BaseActivity {
 
     @Override
     protected int getLayoutResource() {
-        return 0;
+        return R.layout.activity_scan_qrcode;
     }
+
+
 }
