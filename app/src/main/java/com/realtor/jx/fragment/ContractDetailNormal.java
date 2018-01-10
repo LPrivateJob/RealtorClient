@@ -7,11 +7,10 @@ import com.realtor.jx.R;
 import com.realtor.jx.base.BaseFragment;
 
 /**
- * description: 上传照片UI
- * autour: lewish
- * created at: 2018/1/6 10:38
-*/
-public class UploadPicFragment extends BaseFragment {
+ * author: sundong
+ * created at 2018/1/10 10:30
+ */
+public class ContractDetailNormal extends BaseFragment {
     @Override
     protected void initView(View rootView, Bundle savedInstanceState) {
 
@@ -19,6 +18,6 @@ public class UploadPicFragment extends BaseFragment {
 
     @Override
     protected int getLayoutResource() {
-        return R.layout.fragment_upload_pic;
+        return R.layout.fragment_contract_detail_normal;
     }
 }

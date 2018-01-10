@@ -62,4 +62,11 @@
         <item name="android:textColor">@drawable/color_slidingmenu_txt</item>
         <item name="android:background">@drawable/bg_slidingmenu_item</item>
     </style>
+    <style name="UpLoadPicTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/y50</item>
+        <item name="android:layout_marginTop">@dimen/y20</item>
+        <item name="android:layout_marginBottom">@dimen/y20</item>
+        <item name="android:background">#e6e6e6</item>
+    </style>
 </resources>

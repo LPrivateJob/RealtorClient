@@ -10,6 +10,7 @@ import com.realtor.jx.base.BaseActivity;
 import com.realtor.jx.base.baseadapter.fragmentAdapter.CommonFragmentPagerAdapter;
 import com.realtor.jx.fragment.tab.TabContractFragment;
 import com.realtor.jx.fragment.tab.TabMineFragment;
+import com.realtor.jx.utils.KeyBoardUtil;
 import com.realtor.jx.widget.BanSlideViewPager;
 import com.realtor.jx.widget.BottomTabLayout;
 
@@ -35,7 +36,6 @@ public class MainActivity extends BaseActivity {
         fragments.add(new TabContractFragment());
         fragments.add(new TabMineFragment());
         mViewPager.setAdapter(new CommonFragmentPagerAdapter(getSupportFragmentManager(), fragments, mTitles));
-        mViewPager.setCurrentItem(0);
     }
 
     @Override
