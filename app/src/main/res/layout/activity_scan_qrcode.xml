@@ -36,8 +36,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/y20"
                 android:layout_marginBottom="@dimen/y20"
+                android:layout_marginTop="@dimen/y20"
                 android:text="请租户在72小时内用微信扫二维码完善确认"
                 android:textColor="#666666"
                 android:textSize="@dimen/x20" />
@@ -47,10 +47,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <TextView
-                style="@style/BottomButton"
-                android:background="#ff0000"
-                android:text="返回首页" />
+            <!--<com.realtor.jx.widget.BottomButton-->
+                <!--android:id="@+id/mButton"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--app:bg="#f5cc40" />-->
         </LinearLayout>
     </ScrollView>
 

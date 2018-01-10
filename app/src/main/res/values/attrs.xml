@@ -22,4 +22,9 @@
             <enum name="right" value="1" />
         </attr>
     </declare-styleable>
+    <declare-styleable name="BottomButton">
+        <attr name="bg" format="color"/>
+        <attr name="txtColor" format="color"/>
+        <attr name="txtSize"  format="dimension"/>
+    </declare-styleable>
 </resources>
