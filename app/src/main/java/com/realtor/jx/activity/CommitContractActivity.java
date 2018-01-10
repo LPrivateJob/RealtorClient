@@ -14,6 +14,7 @@ import com.realtor.jx.base.BaseFragment;
 import com.realtor.jx.entity.Constants;
 import com.realtor.jx.fragment.InstallmentInfoFragment;
 import com.realtor.jx.fragment.RenterInfoFragment;
+import com.realtor.jx.fragment.UploadPicFragment;
 import com.realtor.jx.widget.CommitContractStepIndicator;
 import com.realtor.jx.widget.Header;
 
@@ -41,7 +42,7 @@ public class CommitContractActivity extends BaseActivity {
         mStepIndicator = findView(R.id.mStepIndicator);
         mBtnNext = findView(R.id.mBtnNext);
         mStepIndicator.refreshUi(mStep);
-        addFragment(R.id.mFragmentLayout,new RenterInfoFragment());
+        addFragment(R.id.mFragmentLayout, new RenterInfoFragment());
     }
 
     @Override
@@ -57,15 +58,17 @@ public class CommitContractActivity extends BaseActivity {
 
             }
         });
-        mBtnNext.setOnClickListener(v->{
+        mBtnNext.setOnClickListener(v -> {
             switch (mStep) {
                 case LOCATION:
                     mStep = CommitContractStepIndicator.STEP.AGING;
-                    addFragment(R.id.mFragmentLayout,new InstallmentInfoFragment());
+                    addFragment(R.id.mFragmentLayout, new InstallmentInfoFragment());
                     mStepIndicator.refreshUi(mStep);
                     break;
                 case AGING:
-
+                    mStep = CommitContractStepIndicator.STEP.PHOTO;
+                    addFragment(R.id.mFragmentLayout, new UploadPicFragment());
+                    mStepIndicator.refreshUi(mStep);
                     break;
                 case PHOTO:
 
@@ -115,7 +118,7 @@ public class CommitContractActivity extends BaseActivity {
             if (mFragmentManager.getBackStackEntryCount() == 1) {
                 finish();
                 return true;
-            }else {
+            } else {
 
             }
         }
