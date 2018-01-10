@@ -43,31 +43,18 @@
 
             <TextView
                 android:id="@+id/mTvTitleContractInfo"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/y60"
+                style="@style/ScanQRCodeTitle"
                 android:layout_below="@id/mTvTips"
-                android:layout_centerHorizontal="true"
-                android:layout_marginLeft="@dimen/x20"
-                android:layout_marginRight="@dimen/x20"
                 android:layout_marginTop="@dimen/y30"
-                android:background="#e6e6e6"
-                android:gravity="center_vertical"
-                android:paddingLeft="@dimen/x20"
-                android:text="合同信息"
-                android:textColor="#999999"
-                android:textSize="@dimen/x28" />
+                android:text="合同信息" />
 
             <TextView
                 android:id="@+id/mTvTitleContractNum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/ScanQRCodeItemTitle"
                 android:layout_below="@id/mTvTitleContractInfo"
                 android:layout_marginBottom="@dimen/y39"
-                android:layout_marginLeft="@dimen/x74"
                 android:layout_marginTop="@dimen/y39"
-                android:text="合同编号"
-                android:textColor="#666666"
-                android:textSize="@dimen/x22" />
+                android:text="合同编号" />
 
             <TextView
                 android:id="@+id/mTvContentContractNum"

@@ -31,12 +31,14 @@
         <item name="android:textColor">#666666</item>
         <item name="android:textSize">@dimen/x26</item>
     </style>
+
     <style name="CommitContractItemTitle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">@dimen/y50</item>
         <item name="android:textSize">@dimen/x26</item>
     </style>
+
     <style name="CommitContractItemContent">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -52,6 +54,7 @@
         <item name="android:textColor">#ffffff</item>
         <item name="android:gravity">center</item>
     </style>
+
     <style name="SlidingMenuItem">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">0dp</item>
@@ -62,6 +65,7 @@
         <item name="android:textColor">@drawable/color_slidingmenu_txt</item>
         <item name="android:background">@drawable/bg_slidingmenu_item</item>
     </style>
+
     <style name="UpLoadPicTitle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/y50</item>
@@ -72,6 +76,7 @@
         <item name="android:layout_marginRight">@dimen/x20</item>
         <item name="android:background">#e6e6e6</item>
     </style>
+
     <style name="UpLoadPicImageView">
         <item name="android:layout_width">@dimen/x180</item>
         <item name="android:layout_height">@dimen/y180</item>
@@ -91,5 +96,25 @@
         <item name="android:textColor">#999999</item>
         <item name="android:textSize">@dimen/x20</item>
         <item name="android:layout_marginLeft">@dimen/x15</item>
+    </style>
+
+    <style name="ScanQRCodeTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/y60</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginLeft">@dimen/x20</item>
+        <item name="android:layout_marginRight">@dimen/x20</item>
+        <item name="android:background">#e6e6e6</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/x20</item>
+        <item name="android:textColor">#999999</item>
+        <item name="android:textSize">@dimen/x28</item>
+    </style>
+    <style name="ScanQRCodeItemTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/x74</item>
+        <item name="android:textColor">#666666</item>
+        <item name="android:textSize">@dimen/x22</item>
     </style>
 </resources>
