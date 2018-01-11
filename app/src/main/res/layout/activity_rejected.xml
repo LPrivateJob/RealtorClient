@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <com.realtor.jx.widget.Header
+        android:id="@+id/mHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:isShowDelete="true"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_marginTop="@dimen/y30"
+                style="@style/ScanQRCodeTitle"
+                android:text="驳回原因" />
+
+            <TextView
+                android:id="@+id/mTvRejectedReason"
+                android:layout_width="@dimen/x690"
+                android:layout_height="@dimen/y178"
+                android:layout_gravity="center_horizontal"
+                android:background="#fcfcfc"
+                android:text="身份证上传错误;租赁合同地址页面缺失;租赁合同上传图片模糊"
+                android:textColor="#cd3500"
+                android:paddingLeft="@dimen/x36"
+                android:paddingRight="@dimen/x49"
+                android:paddingTop="@dimen/y19"
+                android:layout_marginTop="@dimen/y20"
+                android:layout_marginBottom="@dimen/y40"
+                android:textSize="@dimen/x22" />
+
+            <com.realtor.jx.widget.ContractInfoShowView
+                android:id="@+id/mContractInfoShowView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/mBtm"
+                style="@style/BottomButtonRed"
+                android:layout_marginTop="@dimen/y80"
+                android:text="马上修改" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
