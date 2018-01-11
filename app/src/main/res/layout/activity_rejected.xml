@@ -22,7 +22,7 @@
             android:orientation="vertical">
 
             <TextView
-                style="@style/ScanQRCodeTitle"
+                style="@style/ContractInfoBlockTitle"
                 android:layout_marginTop="@dimen/y30"
                 android:text="驳回原因" />
 

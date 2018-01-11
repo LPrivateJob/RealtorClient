@@ -8,9 +8,9 @@ import com.realtor.jx.base.BaseFragment;
 
 /**
  * author: sundong
- * created at 2018/1/10 10:30
+ * created at 2018/1/11 15:32
  */
-public class ContractDetailNormal extends BaseFragment {
+public class ContractDetailOverdueFragment extends BaseFragment {
     @Override
     protected void initView(View rootView, Bundle savedInstanceState) {
 
@@ -18,6 +18,6 @@ public class ContractDetailNormal extends BaseFragment {
 
     @Override
     protected int getLayoutResource() {
-        return R.layout.fragment_contract_detail_normal;
+        return R.layout.fragment_contract_detail_overdue;
     }
 }

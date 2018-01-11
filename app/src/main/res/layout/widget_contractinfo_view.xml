@@ -11,13 +11,13 @@
 
         <TextView
             android:id="@+id/mTvTitleContractInfo"
-            style="@style/ScanQRCodeTitle"
+            style="@style/ContractInfoBlockTitle"
             android:layout_below="@id/mTvTips"
             android:text="合同信息" />
 
         <TextView
             android:id="@+id/mTvTitleContractNum"
-            style="@style/ScanQRCodeItemTitle"
+            style="@style/ContractInfoItemTitle"
             android:layout_below="@id/mTvTitleContractInfo"
             android:layout_marginBottom="@dimen/y39"
             android:layout_marginTop="@dimen/y39"
@@ -41,12 +41,12 @@
 
         <TextView
             android:id="@+id/mTvTitleRenterInfo"
-            style="@style/ScanQRCodeTitle"
+            style="@style/ContractInfoBlockTitle"
             android:text="租户信息" />
 
         <TextView
             android:id="@+id/mTvTitleName"
-            style="@style/ScanQRCodeItemTitle"
+            style="@style/ContractInfoItemTitle"
             android:layout_marginTop="@dimen/y39"
             android:layout_below="@id/mTvTitleRenterInfo"
             android:text="姓名" />
@@ -61,7 +61,7 @@
 
         <TextView
             android:id="@+id/mTvTitlePhoneNum"
-            style="@style/ScanQRCodeItemTitle"
+            style="@style/ContractInfoItemTitle"
             android:layout_below="@id/mTvTitleName"
             android:text="手机号" />
 
@@ -74,7 +74,7 @@
 
         <TextView
             android:id="@+id/mTvTitleIDCardNum"
-            style="@style/ScanQRCodeItemTitle"
+            style="@style/ContractInfoItemTitle"
             android:layout_below="@id/mTvTitlePhoneNum"
             android:text="身份证号" />
 
@@ -93,12 +93,12 @@
 
         <TextView
             android:id="@+id/mTvTitleAgingInfo"
-            style="@style/ScanQRCodeTitle"
+            style="@style/ContractInfoBlockTitle"
             android:text="分期信息" />
 
         <TextView
             android:id="@+id/mTvTitleMonthlyRent"
-            style="@style/ScanQRCodeItemTitle"
+            style="@style/ContractInfoItemTitle"
             android:layout_marginTop="@dimen/y39"
             android:layout_below="@id/mTvTitleAgingInfo"
             android:text="月租金" />
@@ -113,7 +113,7 @@
 
         <TextView
             android:id="@+id/mTvTitleLeaseFrom"
-            style="@style/ScanQRCodeItemTitle"
+            style="@style/ContractInfoItemTitle"
             android:layout_below="@id/mTvTitleMonthlyRent"
             android:text="起租日" />
 
@@ -126,7 +126,7 @@
 
         <TextView
             android:id="@+id/mTvTitleLeaseTo"
-            style="@style/ScanQRCodeItemTitle"
+            style="@style/ContractInfoItemTitle"
             android:layout_below="@id/mTvTitleLeaseFrom"
             android:text="到租日" />
 
@@ -139,7 +139,7 @@
 
         <TextView
             android:id="@+id/mTvTitleTenancy"
-            style="@style/ScanQRCodeItemTitle"
+            style="@style/ContractInfoItemTitle"
             android:layout_below="@id/mTvTitleLeaseTo"
             android:text="租期" />
 
@@ -152,7 +152,7 @@
 
         <TextView
             android:id="@+id/mTvTitleServiceFeeBear"
-            style="@style/ScanQRCodeItemTitle"
+            style="@style/ContractInfoItemTitle"
             android:layout_below="@id/mTvTitleTenancy"
             android:text="服务费承担方" />
 
@@ -165,7 +165,7 @@
 
         <TextView
             android:id="@+id/mTvTitleDownPaymentsMethod"
-            style="@style/ScanQRCodeItemTitle"
+            style="@style/ContractInfoItemTitle"
             android:layout_below="@id/mTvTitleServiceFeeBear"
             android:text="租客首付方式" />
 
@@ -178,7 +178,7 @@
 
         <TextView
             android:id="@+id/mTvTitlePlatformPaymentMethod"
-            style="@style/ScanQRCodeItemTitle"
+            style="@style/ContractInfoItemTitle"
             android:layout_below="@id/mTvTitleDownPaymentsMethod"
             android:text="平台付款方式" />
 
@@ -191,7 +191,7 @@
 
         <TextView
             android:id="@+id/mTvTitleAccountNum"
-            style="@style/ScanQRCodeItemTitle"
+            style="@style/ContractInfoItemTitle"
             android:layout_below="@id/mTvTitlePlatformPaymentMethod"
             android:text="台帐号(选填)" />
 
@@ -204,7 +204,7 @@
 
         <TextView
             android:id="@+id/mTvTitleRemarks"
-            style="@style/ScanQRCodeItemTitle"
+            style="@style/ContractInfoItemTitle"
             android:layout_below="@id/mTvTitleAccountNum"
             android:text="备注" />
 
