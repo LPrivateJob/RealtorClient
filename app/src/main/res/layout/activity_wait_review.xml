@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
+    android:layout_height="match_parent">
     <com.realtor.jx.widget.Header
         android:id="@+id/mHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:title="待审核"
         app:isShowDelete="true" />
 
     <ScrollView
@@ -21,27 +21,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                style="@style/ScanQRCodeTitle"
-                android:layout_marginTop="@dimen/y30"
-                android:text="驳回原因" />
-
-            <TextView
-                android:id="@+id/mTvRejectedReason"
-                android:layout_width="@dimen/x690"
-                android:layout_height="@dimen/y178"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="@dimen/y40"
-                android:layout_marginTop="@dimen/y22"
-                android:background="#fcfcfc"
-                android:paddingLeft="@dimen/x36"
-                android:paddingRight="@dimen/x49"
-                android:paddingTop="@dimen/y19"
-                android:text="身份证上传错误;租赁合同地址页面缺失;租赁合同上传图片模糊"
-                android:textColor="#cd3500"
-                android:textSize="@dimen/x22" />
-
             <com.realtor.jx.widget.ContractInfoShowView
+                android:layout_marginTop="@dimen/y22"
                 android:id="@+id/mContractInfoShowView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

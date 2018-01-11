@@ -36,6 +36,7 @@
         <activity android:name=".activity.CommitContractActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.ModifyPasswordActivity" />
+        <activity android:name=".activity.WaitReviewActivity" />
     </application>
 
 </manifest>
