@@ -1,11 +1,9 @@
 package com.realtor.jx.widget;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -44,7 +42,7 @@ public class Header extends RelativeLayout implements View.OnClickListener {
         findViewById(R.id.mIvBack).setOnClickListener(this);
         findViewById(R.id.mIvDelete).setOnClickListener(this);
         mTvTitle = findViewById(R.id.mTvTitle);
-
+        mTvTitle.setText(mStrTitle);
         findViewById(R.id.mIvDelete).setVisibility(mIsShowDelete ? VISIBLE : GONE);
     }
 

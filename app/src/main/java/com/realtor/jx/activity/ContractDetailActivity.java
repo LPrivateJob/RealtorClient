@@ -18,6 +18,6 @@ public class ContractDetailActivity extends BaseActivity {
 
     @Override
     protected int getLayoutResource() {
-        return R.layout.activity_contract_detail;
+        return R.layout.fragment_contract_detail_normal;
     }
 }

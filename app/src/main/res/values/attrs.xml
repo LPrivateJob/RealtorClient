@@ -27,4 +27,7 @@
         <attr name="txtColor" format="color"/>
         <attr name="txtSize"  format="dimension"/>
     </declare-styleable>
+    <declare-styleable name="ContractInfoShowView">
+        <attr name="isHideContractInfo" format="boolean"/>
+    </declare-styleable>
 </resources>
