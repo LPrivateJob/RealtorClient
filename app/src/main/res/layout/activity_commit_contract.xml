@@ -40,7 +40,7 @@
 
     <Button
         android:id="@+id/mBtnNext"
-        style="@style/BottomButton"
+        style="@style/BottomButtonRed"
         android:layout_alignParentBottom="true"
         android:background="#f5cc3f"
         android:text="下一步" />

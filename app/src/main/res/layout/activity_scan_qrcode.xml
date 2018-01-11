@@ -47,11 +47,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <!--<com.realtor.jx.widget.BottomButton-->
-                <!--android:id="@+id/mButton"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--app:bg="#f5cc40" />-->
+            <TextView
+                android:id="@+id/mBtm"
+                style="@style/BottomButtonYellow"
+                android:layout_marginTop="@dimen/y80"
+                android:text="返回首页"/>
         </LinearLayout>
     </ScrollView>
 

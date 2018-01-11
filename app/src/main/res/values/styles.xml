@@ -51,8 +51,16 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/y98</item>
         <item name="android:textSize">@dimen/x36</item>
-        <item name="android:textColor">#ffffff</item>
         <item name="android:gravity">center</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="BottomButtonRed" parent="BottomButton">
+        <item name="android:background">#cd3500</item>
+    </style>
+
+    <style name="BottomButtonYellow" parent="BottomButton">
+        <item name="android:background">#f5cc3f</item>
     </style>
 
     <style name="SlidingMenuItem">
@@ -110,14 +118,16 @@
         <item name="android:textColor">#999999</item>
         <item name="android:textSize">@dimen/x28</item>
     </style>
+
     <style name="ScanQRCodeItemTitle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginLeft">@dimen/x74</item>
-        <item name="android:layout_marginTop">@dimen/y39</item>
+        <item name="android:layout_marginTop">@dimen/y50</item>
         <item name="android:textColor">#666666</item>
         <item name="android:textSize">@dimen/x22</item>
     </style>
+
     <style name="ScanQRCodeItemContent">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>

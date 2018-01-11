@@ -28,7 +28,7 @@
             style="@style/CommitContractItemContent"
             android:layout_alignBaseline="@id/mTvTitleContractNum"
             android:layout_below="@id/mTvTitleContractInfo"
-            android:layout_marginLeft="@dimen/x74"
+            android:layout_marginLeft="@dimen/x97"
             android:layout_toRightOf="@id/mTvTitleContractNum"
             android:text="20171121001" />
     </RelativeLayout>
@@ -47,6 +47,7 @@
         <TextView
             android:id="@+id/mTvTitleName"
             style="@style/ScanQRCodeItemTitle"
+            android:layout_marginTop="@dimen/y39"
             android:layout_below="@id/mTvTitleRenterInfo"
             android:text="姓名" />
 
@@ -54,7 +55,7 @@
             android:id="@+id/mTvContentName"
             style="@style/CommitContractItemContent"
             android:layout_alignBaseline="@id/mTvTitleName"
-            android:layout_marginLeft="@dimen/x116"
+            android:layout_marginLeft="@dimen/x142"
             android:layout_toRightOf="@id/mTvTitleName"
             android:text="张三" />
 
@@ -98,6 +99,7 @@
         <TextView
             android:id="@+id/mTvTitleMonthlyRent"
             style="@style/ScanQRCodeItemTitle"
+            android:layout_marginTop="@dimen/y39"
             android:layout_below="@id/mTvTitleAgingInfo"
             android:text="月租金" />
 
@@ -105,7 +107,7 @@
             android:id="@+id/mTvContentMonthlyRent"
             style="@style/CommitContractItemContent"
             android:layout_alignBaseline="@id/mTvTitleMonthlyRent"
-            android:layout_marginLeft="@dimen/x95"
+            android:layout_marginLeft="@dimen/x119"
             android:layout_toRightOf="@id/mTvTitleMonthlyRent"
             android:text="600" />
 
