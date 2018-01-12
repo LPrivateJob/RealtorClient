@@ -5,7 +5,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">#f5cc3f</item>
     </style>
 
     <style name="loading_dialog" parent="@android:style/Theme.Dialog">
@@ -133,5 +133,16 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">#333333</item>
         <item name="android:textSize">@dimen/x22</item>
+    </style>
+    <style name="ChangePasswordEditTextWrapper">
+        <item name="android:layout_width">@dimen/x400</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="hintEnabled">true</item>
+        <item name="android:layout_marginTop">@dimen/y50</item>
+    </style>
+    <style name="ChangePasswordEditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@null</item>
     </style>
 </resources>
