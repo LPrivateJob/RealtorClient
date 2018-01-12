@@ -19,7 +19,13 @@
 
         </activity>
         <activity android:name=".activity.LoginActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".activity.InstallmentPreviewActvity"
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.BillActivity"
@@ -32,14 +38,9 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.CommitContractActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activity.ModifyPasswordActivity" />
         <activity android:name=".activity.WaitReviewActivity" />
         <activity android:name=".activity.ChangePasswordActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

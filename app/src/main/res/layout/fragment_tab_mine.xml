@@ -81,6 +81,7 @@
             android:layout_marginRight="@dimen/x81"/>
     </RelativeLayout>
     <TextView
+        android:id="@+id/mBtnLogout"
         android:layout_width="@dimen/x470"
         android:layout_height="@dimen/y98"
         android:background="@drawable/bg_tv_logout"

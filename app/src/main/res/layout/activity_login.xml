@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/mTvHello"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/x94"
+        android:layout_marginTop="@dimen/y255"
+        android:text="您好！"
+        android:textColor="#666666"
+        android:textSize="@dimen/x66" />
+
+    <LinearLayout
+        android:id="@+id/mLHelloTips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/mTvHello"
+        android:layout_below="@id/mTvHello"
+        android:layout_marginTop="@dimen/y37"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="欢迎来到"
+            android:textColor="#999999"
+            android:textSize="@dimen/x30" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="吉星分期"
+            android:textColor="#f5cc3f"
+            android:textSize="@dimen/x30" />
+    </LinearLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/mEtPhoneTextWrapper"
+        android:layout_width="@dimen/x561"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/mLHelloTips"
+        android:layout_below="@id/mLHelloTips"
+        android:layout_marginTop="@dimen/y185"
+        app:hintEnabled="true">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/mEtPhone"
+            android:layout_width="match_parent"
+            android:background="@null"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y20"
+            android:hint="手机号"
+            android:inputType="phone"
+            android:maxLines="1"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/mEtWrapperPassword"
+        android:layout_width="@dimen/x561"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/mLHelloTips"
+        android:layout_below="@+id/mEtPhoneTextWrapper"
+        android:layout_marginTop="@dimen/y30"
+        app:hintEnabled="true"
+        app:passwordToggleEnabled="true">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/mEtPassword"
+            android:layout_width="match_parent"
+            android:background="@null"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y20"
+            android:hint="密码"
+            android:inputType="textPassword"
+            android:maxLines="1"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:id="@+id/mBtnConfirm"
+        android:layout_width="@dimen/x212"
+        android:layout_height="@dimen/y90"
+        android:text="确定"
+        android:textSize="@dimen/x30"
+        android:textColor="#ffffff"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/y187"
+        android:layout_below="@id/mEtWrapperPassword"
+        android:layout_alignLeft="@id/mLHelloTips"
+        android:background="@drawable/bg_login_confirm"/>
+</RelativeLayout>

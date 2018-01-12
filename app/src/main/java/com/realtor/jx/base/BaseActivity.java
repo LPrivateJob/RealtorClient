@@ -1,7 +1,9 @@
 package com.realtor.jx.base;
 
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -37,4 +39,21 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
     @LayoutRes
     protected abstract int getLayoutResource();
+
+    protected void openActivity(Class<?> cls, Bundle bundle) {
+        Intent intent = new Intent(this, cls);
+        if (bundle != null) {
+            intent.putExtras(bundle);
+        }
+        startActivity(intent);
+    }
+
+    protected void openActivity(Class<?> cls) {
+        openActivity(cls, null);
+    }
+
+    public void openSystemSetting() {
+        Intent intent = new Intent(Settings.ACTION_APPLICATION_SETTINGS);
+        startActivity(intent);
+    }
 }

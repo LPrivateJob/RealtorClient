@@ -31,7 +31,7 @@ public class ChangePasswordActivity extends BaseActivity {
         mHeader = findViewById(R.id.mHeader);
         mEtPhoneTextWrapper = findViewById(R.id.mEtPhoneTextWrapper);
         mEtWrapperVerifyCode = findViewById(R.id.mEtWrapperVerifyCode);
-        mEtWraperNewPassword = findViewById(R.id.mEtWraperNewPassword);
+        mEtWraperNewPassword = findViewById(R.id.mEtWrapperNewPassword);
         mEtPhone = findViewById(R.id.mEtPhone);
         mEtNewPassword = findViewById(R.id.mEtNewPassword);
         mEtVerifyCode = findViewById(R.id.mEtVerifyCode);
