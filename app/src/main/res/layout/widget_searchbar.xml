@@ -21,7 +21,7 @@
 
         <EditText
             android:id="@+id/mEtInput"
-            android:layout_width="@dimen/x200"
+            android:layout_width="@dimen/x300"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x27"
             android:layout_toRightOf="@id/mIvSearch"
@@ -34,7 +34,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/x10"
-            android:layout_marginRight="@dimen/x20"
             android:src="@drawable/icon_empty" />
     </LinearLayout>
 

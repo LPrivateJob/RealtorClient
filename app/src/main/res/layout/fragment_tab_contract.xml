@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/x80" />
+            android:layout_marginLeft="@dimen/x50" />
 
         <ImageView
             android:id="@+id/mIvFilter"
@@ -26,9 +26,14 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/x80"
+            android:layout_marginRight="@dimen/x50"
             android:padding="@dimen/x25"
             android:src="@drawable/icon_filter" />
+        <View
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y2"
+            android:background="#f2f2f2"/>
     </RelativeLayout>
 
     <android.support.v4.widget.DrawerLayout
