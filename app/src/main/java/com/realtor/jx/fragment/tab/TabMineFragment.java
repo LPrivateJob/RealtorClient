@@ -22,6 +22,7 @@ public class TabMineFragment extends BaseFragment {
     @Override
     protected void initView(View rootView, Bundle savedInstanceState) {
         mRlChangePassword = findViewById(R.id.mRlChangePassword);
+        mBtnLogout = findViewById(R.id.mBtnLogout);
     }
 
     @Override

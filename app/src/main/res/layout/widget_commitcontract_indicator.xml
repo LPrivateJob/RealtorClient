@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/y170"
-    android:paddingLeft="@dimen/x50"
-    android:paddingRight="@dimen/x50">
+    android:layout_height="@dimen/y170">
 
 
     <LinearLayout
         android:id="@+id/mLLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x100"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:gravity="center"
@@ -60,6 +59,7 @@
         android:id="@+id/mLPhoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/x100"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:gravity="center"
@@ -102,8 +102,10 @@
         android:background="@color/lineColor" />
 
     <View
-        android:layout_width="@dimen/x710"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/y2"
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_marginRight="@dimen/x20"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:background="@color/lineColor" />

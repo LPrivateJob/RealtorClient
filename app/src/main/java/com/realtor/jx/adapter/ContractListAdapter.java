@@ -20,7 +20,7 @@ public class ContractListAdapter extends RecyclerViewMultiItemAdapter {
         super(context, datas, new RecyclerViewMultiItemTypeSupport() {
             @Override
             public int getLayoutId(int itemType) {
-                return R.layout.item_contractlist_overdue;
+                return R.layout.item_contractlist_normal;
             }
 
             @Override

@@ -135,7 +135,7 @@
         <item name="android:textSize">@dimen/x22</item>
     </style>
     <style name="ChangePasswordEditTextWrapper">
-        <item name="android:layout_width">@dimen/x400</item>
+        <item name="android:layout_width">@dimen/x590</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="hintEnabled">true</item>
         <item name="android:layout_marginTop">@dimen/y50</item>

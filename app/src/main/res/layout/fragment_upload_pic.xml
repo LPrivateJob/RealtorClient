@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginBottom="@dimen/y20">
     <!--租赁合同-->
     <RelativeLayout
         android:id="@+id/mLLContract"
@@ -33,7 +34,7 @@
         android:layout_alignBottom="@id/mIvLeasingContractPH"
         android:layout_marginLeft="@dimen/x20"
         android:layout_toRightOf="@id/mIvLeasingContractPH"
-        android:background="@drawable/icon_specimen_contract" />
+        android:background="@drawable/icon_specimen_addpic" />
 
     <!--业主身份证-->
     <RelativeLayout
@@ -66,7 +67,7 @@
         android:layout_alignBottom="@id/mIvIDCardPH"
         android:layout_marginLeft="@dimen/x20"
         android:layout_toRightOf="@id/mIvIDCardPH"
-        android:background="@drawable/icon_specimen_id" />
+        android:background="@drawable/icon_specimen_addpic" />
 
     <!--房产证-->
     <RelativeLayout
@@ -99,7 +100,7 @@
         android:layout_alignBottom="@id/mIvPOCPH"
         android:layout_marginLeft="@dimen/x20"
         android:layout_toRightOf="@id/mIvPOCPH"
-        android:background="@drawable/icon_specimen_house" />
+        android:background="@drawable/icon_specimen_addpic" />
 
     <!--代理合同-->
     <RelativeLayout
@@ -132,5 +133,5 @@
         android:layout_alignBottom="@id/mIvAgencyContractPH"
         android:layout_marginLeft="@dimen/x20"
         android:layout_toRightOf="@id/mIvAgencyContractPH"
-        android:background="@drawable/icon_specimen_agency" />
+        android:background="@drawable/icon_specimen_addpic" />
 </RelativeLayout>

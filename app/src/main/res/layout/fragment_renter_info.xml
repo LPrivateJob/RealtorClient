@@ -29,7 +29,7 @@
         android:id="@+id/mEtContentRenterName"
         style="@style/CommitContractItemContent"
         android:layout_alignBaseline="@id/mTvTitleRenterName"
-        android:layout_marginLeft="@dimen/x100"
+        android:layout_marginLeft="@dimen/x142"
         android:layout_toRightOf="@id/mTvTitleRenterName"
         android:hint="请输入内容" />
 

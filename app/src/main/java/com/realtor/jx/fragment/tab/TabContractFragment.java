@@ -47,6 +47,9 @@ public class TabContractFragment extends BaseFragment {
         mPagerIndicator = findViewById(R.id.mPagerIndicator);
         mViewPager = findViewById(R.id.mViewPager);
 
+        //DrawerLayout关闭手势滑动
+        mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+        //ViewPager初始化
         for (String mTitle : mTitles) {
             ContractListFragment contentFragment = ContractListFragment.newInstance(mTitle);
             fragments.add(contentFragment);

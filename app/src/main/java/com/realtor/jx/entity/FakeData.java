@@ -16,7 +16,7 @@ public class FakeData {
     }
     public List<ContractListItemData> getContractList(){
         List<ContractListItemData> list = new ArrayList<>();
-        for (int i=0;i<10;i++){
+        for (int i=0;i<9;i++){
             list.add(new ContractListItemData(i+1,"renter"+i+1,"18511257775","2014.05.05"));
         }
         return list;

@@ -39,7 +39,7 @@
     <RelativeLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="0.6"
+        android:layout_weight="0.63"
         android:paddingLeft="@dimen/x76">
 
         <RelativeLayout
@@ -59,7 +59,7 @@
                 android:id="@+id/mTvContentRenter"
                 style="@style/ContractListItemContent"
                 android:layout_alignBaseline="@id/mTvTitleRenter"
-                android:layout_marginLeft="@dimen/x90"
+                android:layout_marginLeft="@dimen/x70"
                 android:layout_toRightOf="@id/mTvTitleRenter"
                 android:text="吉星租客" />
 
@@ -110,7 +110,7 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="0.18"
+        android:layout_weight="0.15"
         android:gravity="center"
         android:orientation="vertical">
 
