@@ -7,10 +7,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.realtor.jx.R;
+import com.realtor.jx.adapter.MyTagAdapter;
 import com.realtor.jx.base.BaseFragment;
 import com.realtor.jx.widget.flowlayout.FlowLayout;
 import com.realtor.jx.widget.flowlayout.TagAdapter;
 import com.realtor.jx.widget.flowlayout.TagFlowLayout;
+
+import java.util.Arrays;
+import java.util.List;
 
 import cn.qqtheme.framework.picker.DatePicker;
 import cn.qqtheme.framework.util.ConvertUtils;
@@ -20,10 +24,10 @@ import cn.qqtheme.framework.util.ConvertUtils;
  * autour: lewish
  * created at: 2018/1/6 10:35
  */
-public class InstallmentInfoFragment extends BaseFragment {
-    private static final String[] SERVICE_FEE_BEAR_VALS = new String[]{"租客", "中介"};
-    private static final String[] DOWN_PAYMENTS_METHOD_VALS = new String[]{"押一付一"};
-    private static final String[] PLATFORM_PAYMENT_METHOD_VALS = new String[]{"季付","半年付","年付"};
+public class InstallmentInfoFragment extends BaseFragment implements TagFlowLayout.OnTagClickListener {
+    private List<String> mServiceFeeBearList;
+    private List<String> mDownPaymentsMethodList;
+    private List<String> mPlatformPaymentMethodList;
     private EditText mEtContentMonthlyRent;
     private EditText mEtContentLeaseFrom;
     private EditText mEtContentLeaseTo;
@@ -41,38 +45,14 @@ public class InstallmentInfoFragment extends BaseFragment {
         mFLDownPaymentsMethod = findViewById(R.id.mFLDownPaymentsMethod);
         mFLPlatformPaymentMethod = findViewById(R.id.mFLPlatformPaymentMethod);
 
-        mFLServiceFeeBear.setAdapter(new TagAdapter<String>(SERVICE_FEE_BEAR_VALS) {
 
-            @Override
-            public View getView(FlowLayout parent, int position, String s) {
-                TextView tv = (TextView) getLayoutInflater().inflate(R.layout.widget_flowlayout_tv,
-                        mFLServiceFeeBear, false);
-                tv.setText(s);
-                return tv;
-            }
-        });
+        mServiceFeeBearList = Arrays.asList("租客", "中介");
+        mDownPaymentsMethodList = Arrays.asList("押一付一");
+        mPlatformPaymentMethodList = Arrays.asList("季付", "半年付", "年付");
+        mFLServiceFeeBear.setAdapter(new MyTagAdapter(mServiceFeeBearList, mActivity, mFLServiceFeeBear));
+        mFLDownPaymentsMethod.setAdapter(new MyTagAdapter(mDownPaymentsMethodList, mActivity, mFLDownPaymentsMethod));
+        mFLPlatformPaymentMethod.setAdapter(new MyTagAdapter(mPlatformPaymentMethodList, mActivity, mFLPlatformPaymentMethod));
 
-        mFLDownPaymentsMethod.setAdapter(new TagAdapter<String>(DOWN_PAYMENTS_METHOD_VALS) {
-
-            @Override
-            public View getView(FlowLayout parent, int position, String s) {
-                TextView tv = (TextView) getLayoutInflater().inflate(R.layout.widget_flowlayout_tv,
-                        mFLDownPaymentsMethod, false);
-                tv.setText(s);
-                return tv;
-            }
-        });
-
-        mFLPlatformPaymentMethod.setAdapter(new TagAdapter<String>(PLATFORM_PAYMENT_METHOD_VALS) {
-
-            @Override
-            public View getView(FlowLayout parent, int position, String s) {
-                TextView tv = (TextView) getLayoutInflater().inflate(R.layout.widget_flowlayout_tv,
-                        mFLPlatformPaymentMethod, false);
-                tv.setText(s);
-                return tv;
-            }
-        });
     }
 
     @Override
@@ -83,22 +63,9 @@ public class InstallmentInfoFragment extends BaseFragment {
         mEtContentLeaseTo.setOnClickListener(v -> {
             showYearMonthDayPicker((year, month, day) -> mEtContentLeaseTo.setText(year + "-" + month + "-" + day));
         });
-        mFLServiceFeeBear.setOnTagClickListener(new TagFlowLayout.OnTagClickListener() {
-            @Override
-            public boolean onTagClick(View view, int position, FlowLayout parent) {
-                Toast.makeText(getActivity(), SERVICE_FEE_BEAR_VALS[position], Toast.LENGTH_SHORT).show();
-                //view.setVisibility(View.GONE);
-                return true;
-            }
-        });
-        mFLDownPaymentsMethod.setOnTagClickListener(new TagFlowLayout.OnTagClickListener() {
-            @Override
-            public boolean onTagClick(View view, int position, FlowLayout parent) {
-                Toast.makeText(getActivity(), DOWN_PAYMENTS_METHOD_VALS[position], Toast.LENGTH_SHORT).show();
-                //view.setVisibility(View.GONE);
-                return true;
-            }
-        });
+        mFLServiceFeeBear.setOnTagClickListener(this);
+        mFLDownPaymentsMethod.setOnTagClickListener(this);
+        mFLPlatformPaymentMethod.setOnTagClickListener(this);
     }
 
     @Override
@@ -117,5 +84,20 @@ public class InstallmentInfoFragment extends BaseFragment {
         picker.setResetWhileWheel(false);
         picker.setOnDatePickListener(onYearMonthDayPickListener);
         picker.show();
+    }
+
+    @Override
+    public boolean onTagClick(View view, int position, FlowLayout parent) {
+        if (parent == mFLServiceFeeBear) {
+            //服务费承担方
+            Toast.makeText(mActivity, mServiceFeeBearList.get(position), Toast.LENGTH_SHORT).show();
+        } else if (parent == mFLDownPaymentsMethod) {
+            //租客首付方式
+            Toast.makeText(mActivity, mDownPaymentsMethodList.get(position), Toast.LENGTH_SHORT).show();
+        } else if (parent == mFLPlatformPaymentMethod) {
+            //平台付款方式
+            Toast.makeText(mActivity, mPlatformPaymentMethodList.get(position), Toast.LENGTH_SHORT).show();
+        }
+        return true;
     }
 }
