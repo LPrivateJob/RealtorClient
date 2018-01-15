@@ -24,7 +24,6 @@ public class ChangePasswordActivity extends BaseActivity {
     private EditText mEtVerifyCode;
     private EditText mEtNewPassword;
     private TextView mBtnConfirm;
-    private CountDownView mTvGetVerifyCode;
 
     @Override
     protected void initView(Bundle savedInstanceState) {
@@ -35,15 +34,8 @@ public class ChangePasswordActivity extends BaseActivity {
         mEtPhone = findViewById(R.id.mEtPhone);
         mEtNewPassword = findViewById(R.id.mEtNewPassword);
         mEtVerifyCode = findViewById(R.id.mEtVerifyCode);
-        mTvGetVerifyCode = findViewById(R.id.mTvGetVerifyCode);
         mBtnConfirm = findViewById(R.id.mBtnConfirm);
 
-        mTvGetVerifyCode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mTvGetVerifyCode.startTimer();
-            }
-        });
     }
 
     @Override
