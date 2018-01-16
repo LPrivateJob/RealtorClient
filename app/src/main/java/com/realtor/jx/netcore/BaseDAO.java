@@ -7,6 +7,9 @@ import com.realtor.jx.netcore.api.ApiService;
 import com.realtor.jx.netcore.core.JsonCallback;
 import com.realtor.jx.netcore.core.NetEngine;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import retrofit2.Call;
 
 /**
@@ -32,5 +35,23 @@ public abstract class BaseDAO extends ApiRoute implements ApiKeys {
     protected <T> void invoke(Call<ResponseResult> call, JsonUiCallback<T> callBack, boolean startProgress) {
         callBack.onStart(startProgress);
         invoke(call, (JsonCallback<T>) callBack);
+    }
+    protected Map<String, Object> getMapParams(String[] keys, Object... values) {
+
+        if (keys.length != values.length) {
+            throw new IllegalArgumentException("keys & values should have same length !!");
+        }
+
+        HashMap<String, Object> map = new HashMap<>();
+
+        map.put(TIME_STAMP, System.currentTimeMillis());
+
+        for (int i = 0; i < keys.length; i++) {
+            String key = keys[i];
+            Object value = values[i];
+            map.put(key, value);
+        }
+
+        return map;
     }
 }

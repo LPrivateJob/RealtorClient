@@ -22,7 +22,7 @@ public abstract class JsonCallback<T> implements Callback<ResponseResult> {
 
         if (response.isSuccessful()) {
             ResponseResult result = response.body();
-            if (result.getCode() != null && !result.getCode().equals("")) {
+            if (result.getResultCode() != null && !result.getResultCode().equals("")) {
                 dealResponseSuccess(result);
             } else {
                 onConnectionFailed();
@@ -46,9 +46,9 @@ public abstract class JsonCallback<T> implements Callback<ResponseResult> {
 
     private void dealResponseSuccess(ResponseResult result) {
         try {
-            String code = result.getCode();
+            String resultCode = result.getResultCode();
 
-            if (code.equals("SUCC")) {
+            if (resultCode.equals("200")) {
 
                 Type type = ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
 
@@ -56,7 +56,7 @@ public abstract class JsonCallback<T> implements Callback<ResponseResult> {
 
                 onSuccess(t);
             } else {
-                onBizFailed(result.getMessage());
+                onBizFailed(result.getResultInfo());
             }
         } catch (Exception e) {
             onConnectionFailed();

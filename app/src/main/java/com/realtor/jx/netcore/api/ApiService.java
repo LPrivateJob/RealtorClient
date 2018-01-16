@@ -7,7 +7,6 @@ import java.util.Map;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -25,7 +24,7 @@ import retrofit2.http.QueryMap;
 public interface ApiService {
     @FormUrlEncoded
     @POST("{route}")
-    Call<ResponseResult> post(@Path(value = "route", encoded = true) String route, @FieldMap Map<String, String> paramMap);
+    Call<ResponseResult> post(@Path(value = "route", encoded = true) String route, @FieldMap Map<String, Object> paramMap);
 
     @Multipart
     @POST("{route}")

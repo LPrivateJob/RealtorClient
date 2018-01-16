@@ -1,55 +1,35 @@
 package com.realtor.jx.netcore.api;
 
+import com.realtor.jx.BuildConfig;
+
 /**
  * author: sundong
  * created at 2018/1/4 15:10
  */
 public class ApiRoute {
 
-    private static final String ROOT = "/CashBack";
-
-    public final class LOGIN {
+    public final class User {
+        private static final String ROOT = BuildConfig.SERVER_ADD+"/app/user";
         // 登录
         public static final String LOGIN = ROOT + "/login";
-
-        // token登录
-        public static final String LOGIN_BY_TOKEN = ROOT + "/loginByToken";
+        // 判断是否登录
+        public static final String IS_LOGIN = ROOT + "/is_login";
+        //登出
+        public static final String loginOut = ROOT+"/loginOut";
     }
 
-
-    public final class COUSTOMERS {
-        // 客户列表
-        public static final String COSTOMERS_LIST = ROOT + "/customersList";
-
-        // 搜索客户
-        public static final String SEARCH = ROOT + "/search";
-
-        // 合同详情
-//        public static final String CONTACTS_LIST = ROOT + "/contractList";
-        public static final String CONTACTS_LIST = ROOT + "/contractList";
+    public final class Contract{
+        private static final String ROOT = BuildConfig.SERVER_ADD+"/app/contract";
+        //创建租赁合同
+        public static final String CREATE = ROOT+"/create";
+        //获取微信二维码
+        public static final String GET_WECHAT_IMAGE = ROOT+"/getWechatImgae";
+        //查询订单详情
+        public static final String QUERY_ORDER_DETAIL = ROOT+"/querOrderDetail";
+        //查询订单列表
+        public static final String QUERY_ORDER_LIST = ROOT+"/querOrderList";
+        //上传照片
+        public static final String UPLOAD_IMAGE = ROOT+"/upload";
     }
-
-    public final class COUSTOMERS_DETAILS {
-        //客户经理绑卡列表
-        public static final String BINDCARD_LIST = ROOT + "/bindCardList";
-        //    获取短信支付码
-        public static final String SMSCODE = ROOT + "/getSMSCode";
-        //  确认支付
-        public static final String COMFIRMPAYMENT = ROOT + "/confirmPayment";
-        //  获取绑卡验证码
-        public static final String BINDCARDSMMCODE = ROOT + "/getBindCardSmsCode";
-        //确认绑定银行卡
-        public static final String CONFIRMBINDCARD = ROOT + "/confirmBindCard";
-        //解除绑定银行卡
-        public static final String REMOVERBINDCARD = ROOT + "/removeBindCard";
-        //获取支持银行的列表
-        public static final String GETBANKLIST = ROOT + "/getBankList";
-        //获取汇款银行账号
-        public static final String GETACCOUNTINFO = ROOT + "/getAccountInfo";
-        //提交划扣信息
-        public static final String GETHUAKOUPAYMENT = ROOT + "/getHuakouPayment";
-
-    }
-
 
 }

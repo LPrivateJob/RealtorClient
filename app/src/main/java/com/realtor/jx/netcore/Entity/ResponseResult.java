@@ -8,24 +8,24 @@ import com.google.gson.JsonElement;
  */
 public class ResponseResult {
 
-    private String code;
-    private String message;
+    private String result_code;
+    private String result_info;
     private JsonElement data;
 
-    public String getCode() {
-        return code;
+    public String getResultCode() {
+        return result_code;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setResultCode(String result_code) {
+        this.result_code = result_code;
     }
 
-    public String getMessage() {
-        return message;
+    public String getResultInfo() {
+        return result_info;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setResultInfo(String result_info) {
+        this.result_info = result_info;
     }
 
     public JsonElement getData() {
