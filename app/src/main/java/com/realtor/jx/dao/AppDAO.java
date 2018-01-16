@@ -19,7 +19,7 @@ public class AppDAO extends BaseDAO {
         return SingletonHolder.INSTANCE;
     }
     //登录
-    public void Login(String loginName, String loginPassword, JsonUiCallback<LoginBean> callback){
+    public void login(String loginName, String loginPassword, JsonUiCallback<LoginBean> callback){
         Map<String, Object> mapParams = getMapParams(new String[]{LOGIN_NAME, LOGIN_PASSWORD}, loginName, loginPassword);
         sendPostFormData(User.LOGIN,mapParams,callback);
     }
@@ -49,7 +49,7 @@ public class AppDAO extends BaseDAO {
         sendPostFormData(Contract.QUERY_ORDER_DETAIL,mapParams,callback);
     }
     //获取微信二维码
-    public void GET_WECHAT_IMAGE(String mobileNo,String orderId,JsonUiCallback<LoginBean> callback){
+    public void getWechatImage(String mobileNo,String orderId,JsonUiCallback<LoginBean> callback){
         Map<String, Object> mapParams = getMapParams(new String[]{MOBILE_NUM, ORDER_ID}, mobileNo, orderId);
         sendPostFormData(Contract.GET_WECHAT_IMAGE,mapParams,callback);
     }
