@@ -38,7 +38,7 @@ public abstract class BaseDAO extends ApiRoute implements ApiKeys {
     }
 
     protected <T> void sendPost(String route, Map<String, Object> paramMap, JsonUiCallback<T> callBack) {
-        Call<ResponseResult> call = apiService.post(route, paramMap);
+        Call<ResponseResult> call = apiService.postFormData(route, paramMap);
         invoke(call, callBack, true);
     }
 
