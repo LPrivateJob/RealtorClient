@@ -15,7 +15,7 @@ public class ApiRoute {
         // 判断是否登录
         public static final String IS_LOGIN = ROOT + "/is_login";
         //登出
-        public static final String loginOut = ROOT+"/loginOut";
+        public static final String LOGOUT = ROOT+"/loginOut";
     }
 
     public final class Contract{

@@ -10,6 +10,7 @@ import java.util.Map;
  * author: sundong
  * created at 2018/1/16 14:15
  */
+// TODO: 数据类待替换
 public class AppDAO extends BaseDAO {
     private static class SingletonHolder {
         private static AppDAO INSTANCE = new AppDAO();
@@ -20,7 +21,37 @@ public class AppDAO extends BaseDAO {
     //登录
     public void Login(String loginName, String loginPassword, JsonUiCallback<LoginBean> callback){
         Map<String, Object> mapParams = getMapParams(new String[]{LOGIN_NAME, LOGIN_PASSWORD}, loginName, loginPassword);
-        invoke(apiService.post(User.LOGIN,mapParams),callback);
+        sendPost(User.LOGIN,mapParams,callback);
     }
     //是否登录
+    public void isLogin(String userId, JsonUiCallback<LoginBean> callback){
+        Map<String, Object> mapParams = getMapParams(new String[]{USER_ID}, userId);
+        sendPost(User.IS_LOGIN,mapParams,callback);
+    }
+    //登出
+    public void loginOut(String userId, JsonUiCallback<LoginBean> callback){
+        Map<String, Object> mapParams = getMapParams(new String[]{USER_ID}, userId);
+        sendPost(User.LOGOUT,mapParams,callback);
+    }
+
+    // TODO: 待编写
+    //创建合同
+    public void createContract(){
+
+    }
+    //查询订单列表
+    public void queryOrderList(String keyWords,String orderStatus,String orderType,String pageNum,String pageSize,JsonUiCallback<LoginBean> callback){
+        Map<String, Object> mapParams = getMapParams(new String[]{KEYWORDS, ORDER_STATUS, ORDER_TYPE, PAGE_NUM, PAGE_SIZE}, keyWords, orderStatus, orderType, pageNum, pageSize);
+        sendPost(Contract.QUERY_ORDER_LIST,mapParams,callback);
+    }
+    //查询订单详情
+    public void queryOrderDetail(String orderId,JsonUiCallback<LoginBean> callback){
+        Map<String, Object> mapParams = getMapParams(new String[]{ORDER_ID}, orderId);
+        sendPost(Contract.QUERY_ORDER_DETAIL,mapParams,callback);
+    }
+    //获取微信二维码
+    public void GET_WECHAT_IMAGE(String mobileNo,String orderId,JsonUiCallback<LoginBean> callback){
+        Map<String, Object> mapParams = getMapParams(new String[]{MOBILE_NUM, ORDER_ID}, mobileNo, orderId);
+        sendPost(Contract.GET_WECHAT_IMAGE,mapParams,callback);
+    }
 }
