@@ -1,6 +1,6 @@
 package com.realtor.jx.netcore.api;
 
-import com.realtor.jx.netcore.Entity.ResponseResult;
+import com.realtor.jx.netcore.entity.ResponseResult;
 
 import java.util.Map;
 

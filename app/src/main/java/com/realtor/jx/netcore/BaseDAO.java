@@ -1,6 +1,6 @@
 package com.realtor.jx.netcore;
 
-import com.realtor.jx.netcore.Entity.ResponseResult;
+import com.realtor.jx.netcore.entity.ResponseResult;
 import com.realtor.jx.netcore.api.ApiKeys;
 import com.realtor.jx.netcore.api.ApiRoute;
 import com.realtor.jx.netcore.api.ApiService;

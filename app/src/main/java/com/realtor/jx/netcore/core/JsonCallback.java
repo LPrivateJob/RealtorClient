@@ -1,7 +1,7 @@
 package com.realtor.jx.netcore.core;
 
 import com.google.gson.Gson;
-import com.realtor.jx.netcore.Entity.ResponseResult;
+import com.realtor.jx.netcore.entity.ResponseResult;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;

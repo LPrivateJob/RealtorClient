@@ -3,7 +3,7 @@ package com.realtor.jx.netcore;
 import android.content.Context;
 import android.widget.Toast;
 
-import com.realtor.jx.netcore.Entity.ResponseResult;
+import com.realtor.jx.netcore.entity.ResponseResult;
 import com.realtor.jx.netcore.core.JsonCallback;
 
 import retrofit2.Call;
