@@ -86,4 +86,6 @@ dependencies {
     compile('com.github.gzu-liyujiang.AndroidPicker:WheelPicker:1.5.5') {
         exclude group: 'com.android.support'
     }
+    // Logger
+    compile 'com.orhanobut:logger:2.1.1'
 }
