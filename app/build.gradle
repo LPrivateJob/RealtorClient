@@ -52,11 +52,13 @@ android {
         Test {
             buildConfigField "String", "V_TAG", "\"" + getName() + "\""
             buildConfigField "String", "SERVER_ADD", TEST_ADDRESS
+            buildConfigField "String", "SYMMETRIC_ENCRYPTION_KEY", TEST_KEY
             dimension "environment"
         }
         Product {
             buildConfigField "String", "V_TAG", "\"\""
             buildConfigField "String", "SERVER_ADD", PRODUCT_ADDRESS
+            buildConfigField "String", "SYMMETRIC_ENCRYPTION_KEY", PRODUCT_KEY
             dimension "environment"
         }
     }

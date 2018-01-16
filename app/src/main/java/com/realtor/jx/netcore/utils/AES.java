@@ -1,6 +1,8 @@
 package com.realtor.jx.netcore.utils;
 
 
+import com.realtor.jx.BuildConfig;
+
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.Key;
@@ -25,7 +27,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class AES {
 
-    private static final String MAIN_KEY = "1111111111111111"; // 16位密钥
+    private static final String MAIN_KEY = BuildConfig.SYMMETRIC_ENCRYPTION_KEY; // 16位密钥
 
     static final String algorithmStr = "AES/ECB/PKCS5Padding";
 
