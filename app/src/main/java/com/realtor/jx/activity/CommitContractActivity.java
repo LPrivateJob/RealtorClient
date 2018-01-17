@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
-import android.view.KeyEvent;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -24,8 +23,7 @@ import com.realtor.jx.widget.Header;
  * created at: 2018/1/6 16:34
  */
 public class CommitContractActivity extends BaseActivity {
-    public static final int BILL_ACTIVITY_REQUEST_CODE = 1;
-    public static final int WAIT_SCAN_QRCODE_ACTIVITY_REQUEST_CODE = 2;
+    public static final int INSTALLMENT_PREVIEW_ACTIVITY_REQUEST_CODE = 1;
     private Header mHeader;
     private CommitContractStepIndicator mStepIndicator;
     private Button mBtnNext;
@@ -49,17 +47,6 @@ public class CommitContractActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
-        mHeader.setOnInteractListener(new Header.OnInteractListener() {
-            @Override
-            public void onBackClick() {
-                Toast.makeText(CommitContractActivity.this, "onBackClick", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onDeleteClick() {
-
-            }
-        });
         mBtnNext.setOnClickListener(v -> {
             switch (mStep) {
                 case LOCATION:
@@ -81,7 +68,7 @@ public class CommitContractActivity extends BaseActivity {
      * 向服务器提交签约信息
      */
     private void commitSigningInfo() {
-        startActivityForResult(new Intent(this, BillActivity.class), BILL_ACTIVITY_REQUEST_CODE);
+        startActivityForResult(new Intent(this, InstallmentPreviewActivity.class), INSTALLMENT_PREVIEW_ACTIVITY_REQUEST_CODE);
     }
 
     private void upLoadPics() {
@@ -92,17 +79,13 @@ public class CommitContractActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
-            case BILL_ACTIVITY_REQUEST_CODE:
+            case INSTALLMENT_PREVIEW_ACTIVITY_REQUEST_CODE:
                 if (resultCode == RESULT_OK) {
-                    CommitContractStepIndicator.STEP step = (CommitContractStepIndicator.STEP) data.getSerializableExtra("Step");
-                    if (step == CommitContractStepIndicator.STEP.PHOTO) {
-                        mStep = CommitContractStepIndicator.STEP.PHOTO;
-                        addFragment(R.id.mFragmentLayout, new UploadPicFragment());
-                        mStepIndicator.refreshUi(mStep);
-                    }
+                    mStep = CommitContractStepIndicator.STEP.PHOTO;
+                    addFragment(R.id.mFragmentLayout, new UploadPicFragment());
+                    mHeader.setIsShowBack(false);
+                    mStepIndicator.refreshUi(mStep);
                 }
-                break;
-            case WAIT_SCAN_QRCODE_ACTIVITY_REQUEST_CODE:
                 break;
         }
     }
@@ -141,28 +124,23 @@ public class CommitContractActivity extends BaseActivity {
         }
     }
 
-    //返回键返回事件
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (KeyEvent.KEYCODE_BACK == keyCode) {
-            if (mFragmentManager.getBackStackEntryCount() == 1) {
-                finish();
-                return true;
-            } else {
-                switch (mStep) {
-                    case PHOTO:
-
-                        break;
-                    case AGING:
-                        mStep = CommitContractStepIndicator.STEP.LOCATION;
-                        mStepIndicator.refreshUi(mStep);
-                        break;
-                    case LOCATION:
-
-                        break;
-                }
+    public void onBackPressed() {
+        if (mFragmentManager.getBackStackEntryCount() == 1) {
+            finish();
+        } else {
+            switch (mStep) {
+                case LOCATION:
+                    finish();
+                    break;
+                case AGING:
+                    mStep = CommitContractStepIndicator.STEP.LOCATION;
+                    mStepIndicator.refreshUi(mStep);
+                    break;
+                case PHOTO:
+                    Toast.makeText(CommitContractActivity.this, "请上传相关照片", Toast.LENGTH_SHORT).show();
+                    break;
             }
         }
-        return super.onKeyDown(keyCode, event);
     }
 }

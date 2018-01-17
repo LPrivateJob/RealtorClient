@@ -57,7 +57,7 @@ public class Header extends RelativeLayout implements View.OnClickListener {
             case R.id.mIvBack:
                 if (mOnInteractListener == null) {
                     if (getContext() instanceof BaseActivity) {
-                        ((BaseActivity) getContext()).finish();
+                        ((BaseActivity) getContext()).onBackPressed();
                     }
                 } else {
                     mOnInteractListener.onBackClick();
@@ -66,7 +66,7 @@ public class Header extends RelativeLayout implements View.OnClickListener {
             case R.id.mIvDelete:
                 if (mOnInteractListener == null) {
                     if (getContext() instanceof BaseActivity) {
-                        ((BaseActivity) getContext()).finish();
+                        ((BaseActivity) getContext()).onBackPressed();
                     }
                 } else {
                     mOnInteractListener.onDeleteClick();
@@ -87,5 +87,15 @@ public class Header extends RelativeLayout implements View.OnClickListener {
 
     public void setOnInteractListener(OnInteractListener mOnInteractListener) {
         this.mOnInteractListener = mOnInteractListener;
+    }
+
+    public void setIsShowDelete(boolean mIsShowDelete) {
+        this.mIsShowDelete = mIsShowDelete;
+        findViewById(R.id.mIvDelete).setVisibility(mIsShowDelete ? VISIBLE : GONE);
+    }
+
+    public void setIsShowBack(boolean mIsShowBack) {
+        this.mIsShowBack = mIsShowBack;
+        findViewById(R.id.mIvBack).setVisibility(mIsShowBack ? VISIBLE : GONE);
     }
 }
