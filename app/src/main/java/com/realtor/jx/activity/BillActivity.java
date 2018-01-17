@@ -1,13 +1,12 @@
 package com.realtor.jx.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.realtor.jx.R;
 import com.realtor.jx.base.BaseActivity;
-import com.realtor.jx.widget.CommitContractStepIndicator;
-import com.realtor.jx.widget.Header;
 
 /**
  * description: 账单页
@@ -15,38 +14,26 @@ import com.realtor.jx.widget.Header;
  * created at: 2018/1/6 14:46
  */
 public class BillActivity extends BaseActivity {
-    private TextView mBtnNext;
-    private Header mHeader;
+    private TextView mTvTitlePlatformRepayAmount;
+    private TextView mTvTitleRenterRepayAmount;
+
+    private ListView mListViewPlatform;
+    private ListView mListViewRenter;
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-        mHeader = findViewById(R.id.mHeader);
-        mBtnNext = findViewById(R.id.mBtnNext);
+        mTvTitlePlatformRepayAmount = findViewById(R.id.mTvTitlePlatformRepayAmount);
+        mTvTitleRenterRepayAmount = findViewById(R.id.mTvTitleRenterRepayAmount);
+        mListViewPlatform = findViewById(R.id.mListViewPlatform);
+        mListViewRenter = findViewById(R.id.mListViewRenter);
+
+        mTvTitlePlatformRepayAmount.setText(Html.fromHtml(String.format("平台付款共计<font color=\"#d40000\">%s</font>元", 30000)));
+        mTvTitleRenterRepayAmount.setText(Html.fromHtml(String.format("租户应还共计<font color=\"#d40000\">%s</font>元", 30000)));
     }
 
     @Override
     protected void initListener() {
         super.initListener();
-        mHeader.setOnInteractListener(new Header.OnInteractListener() {
-            @Override
-            public void onBackClick() {
-                Intent intent = new Intent();
-                intent.putExtra("Step", CommitContractStepIndicator.STEP.AGING);
-                setResult(RESULT_OK,intent);
-                finish();
-            }
-
-            @Override
-            public void onDeleteClick() {
-
-            }
-        });
-        mBtnNext.setOnClickListener(v -> {
-            Intent intent = new Intent();
-            intent.putExtra("Step", CommitContractStepIndicator.STEP.PHOTO);
-            setResult(RESULT_OK,intent);
-            finish();
-        });
     }
 
     @Override

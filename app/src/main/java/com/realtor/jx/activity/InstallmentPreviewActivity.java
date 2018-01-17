@@ -1,6 +1,7 @@
 package com.realtor.jx.activity;
 
 import android.os.Bundle;
+import android.text.Html;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,11 +14,16 @@ import com.realtor.jx.base.BaseActivity;
  * created at: 2018/1/6 14:42
  */
 public class InstallmentPreviewActivity extends BaseActivity {
+    private TextView mTvTitlePlatformRepayAmount;
     private TextView mBtnNext;
 
     @Override
     protected void initView(Bundle savedInstanceState) {
+        mTvTitlePlatformRepayAmount = findViewById(R.id.mTvTitlePlatformRepayAmount);
         mBtnNext = findViewById(R.id.mBtnNext);
+
+        String str1=String.format("平台付款共计:<font color=\"#d40000\">%s</font>元", 30000);
+        mTvTitlePlatformRepayAmount.setText(Html.fromHtml(str1));
     }
 
     @Override

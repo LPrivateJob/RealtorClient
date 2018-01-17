@@ -15,10 +15,10 @@
         app:title="分期预览" />
 
     <TextView
-        android:id="@+id/mTvTitleContractInfo"
+        android:id="@+id/mTvTitlePlatformRepayAmount"
         style="@style/ContractInfoBlockTitle"
         android:layout_below="@id/mHeader"
-        android:text="合同信息" />
+        android:text="平台付款共计" />
     <TextView
         android:id="@+id/mBtnNext"
         android:layout_alignParentBottom="true"
