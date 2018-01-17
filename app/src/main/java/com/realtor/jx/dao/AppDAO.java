@@ -15,7 +15,7 @@ public class AppDAO extends BaseDAO {
     private static class SingletonHolder {
         private static AppDAO INSTANCE = new AppDAO();
     }
-    public AppDAO getInstance(){
+    public static AppDAO getInstance(){
         return SingletonHolder.INSTANCE;
     }
     //登录

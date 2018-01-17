@@ -8,6 +8,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.realtor.jx.R;
+import com.realtor.jx.base.BaseActivity;
 
 /**
  * autour: lewish
@@ -19,6 +20,7 @@ public class Header extends RelativeLayout implements View.OnClickListener {
     private TextView mTvTitle;
 
     private boolean mIsShowDelete;
+    private boolean mIsShowBack;
     private String mStrTitle;
     private OnInteractListener mOnInteractListener;
 
@@ -37,26 +39,38 @@ public class Header extends RelativeLayout implements View.OnClickListener {
 
         TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.Header);
         mIsShowDelete = typedArray.getBoolean(R.styleable.Header_isShowDelete, false);
+        mIsShowBack = typedArray.getBoolean(R.styleable.Header_isShowBack, true);
         mStrTitle = typedArray.getString(R.styleable.Header_title);
         typedArray.recycle();
         findViewById(R.id.mIvBack).setOnClickListener(this);
         findViewById(R.id.mIvDelete).setOnClickListener(this);
         mTvTitle = findViewById(R.id.mTvTitle);
         mTvTitle.setText(mStrTitle);
+        findViewById(R.id.mIvBack).setVisibility(mIsShowBack ? VISIBLE : GONE);
         findViewById(R.id.mIvDelete).setVisibility(mIsShowDelete ? VISIBLE : GONE);
     }
 
 
     @Override
     public void onClick(View v) {
-        if (mOnInteractListener == null)
-            return;
         switch (v.getId()) {
             case R.id.mIvBack:
-                mOnInteractListener.onBackClick();
+                if (mOnInteractListener == null) {
+                    if (getContext() instanceof BaseActivity) {
+                        ((BaseActivity) getContext()).finish();
+                    }
+                } else {
+                    mOnInteractListener.onBackClick();
+                }
                 break;
             case R.id.mIvDelete:
-                mOnInteractListener.onDeleteClick();
+                if (mOnInteractListener == null) {
+                    if (getContext() instanceof BaseActivity) {
+                        ((BaseActivity) getContext()).finish();
+                    }
+                } else {
+                    mOnInteractListener.onDeleteClick();
+                }
                 break;
         }
     }

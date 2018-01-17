@@ -17,6 +17,14 @@ public class WaitScanQRCodeActivity extends BaseActivity {
     }
 
     @Override
+    protected void initListener() {
+        findViewById(R.id.mBtnReturnHome).setOnClickListener(v->{
+            openActivity(MainActivity.class);
+            finish();
+        });
+    }
+
+    @Override
     protected int getLayoutResource() {
         return R.layout.activity_scan_qrcode;
     }

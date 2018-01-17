@@ -24,6 +24,8 @@ import com.realtor.jx.widget.Header;
  * created at: 2018/1/6 16:34
  */
 public class CommitContractActivity extends BaseActivity {
+    public static final int BILL_ACTIVITY_REQUEST_CODE = 1;
+    public static final int WAIT_SCAN_QRCODE_ACTIVITY_REQUEST_CODE = 2;
     private Header mHeader;
     private CommitContractStepIndicator mStepIndicator;
     private Button mBtnNext;
@@ -66,15 +68,43 @@ public class CommitContractActivity extends BaseActivity {
                     mStepIndicator.refreshUi(mStep);
                     break;
                 case AGING:
-                    mStep = CommitContractStepIndicator.STEP.PHOTO;
-                    addFragment(R.id.mFragmentLayout, new UploadPicFragment());
-                    mStepIndicator.refreshUi(mStep);
+                    commitSigningInfo();
                     break;
                 case PHOTO:
-
+                    upLoadPics();
                     break;
             }
         });
+    }
+
+    /**
+     * 向服务器提交签约信息
+     */
+    private void commitSigningInfo() {
+        startActivityForResult(new Intent(this, BillActivity.class), BILL_ACTIVITY_REQUEST_CODE);
+    }
+
+    private void upLoadPics() {
+        openActivity(WaitScanQRCodeActivity.class);
+        finish();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case BILL_ACTIVITY_REQUEST_CODE:
+                if (resultCode == RESULT_OK) {
+                    CommitContractStepIndicator.STEP step = (CommitContractStepIndicator.STEP) data.getSerializableExtra("Step");
+                    if (step == CommitContractStepIndicator.STEP.PHOTO) {
+                        mStep = CommitContractStepIndicator.STEP.PHOTO;
+                        addFragment(R.id.mFragmentLayout, new UploadPicFragment());
+                        mStepIndicator.refreshUi(mStep);
+                    }
+                }
+                break;
+            case WAIT_SCAN_QRCODE_ACTIVITY_REQUEST_CODE:
+                break;
+        }
     }
 
     @Override
@@ -82,7 +112,7 @@ public class CommitContractActivity extends BaseActivity {
         return R.layout.activity_commit_contract;
     }
 
-    //添加fragment
+    //添加fragment至BackStack
     protected void addFragment(int layoutId, BaseFragment fragment) {
         if (fragment != null) {
             if (mFragmentManager.findFragmentById(layoutId) != null) {
@@ -102,7 +132,7 @@ public class CommitContractActivity extends BaseActivity {
         }
     }
 
-    //移除fragment
+    //从BackStack移除fragment
     protected void removeFragment() {
         if (mFragmentManager.getBackStackEntryCount() > 1) {
             mFragmentManager.popBackStack();
@@ -119,7 +149,18 @@ public class CommitContractActivity extends BaseActivity {
                 finish();
                 return true;
             } else {
+                switch (mStep) {
+                    case PHOTO:
 
+                        break;
+                    case AGING:
+                        mStep = CommitContractStepIndicator.STEP.LOCATION;
+                        mStepIndicator.refreshUi(mStep);
+                        break;
+                    case LOCATION:
+
+                        break;
+                }
             }
         }
         return super.onKeyDown(keyCode, event);

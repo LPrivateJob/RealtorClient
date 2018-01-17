@@ -29,7 +29,9 @@
         <activity android:name=".activity.InstallmentPreviewActvity"
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.BillActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait">
+
+        </activity>
         <activity android:name=".activity.WaitScanQRCodeActivity"
             android:screenOrientation="portrait">
 
