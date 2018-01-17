@@ -1,4 +1,4 @@
-package com.realtor.jx.netcore.Entity;
+package com.realtor.jx.netcore.entity;
 
 /**
  * author: sundong
