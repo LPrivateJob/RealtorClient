@@ -9,9 +9,9 @@
         android:id="@+id/mHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:isShowDelete="false"
-        app:isShowBack="false"
         android:layout_alignParentTop="true"
+        app:isShowBack="false"
+        app:isShowDelete="false"
         app:title="分期预览" />
 
     <TextView
@@ -19,9 +19,75 @@
         style="@style/ContractInfoBlockTitle"
         android:layout_below="@id/mHeader"
         android:text="平台付款共计" />
+
+    <LinearLayout
+        android:id="@+id/mLPlatformTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mTvTitlePlatformRepayAmount"
+        android:layout_marginTop="@dimen/y35"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/ListViewTitle"
+            android:layout_marginLeft="@dimen/x75"
+            android:text="期数" />
+
+        <TextView
+            style="@style/ListViewTitle"
+            android:layout_marginLeft="@dimen/x460"
+            android:text="付款金额" />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/mListViewPlatform"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mLPlatformTitle"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/mTvTitleRenterRepayAmount"
+        style="@style/ContractInfoBlockTitle"
+        android:layout_below="@id/mListViewPlatform"
+        android:layout_marginTop="@dimen/y60"
+        android:text="租户应还共计" />
+
+    <LinearLayout
+        android:id="@+id/mLRenterTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mTvTitleRenterRepayAmount"
+        android:layout_marginTop="@dimen/y35"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/ListViewTitle"
+            android:layout_marginLeft="@dimen/x75"
+            android:text="期数" />
+
+        <TextView
+            style="@style/ListViewTitle"
+            android:layout_marginLeft="@dimen/x180"
+            android:text="还款日期" />
+
+        <TextView
+            style="@style/ListViewTitle"
+            android:layout_marginLeft="@dimen/x160"
+            android:text="付款金额" />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/mListViewRenter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mLRenterTitle" />
+
     <TextView
         android:id="@+id/mBtnNext"
-        android:layout_alignParentBottom="true"
         style="@style/BottomButtonYellow"
-        android:text="下一步"/>
+        android:layout_alignParentBottom="true"
+        android:text="下一步" />
 </RelativeLayout>

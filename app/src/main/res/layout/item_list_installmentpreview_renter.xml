@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/y35">
+    <TextView
+        style="@style/ListViewItem"
+        android:layout_marginLeft="@dimen/x75"
+        android:text="期数" />
+
+    <TextView
+        style="@style/ListViewItem"
+        android:layout_marginLeft="@dimen/x180"
+        android:text="还款日期" />
+
+    <TextView
+        style="@style/ListViewItem"
+        android:layout_marginLeft="@dimen/x160"
+        android:text="付款金额" />
+</LinearLayout>
