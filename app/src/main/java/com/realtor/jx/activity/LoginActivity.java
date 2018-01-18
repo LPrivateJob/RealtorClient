@@ -45,7 +45,7 @@ public class LoginActivity extends BaseActivity {
                     @Override
                     public void onSuccess(UserInfoDto result) {
                         LocalUser.getInstance().updateUserProfile(result);
-                        openActivity(TestActivity.class);
+                        openActivity(MainActivity.class);
                         finish();
                     }
                 });

@@ -147,8 +147,8 @@ public class InputVerifyUtil implements Commons.BASIC_INFO {
         }
 
         if (input.length() < minLen) {
-//            String strToast = String.format(LENTH_TIP_FORMAT, name, minLen);
-//            Toast.makeText(c, strToast, Toast.LENGTH_SHORT).show();
+            String strToast = String.format(LENTH_TIP_FORMAT, name, minLen);
+            Toast.makeText(mApplicationContext, strToast, Toast.LENGTH_SHORT).show();
             return false;
         }
 

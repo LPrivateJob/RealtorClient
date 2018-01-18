@@ -141,19 +141,21 @@ public class BaseUtils {
 
     public static final void saveObject(String path, Object saveObject) {
         File f = new File(path);
-        save(f,saveObject);
+        save(f, saveObject);
     }
+
     public static final void saveHomeObject(File f, Object saveObject) {
-        if(!f.exists()){
+        if (!f.exists()) {
             try {
                 f.createNewFile();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        save(f,saveObject);
+        save(f, saveObject);
     }
-    private static void save(File f,Object saveObject){
+
+    private static void save(File f, Object saveObject) {
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
         try {
@@ -177,6 +179,7 @@ public class BaseUtils {
             }
         }
     }
+
     public static final Object restoreObject(String path) {
         FileInputStream fis = null;
         ObjectInputStream ois = null;
@@ -253,7 +256,7 @@ public class BaseUtils {
 
             byte[] sourceByte = ObjectToByte(object);
             byte[] key = AES.getKey(BuildConfig.SYMMETRIC_ENCRYPTION_KEY);
-            byte[] securityByte = AES.encrypt(sourceByte , key);
+            byte[] securityByte = AES.encrypt(sourceByte, key);
 
             oos.writeObject(securityByte);
             oos.writeObject(null);
@@ -270,8 +273,8 @@ public class BaseUtils {
             FileInputStream fis = context.openFileInput(filename);
             ObjectInputStream ois = new ObjectInputStream(fis);
 
-            byte[] securityByte = (byte[] )ois.readObject();
-            byte[] sourceByte = AES.decrypt(securityByte , BuildConfig.SYMMETRIC_ENCRYPTION_KEY);
+            byte[] securityByte = (byte[]) ois.readObject();
+            byte[] sourceByte = AES.decrypt(securityByte, BuildConfig.SYMMETRIC_ENCRYPTION_KEY);
             o = ByteToObject(sourceByte);
         } catch (Exception e) {
             e.printStackTrace();
