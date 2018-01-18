@@ -7,10 +7,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.realtor.jx.R;
-import com.realtor.jx.activity.MainActivity;
 import com.realtor.jx.base.BaseFragment;
 import com.realtor.jx.base.baseadapter.fragmentAdapter.CommonFragmentPagerAdapter;
 import com.realtor.jx.fragment.ContractListFragment;
@@ -29,6 +27,7 @@ import java.util.List;
  */
 
 public class TabContractFragment extends BaseFragment {
+    private int mOrderStatus = 0;
     private SearchBar mSearchBar;
     private ImageView mIvFilter;
     private DrawerLayout mDrawerLayout;
@@ -68,7 +67,9 @@ public class TabContractFragment extends BaseFragment {
 
             @Override
             public void onPageSelected(int position) {
-
+                //只有全部时可对合同列表进行按状态筛选
+                mIvFilter.setVisibility(position == 0 ? View.VISIBLE : View.GONE);
+                mOrderStatus = position;
             }
 
             @Override
@@ -80,6 +81,9 @@ public class TabContractFragment extends BaseFragment {
 
     @Override
     protected void initListener() {
+        mSearchBar.setOnInteractListener(content -> {
+            // TODO: 调Fragment方法刷新UI
+        });
         mIvFilter.setOnClickListener(v -> {
             if (mDrawerLayout.isDrawerOpen(mSlidingMenu)) {
                 mDrawerLayout.closeDrawers();
@@ -91,7 +95,7 @@ public class TabContractFragment extends BaseFragment {
             @Override
             public void onChecked(int filterContractStateCode) {
                 mDrawerLayout.closeDrawers();
-                Toast.makeText(mActivity, "" + filterContractStateCode, Toast.LENGTH_SHORT).show();
+                mOrderStatus = filterContractStateCode;
             }
         });
     }

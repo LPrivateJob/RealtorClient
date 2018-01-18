@@ -61,4 +61,8 @@ public class SearchBar extends LinearLayout {
     public interface OnInteractListener {
         void onSearchClick(String content);
     }
+
+    public void setOnInteractListener(OnInteractListener mOnInteractListener) {
+        this.mOnInteractListener = mOnInteractListener;
+    }
 }

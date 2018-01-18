@@ -40,7 +40,7 @@ public abstract class JsonCallback<T> implements Callback<ResponseResult> {
 
     public abstract void onSuccess(T result);
 
-    public abstract void onBizFailed(String resultCode,String resultInfo);
+    public abstract void onBizFailed(String resultCode, String resultInfo);
 
     public abstract void onConnectionFailed();
 
@@ -49,14 +49,12 @@ public abstract class JsonCallback<T> implements Callback<ResponseResult> {
             String resultCode = result.getResultCode();
 
             if (resultCode.equals("200")) {
-
                 Type type = ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
 
                 T t = new Gson().fromJson(result.getData(), type);
-
                 onSuccess(t);
             } else {
-                onBizFailed(result.getResultCode(),result.getResultInfo());
+                onBizFailed(result.getResultCode(), result.getResultInfo());
             }
         } catch (Exception e) {
             onConnectionFailed();

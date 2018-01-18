@@ -5,12 +5,12 @@ import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Toast;
 
 import com.realtor.jx.R;
 import com.realtor.jx.adapter.ContractListAdapter;
 import com.realtor.jx.base.BaseFragment;
 import com.realtor.jx.base.baseadapter.recylerViewAdapter.DividerItemDecoration;
+import com.realtor.jx.entity.Commons;
 import com.realtor.jx.entity.ContractListItemData;
 import com.realtor.jx.entity.FakeData;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -28,6 +28,7 @@ import java.util.List;
  */
 public class ContractListFragment extends BaseFragment {
     private String content;
+    private int mOrderType = 0;
     private int mPage;
     private SmartRefreshLayout mRefreshLayout;
     private RecyclerView mRecView;
@@ -37,7 +38,7 @@ public class ContractListFragment extends BaseFragment {
     public static ContractListFragment newInstance(String mStrContractType) {
         ContractListFragment instance = new ContractListFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("Tab", mStrContractType);
+        bundle.putString(Commons.BUNDLE_KEYS.EXTRA_CONTENT, mStrContractType);
         instance.setArguments(bundle);
         return instance;
     }
@@ -45,7 +46,15 @@ public class ContractListFragment extends BaseFragment {
     @Override
     protected void getIncomingValue() {
         super.getIncomingValue();
-        content = getArguments().getString("Tab");
+        content = getArguments().getString(Commons.BUNDLE_KEYS.EXTRA_CONTENT);
+        switch (content) {
+            case "全部":
+                mOrderType = 0;
+                break;
+            case "逾期":
+                mOrderType = 1;
+                break;
+        }
     }
 
     @Override
@@ -102,7 +111,7 @@ public class ContractListFragment extends BaseFragment {
 
     private void invokeInterface() {
         // TODO: 2018/1/7  调接口
-
+//        AppDAO.getInstance().queryOrderList(null,);
     }
 
     public void refreshData() {

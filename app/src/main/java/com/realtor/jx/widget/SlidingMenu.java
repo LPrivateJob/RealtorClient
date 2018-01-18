@@ -37,6 +37,7 @@ public class SlidingMenu extends LinearLayout {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case R.id.mRbAll:
+                        mFilterContractStateCode = 0;
                         break;
                     case R.id.mRbWaitModify:
                         mFilterContractStateCode = Commons.CONTRACT_STATE.CONTRACT_STATE_WAITMODIFY;
