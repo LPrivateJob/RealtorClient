@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.realtor.jx">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -9,6 +10,7 @@
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
     <application
         android:name=".base.RealtorClientApplication"
         android:allowBackup="true"
@@ -17,15 +19,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.realtor.jx.activity.MainActivity"
+        <activity
+            android:name="com.realtor.jx.activity.MainActivity"
             android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".activity.ContractDetailActivity"
+        <activity
+            android:name=".activity.ContractDetailActivity"
             android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".activity.LoginActivity"
+        <activity
+            android:name=".activity.LoginActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,24 +38,30 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.InstallmentPreviewActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.BillActivity"
+        <activity
+            android:name=".activity.InstallmentPreviewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.BillActivity"
             android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".activity.WaitScanQRCodeActivity"
+        <activity
+            android:name=".activity.WaitScanQRCodeActivity"
             android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".activity.RejectedActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.CommitContractActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.RejectedActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.CommitContractActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".activity.WaitReviewActivity" />
-        <activity android:name=".activity.ChangePasswordActivity" >
+        <activity android:name=".activity.ChangePasswordActivity">
 
         </activity>
+        <activity android:name=".activity.TestActivity" />
     </application>
 
 </manifest>

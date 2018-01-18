@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.realtor.jx.R;
 import com.realtor.jx.base.BaseActivity;
 import com.realtor.jx.base.BaseFragment;
-import com.realtor.jx.entity.Constants;
+import com.realtor.jx.entity.Commons;
 import com.realtor.jx.fragment.InstallmentInfoFragment;
 import com.realtor.jx.fragment.RenterInfoFragment;
 import com.realtor.jx.fragment.UploadPicFragment;
@@ -32,7 +32,7 @@ public class CommitContractActivity extends BaseActivity {
 
     public static void open(Activity act, CommitContractStepIndicator.STEP step) {
         Intent intent = new Intent(act, CommitContractActivity.class);
-        intent.putExtra(Constants.EXTRA_ENUM, step);
+        intent.putExtra(Commons.BUNDLE_KEYS.EXTRA_ENUM, step);
         act.startActivity(intent);
     }
 

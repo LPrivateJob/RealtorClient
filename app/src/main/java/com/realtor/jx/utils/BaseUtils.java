@@ -89,7 +89,7 @@ public class BaseUtils {
     public static String getMd5(final String s) {
         try {
             // Create MD5 Hash
-            final MessageDigest digest = MessageDigest.getInstance("MD5");
+            final MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
             digest.update(s.trim().getBytes());
             final byte messageDigest[] = digest.digest();
             return BaseUtils.toHexString(messageDigest);
@@ -228,7 +228,7 @@ public class BaseUtils {
         return obj;
     }
 
-    public static byte[] ObjectToByte(Object obj) {
+    public static byte[] ObjectToByte(java.lang.Object obj) {
         byte[] bytes = null;
         try {
             // object to bytearray
@@ -265,19 +265,18 @@ public class BaseUtils {
     }
 
     public static Object getObject(Context context, String filename) {
+        Object o = null;
         try {
             FileInputStream fis = context.openFileInput(filename);
             ObjectInputStream ois = new ObjectInputStream(fis);
 
             byte[] securityByte = (byte[] )ois.readObject();
             byte[] sourceByte = AES.decrypt(securityByte , BuildConfig.SYMMETRIC_ENCRYPTION_KEY);
-            Object sourceObj = ByteToObject(sourceByte);
-
-            return sourceObj;
+            o = ByteToObject(sourceByte);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return o;
     }
 
 }

@@ -1,12 +1,13 @@
 package com.realtor.jx.dto;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * author: sundong
  * created at 2018/1/16 15:45
  */
-public class LoginBean {
+public class UserInfoDto implements Serializable{
 
     /**
      * payType : 1,2,3
@@ -62,7 +63,7 @@ public class LoginBean {
         this.areas = areas;
     }
 
-    public static class UserBean {
+    public static class UserBean implements Serializable{
         /**
          * id : 100000
          * companyId : 1
@@ -278,7 +279,7 @@ public class LoginBean {
         }
     }
 
-    public static class AreasBean {
+    public static class AreasBean implements Serializable{
         /**
          * id : 000086
          * name : 北京
@@ -313,7 +314,7 @@ public class LoginBean {
             this.subAreas = subAreas;
         }
 
-        public static class SubAreasBeanX {
+        public static class SubAreasBeanX implements Serializable{
             /**
              * id : 000087
              * name : 北京
@@ -348,7 +349,7 @@ public class LoginBean {
                 this.subAreas = subAreas;
             }
 
-            public static class SubAreasBean {
+            public static class SubAreasBean implements Serializable{
                 /**
                  * id : 000088
                  * name : 朝阳

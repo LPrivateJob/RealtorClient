@@ -7,7 +7,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 
 import com.realtor.jx.R;
-import com.realtor.jx.entity.Constants;
+import com.realtor.jx.entity.Commons;
 
 /**
  * author: sundong
@@ -39,28 +39,28 @@ public class SlidingMenu extends LinearLayout {
                     case R.id.mRbAll:
                         break;
                     case R.id.mRbWaitModify:
-                        mFilterContractStateCode = Constants.CONTRACT_STATE_WAITMODIFY;
+                        mFilterContractStateCode = Commons.CONTRACT_STATE.CONTRACT_STATE_WAITMODIFY;
                         break;
                     case R.id.mRbWaitReview:
-                        mFilterContractStateCode = Constants.CONTRACT_STATE_WAITREVIEW;
+                        mFilterContractStateCode = Commons.CONTRACT_STATE.CONTRACT_STATE_WAITREVIEW;
                         break;
                     case R.id.mRbInReview:
-                        mFilterContractStateCode = Constants.CONTRACT_STATE_INREVIEW;
+                        mFilterContractStateCode = Commons.CONTRACT_STATE.CONTRACT_STATE_INREVIEW;
                         break;
                     case R.id.mRbWaitScanQRcode:
-                        mFilterContractStateCode = Constants.CONTRACT_STATE_WAITSCANQRCODE;
+                        mFilterContractStateCode = Commons.CONTRACT_STATE.CONTRACT_STATE_WAITSCANQRCODE;
                         break;
                     case R.id.mRbReject:
-                        mFilterContractStateCode = Constants.CONTRACT_STATE_REJECT;
+                        mFilterContractStateCode = Commons.CONTRACT_STATE.CONTRACT_STATE_REJECT;
                         break;
                     case R.id.mRbInRepayment:
-                        mFilterContractStateCode = Constants.CONTRACT_STATE_INREPAYMENT;
+                        mFilterContractStateCode = Commons.CONTRACT_STATE.CONTRACT_STATE_INREPAYMENT;
                         break;
                     case R.id.mRbSettled:
-                        mFilterContractStateCode = Constants.CONTRACT_STATE_SETTLED;
+                        mFilterContractStateCode = Commons.CONTRACT_STATE.CONTRACT_STATE_SETTLED;
                         break;
                     case R.id.mRbRenege:
-                        mFilterContractStateCode = Constants.CONTRACT_STATE_RENEGE;
+                        mFilterContractStateCode = Commons.CONTRACT_STATE.CONTRACT_STATE_RENEGE;
                         break;
                 }
                 if (mOnInteractListener != null) {
