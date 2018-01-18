@@ -45,8 +45,8 @@ public abstract class JsonUiCallback<T> extends JsonCallback<T> {
     }
 
     @Override
-    public void onBizFailed(String msg) {
-        Toast.makeText(context, "处理异常", Toast.LENGTH_SHORT).show();
+    public void onBizFailed(String resultCode, String resultInfo) {
+        Toast.makeText(context, "服务器内部错误", Toast.LENGTH_SHORT).show();
     }
 
     @Override

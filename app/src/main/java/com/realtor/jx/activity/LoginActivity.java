@@ -16,13 +16,14 @@ import com.realtor.jx.netcore.utils.Logger;
  * description: 登录页
  * autour: lewish
  * created at: 2018/1/6 14:42
-*/
+ */
 public class LoginActivity extends BaseActivity {
     private TextInputLayout mEtPhoneTextWrapper;
     private TextInputLayout mEtWrapperPassword;
     private EditText mEtPhone;
     private EditText mEtPassword;
     private TextView mBtnConfirm;
+
     @Override
     protected void initView(Bundle savedInstanceState) {
         mEtPhoneTextWrapper = findViewById(R.id.mEtPhoneTextWrapper);
@@ -41,10 +42,10 @@ public class LoginActivity extends BaseActivity {
                 @Override
                 public void onSuccess(LoginBean result) {
                     Logger.d(result.toString());
+                    openActivity(MainActivity.class);
+                    finish();
                 }
             });
-//            openActivity(MainActivity.class);
-//            finish();
         });
     }
 

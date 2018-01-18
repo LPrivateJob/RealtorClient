@@ -40,7 +40,7 @@ public abstract class JsonCallback<T> implements Callback<ResponseResult> {
 
     public abstract void onSuccess(T result);
 
-    public abstract void onBizFailed(String msg);
+    public abstract void onBizFailed(String resultCode,String resultInfo);
 
     public abstract void onConnectionFailed();
 
@@ -56,7 +56,7 @@ public abstract class JsonCallback<T> implements Callback<ResponseResult> {
 
                 onSuccess(t);
             } else {
-                onBizFailed(result.getResultInfo());
+                onBizFailed(result.getResultCode(),result.getResultInfo());
             }
         } catch (Exception e) {
             onConnectionFailed();
