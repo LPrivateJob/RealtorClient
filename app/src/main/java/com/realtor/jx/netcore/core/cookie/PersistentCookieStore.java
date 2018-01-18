@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 import okhttp3.Cookie;
 import okhttp3.HttpUrl;
@@ -26,7 +27,7 @@ import okhttp3.HttpUrl;
 public class PersistentCookieStore {
     private static final String COOKIE_PREFS = "Cookies_Prefs";
 
-    private final Map<String, ConcurrentHashMap<String, Cookie>> cookies;
+    private final Map<String, ConcurrentMap<String, Cookie>> cookies;
     private final SharedPreferences cookiePrefs;
 
 

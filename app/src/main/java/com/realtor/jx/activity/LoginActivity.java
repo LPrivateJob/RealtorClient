@@ -7,6 +7,10 @@ import android.widget.TextView;
 
 import com.realtor.jx.R;
 import com.realtor.jx.base.BaseActivity;
+import com.realtor.jx.dao.AppDAO;
+import com.realtor.jx.dto.LoginBean;
+import com.realtor.jx.netcore.JsonUiCallback;
+import com.realtor.jx.netcore.utils.Logger;
 
 /**
  * description: 登录页
@@ -33,8 +37,14 @@ public class LoginActivity extends BaseActivity {
     protected void initListener() {
         super.initListener();
         mBtnConfirm.setOnClickListener(v -> {
-            openActivity(MainActivity.class);
-            finish();
+            AppDAO.getInstance().login("13888888888", "111111", new JsonUiCallback<LoginBean>(this) {
+                @Override
+                public void onSuccess(LoginBean result) {
+                    Logger.d(result.toString());
+                }
+            });
+//            openActivity(MainActivity.class);
+//            finish();
         });
     }
 

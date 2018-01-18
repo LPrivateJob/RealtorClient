@@ -2,9 +2,9 @@ package com.realtor.jx.netcore;
 
 import android.content.Context;
 
+import com.orhanobut.logger.Logger;
 import com.realtor.jx.BuildConfig;
 import com.realtor.jx.netcore.core.cookie.CookiesManager;
-import com.realtor.jx.netcore.utils.NetLogger;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -60,7 +60,7 @@ public class NetConfig {
         logger = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
             @Override
             public void log(String message) {
-                NetLogger.connLog(message);
+                Logger.d(message);
             }
         });
         logger.setLevel(HttpLoggingInterceptor.Level.BODY);

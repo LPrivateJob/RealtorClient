@@ -10,18 +10,14 @@ public class LoginBean {
 
     /**
      * payType : 1,2,3
-     * result_info : 登录成功
      * feeReceive : 1,2
-     * result_code : 200
      * areas : [{"id":"000086","name":"北京","subAreas":[{"id":"000087","name":"北京","subAreas":[{"id":"000088","name":"朝阳","subAreas":""},{"id":"000089","name":"西城","subAreas":""},{"id":"000090","name":"海淀","subAreas":""}]}]}]
      * firstPayType : 1
      * user : {"id":100000,"companyId":"1","officeId":"2","loginName":"13888888888","password":"","no":"0001","name":"张三","email":"thinkgem@163.com","phone":"8675","mobile":"8675","userType":"","photo":"","loginIp":"1.119.129.178","loginDate":"2017-09-01 13:33:18","loginFlag":"1","createBy":"1","createDate":"2013-05-27 08:00:00","updateBy":"1","updateDate":"2017-12-29 10:29:57","remarks":"最高管理员","delFlag":"0"}
      */
 
     private String payType;
-    private String result_info;
     private String feeReceive;
-    private String result_code;
     private String firstPayType;
     private UserBean user;
     private List<AreasBean> areas;
@@ -34,28 +30,12 @@ public class LoginBean {
         this.payType = payType;
     }
 
-    public String getResult_info() {
-        return result_info;
-    }
-
-    public void setResult_info(String result_info) {
-        this.result_info = result_info;
-    }
-
     public String getFeeReceive() {
         return feeReceive;
     }
 
     public void setFeeReceive(String feeReceive) {
         this.feeReceive = feeReceive;
-    }
-
-    public String getResult_code() {
-        return result_code;
-    }
-
-    public void setResult_code(String result_code) {
-        this.result_code = result_code;
     }
 
     public String getFirstPayType() {

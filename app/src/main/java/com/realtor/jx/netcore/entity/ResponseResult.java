@@ -8,8 +8,8 @@ import com.google.gson.JsonElement;
  */
 public class ResponseResult {
 
-    private String result_code;
     private String result_info;
+    private String result_code;
     private JsonElement data;
 
     public String getResultCode() {

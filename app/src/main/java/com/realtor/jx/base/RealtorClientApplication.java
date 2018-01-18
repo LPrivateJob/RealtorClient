@@ -8,6 +8,8 @@ import com.orhanobut.logger.FormatStrategy;
 import com.orhanobut.logger.Logger;
 import com.orhanobut.logger.PrettyFormatStrategy;
 import com.realtor.jx.BuildConfig;
+import com.realtor.jx.netcore.NetConfig;
+import com.realtor.jx.netcore.core.NetEngine;
 
 /**
  * description:
@@ -26,6 +28,7 @@ public class RealtorClientApplication extends Application {
         instannce = this;
         mContext = getApplicationContext();
         initLogger();
+        initNetEngine();
         Logger.d("Application Start!");
     }
 
@@ -50,6 +53,11 @@ public class RealtorClientApplication extends Application {
                 return BuildConfig.DEBUG;
             }
         });
+    }
+
+    // 网络引擎框架初始化
+    private void initNetEngine() {
+        NetEngine.init(NetConfig.create(this));
     }
 
     public static Context getContext() {
