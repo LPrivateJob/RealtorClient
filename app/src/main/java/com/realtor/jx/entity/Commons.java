@@ -82,14 +82,20 @@ public class Commons {
         public static final String EXTRA_TXT = "key_txt";
     }
 
-    public interface CONTRACT_STATE {
-        public static final int CONTRACT_STATE_WAITMODIFY = 1;
-        public static final int CONTRACT_STATE_WAITSCANQRCODE = 2;
-        public static final int CONTRACT_STATE_WAITREVIEW = 3;
-        public static final int CONTRACT_STATE_INREVIEW = 4;
-        public static final int CONTRACT_STATE_INREPAYMENT = 5;
-        public static final int CONTRACT_STATE_SETTLED = 6;
-        public static final int CONTRACT_STATE_RENEGE = 7;
-        public static final int CONTRACT_STATE_REJECT = 7;
+    public interface CONTRACT_STATUS {
+        public static final int CONTRACT_STATE_APPLYING = 0;//申请中
+        public static final int CONTRACT_STATE_WAITMODIFY = 1;//待修改
+        public static final int CONTRACT_STATE_WAITSCANQRCODE = 2;//待扫码
+        public static final int CONTRACT_STATE_WAITREVIEW = 3;//待审核
+        public static final int CONTRACT_STATE_INREVIEW = 4;//审核中
+        public static final int CONTRACT_STATE_INREPAYMENT = 5;//还款中
+        public static final int CONTRACT_STATE_SETTLED = 6;//已还清
+        public static final int CONTRACT_STATE_RENEGE = 7;//已违约
+        public static final int CONTRACT_STATE_REJECT = 8;//审核拒绝
+    }
+
+    public interface CONTRACT_TYPE {
+        public static final int ALL = 1;
+        public static final int OVERDUE = 2;
     }
 }

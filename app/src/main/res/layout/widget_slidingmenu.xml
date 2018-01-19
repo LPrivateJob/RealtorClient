@@ -8,11 +8,14 @@
         android:id="@+id/mRgFilter"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <RadioButton
             android:id="@+id/mRbAll"
             style="@style/SlidingMenuItem"
-            android:text="全部" />
+            android:text="全部"/>
+        <RadioButton
+            android:id="@+id/mRbApplying"
+            style="@style/SlidingMenuItem"
+            android:text="申请中" />
 
         <RadioButton
             android:id="@+id/mRbWaitModify"

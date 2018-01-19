@@ -16,7 +16,7 @@ import com.realtor.jx.entity.Commons;
 public class SlidingMenu extends LinearLayout {
     private Context mContext;
     private RadioGroup mRgFilter;
-    private int mFilterContractStateCode;
+    private Integer mFilterContractStateCode;
     private OnInteractListener mOnInteractListener;
 
     public SlidingMenu(Context context) {
@@ -37,31 +37,33 @@ public class SlidingMenu extends LinearLayout {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case R.id.mRbAll:
-                        mFilterContractStateCode = 0;
+                        mFilterContractStateCode = null;
+                    case R.id.mRbApplying:
+                        mFilterContractStateCode = Commons.CONTRACT_STATUS.CONTRACT_STATE_APPLYING;
                         break;
                     case R.id.mRbWaitModify:
-                        mFilterContractStateCode = Commons.CONTRACT_STATE.CONTRACT_STATE_WAITMODIFY;
+                        mFilterContractStateCode = Commons.CONTRACT_STATUS.CONTRACT_STATE_WAITMODIFY;
                         break;
                     case R.id.mRbWaitReview:
-                        mFilterContractStateCode = Commons.CONTRACT_STATE.CONTRACT_STATE_WAITREVIEW;
+                        mFilterContractStateCode = Commons.CONTRACT_STATUS.CONTRACT_STATE_WAITREVIEW;
                         break;
                     case R.id.mRbInReview:
-                        mFilterContractStateCode = Commons.CONTRACT_STATE.CONTRACT_STATE_INREVIEW;
+                        mFilterContractStateCode = Commons.CONTRACT_STATUS.CONTRACT_STATE_INREVIEW;
                         break;
                     case R.id.mRbWaitScanQRcode:
-                        mFilterContractStateCode = Commons.CONTRACT_STATE.CONTRACT_STATE_WAITSCANQRCODE;
+                        mFilterContractStateCode = Commons.CONTRACT_STATUS.CONTRACT_STATE_WAITSCANQRCODE;
                         break;
                     case R.id.mRbReject:
-                        mFilterContractStateCode = Commons.CONTRACT_STATE.CONTRACT_STATE_REJECT;
+                        mFilterContractStateCode = Commons.CONTRACT_STATUS.CONTRACT_STATE_REJECT;
                         break;
                     case R.id.mRbInRepayment:
-                        mFilterContractStateCode = Commons.CONTRACT_STATE.CONTRACT_STATE_INREPAYMENT;
+                        mFilterContractStateCode = Commons.CONTRACT_STATUS.CONTRACT_STATE_INREPAYMENT;
                         break;
                     case R.id.mRbSettled:
-                        mFilterContractStateCode = Commons.CONTRACT_STATE.CONTRACT_STATE_SETTLED;
+                        mFilterContractStateCode = Commons.CONTRACT_STATUS.CONTRACT_STATE_SETTLED;
                         break;
                     case R.id.mRbRenege:
-                        mFilterContractStateCode = Commons.CONTRACT_STATE.CONTRACT_STATE_RENEGE;
+                        mFilterContractStateCode = Commons.CONTRACT_STATUS.CONTRACT_STATE_RENEGE;
                         break;
                 }
                 if (mOnInteractListener != null) {
@@ -72,7 +74,7 @@ public class SlidingMenu extends LinearLayout {
     }
 
     public interface OnInteractListener {
-        void onChecked(int filterContractStateCode);
+        void onChecked(Integer filterContractStateCode);
     }
 
     public void setOnInteractListener(OnInteractListener mOnInteractListener) {

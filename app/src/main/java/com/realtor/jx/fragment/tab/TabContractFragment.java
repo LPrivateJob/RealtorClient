@@ -27,7 +27,7 @@ import java.util.List;
  */
 
 public class TabContractFragment extends BaseFragment {
-    private int mOrderStatus = 0;
+    private Integer mOrderStatus;
     private SearchBar mSearchBar;
     private ImageView mIvFilter;
     private DrawerLayout mDrawerLayout;
@@ -69,7 +69,6 @@ public class TabContractFragment extends BaseFragment {
             public void onPageSelected(int position) {
                 //只有全部时可对合同列表进行按状态筛选
                 mIvFilter.setVisibility(position == 0 ? View.VISIBLE : View.GONE);
-                mOrderStatus = position;
             }
 
             @Override
@@ -93,7 +92,7 @@ public class TabContractFragment extends BaseFragment {
         });
         mSlidingMenu.setOnInteractListener(new SlidingMenu.OnInteractListener() {
             @Override
-            public void onChecked(int filterContractStateCode) {
+            public void onChecked(Integer filterContractStateCode) {
                 mDrawerLayout.closeDrawers();
                 mOrderStatus = filterContractStateCode;
             }
@@ -103,5 +102,9 @@ public class TabContractFragment extends BaseFragment {
     @Override
     protected int getLayoutResource() {
         return R.layout.fragment_tab_contract;
+    }
+
+    public Integer getOrderStatus() {
+        return mOrderStatus;
     }
 }

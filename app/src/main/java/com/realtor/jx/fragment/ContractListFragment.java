@@ -27,7 +27,6 @@ import java.util.List;
  * created at: 2018/1/7 15:12
  */
 public class ContractListFragment extends BaseFragment {
-    private String content;
     private int mOrderType = 0;
     private int mPage;
     private SmartRefreshLayout mRefreshLayout;
@@ -46,13 +45,12 @@ public class ContractListFragment extends BaseFragment {
     @Override
     protected void getIncomingValue() {
         super.getIncomingValue();
-        content = getArguments().getString(Commons.BUNDLE_KEYS.EXTRA_CONTENT);
-        switch (content) {
+        switch (getArguments().getString(Commons.BUNDLE_KEYS.EXTRA_CONTENT)) {
             case "全部":
-                mOrderType = 0;
+                mOrderType = Commons.CONTRACT_TYPE.ALL;
                 break;
             case "逾期":
-                mOrderType = 1;
+                mOrderType = Commons.CONTRACT_TYPE.OVERDUE;
                 break;
         }
     }
