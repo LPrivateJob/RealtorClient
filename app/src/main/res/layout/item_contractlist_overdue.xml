@@ -78,25 +78,23 @@
                 style="@style/ContractListItemContent"
                 android:layout_alignBaseline="@id/mTvTitlePhone"
                 android:layout_alignLeft="@id/mTvContentRenter"
-                android:layout_toRightOf="@id/mTvTitlePhone"
                 android:text="18255628953" />
 
             <TextView
-                android:id="@+id/mTvTitleReviewingTime"
+                android:id="@+id/mTvTitleRepaymentDate"
                 style="@style/ContractListItemTitle"
                 android:layout_alignLeft="@id/mTvTitlePhone"
                 android:layout_below="@id/mTvTitlePhone"
                 android:layout_marginTop="@dimen/y30"
                 android:drawableLeft="@drawable/icon_time"
                 android:drawablePadding="@dimen/x19"
-                android:text="审核时间" />
+                android:text="应还款日" />
 
             <TextView
-                android:id="@+id/mTvContentReviewingTime"
+                android:id="@+id/mTvContentRepaymentDate"
                 style="@style/ContractListItemContent"
-                android:layout_alignBaseline="@id/mTvTitleReviewingTime"
+                android:layout_alignBaseline="@id/mTvTitleRepaymentDate"
                 android:layout_alignLeft="@id/mTvContentRenter"
-                android:layout_toRightOf="@id/mTvTitleReviewingTime"
                 android:text="2016-01-12 " />
         </RelativeLayout>
     </RelativeLayout>

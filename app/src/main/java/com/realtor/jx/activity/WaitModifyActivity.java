@@ -10,7 +10,7 @@ import com.realtor.jx.base.BaseActivity;
  * autour: lewish
  * created at: 2018/1/6 16:32
 */
-public class RejectedActivity extends BaseActivity {
+public class WaitModifyActivity extends BaseActivity {
     @Override
     protected void initView(Bundle savedInstanceState) {
 
@@ -18,6 +18,7 @@ public class RejectedActivity extends BaseActivity {
 
     @Override
     protected int getLayoutResource() {
-        return R.layout.activity_rejected;
+        return R.layout.activity_waitmodify
+                ;
     }
 }

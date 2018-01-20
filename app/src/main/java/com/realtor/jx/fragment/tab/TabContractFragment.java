@@ -107,4 +107,5 @@ public class TabContractFragment extends BaseFragment {
     public Integer getOrderStatus() {
         return mOrderStatus;
     }
+
 }

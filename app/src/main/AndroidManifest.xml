@@ -52,7 +52,7 @@
 
         </activity>
         <activity
-            android:name=".activity.RejectedActivity"
+            android:name=".activity.WaitModifyActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.CommitContractActivity"
