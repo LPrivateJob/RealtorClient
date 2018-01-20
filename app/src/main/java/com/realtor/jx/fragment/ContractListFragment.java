@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.realtor.jx.R;
 import com.realtor.jx.adapter.ContractListAdapter;
@@ -39,7 +40,7 @@ public class ContractListFragment extends BaseFragment {
     private SmartRefreshLayout mRefreshLayout;
     private RecyclerView mRecView;
     private ContractListAdapter mContractListAdapter;
-    private List<ContractListItemData> mDatas = new ArrayList<>();
+    private List<OrderListDto.OrdersBean> mDatas = new ArrayList<>();
 
     public static ContractListFragment newInstance(String mStrContractType) {
         ContractListFragment instance = new ContractListFragment();
@@ -136,39 +137,37 @@ public class ContractListFragment extends BaseFragment {
         return R.layout.fragment_contractlist;
     }
 
+    public void refreshData() {
+        mPage = 1;
+        mRecView.scrollToPosition(0);
+        invokeInterface();
+    }
+
     private void loadMoreData() {
         mPage++;
         mRecView.scrollToPosition(mContractListAdapter.getItemCount() - 1);
         invokeInterface();
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                mContractListAdapter.loadMoreData(FakeData.getInstance().getContractList());
-//                mRefreshLayout.finishLoadmore();
-//            }
-//        }, 2000);
-
     }
 
     private void invokeInterface() {
         // TODO: 2018/1/7  调接口
-        AppDAO.getInstance().queryOrderList(null, getOrderStatus(), ""+mOrderType, ""+mPage, ""+10, new JsonUiCallback<OrderListDto>(mActivity) {
+        AppDAO.getInstance().queryOrderList("", getOrderStatus(), ""+mOrderType, ""+mPage, ""+10, new JsonUiCallback<OrderListDto>(mActivity) {
             @Override
             public void onSuccess(OrderListDto result) {
-//                if (mPage == 1) {
-//                    if(result.getOrders()==null||result.getOrders().size()==0) {
-//
-//                    }
-//                    .refreshData(userLoanListDto.getData());
-//                    mSmartRefreshLayout.finishRefresh();
-//                } else if (result.getOrders()==null||result.getOrders().size()==0) {
-//                    snackyTip("暂无更多数据");
-//                    mPage = userLoanListDto.getTotalPages();
-//                    mSmartRefreshLayout.finishLoadmore();
-//                } else {
-//                    repaymentListAdapter.loadMoreData(userLoanListDto.getData());
-//                    mSmartRefreshLayout.finishLoadmore();
-//                }
+                if (mPage == 1) {
+                    if(result.getOrders()==null||result.getOrders().size()==0) {
+                        Toast.makeText(mActivity, "暂无数据", Toast.LENGTH_SHORT).show();
+                    }
+                    mContractListAdapter.refreshData(result.getOrders());
+                    mRefreshLayout.finishRefresh();
+                } else if (mPage == result.getTotalNum() + 1) {
+                    Toast.makeText(mActivity, "暂无更多数据", Toast.LENGTH_SHORT).show();
+                    mPage = result.getTotalNum();
+                    mRefreshLayout.finishLoadmore();
+                } else {
+                    mContractListAdapter.loadMoreData(result.getOrders());
+                    mRefreshLayout.finishLoadmore();
+                }
             }
 
             @Override
@@ -183,25 +182,12 @@ public class ContractListFragment extends BaseFragment {
         });
     }
 
-    public void refreshData() {
-        mPage = 1;
-        mRecView.scrollToPosition(0);
-        invokeInterface();
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                mContractListAdapter.refreshData(FakeData.getInstance().getContractList());
-//                mRefreshLayout.finishRefresh();
-//            }
-//        }, 2000);
-    }
-
     public String getOrderStatus(){
         Integer orderStatus = ((TabContractFragment) getParentFragment()).getOrderStatus();
         if(orderStatus!=null) {
             return orderStatus.toString();
         }else {
-            return null;
+            return "";
         }
 
     }

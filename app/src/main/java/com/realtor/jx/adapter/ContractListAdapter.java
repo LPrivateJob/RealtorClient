@@ -1,6 +1,7 @@
 package com.realtor.jx.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Icon;
 import android.support.v7.widget.RecyclerView;
 
 import com.realtor.jx.R;
@@ -8,6 +9,7 @@ import com.realtor.jx.base.baseadapter.ViewHolder;
 import com.realtor.jx.base.baseadapter.recylerViewAdapter.RecyclerViewMultiItemAdapter;
 import com.realtor.jx.base.baseadapter.recylerViewAdapter.RecyclerViewMultiItemTypeSupport;
 import com.realtor.jx.dto.OrderListDto;
+import com.realtor.jx.manager.IconManager;
 import com.realtor.jx.utils.NullUtil;
 
 import java.util.List;
@@ -45,16 +47,19 @@ public class ContractListAdapter extends RecyclerViewMultiItemAdapter<OrderListD
     public void convert(ViewHolder holder, OrderListDto.OrdersBean ordersBean) {
         switch (holder.getLayoutId()) {
             case R.layout.item_contractlist_normal :
+                holder.setImageResource(R.id.mIvIcon, IconManager.getInstance().getIcon(ordersBean.getStatus()));
+                holder.setText(R.id.mTvStatus, IconManager.getInstance().getName(ordersBean.getStatus()));
                 holder.setText(R.id.mTvContentRenter, NullUtil.getString(ordersBean.getTenancyName()));
                 holder.setText(R.id.mTvContentPhone,NullUtil.getString(ordersBean.getTenancyMobile()));
-                //审核时间
-//                holder.setText(R.id.mTvContentReviewingTime,)
+                holder.setText(R.id.mTvContentReviewingTime,NullUtil.getString(ordersBean.getCheckDate()));
                 break;
             case R.layout.item_contractlist_overdue:
+                holder.setImageResource(R.id.mIvIcon, IconManager.getInstance().getIcon(ordersBean.getStatus()));
+                holder.setText(R.id.mTvStatus, IconManager.getInstance().getName(ordersBean.getStatus()));
                 holder.setText(R.id.mTvContentRenter, NullUtil.getString(ordersBean.getTenancyName()));
                 holder.setText(R.id.mTvContentPhone,NullUtil.getString(ordersBean.getTenancyMobile()));
-                //应还款日
-//                holder.setText(R.id.mTvContentRepaymentDate,NullUtil.getString());
+                holder.setText(R.id.mTvContentRepaymentDate,NullUtil.getString(ordersBean.getRepayDate()));
+                holder.setText(R.id.mTvOverDueTime,NullUtil.getString(ordersBean.getLateDays()));
                 break;
         }
     }

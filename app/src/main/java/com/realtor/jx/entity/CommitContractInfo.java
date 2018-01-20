@@ -24,4 +24,5 @@ public class CommitContractInfo {
     private String payTerm;//还款期数
     private String changeNo;//台账号
     private String info;//备注信息
+    private String location;//硬件标识
 }
