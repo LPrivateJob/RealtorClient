@@ -95,26 +95,31 @@ public class ContractListFragment extends BaseFragment {
                 int status = ordersBean.getStatus();
                 switch (status) {
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_APPLYING :
+                    case Commons.CONTRACT_STATUS.CONTRACT_STATE_WAITREVIEW :
+                        //申请中,待审核->修改订单流程
+                        Toast.makeText(mActivity, "进修改订单流程", Toast.LENGTH_SHORT).show();
                         break;
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_WAITMODIFY :
                         //待修改->待修改页面
-                        break;
-                    case Commons.CONTRACT_STATUS.CONTRACT_STATE_WAITREVIEW :
-                        //待审核->修改订单流程
+                        Toast.makeText(mActivity, "进待修改页面", Toast.LENGTH_SHORT).show();
                         break;
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_WAITSCANQRCODE :
                         //待扫码->扫码页
+                        Toast.makeText(mActivity, "进待扫码页", Toast.LENGTH_SHORT).show();
                         break;
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_INREVIEW :
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_INREPAYMENT:
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_SETTLED:
                         //审核中、还款中、已结清->详情页
+                        Toast.makeText(mActivity, "进详情页", Toast.LENGTH_SHORT).show();
                         break;
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_RENEGE:
                         //已违约->提示暂不可点击
+                        Toast.makeText(mActivity, "暂不支持查看已违约详情", Toast.LENGTH_SHORT).show();
                         break;
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_REJECT:
                         //审核拒绝->提示被拒绝原因
+                        Toast.makeText(mActivity, ordersBean.getRefuseRemark(), Toast.LENGTH_SHORT).show();
                         break;
                 }
             }

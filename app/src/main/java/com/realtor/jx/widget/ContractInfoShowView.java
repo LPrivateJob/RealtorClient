@@ -7,6 +7,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.realtor.jx.R;
+import com.realtor.jx.dto.ContractDetailDto;
+import com.realtor.jx.utils.NullUtil;
 
 /**
  * description:
@@ -27,8 +29,10 @@ public class ContractInfoShowView extends RelativeLayout {
     private TextView mTvContentMonthlyRent;
     private TextView mTvContentLeaseFrom;
     private TextView mTvContentLeaseTo;
+    private TextView mTvContentTenancy;
     private TextView mTvContentServiceFeeBear;
     private TextView mTvContentDownPaymentsMethod;
+    private TextView mTvContentPlatformPaymentMethod;
     private TextView mTvContentAccountNum;
     private TextView mTvContentRemarks;
 
@@ -64,15 +68,30 @@ public class ContractInfoShowView extends RelativeLayout {
         mTvContentMonthlyRent = findViewById(R.id.mTvContentMonthlyRent);
         mTvContentLeaseFrom = findViewById(R.id.mTvContentLeaseFrom);
         mTvContentLeaseTo = findViewById(R.id.mTvContentLeaseTo);
+        mTvContentTenancy = findViewById(R.id.mTvContentTenancy);
         mTvContentServiceFeeBear = findViewById(R.id.mTvContentServiceFeeBear);
         mTvContentDownPaymentsMethod = findViewById(R.id.mTvContentDownPaymentsMethod);
+        mTvContentPlatformPaymentMethod = findViewById(R.id.mTvContentPlatformPaymentMethod);
         mTvContentAccountNum = findViewById(R.id.mTvContentAccountNum);
         mTvContentRemarks = findViewById(R.id.mTvContentRemarks);
 
         mRlContractInfo.setVisibility(isHideContractInfo?GONE:VISIBLE);
     }
 
-    public void fillData() {
-
+    // TODO: 待修改  
+    public void fillData(ContractDetailDto contractDetailDto) {
+        mTvContentContractNum.setText(contractDetailDto.getOrder().getId());
+        mTvContentName.setText(contractDetailDto.getOrder().getTenancyName());
+        mTvContentPhoneNum.setText(contractDetailDto.getOrder().getTenancyMobile());
+        mTvContentIDCardNum.setText(contractDetailDto.getOrder().getTenancyIdcard());
+        mTvContentMonthlyRent.setText(""+contractDetailDto.getOrder().getCash());
+        mTvContentLeaseFrom.setText(""+contractDetailDto.getOrder().getStartTime());//起租日
+        mTvContentLeaseTo.setText(""+contractDetailDto.getOrder().getEndTime());//到租日
+//        mTvContentTenancy.setText();//租期
+//        mTvContentServiceFeeBear.setText(contractDetailDto.getOrder());//服务费承担方
+//        mTvContentDownPaymentsMethod.setText();//租客首付方式
+//        mTvContentPlatformPaymentMethod.setText();//平台付款方式
+        mTvContentAccountNum.setText(contractDetailDto.getOrder().getChangeNo());//台帐号
+        mTvContentRemarks.setText(contractDetailDto.getOrder().getInfo());//备注
     }
 }

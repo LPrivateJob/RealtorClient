@@ -1,5 +1,6 @@
 package com.realtor.jx.dao;
 
+import com.realtor.jx.dto.ContractDetailDto;
 import com.realtor.jx.dto.OrderListDto;
 import com.realtor.jx.dto.UserInfoDto;
 import com.realtor.jx.netcore.BaseDAO;
@@ -51,7 +52,7 @@ public class AppDAO extends BaseDAO {
     }
 
     //查询订单详情
-    public void queryOrderDetail(String orderId, JsonUiCallback<UserInfoDto> callback) {
+    public void queryOrderDetail(String orderId, JsonUiCallback<ContractDetailDto> callback) {
         Map<String, Object> mapParams = getMapParams(new String[]{ORDER_ID}, orderId);
         sendPostFormData(Contract.QUERY_ORDER_DETAIL, mapParams, callback);
     }
