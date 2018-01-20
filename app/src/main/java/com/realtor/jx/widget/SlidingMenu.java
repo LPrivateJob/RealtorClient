@@ -38,6 +38,7 @@ public class SlidingMenu extends LinearLayout {
                 switch (checkedId) {
                     case R.id.mRbAll:
                         mFilterContractStateCode = null;
+                        break;
                     case R.id.mRbApplying:
                         mFilterContractStateCode = Commons.CONTRACT_STATUS.CONTRACT_STATE_APPLYING;
                         break;

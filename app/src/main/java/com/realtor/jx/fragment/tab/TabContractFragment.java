@@ -69,6 +69,7 @@ public class TabContractFragment extends BaseFragment {
             public void onPageSelected(int position) {
                 //只有全部时可对合同列表进行按状态筛选
                 mIvFilter.setVisibility(position == 0 ? View.VISIBLE : View.GONE);
+                ((ContractListFragment)fragments.get(0)).refreshData();
             }
 
             @Override
@@ -95,6 +96,7 @@ public class TabContractFragment extends BaseFragment {
             public void onChecked(Integer filterContractStateCode) {
                 mDrawerLayout.closeDrawers();
                 mOrderStatus = filterContractStateCode;
+                ((ContractListFragment)fragments.get(0)).refreshData();
             }
         });
     }
