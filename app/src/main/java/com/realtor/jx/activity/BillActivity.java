@@ -29,7 +29,7 @@ public class BillActivity extends BaseActivity {
     private int mRenterTotalAmount;
     private List<ContractDetailDto.InstalmentOrdersBean> mDataList;
 
-    public void open(BaseActivity activity, int totalAmount, List<ContractDetailDto.InstalmentOrdersBean> dataList) {
+    public static void open(BaseActivity activity, int totalAmount, List<ContractDetailDto.InstalmentOrdersBean> dataList) {
         Intent intent = new Intent(activity, BillActivity.class);
         intent.putExtra(Commons.BUNDLE_KEYS.EXTAR_INT, totalAmount);
         intent.putExtra(Commons.BUNDLE_KEYS.EXTRA_LIST, (Serializable) dataList);
@@ -75,7 +75,7 @@ public class BillActivity extends BaseActivity {
 
         @Override
         public void convert(int position, ViewHolder holder, ContractDetailDto.InstalmentOrdersBean instalmentOrdersBean) {
-            holder.setText(R.id.mTvRepayTerm, String.format("第s%期", instalmentOrdersBean.getTermNo()));
+            holder.setText(R.id.mTvRepayTerm, String.format("第%s期", instalmentOrdersBean.getTermNo()));
             holder.setText(R.id.mTvRepayDate, instalmentOrdersBean.getRepayDate());
             holder.setText(R.id.mTvRepayAmount, NullUtil.convertFen2YuanStr(instalmentOrdersBean.getTotalAmt()));
             holder.setText(R.id.mTvRepayStatus, instalmentOrdersBean.getStatus());

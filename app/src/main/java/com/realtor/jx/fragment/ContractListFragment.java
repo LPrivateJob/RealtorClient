@@ -1,5 +1,6 @@
 package com.realtor.jx.fragment;
 
+import android.graphics.drawable.Icon;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.realtor.jx.R;
+import com.realtor.jx.activity.ContractDetailActivity;
 import com.realtor.jx.adapter.ContractListAdapter;
 import com.realtor.jx.base.BaseFragment;
 import com.realtor.jx.base.baseadapter.recylerViewAdapter.DividerItemDecoration;
@@ -20,6 +22,7 @@ import com.realtor.jx.entity.Commons;
 import com.realtor.jx.entity.ContractListItemData;
 import com.realtor.jx.entity.FakeData;
 import com.realtor.jx.fragment.tab.TabContractFragment;
+import com.realtor.jx.manager.IconManager;
 import com.realtor.jx.netcore.JsonUiCallback;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -94,24 +97,24 @@ public class ContractListFragment extends BaseFragment {
             public void onItemClick(ViewGroup parent, View view, OrderListDto.OrdersBean ordersBean, int position) {
                 int status = ordersBean.getStatus();
                 switch (status) {
-                    case Commons.CONTRACT_STATUS.CONTRACT_STATE_APPLYING :
-                    case Commons.CONTRACT_STATUS.CONTRACT_STATE_WAITREVIEW :
+                    case Commons.CONTRACT_STATUS.CONTRACT_STATE_APPLYING:
+                    case Commons.CONTRACT_STATUS.CONTRACT_STATE_WAITREVIEW:
                         //申请中,待审核->修改订单流程
                         Toast.makeText(mActivity, "进修改订单流程", Toast.LENGTH_SHORT).show();
                         break;
-                    case Commons.CONTRACT_STATUS.CONTRACT_STATE_WAITMODIFY :
+                    case Commons.CONTRACT_STATUS.CONTRACT_STATE_WAITMODIFY:
                         //待修改->待修改页面
                         Toast.makeText(mActivity, "进待修改页面", Toast.LENGTH_SHORT).show();
                         break;
-                    case Commons.CONTRACT_STATUS.CONTRACT_STATE_WAITSCANQRCODE :
+                    case Commons.CONTRACT_STATUS.CONTRACT_STATE_WAITSCANQRCODE:
                         //待扫码->扫码页
                         Toast.makeText(mActivity, "进待扫码页", Toast.LENGTH_SHORT).show();
                         break;
-                    case Commons.CONTRACT_STATUS.CONTRACT_STATE_INREVIEW :
+                    case Commons.CONTRACT_STATUS.CONTRACT_STATE_INREVIEW:
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_INREPAYMENT:
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_SETTLED:
                         //审核中、还款中、已结清->详情页
-                        Toast.makeText(mActivity, "进详情页", Toast.LENGTH_SHORT).show();
+                        ContractDetailActivity.open(mActivity, ordersBean.getId(), IconManager.getInstance().getName(ordersBean.getStatus()));
                         break;
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_RENEGE:
                         //已违约->提示暂不可点击
@@ -156,11 +159,11 @@ public class ContractListFragment extends BaseFragment {
 
     private void invokeInterface() {
         // TODO: 2018/1/7  调接口
-        AppDAO.getInstance().queryOrderList("", getOrderStatus(), ""+mOrderType, ""+mPage, ""+10, new JsonUiCallback<OrderListDto>(mActivity) {
+        AppDAO.getInstance().queryOrderList("", getOrderStatus(), "" + mOrderType, "" + mPage, "" + 10, new JsonUiCallback<OrderListDto>(mActivity) {
             @Override
             public void onSuccess(OrderListDto result) {
                 if (mPage == 1) {
-                    if(result.getOrders()==null||result.getOrders().size()==0) {
+                    if (result.getOrders() == null || result.getOrders().size() == 0) {
                         Toast.makeText(mActivity, "暂无数据", Toast.LENGTH_SHORT).show();
                     }
                     mContractListAdapter.refreshData(result.getOrders());
@@ -187,11 +190,11 @@ public class ContractListFragment extends BaseFragment {
         });
     }
 
-    public String getOrderStatus(){
+    public String getOrderStatus() {
         Integer orderStatus = ((TabContractFragment) getParentFragment()).getOrderStatus();
-        if(orderStatus!=null) {
+        if (orderStatus != null) {
             return orderStatus.toString();
-        }else {
+        } else {
             return "";
         }
 
