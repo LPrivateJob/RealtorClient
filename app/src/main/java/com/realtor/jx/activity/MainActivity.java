@@ -42,13 +42,11 @@ public class MainActivity extends BaseActivity {
         mBottomTabLayout.setOnInteractListener(new BottomTabLayout.OnInteractListener() {
             @Override
             public void onContractTabSelect() {
-                Toast.makeText(MainActivity.this, "onContractTabSelect", Toast.LENGTH_SHORT).show();
                 mViewPager.setCurrentItem(0);
             }
 
             @Override
             public void onMineTabSelect() {
-                Toast.makeText(MainActivity.this, "onMineTabSelect", Toast.LENGTH_SHORT).show();
                 mViewPager.setCurrentItem(1);
             }
 
