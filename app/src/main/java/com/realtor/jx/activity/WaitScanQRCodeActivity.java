@@ -1,11 +1,18 @@
 package com.realtor.jx.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.View;
 import android.widget.TextView;
 
 import com.realtor.jx.R;
 import com.realtor.jx.base.BaseActivity;
+import com.realtor.jx.dao.AppDAO;
+import com.realtor.jx.dto.ContractDetailDto;
+import com.realtor.jx.entity.Commons;
+import com.realtor.jx.netcore.JsonUiCallback;
+import com.realtor.jx.widget.ContractInfoShowView;
 
 /**
  * description: 待扫码页
@@ -14,10 +21,27 @@ import com.realtor.jx.base.BaseActivity;
  */
 public class WaitScanQRCodeActivity extends BaseActivity {
     private TextView mTvTips;
+    private String mOrderId;
+    private ContractInfoShowView mContractInfoShowView;
+
+    public static void open(BaseActivity activity, String orderId) {
+        Intent intent = new Intent(activity, WaitScanQRCodeActivity.class);
+        intent.putExtra(Commons.BUNDLE_KEYS.EXTRA_ID, orderId);
+        activity.startActivity(intent);
+    }
+
+    @Override
+    protected void onPreInit() {
+        super.onPreInit();
+        Bundle bundle = getIntent().getExtras();
+        mOrderId = bundle.getString(Commons.BUNDLE_KEYS.EXTRA_ID);
+    }
+
     @Override
     protected void initView(Bundle savedInstanceState) {
         mTvTips = findViewById(R.id.mTvTips);
         mTvTips.setText(Html.fromHtml("<font color='#CC0000'style='font-weight:bold;'>请租户用本人微信在72小时内</font>用微信扫二维码完善确认"));
+        mContractInfoShowView = findViewById(R.id.mContractInfoShowView);
     }
 
     @Override
@@ -25,6 +49,27 @@ public class WaitScanQRCodeActivity extends BaseActivity {
         findViewById(R.id.mBtnReturnHome).setOnClickListener(v->{
             openActivity(MainActivity.class);
             finish();
+        });
+    }
+
+    @Override
+    protected void loadData() {
+        super.loadData();
+        AppDAO.getInstance().queryOrderDetail(mOrderId, new JsonUiCallback<ContractDetailDto>(this) {
+            @Override
+            public void onSuccess(ContractDetailDto result) {
+                mContractInfoShowView.fillData(result);
+            }
+
+            @Override
+            public void onBizFailed(String resultCode, String resultInfo) {
+                super.onBizFailed(resultCode, resultInfo);
+            }
+
+            @Override
+            public void onConnectionFailed() {
+                super.onConnectionFailed();
+            }
         });
     }
 

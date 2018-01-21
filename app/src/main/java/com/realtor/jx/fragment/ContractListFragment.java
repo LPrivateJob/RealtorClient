@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.realtor.jx.R;
 import com.realtor.jx.activity.ContractDetailActivity;
+import com.realtor.jx.activity.WaitScanQRCodeActivity;
 import com.realtor.jx.adapter.ContractListAdapter;
 import com.realtor.jx.base.BaseFragment;
 import com.realtor.jx.base.baseadapter.recylerViewAdapter.DividerItemDecoration;
@@ -108,7 +109,7 @@ public class ContractListFragment extends BaseFragment {
                         break;
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_WAITSCANQRCODE:
                         //待扫码->扫码页
-                        Toast.makeText(mActivity, "进待扫码页", Toast.LENGTH_SHORT).show();
+                        WaitScanQRCodeActivity.open(mActivity,ordersBean.getId());
                         break;
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_INREVIEW:
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_INREPAYMENT:
