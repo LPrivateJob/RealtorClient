@@ -17,6 +17,7 @@
         android:id="@+id/mTvTitlePlatformRepayAmount"
         style="@style/ContractInfoBlockTitle"
         android:layout_below="@id/mHeader"
+        android:visibility="gone"
         android:text="平台付款共计" />
 
     <LinearLayout
@@ -25,7 +26,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/mTvTitlePlatformRepayAmount"
         android:layout_marginTop="@dimen/y35"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
 
         <TextView
             style="@style/ListViewTitle"
@@ -47,13 +49,13 @@
         android:id="@+id/mListViewPlatform"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/mLPlatformTitle" />
+        android:layout_below="@id/mLPlatformTitle"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/mTvTitleRenterRepayAmount"
         style="@style/ContractInfoBlockTitle"
         android:layout_below="@id/mListViewPlatform"
-        android:layout_marginTop="@dimen/y60"
         android:text="租户应还共计" />
 
     <LinearLayout

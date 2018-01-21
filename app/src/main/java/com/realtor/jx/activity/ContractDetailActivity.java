@@ -18,22 +18,23 @@ import com.realtor.jx.widget.ContractInfoShowView;
  * description: 合同详情页
  * autour: lewish
  * created at: 2018/1/6 14:38
-*/
+ */
 public class ContractDetailActivity extends BaseActivity {
     private ContractInfoShowView mContractInfoShowView;
     private TextView mBtn;
     private String mOrderId;
-    public void open(BaseActivity activity,String orderId){
-        Intent intent = new Intent(activity,ContractDetailActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putString(Commons.BUNDLE_KEYS.EXTRA_ID,orderId);
+
+    public void open(BaseActivity activity, String orderId) {
+        Intent intent = new Intent(activity, ContractDetailActivity.class);
+        intent.putExtra(Commons.BUNDLE_KEYS.EXTRA_ID, orderId);
         activity.startActivity(intent);
     }
 
     @Override
     protected void onPreInit() {
         super.onPreInit();
-        mOrderId = getIntent().getStringExtra(Commons.BUNDLE_KEYS.EXTRA_ID);
+        Bundle bundle = getIntent().getExtras();
+        mOrderId = bundle.getString(Commons.BUNDLE_KEYS.EXTRA_ID);
     }
 
     @Override

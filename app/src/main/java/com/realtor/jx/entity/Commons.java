@@ -63,6 +63,7 @@ public class Commons {
     }
 
     public interface BUNDLE_KEYS {
+        public static final String EXTAR_INT = "key_int";
         public static final String EXTRA_TITLE = "key_title";
         public static final String EXTRA_ENUM = "key_enum";
         public static final String EXTRA_ID = "key_id";
