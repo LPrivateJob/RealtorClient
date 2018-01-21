@@ -9,7 +9,8 @@
         android:id="@+id/mHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:isShowDelete="true" />
+        app:isShowDelete="true"
+        app:title="待修改"/>
 
     <ScrollView
         android:layout_width="match_parent"

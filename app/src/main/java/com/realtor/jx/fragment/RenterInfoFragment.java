@@ -68,4 +68,5 @@ public class RenterInfoFragment extends BaseFragment implements TagFlowLayout.On
         }
         return true;
     }
+
 }

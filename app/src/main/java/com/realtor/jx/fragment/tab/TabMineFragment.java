@@ -9,7 +9,9 @@ import android.widget.Toast;
 import com.realtor.jx.R;
 import com.realtor.jx.activity.ChangePasswordActivity;
 import com.realtor.jx.base.BaseFragment;
+import com.realtor.jx.dao.AppDAO;
 import com.realtor.jx.entity.LocalUser;
+import com.realtor.jx.netcore.JsonUiCallback;
 
 /**
  * description: 我的
@@ -38,7 +40,15 @@ public class TabMineFragment extends BaseFragment {
     protected void initListener() {
         super.initListener();
         mRlChangePassword.setOnClickListener(v -> openActivity(ChangePasswordActivity.class));
-        mBtnLogout.setOnClickListener(v -> Toast.makeText(mActivity, "登出", Toast.LENGTH_SHORT).show());
+        mBtnLogout.setOnClickListener(v->{
+            AppDAO.getInstance().loginOut(LocalUser.getInstance().getUserId(), new JsonUiCallback<String>(mActivity) {
+                @Override
+                public void onSuccess(String result) {
+                    Toast.makeText(mActivity, result, Toast.LENGTH_SHORT).show();
+                    mActivity.finish();
+                }
+            });
+        });
     }
 
     @Override

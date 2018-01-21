@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.realtor.jx.R;
 import com.realtor.jx.base.BaseActivity;
 import com.realtor.jx.base.BaseFragment;
+import com.realtor.jx.entity.CommitContractInfo;
 import com.realtor.jx.entity.Commons;
 import com.realtor.jx.fragment.InstallmentInfoFragment;
 import com.realtor.jx.fragment.RenterInfoFragment;
@@ -29,7 +30,7 @@ public class CommitContractActivity extends BaseActivity {
     private Button mBtnNext;
     private FragmentManager mFragmentManager = getSupportFragmentManager();
     private CommitContractStepIndicator.STEP mStep = CommitContractStepIndicator.STEP.LOCATION;
-
+    private CommitContractInfo mCommitContractInfo = new CommitContractInfo();
     public static void open(Activity act, CommitContractStepIndicator.STEP step) {
         Intent intent = new Intent(act, CommitContractActivity.class);
         intent.putExtra(Commons.BUNDLE_KEYS.EXTRA_ENUM, step);
@@ -143,5 +144,9 @@ public class CommitContractActivity extends BaseActivity {
                     break;
             }
         }
+    }
+
+    public CommitContractInfo getCommitContractInfo(){
+        return mCommitContractInfo;
     }
 }

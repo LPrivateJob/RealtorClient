@@ -7,22 +7,22 @@ package com.realtor.jx.entity;
 */
 
 public class CommitContractInfo {
-    private String tenancyName;//姓名
-    private String tenancyMobile;//手机号码
-    private String tenancyIdcard;//身份证号
-    private String tenancyType;//租住方式
-    private String cityNo;//所在城市
-    private String houseName;//小区名称
-    private String houseCode;//门牌号
-    private String roomNum;//房间号
-    private String cash;//月租金
-    private String startTime;//起租日
-    private String endTime;//到租日
-    private String feeType;//服务费承担方
-    private String firstPaytype;//租客首付方式
-    private String platformPayType;//平台付款方式
-    private String payTerm;//还款期数
-    private String changeNo;//台账号
-    private String info;//备注信息
-    private String location;//硬件标识
+    public String tenancyName;//姓名
+    public String tenancyMobile;//手机号码
+    public String tenancyIdcard;//身份证号
+    public String tenancyType;//租住方式
+    public String cityNo;//所在城市
+    public String houseName;//小区名称
+    public String houseCode;//门牌号
+    public String roomNum;//房间号
+    public String cash;//月租金
+    public String startTime;//起租日
+    public String endTime;//到租日
+    public String feeType;//服务费承担方
+    public String firstPaytype;//租客首付方式
+    public String platformPayType;//平台付款方式
+    public String payTerm;//还款期数
+    public String changeNo;//台账号
+    public String info;//备注信息
+    public String location;//硬件标识
 }

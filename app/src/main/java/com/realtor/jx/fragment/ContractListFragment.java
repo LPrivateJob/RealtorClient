@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.realtor.jx.R;
 import com.realtor.jx.activity.ContractDetailActivity;
+import com.realtor.jx.activity.WaitModifyActivity;
 import com.realtor.jx.activity.WaitScanQRCodeActivity;
 import com.realtor.jx.adapter.ContractListAdapter;
 import com.realtor.jx.base.BaseFragment;
@@ -97,19 +98,21 @@ public class ContractListFragment extends BaseFragment {
             @Override
             public void onItemClick(ViewGroup parent, View view, OrderListDto.OrdersBean ordersBean, int position) {
                 int status = ordersBean.getStatus();
+                String orderId = ordersBean.getId();
                 switch (status) {
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_APPLYING:
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_WAITREVIEW:
                         //申请中,待审核->修改订单流程
+                        // TODO: 待编写
                         Toast.makeText(mActivity, "进修改订单流程", Toast.LENGTH_SHORT).show();
                         break;
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_WAITMODIFY:
                         //待修改->待修改页面
-                        Toast.makeText(mActivity, "进待修改页面", Toast.LENGTH_SHORT).show();
+                        WaitModifyActivity.open(mActivity,orderId,"待修改");
                         break;
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_WAITSCANQRCODE:
                         //待扫码->扫码页
-                        WaitScanQRCodeActivity.open(mActivity,ordersBean.getId());
+                        WaitScanQRCodeActivity.open(mActivity,orderId);
                         break;
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_INREVIEW:
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_INREPAYMENT:

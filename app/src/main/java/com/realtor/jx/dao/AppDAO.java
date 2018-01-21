@@ -35,7 +35,7 @@ public class AppDAO extends BaseDAO {
     }
 
     //登出
-    public void loginOut(String userId, JsonUiCallback<UserInfoDto> callback) {
+    public void loginOut(String userId, JsonUiCallback<String> callback) {
         Map<String, Object> mapParams = getMapParams(new String[]{USER_ID}, userId);
         sendPostFormData(User.LOGOUT, mapParams, callback);
     }
