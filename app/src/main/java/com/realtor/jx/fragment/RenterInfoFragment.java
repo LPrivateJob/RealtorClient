@@ -8,10 +8,11 @@ import android.widget.Toast;
 import com.realtor.jx.R;
 import com.realtor.jx.adapter.MyTagAdapter;
 import com.realtor.jx.base.BaseFragment;
+import com.realtor.jx.dto.UserInfoDto;
+import com.realtor.jx.entity.LocalUser;
 import com.realtor.jx.widget.flowlayout.FlowLayout;
 import com.realtor.jx.widget.flowlayout.TagFlowLayout;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -21,7 +22,7 @@ import java.util.List;
  */
 
 public class RenterInfoFragment extends BaseFragment implements TagFlowLayout.OnTagClickListener {
-    private List<String> mRenterMethodsList;
+    private List<UserInfoDto.FlowLayoutTypeBean> mRenterMethodsList;
     private EditText mEtContentRenterName;
     private EditText mEtContentPhone;
     private EditText mEtContentIDNum;
@@ -43,7 +44,8 @@ public class RenterInfoFragment extends BaseFragment implements TagFlowLayout.On
 
     @Override
     protected void initListener() {
-        mRenterMethodsList = Arrays.asList("整租", "合租");
+        // TODO: 待修改成rentType  
+        mRenterMethodsList = LocalUser.getInstance().getRenterMethodList();
         mFLRenterMethod.setAdapter(new MyTagAdapter(mRenterMethodsList, mActivity, mFLRenterMethod));
         mFLRenterMethod.setOnTagClickListener(this);
     }
@@ -62,7 +64,7 @@ public class RenterInfoFragment extends BaseFragment implements TagFlowLayout.On
     @Override
     public boolean onTagClick(View view, int position, FlowLayout parent) {
         if (parent == mFLRenterMethod) {
-            Toast.makeText(getActivity(), mRenterMethodsList.get(position), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), mRenterMethodsList.get(position).getLable(), Toast.LENGTH_SHORT).show();
         }
         return true;
     }

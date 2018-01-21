@@ -55,6 +55,12 @@ android {
     }
     flavorDimensions 'environment'
     productFlavors {
+        Local{
+            buildConfigField "String", "V_TAG", "\"" + getName() + "\""
+            buildConfigField "String", "SERVER_ADD", LOCAL_ADDRESS
+            buildConfigField "String", "SYMMETRIC_ENCRYPTION_KEY", LOCAL_KEY
+            dimension "environment"
+        }
         Test {
             buildConfigField "String", "V_TAG", "\"" + getName() + "\""
             buildConfigField "String", "SERVER_ADD", TEST_ADDRESS

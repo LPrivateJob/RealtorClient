@@ -68,7 +68,8 @@ public class CommitContractActivity extends BaseActivity {
      * 向服务器提交签约信息
      */
     private void commitSigningInfo() {
-        startActivityForResult(new Intent(this, InstallmentPreviewActivity.class), INSTALLMENT_PREVIEW_ACTIVITY_REQUEST_CODE);
+        // TODO: 待调
+//        startActivityForResult(new Intent(this, InstallmentPreviewActivity.class), INSTALLMENT_PREVIEW_ACTIVITY_REQUEST_CODE);
     }
 
     private void upLoadPics() {

@@ -11,6 +11,7 @@ public class UserInfoDto implements Serializable{
 
     /**
      * payType : [{"lable":"季付","value":"1"},{"lable":"半年付","value":"2"},{"lable":"年付","value":"3"}]
+     * rentType : [{"lable":"整租","value":"1"},{"lable":"合租","value":"2"}]
      * feeReceive : [{"lable":"用户","value":"1"},{"lable":"公寓","value":"2"}]
      * areas : [{"id":"000086","name":"北京","subAreas":[{"id":"000087","name":"北京","subAreas":[{"id":"000088","name":"朝阳","subAreas":""},{"id":"000089","name":"西城","subAreas":""},{"id":"000090","name":"海淀","subAreas":""}]}]},{"id":"100087","name":"湖北","subAreas":[{"id":"010087","name":"襄阳","subAreas":[{"id":"020087","name":"樊城","subAreas":""},{"id":"020088","name":"襄州","subAreas":""},{"id":"020089","name":"襄城","subAreas":""},{"id":"020090","name":"老河口","subAreas":""},{"id":"020091","name":"枣阳","subAreas":""},{"id":"020092","name":"黄龙","subAreas":""},{"id":"020093","name":"玉山","subAreas":""},{"id":"020094","name":"耿集","subAreas":""},{"id":"020095","name":"卧龙","subAreas":""},{"id":"020096","name":"随州","subAreas":""},{"id":"020097","name":"天门","subAreas":""}]},{"id":"010088","name":"武汉","subAreas":[]},{"id":"010089","name":"十堰","subAreas":[]},{"id":"010090","name":"宜昌","subAreas":[]},{"id":"010091","name":"黄石","subAreas":[]},{"id":"010092","name":"黄冈","subAreas":[]},{"id":"010093","name":"荆门","subAreas":[]},{"id":"010094","name":"孝感","subAreas":[]},{"id":"010095","name":"仙桃","subAreas":[]},{"id":"010096","name":"老河口","subAreas":[]},{"id":"010097","name":"随州","subAreas":[]}]},{"id":"100088","name":"湖南","subAreas":[]},{"id":"100089","name":"河北","subAreas":[]},{"id":"100090","name":"河南","subAreas":[]},{"id":"100091","name":"江苏","subAreas":[]},{"id":"100092","name":"浙江","subAreas":[]},{"id":"100093","name":"福建","subAreas":[]},{"id":"100094","name":"安徽","subAreas":[]},{"id":"100095","name":"黑龙江","subAreas":[]},{"id":"100096","name":"吉林","subAreas":[]},{"id":"100097","name":"四川","subAreas":[]},{"id":"100098","name":"辽宁","subAreas":[]}]
      * firstPayType : [{"lable":"押一付一","value":"1"},{"lable":"押二付一","value":"2"}]
@@ -18,10 +19,11 @@ public class UserInfoDto implements Serializable{
      */
 
     private UserBean user;
-    private List<PayTypeBean> payType;
-    private List<FeeReceiveBean> feeReceive;
+    private List<FlowLayoutTypeBean> payType;
+    private List<FlowLayoutTypeBean> rentType;
+    private List<FlowLayoutTypeBean> feeReceive;
     private List<AreasBean> areas;
-    private List<FirstPayTypeBean> firstPayType;
+    private List<FlowLayoutTypeBean> firstPayType;
 
     public UserBean getUser() {
         return user;
@@ -31,19 +33,27 @@ public class UserInfoDto implements Serializable{
         this.user = user;
     }
 
-    public List<PayTypeBean> getPayType() {
+    public List<FlowLayoutTypeBean> getPayType() {
         return payType;
     }
 
-    public void setPayType(List<PayTypeBean> payType) {
+    public void setPayType(List<FlowLayoutTypeBean> payType) {
         this.payType = payType;
     }
 
-    public List<FeeReceiveBean> getFeeReceive() {
+    public List<FlowLayoutTypeBean> getRentType() {
+        return rentType;
+    }
+
+    public void setRentType(List<FlowLayoutTypeBean> rentType) {
+        this.rentType = rentType;
+    }
+
+    public List<FlowLayoutTypeBean> getFeeReceive() {
         return feeReceive;
     }
 
-    public void setFeeReceive(List<FeeReceiveBean> feeReceive) {
+    public void setFeeReceive(List<FlowLayoutTypeBean> feeReceive) {
         this.feeReceive = feeReceive;
     }
 
@@ -55,15 +65,17 @@ public class UserInfoDto implements Serializable{
         this.areas = areas;
     }
 
-    public List<FirstPayTypeBean> getFirstPayType() {
+    public List<FlowLayoutTypeBean> getFirstPayType() {
         return firstPayType;
     }
 
-    public void setFirstPayType(List<FirstPayTypeBean> firstPayType) {
+    public void setFirstPayType(List<FlowLayoutTypeBean> firstPayType) {
         this.firstPayType = firstPayType;
     }
 
-    public static class UserBean {
+    public static class UserBean implements Serializable{
+
+        private static final long serialVersionUID = -4408983506436646361L;
         /**
          * id : 100000
          * companyId : 1
@@ -279,58 +291,6 @@ public class UserInfoDto implements Serializable{
         }
     }
 
-    public static class PayTypeBean {
-        /**
-         * lable : 季付
-         * value : 1
-         */
-
-        private String lable;
-        private String value;
-
-        public String getLable() {
-            return lable;
-        }
-
-        public void setLable(String lable) {
-            this.lable = lable;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        public void setValue(String value) {
-            this.value = value;
-        }
-    }
-
-    public static class FeeReceiveBean {
-        /**
-         * lable : 用户
-         * value : 1
-         */
-
-        private String lable;
-        private String value;
-
-        public String getLable() {
-            return lable;
-        }
-
-        public void setLable(String lable) {
-            this.lable = lable;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        public void setValue(String value) {
-            this.value = value;
-        }
-    }
-
     public static class AreasBean {
         /**
          * id : 000086
@@ -439,7 +399,9 @@ public class UserInfoDto implements Serializable{
         }
     }
 
-    public static class FirstPayTypeBean {
+    public static class FlowLayoutTypeBean implements Serializable{
+
+        private static final long serialVersionUID = 8067195658687105917L;
         /**
          * lable : 押一付一
          * value : 1

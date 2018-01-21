@@ -9,15 +9,38 @@ import java.util.List;
 
 public class ContractDetailDto implements Serializable{
 
+    private static final long serialVersionUID = -8014124264590178871L;
     /**
-     * instalmentOrders : [{"id":"201801162225311000001","overdueDays":0,"orderId":"20180114163504100000","siteUserMobile":"13886286698","apartmentId":"113417667","repayDate":"2018-01-09 15:26:00","termNo":1,"totalAmt":3300,"principalAmt":3000,"interestAmt":300,"overdueAmt":0,"repayType":"","status":0,"createTime":"","modTime":""},{"id":"201801162225311000002","overdueDays":0,"orderId":"20180114163504100000","siteUserMobile":"13886286698","apartmentId":"113417667","repayDate":"2018-02-09 15:26:00","termNo":2,"totalAmt":3300,"principalAmt":3000,"interestAmt":300,"overdueAmt":0,"repayType":"","status":0,"createTime":"","modTime":""},{"id":"201801162225311000003","overdueDays":0,"orderId":"20180114163504100000","siteUserMobile":"13886286698","apartmentId":"113417667","repayDate":"2018-03-09 15:26:00","termNo":3,"totalAmt":4359,"principalAmt":3963,"interestAmt":396,"overdueAmt":0,"repayType":"","status":0,"createTime":"","modTime":""}]
+     * instalmentOrders : [{"id":"201801162225311000001","overdueDays":0,"orderId":"20180114163504100000","siteUserMobile":"13886286698","apartmentId":"113417667","repayDate":"2018-01-09","termNo":1,"totalAmt":3300,"principalAmt":3000,"interestAmt":300,"overdueAmt":0,"repayType":"","status":"待审核","createTime":"","modTime":""},{"id":"201801162225311000002","overdueDays":0,"orderId":"20180114163504100000","siteUserMobile":"13886286698","apartmentId":"113417667","repayDate":"2018-02-09","termNo":2,"totalAmt":3300,"principalAmt":3000,"interestAmt":300,"overdueAmt":0,"repayType":"","status":"待审核","createTime":"","modTime":""},{"id":"201801162225311000003","overdueDays":0,"orderId":"20180114163504100000","siteUserMobile":"13886286698","apartmentId":"113417667","repayDate":"2018-03-09","termNo":3,"totalAmt":4359,"principalAmt":3963,"interestAmt":396,"overdueAmt":0,"repayType":"","status":"待审核","createTime":"","modTime":""}]
+     * payType : {"lable":"季付","value":"1"}
+     * feeReceive : {"lable":"用户","value":"1"}
      * areas : {"province":"北京","city":"北京","region":"海淀"}
-     * order : {"id":"20180114163504100000","orderNo":"","delayDate":"2018-01-17","repayDate":"2018-01-17","lateStatus":"","userId":"","platformPayType":1,"payTerm":3,"changeNo":"string","returnType":"","applyDate":"","status":0,"refuseInfo":"","refuseRemark":"不行，这伙计太穷了，不租！","rate":"","discountRate":"","delayRate":"","cash":3000,"siteUsertotalAmt":10959,"platTotalAmt":0,"tenancyName":"张三","tenancyMobile":"13886286698","tenancyIdcard":"420621199001061215","tenancyType":1,"startTime":"2018-01-09 15:26:00","endTime":"2018-04-18 15:26:00","feeType":1,"firstPaytype":1,"houseName":"远洋天地","houseCode":"64号楼","roomNum":"1007","settleDate":"","info":"输入备注信息","qrcodeUrl":"https://www.baidu.com/","orderUrl":"https://www.baidu.com/","ownerUrl":"https://www.baidu.com/","houseUrl":"https://www.baidu.com/","agentUrl":"https://www.baidu.com/","gmtCreate":"","gmtModify":"","checkDate":"2018-01-17","lateDays":"","cityNo":"000090"}
+     * firstPayType : {"lable":"押一付一","value":"1"}
+     * order : {"id":"20180114163504100000","timeOffset":"3月1天","orderNo":"","delayDate":"2018-01-17","repayDate":"2018-01-17","lateStatus":"","userId":"","platformPayType":"1","payTerm":3,"changeNo":"string","returnType":"","applyDate":"","status":3,"refuseInfo":"","refuseRemark":"不行，这伙计太穷了，不租！","rate":"","discountRate":"","delayRate":"","cash":3000,"siteUsertotalAmt":10959,"platTotalAmt":0,"tenancyName":"张三","tenancyMobile":"13717537745","tenancyIdcard":"420621199001061215","tenancyType":1,"startTime":"2018-01-09","endTime":"2018-04-18","feeType":"1","firstPaytype":"1","houseName":"远洋天地","houseCode":"64号楼","roomNum":"1007","settleDate":"","info":"输入备注信息","qrcodeUrl":"https://www.baidu.com/","orderUrl":"https://www.baidu.com/","ownerUrl":"https://www.baidu.com/","houseUrl":"https://www.baidu.com/","agentUrl":"https://www.baidu.com/","gmtCreate":"","gmtModify":"","checkDate":"2018-01-17","lateDays":"","cityNo":"000090"}
      */
 
+    private PayTypeBean payType;
+    private FeeReceiveBean feeReceive;
     private AreasBean areas;
+    private FirstPayTypeBean firstPayType;
     private OrderBean order;
     private List<InstalmentOrdersBean> instalmentOrders;
+
+    public PayTypeBean getPayType() {
+        return payType;
+    }
+
+    public void setPayType(PayTypeBean payType) {
+        this.payType = payType;
+    }
+
+    public FeeReceiveBean getFeeReceive() {
+        return feeReceive;
+    }
+
+    public void setFeeReceive(FeeReceiveBean feeReceive) {
+        this.feeReceive = feeReceive;
+    }
 
     public AreasBean getAreas() {
         return areas;
@@ -25,6 +48,14 @@ public class ContractDetailDto implements Serializable{
 
     public void setAreas(AreasBean areas) {
         this.areas = areas;
+    }
+
+    public FirstPayTypeBean getFirstPayType() {
+        return firstPayType;
+    }
+
+    public void setFirstPayType(FirstPayTypeBean firstPayType) {
+        this.firstPayType = firstPayType;
     }
 
     public OrderBean getOrder() {
@@ -43,7 +74,62 @@ public class ContractDetailDto implements Serializable{
         this.instalmentOrders = instalmentOrders;
     }
 
+    public static class PayTypeBean implements Serializable{
+        /**
+         * lable : 季付
+         * value : 1
+         */
+
+        private String lable;
+        private String value;
+
+        public String getLable() {
+            return lable;
+        }
+
+        public void setLable(String lable) {
+            this.lable = lable;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
+        }
+    }
+
+    public static class FeeReceiveBean implements Serializable{
+
+        private static final long serialVersionUID = -5893072781410411197L;
+        /**
+         * lable : 用户
+         * value : 1
+         */
+
+        private String lable;
+        private String value;
+
+        public String getLable() {
+            return lable;
+        }
+
+        public void setLable(String lable) {
+            this.lable = lable;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
+        }
+    }
+
     public static class AreasBean implements Serializable{
+
         /**
          * province : 北京
          * city : 北京
@@ -79,9 +165,40 @@ public class ContractDetailDto implements Serializable{
         }
     }
 
+    public static class FirstPayTypeBean implements Serializable{
+
+        private static final long serialVersionUID = -4423771073745608208L;
+        /**
+         * lable : 押一付一
+         * value : 1
+         */
+
+        private String lable;
+        private String value;
+
+        public String getLable() {
+            return lable;
+        }
+
+        public void setLable(String lable) {
+            this.lable = lable;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
+        }
+    }
+
     public static class OrderBean implements Serializable{
+
+        private static final long serialVersionUID = -963953118993563275L;
         /**
          * id : 20180114163504100000
+         * timeOffset : 3月1天
          * orderNo :
          * delayDate : 2018-01-17
          * repayDate : 2018-01-17
@@ -92,7 +209,7 @@ public class ContractDetailDto implements Serializable{
          * changeNo : string
          * returnType :
          * applyDate :
-         * status : 0
+         * status : 3
          * refuseInfo :
          * refuseRemark : 不行，这伙计太穷了，不租！
          * rate :
@@ -102,11 +219,11 @@ public class ContractDetailDto implements Serializable{
          * siteUsertotalAmt : 10959
          * platTotalAmt : 0
          * tenancyName : 张三
-         * tenancyMobile : 13886286698
+         * tenancyMobile : 13717537745
          * tenancyIdcard : 420621199001061215
          * tenancyType : 1
-         * startTime : 2018-01-09 15:26:00
-         * endTime : 2018-04-18 15:26:00
+         * startTime : 2018-01-09
+         * endTime : 2018-04-18
          * feeType : 1
          * firstPaytype : 1
          * houseName : 远洋天地
@@ -127,12 +244,13 @@ public class ContractDetailDto implements Serializable{
          */
 
         private String id;
+        private String timeOffset;
         private String orderNo;
         private String delayDate;
         private String repayDate;
         private String lateStatus;
         private String userId;
-        private int platformPayType;
+        private String platformPayType;
         private int payTerm;
         private String changeNo;
         private String returnType;
@@ -152,8 +270,8 @@ public class ContractDetailDto implements Serializable{
         private int tenancyType;
         private String startTime;
         private String endTime;
-        private int feeType;
-        private int firstPaytype;
+        private String feeType;
+        private String firstPaytype;
         private String houseName;
         private String houseCode;
         private String roomNum;
@@ -176,6 +294,14 @@ public class ContractDetailDto implements Serializable{
 
         public void setId(String id) {
             this.id = id;
+        }
+
+        public String getTimeOffset() {
+            return timeOffset;
+        }
+
+        public void setTimeOffset(String timeOffset) {
+            this.timeOffset = timeOffset;
         }
 
         public String getOrderNo() {
@@ -218,11 +344,11 @@ public class ContractDetailDto implements Serializable{
             this.userId = userId;
         }
 
-        public int getPlatformPayType() {
+        public String getPlatformPayType() {
             return platformPayType;
         }
 
-        public void setPlatformPayType(int platformPayType) {
+        public void setPlatformPayType(String platformPayType) {
             this.platformPayType = platformPayType;
         }
 
@@ -378,19 +504,19 @@ public class ContractDetailDto implements Serializable{
             this.endTime = endTime;
         }
 
-        public int getFeeType() {
+        public String getFeeType() {
             return feeType;
         }
 
-        public void setFeeType(int feeType) {
+        public void setFeeType(String feeType) {
             this.feeType = feeType;
         }
 
-        public int getFirstPaytype() {
+        public String getFirstPaytype() {
             return firstPaytype;
         }
 
-        public void setFirstPaytype(int firstPaytype) {
+        public void setFirstPaytype(String firstPaytype) {
             this.firstPaytype = firstPaytype;
         }
 
@@ -516,20 +642,22 @@ public class ContractDetailDto implements Serializable{
     }
 
     public static class InstalmentOrdersBean implements Serializable{
+
+        private static final long serialVersionUID = 2193459239777887200L;
         /**
          * id : 201801162225311000001
          * overdueDays : 0
          * orderId : 20180114163504100000
          * siteUserMobile : 13886286698
          * apartmentId : 113417667
-         * repayDate : 2018-01-09 15:26:00
+         * repayDate : 2018-01-09
          * termNo : 1
          * totalAmt : 3300
          * principalAmt : 3000
          * interestAmt : 300
          * overdueAmt : 0
          * repayType :
-         * status : 0
+         * status : 待审核
          * createTime :
          * modTime :
          */

@@ -19,6 +19,8 @@ import com.realtor.jx.utils.NullUtil;
 import java.io.Serializable;
 import java.util.List;
 
+import static com.realtor.jx.activity.CommitContractActivity.INSTALLMENT_PREVIEW_ACTIVITY_REQUEST_CODE;
+
 /**
  * description: 分期预览页
  * autour: lewish
@@ -36,7 +38,7 @@ public class InstallmentPreviewActivity extends BaseActivity {
         Intent intent = new Intent(activity, InstallmentPreviewActivity.class);
         intent.putExtra(Commons.BUNDLE_KEYS.EXTAR_INT, totalAmount);
         intent.putExtra(Commons.BUNDLE_KEYS.EXTRA_LIST, (Serializable) dataList);
-        activity.startActivity(intent);
+        activity.startActivityForResult(intent,INSTALLMENT_PREVIEW_ACTIVITY_REQUEST_CODE);
     }
 
     @Override

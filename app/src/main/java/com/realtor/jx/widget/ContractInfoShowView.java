@@ -87,10 +87,10 @@ public class ContractInfoShowView extends RelativeLayout {
         mTvContentMonthlyRent.setText(""+contractDetailDto.getOrder().getCash());
         mTvContentLeaseFrom.setText(""+contractDetailDto.getOrder().getStartTime());//起租日
         mTvContentLeaseTo.setText(""+contractDetailDto.getOrder().getEndTime());//到租日
-//        mTvContentTenancy.setText();//租期
-//        mTvContentServiceFeeBear.setText(contractDetailDto.getOrder());//服务费承担方
-//        mTvContentDownPaymentsMethod.setText();//租客首付方式
-//        mTvContentPlatformPaymentMethod.setText();//平台付款方式
+        mTvContentTenancy.setText(""+contractDetailDto.getOrder().getTimeOffset());//租期
+        mTvContentServiceFeeBear.setText(contractDetailDto.getFeeReceive().getLable());//服务费承担方
+        mTvContentDownPaymentsMethod.setText(contractDetailDto.getFirstPayType().getLable());//租客首付方式
+        mTvContentPlatformPaymentMethod.setText(contractDetailDto.getPayType().getLable());//平台付款方式
         mTvContentAccountNum.setText(contractDetailDto.getOrder().getChangeNo());//台帐号
         mTvContentRemarks.setText(contractDetailDto.getOrder().getInfo());//备注
     }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
@@ -12,20 +12,23 @@
         android:text="@string/default_txt_placeholder"/>
 
     <TextView
+        android:layout_toRightOf="@id/mTvRepayTerm"
         android:id="@+id/mTvRepayDate"
         style="@style/ListViewItem"
-        android:layout_marginLeft="@dimen/x91"
+        android:layout_marginLeft="@dimen/x95"
         android:text="@string/default_txt_placeholder" />
 
     <TextView
+        android:layout_toRightOf="@id/mTvRepayDate"
         android:id="@+id/mTvRepayAmount"
         style="@style/ListViewItem"
-        android:layout_marginLeft="@dimen/x70"
+        android:layout_marginLeft="@dimen/x75"
         android:text="@string/default_txt_placeholder"/>
 
     <TextView
+        android:layout_alignParentRight="true"
         android:id="@+id/mTvRepayStatus"
         style="@style/ListViewItem"
-        android:layout_marginLeft="@dimen/x62"
+        android:layout_marginRight="@dimen/x110"
         android:text="@string/default_txt_placeholder"/>
-</LinearLayout>
+</RelativeLayout>

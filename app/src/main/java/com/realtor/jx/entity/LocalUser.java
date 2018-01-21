@@ -93,9 +93,19 @@ public class LocalUser implements Serializable {
     }
 
     /**
+     * 返会平台支持的租住方式 整租，合租
+     */
+    public List<UserInfoDto.FlowLayoutTypeBean> getRenterMethodList(){
+        if(getUserProfile()==null) {
+            return  null;
+        }
+        return profile.getRentType();
+    }
+
+    /**
      * 返回平台支持的付款方式
      */
-    public List<UserInfoDto.PayTypeBean> getPlatformPaymentMethodList() {
+    public List<UserInfoDto.FlowLayoutTypeBean> getPlatformPaymentMethodList() {
         if (getUserProfile() == null) {
             return null;
         }
@@ -105,7 +115,7 @@ public class LocalUser implements Serializable {
     /**
      * 返回平台支持的首付方式
      */
-    public List<UserInfoDto.FirstPayTypeBean> getDownPaymentsMethodList() {
+    public List<UserInfoDto.FlowLayoutTypeBean> getDownPaymentsMethodList() {
         if (getUserProfile() == null) {
             return null;
         }
@@ -115,7 +125,7 @@ public class LocalUser implements Serializable {
     /**
      * 返回服务费承担方List
      */
-    public List<UserInfoDto.FeeReceiveBean> getServiceFeeBearList() {
+    public List<UserInfoDto.FlowLayoutTypeBean> getServiceFeeBearList() {
         if (getUserProfile() == null) {
             return null;
         }
