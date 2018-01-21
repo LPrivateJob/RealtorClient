@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">RealtorClient</string>
     <string name="code_cutdown">%ss</string>
+    <string name="default_txt_placeholder">--</string>
 </resources>

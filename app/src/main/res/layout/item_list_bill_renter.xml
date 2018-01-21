@@ -9,23 +9,23 @@
         android:id="@+id/mTvRepayTerm"
         style="@style/ListViewItem"
         android:layout_marginLeft="@dimen/x75"
-        android:text="期数" />
+        android:text="@string/default_txt_placeholder"/>
 
     <TextView
         android:id="@+id/mTvRepayDate"
         style="@style/ListViewItem"
         android:layout_marginLeft="@dimen/x91"
-        android:text="还款日期" />
+        android:text="@string/default_txt_placeholder" />
 
     <TextView
         android:id="@+id/mTvRepayAmount"
         style="@style/ListViewItem"
         android:layout_marginLeft="@dimen/x70"
-        android:text="还款金额" />
+        android:text="@string/default_txt_placeholder"/>
 
     <TextView
         android:id="@+id/mTvRepayStatus"
         style="@style/ListViewItem"
         android:layout_marginLeft="@dimen/x62"
-        android:text="还款状态" />
+        android:text="@string/default_txt_placeholder"/>
 </LinearLayout>

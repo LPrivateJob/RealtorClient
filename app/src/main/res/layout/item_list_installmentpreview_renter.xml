@@ -6,15 +6,15 @@
     <TextView
         style="@style/ListViewItem"
         android:layout_marginLeft="@dimen/x75"
-        android:text="期数" />
+        android:text="@string/default_txt_placeholder"/>
 
     <TextView
         style="@style/ListViewItem"
         android:layout_marginLeft="@dimen/x180"
-        android:text="还款日期" />
+        android:text="@string/default_txt_placeholder"/>
 
     <TextView
         style="@style/ListViewItem"
         android:layout_marginLeft="@dimen/x160"
-        android:text="付款金额" />
+        android:text="@string/default_txt_placeholder" />
 </LinearLayout>

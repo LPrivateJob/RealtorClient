@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/y12"
-            android:text="待修改"
+            android:text="@string/default_txt_placeholder"
             android:textSize="@dimen/x26" />
     </LinearLayout>
 
@@ -61,7 +61,7 @@
                 android:layout_alignBaseline="@id/mTvTitleRenter"
                 android:layout_marginLeft="@dimen/x70"
                 android:layout_toRightOf="@id/mTvTitleRenter"
-                android:text="吉星租客" />
+                android:text="@string/default_txt_placeholder"/>
 
             <TextView
                 android:id="@+id/mTvTitlePhone"
@@ -78,7 +78,7 @@
                 style="@style/ContractListItemContent"
                 android:layout_alignBaseline="@id/mTvTitlePhone"
                 android:layout_alignLeft="@id/mTvContentRenter"
-                android:text="18255628953" />
+                android:text="@string/default_txt_placeholder"/>
 
             <TextView
                 android:id="@+id/mTvTitleRepaymentDate"
@@ -95,7 +95,7 @@
                 style="@style/ContractListItemContent"
                 android:layout_alignBaseline="@id/mTvTitleRepaymentDate"
                 android:layout_alignLeft="@id/mTvContentRenter"
-                android:text="2016-01-12 " />
+                android:text="@string/default_txt_placeholder"/>
         </RelativeLayout>
     </RelativeLayout>
 
@@ -120,7 +120,7 @@
             android:id="@+id/mTvOverDueTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="30"
+            android:text="@string/default_txt_placeholder"
             android:textColor="#ff0000" />
 
         <TextView

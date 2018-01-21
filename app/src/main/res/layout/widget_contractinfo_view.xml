@@ -30,7 +30,7 @@
             android:layout_below="@id/mTvTitleContractInfo"
             android:layout_marginLeft="@dimen/x97"
             android:layout_toRightOf="@id/mTvTitleContractNum"
-            android:text="20171121001" />
+            android:text="@string/default_txt_placeholder" />
     </RelativeLayout>
     <!--租户信息-->
     <RelativeLayout
@@ -57,7 +57,7 @@
             android:layout_alignBaseline="@id/mTvTitleName"
             android:layout_marginLeft="@dimen/x142"
             android:layout_toRightOf="@id/mTvTitleName"
-            android:text="张三" />
+            android:text="@string/default_txt_placeholder"/>
 
         <TextView
             android:id="@+id/mTvTitlePhoneNum"
@@ -70,7 +70,7 @@
             style="@style/CommitContractItemContent"
             android:layout_alignBaseline="@id/mTvTitlePhoneNum"
             android:layout_alignLeft="@id/mTvContentName"
-            android:text="18266458373" />
+            android:text="@string/default_txt_placeholder" />
 
         <TextView
             android:id="@+id/mTvTitleIDCardNum"
@@ -83,7 +83,7 @@
             style="@style/CommitContractItemContent"
             android:layout_alignBaseline="@id/mTvTitleIDCardNum"
             android:layout_alignLeft="@id/mTvContentName"
-            android:text="370292828282828282" />
+            android:text="@string/default_txt_placeholder"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -109,7 +109,7 @@
             android:layout_alignBaseline="@id/mTvTitleMonthlyRent"
             android:layout_marginLeft="@dimen/x119"
             android:layout_toRightOf="@id/mTvTitleMonthlyRent"
-            android:text="600" />
+            android:text="@string/default_txt_placeholder"/>
 
         <TextView
             android:id="@+id/mTvTitleLeaseFrom"
@@ -122,7 +122,7 @@
             style="@style/CommitContractItemContent"
             android:layout_alignBaseline="@id/mTvTitleLeaseFrom"
             android:layout_alignLeft="@id/mTvContentMonthlyRent"
-            android:text="2017-11-10" />
+            android:text="@string/default_txt_placeholder"/>
 
         <TextView
             android:id="@+id/mTvTitleLeaseTo"
@@ -135,7 +135,7 @@
             style="@style/CommitContractItemContent"
             android:layout_alignBaseline="@id/mTvTitleLeaseTo"
             android:layout_alignLeft="@id/mTvContentMonthlyRent"
-            android:text="2018-11-10" />
+            android:text="@string/default_txt_placeholder"/>
 
         <TextView
             android:id="@+id/mTvTitleTenancy"
@@ -148,7 +148,7 @@
             style="@style/CommitContractItemContent"
             android:layout_alignBaseline="@id/mTvTitleTenancy"
             android:layout_alignLeft="@id/mTvContentMonthlyRent"
-            android:text="11月10天" />
+            android:text="@string/default_txt_placeholder" />
 
         <TextView
             android:id="@+id/mTvTitleServiceFeeBear"
@@ -161,7 +161,7 @@
             style="@style/CommitContractItemContent"
             android:layout_alignBaseline="@id/mTvTitleServiceFeeBear"
             android:layout_alignLeft="@id/mTvContentMonthlyRent"
-            android:text="租客" />
+            android:text="@string/default_txt_placeholder"/>
 
         <TextView
             android:id="@+id/mTvTitleDownPaymentsMethod"
@@ -174,7 +174,7 @@
             style="@style/CommitContractItemContent"
             android:layout_alignBaseline="@id/mTvTitleDownPaymentsMethod"
             android:layout_alignLeft="@id/mTvContentMonthlyRent"
-            android:text="押一付一" />
+            android:text="@string/default_txt_placeholder"/>
 
         <TextView
             android:id="@+id/mTvTitlePlatformPaymentMethod"
@@ -187,7 +187,7 @@
             style="@style/CommitContractItemContent"
             android:layout_alignBaseline="@id/mTvTitlePlatformPaymentMethod"
             android:layout_alignLeft="@id/mTvContentMonthlyRent"
-            android:text="季付" />
+            android:text="@string/default_txt_placeholder" />
 
         <TextView
             android:id="@+id/mTvTitleAccountNum"
@@ -200,7 +200,7 @@
             style="@style/CommitContractItemContent"
             android:layout_alignBaseline="@id/mTvTitleAccountNum"
             android:layout_alignLeft="@id/mTvContentMonthlyRent"
-            android:text="吉星A" />
+            android:text="@string/default_txt_placeholder" />
 
         <TextView
             android:id="@+id/mTvTitleRemarks"
@@ -213,6 +213,6 @@
             style="@style/CommitContractItemContent"
             android:layout_alignBaseline="@id/mTvTitleRemarks"
             android:layout_alignLeft="@id/mTvContentMonthlyRent"
-            android:text="吉星A" />
+            android:text="@string/default_txt_placeholder"/>
     </RelativeLayout>
 </LinearLayout>
