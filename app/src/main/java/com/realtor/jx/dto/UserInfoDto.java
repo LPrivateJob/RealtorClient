@@ -10,42 +10,18 @@ import java.util.List;
 public class UserInfoDto implements Serializable{
 
     /**
-     * payType : 1,2,3
-     * feeReceive : 1,2
-     * areas : [{"id":"000086","name":"北京","subAreas":[{"id":"000087","name":"北京","subAreas":[{"id":"000088","name":"朝阳","subAreas":""},{"id":"000089","name":"西城","subAreas":""},{"id":"000090","name":"海淀","subAreas":""}]}]}]
-     * firstPayType : 1
+     * payType : [{"lable":"季付","value":"1"},{"lable":"半年付","value":"2"},{"lable":"年付","value":"3"}]
+     * feeReceive : [{"lable":"用户","value":"1"},{"lable":"公寓","value":"2"}]
+     * areas : [{"id":"000086","name":"北京","subAreas":[{"id":"000087","name":"北京","subAreas":[{"id":"000088","name":"朝阳","subAreas":""},{"id":"000089","name":"西城","subAreas":""},{"id":"000090","name":"海淀","subAreas":""}]}]},{"id":"100087","name":"湖北","subAreas":[{"id":"010087","name":"襄阳","subAreas":[{"id":"020087","name":"樊城","subAreas":""},{"id":"020088","name":"襄州","subAreas":""},{"id":"020089","name":"襄城","subAreas":""},{"id":"020090","name":"老河口","subAreas":""},{"id":"020091","name":"枣阳","subAreas":""},{"id":"020092","name":"黄龙","subAreas":""},{"id":"020093","name":"玉山","subAreas":""},{"id":"020094","name":"耿集","subAreas":""},{"id":"020095","name":"卧龙","subAreas":""},{"id":"020096","name":"随州","subAreas":""},{"id":"020097","name":"天门","subAreas":""}]},{"id":"010088","name":"武汉","subAreas":[]},{"id":"010089","name":"十堰","subAreas":[]},{"id":"010090","name":"宜昌","subAreas":[]},{"id":"010091","name":"黄石","subAreas":[]},{"id":"010092","name":"黄冈","subAreas":[]},{"id":"010093","name":"荆门","subAreas":[]},{"id":"010094","name":"孝感","subAreas":[]},{"id":"010095","name":"仙桃","subAreas":[]},{"id":"010096","name":"老河口","subAreas":[]},{"id":"010097","name":"随州","subAreas":[]}]},{"id":"100088","name":"湖南","subAreas":[]},{"id":"100089","name":"河北","subAreas":[]},{"id":"100090","name":"河南","subAreas":[]},{"id":"100091","name":"江苏","subAreas":[]},{"id":"100092","name":"浙江","subAreas":[]},{"id":"100093","name":"福建","subAreas":[]},{"id":"100094","name":"安徽","subAreas":[]},{"id":"100095","name":"黑龙江","subAreas":[]},{"id":"100096","name":"吉林","subAreas":[]},{"id":"100097","name":"四川","subAreas":[]},{"id":"100098","name":"辽宁","subAreas":[]}]
+     * firstPayType : [{"lable":"押一付一","value":"1"},{"lable":"押二付一","value":"2"}]
      * user : {"id":100000,"companyId":"1","officeId":"2","loginName":"13888888888","password":"","no":"0001","name":"张三","email":"thinkgem@163.com","phone":"8675","mobile":"8675","userType":"","photo":"","loginIp":"1.119.129.178","loginDate":"2017-09-01 13:33:18","loginFlag":"1","createBy":"1","createDate":"2013-05-27 08:00:00","updateBy":"1","updateDate":"2017-12-29 10:29:57","remarks":"最高管理员","delFlag":"0"}
      */
 
-    private String payType;
-    private String feeReceive;
-    private String firstPayType;
     private UserBean user;
+    private List<PayTypeBean> payType;
+    private List<FeeReceiveBean> feeReceive;
     private List<AreasBean> areas;
-
-    public String getPayType() {
-        return payType;
-    }
-
-    public void setPayType(String payType) {
-        this.payType = payType;
-    }
-
-    public String getFeeReceive() {
-        return feeReceive;
-    }
-
-    public void setFeeReceive(String feeReceive) {
-        this.feeReceive = feeReceive;
-    }
-
-    public String getFirstPayType() {
-        return firstPayType;
-    }
-
-    public void setFirstPayType(String firstPayType) {
-        this.firstPayType = firstPayType;
-    }
+    private List<FirstPayTypeBean> firstPayType;
 
     public UserBean getUser() {
         return user;
@@ -53,6 +29,22 @@ public class UserInfoDto implements Serializable{
 
     public void setUser(UserBean user) {
         this.user = user;
+    }
+
+    public List<PayTypeBean> getPayType() {
+        return payType;
+    }
+
+    public void setPayType(List<PayTypeBean> payType) {
+        this.payType = payType;
+    }
+
+    public List<FeeReceiveBean> getFeeReceive() {
+        return feeReceive;
+    }
+
+    public void setFeeReceive(List<FeeReceiveBean> feeReceive) {
+        this.feeReceive = feeReceive;
     }
 
     public List<AreasBean> getAreas() {
@@ -63,7 +55,15 @@ public class UserInfoDto implements Serializable{
         this.areas = areas;
     }
 
-    public static class UserBean implements Serializable{
+    public List<FirstPayTypeBean> getFirstPayType() {
+        return firstPayType;
+    }
+
+    public void setFirstPayType(List<FirstPayTypeBean> firstPayType) {
+        this.firstPayType = firstPayType;
+    }
+
+    public static class UserBean {
         /**
          * id : 100000
          * companyId : 1
@@ -279,7 +279,59 @@ public class UserInfoDto implements Serializable{
         }
     }
 
-    public static class AreasBean implements Serializable{
+    public static class PayTypeBean {
+        /**
+         * lable : 季付
+         * value : 1
+         */
+
+        private String lable;
+        private String value;
+
+        public String getLable() {
+            return lable;
+        }
+
+        public void setLable(String lable) {
+            this.lable = lable;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
+        }
+    }
+
+    public static class FeeReceiveBean {
+        /**
+         * lable : 用户
+         * value : 1
+         */
+
+        private String lable;
+        private String value;
+
+        public String getLable() {
+            return lable;
+        }
+
+        public void setLable(String lable) {
+            this.lable = lable;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
+        }
+    }
+
+    public static class AreasBean {
         /**
          * id : 000086
          * name : 北京
@@ -314,7 +366,7 @@ public class UserInfoDto implements Serializable{
             this.subAreas = subAreas;
         }
 
-        public static class SubAreasBeanX implements Serializable{
+        public static class SubAreasBeanX {
             /**
              * id : 000087
              * name : 北京
@@ -349,7 +401,7 @@ public class UserInfoDto implements Serializable{
                 this.subAreas = subAreas;
             }
 
-            public static class SubAreasBean implements Serializable{
+            public static class SubAreasBean {
                 /**
                  * id : 000088
                  * name : 朝阳
@@ -384,6 +436,32 @@ public class UserInfoDto implements Serializable{
                     this.subAreas = subAreas;
                 }
             }
+        }
+    }
+
+    public static class FirstPayTypeBean {
+        /**
+         * lable : 押一付一
+         * value : 1
+         */
+
+        private String lable;
+        private String value;
+
+        public String getLable() {
+            return lable;
+        }
+
+        public void setLable(String lable) {
+            this.lable = lable;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
         }
     }
 }

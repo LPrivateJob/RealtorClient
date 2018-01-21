@@ -14,7 +14,6 @@ import java.util.List;
  */
 public class LocalUser implements Serializable {
     private LocalUser() {
-
     }
 
     private static class SingletonHolder {
@@ -32,7 +31,7 @@ public class LocalUser implements Serializable {
         save();
     }
 
-    public UserInfoDto getUserProfile() {
+    private UserInfoDto getUserProfile() {
         if (profile == null) {
             load();
         }
@@ -73,6 +72,9 @@ public class LocalUser implements Serializable {
         return "" + profile.getUser().getId();
     }
 
+    /**
+     * 得到用户信息类
+     */
     public UserInfoDto.UserBean getUserBean() {
         if (getUserProfile() == null) {
             return null;
@@ -80,11 +82,44 @@ public class LocalUser implements Serializable {
         return profile.getUser();
     }
 
+    /**
+     * 返回支持的地区列表
+     */
     public List<UserInfoDto.AreasBean> getAreaList() {
         if (getUserProfile() == null) {
             return null;
         }
         return profile.getAreas();
+    }
+
+    /**
+     * 返回平台支持的付款方式
+     */
+    public List<UserInfoDto.PayTypeBean> getPlatformPaymentMethodList() {
+        if (getUserProfile() == null) {
+            return null;
+        }
+        return profile.getPayType();
+    }
+
+    /**
+     * 返回平台支持的首付方式
+     */
+    public List<UserInfoDto.FirstPayTypeBean> getDownPaymentsMethodList() {
+        if (getUserProfile() == null) {
+            return null;
+        }
+        return profile.getFirstPayType();
+    }
+
+    /**
+     * 返回服务费承担方List
+     */
+    public List<UserInfoDto.FeeReceiveBean> getServiceFeeBearList() {
+        if (getUserProfile() == null) {
+            return null;
+        }
+        return profile.getFeeReceive();
     }
 
     public void clearTest() {
