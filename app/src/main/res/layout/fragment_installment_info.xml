@@ -31,6 +31,7 @@
         android:layout_alignBaseline="@id/mTvTitleMonthlyRent"
         android:layout_marginLeft="@dimen/x120"
         android:layout_toRightOf="@id/mTvTitleMonthlyRent"
+        android:inputType="numberDecimal"
         android:hint="请输入内容" />
 
     <TextView
@@ -48,6 +49,7 @@
         android:drawablePadding="@dimen/x50"
         android:drawableRight="@drawable/arrow_down"
         android:editable="false"
+        android:inputType="date"
         android:hint="请输入内容" />
 
     <TextView
@@ -65,6 +67,7 @@
         android:drawablePadding="@dimen/x50"
         android:drawableRight="@drawable/arrow_down"
         android:editable="false"
+        android:inputType="date"
         android:hint="请输入内容" />
 
     <LinearLayout
@@ -153,6 +156,7 @@
         style="@style/CommitContractItemContent"
         android:layout_alignBaseline="@id/mTvTitleRepaymentPeriod"
         android:layout_alignLeft="@id/mEtContentMonthlyRent"
+        android:inputType="number"
         android:hint="请输入内容" />
 
     <TextView
@@ -167,6 +171,7 @@
         style="@style/CommitContractItemContent"
         android:layout_alignBaseline="@id/mTvTitleAccountNum"
         android:layout_alignLeft="@id/mEtContentMonthlyRent"
+        android:inputType="text"
         android:hint="请输入内容" />
 
     <TextView
@@ -181,5 +186,6 @@
         style="@style/CommitContractItemContent"
         android:layout_alignBaseline="@id/mTvTitleRemarks"
         android:layout_alignLeft="@id/mEtContentMonthlyRent"
+        android:inputType="text"
         android:hint="请输入内容" />
 </RelativeLayout>

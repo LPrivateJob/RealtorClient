@@ -12,6 +12,7 @@ import com.realtor.jx.base.BaseFragment;
 import com.realtor.jx.dto.FlowLayoutTypeBean;
 import com.realtor.jx.entity.CommitContractInfo;
 import com.realtor.jx.entity.LocalUser;
+import com.realtor.jx.utils.InputVerifyUtil;
 import com.realtor.jx.utils.NullUtil;
 import com.realtor.jx.utils.StringUtil;
 import com.realtor.jx.widget.flowlayout.FlowLayout;
@@ -134,6 +135,35 @@ public class InstallmentInfoFragment extends BaseFragment implements TagFlowLayo
     }
 
     public boolean saveContractInfo(){
+        CommitContractInfo commitContractInfo = ((CommitContractActivity) mActivity).getCommitContractInfo();
+        String cash = getEditTextStr(mEtContentMonthlyRent);
+        if(InputVerifyUtil.checkEmpty(cash,"月租金")) {
+            commitContractInfo.cash=NullUtil.convertYuan2FenI(cash);
+        }else {
+            return false;
+        }
+        String startTime = getEditTextStr(mEtContentLeaseFrom);
+        if(InputVerifyUtil.checkEmpty(startTime,"起租日")) {
+            commitContractInfo.startTime = startTime;
+        }else {
+            return false;
+        }
+        String endTime = getEditTextStr(mEtContentLeaseTo);
+        if(InputVerifyUtil.checkEmpty(endTime,"到租日")) {
+            commitContractInfo.endTime = endTime;
+        }else {
+            return false;
+        }
+        String payTerm = getEditTextStr(mEtContentRepaymentPeriod);
+        if(InputVerifyUtil.checkEmpty(payTerm,"还款期数")) {
+            commitContractInfo.payTerm = Integer.parseInt(payTerm);
+        }else {
+            return false;
+        }
         return true;
+    }
+
+    private String getEditTextStr(EditText editText){
+        return editText.getText().toString();
     }
 }
