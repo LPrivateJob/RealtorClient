@@ -398,32 +398,4 @@ public class UserInfoDto implements Serializable{
             }
         }
     }
-
-    public static class FlowLayoutTypeBean implements Serializable{
-
-        private static final long serialVersionUID = 8067195658687105917L;
-        /**
-         * lable : 押一付一
-         * value : 1
-         */
-
-        private String lable;
-        private String value;
-
-        public String getLable() {
-            return lable;
-        }
-
-        public void setLable(String lable) {
-            this.lable = lable;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        public void setValue(String value) {
-            this.value = value;
-        }
-    }
 }

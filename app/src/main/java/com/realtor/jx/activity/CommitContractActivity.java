@@ -10,11 +10,14 @@ import android.widget.Toast;
 import com.realtor.jx.R;
 import com.realtor.jx.base.BaseActivity;
 import com.realtor.jx.base.BaseFragment;
+import com.realtor.jx.dao.AppDAO;
+import com.realtor.jx.dto.ContractDetailDto;
 import com.realtor.jx.entity.CommitContractInfo;
 import com.realtor.jx.entity.Commons;
 import com.realtor.jx.fragment.InstallmentInfoFragment;
 import com.realtor.jx.fragment.RenterInfoFragment;
 import com.realtor.jx.fragment.UploadPicFragment;
+import com.realtor.jx.netcore.JsonUiCallback;
 import com.realtor.jx.widget.CommitContractStepIndicator;
 import com.realtor.jx.widget.Header;
 
@@ -30,11 +33,24 @@ public class CommitContractActivity extends BaseActivity {
     private Button mBtnNext;
     private FragmentManager mFragmentManager = getSupportFragmentManager();
     private CommitContractStepIndicator.STEP mStep = CommitContractStepIndicator.STEP.LOCATION;
+
+    private String mOrderId;
     private CommitContractInfo mCommitContractInfo = new CommitContractInfo();
-    public static void open(Activity act, CommitContractStepIndicator.STEP step) {
+
+    /**
+     * orderId为空则为新建，不为空则为修改
+     */
+    public static void open(Activity act,String orderId){
         Intent intent = new Intent(act, CommitContractActivity.class);
-        intent.putExtra(Commons.BUNDLE_KEYS.EXTRA_ENUM, step);
+        intent.putExtra(Commons.BUNDLE_KEYS.EXTRA_ID,orderId);
         act.startActivity(intent);
+    }
+
+    @Override
+    protected void onPreInit() {
+        super.onPreInit();
+        Bundle bundle = getIntent().getExtras();
+        mOrderId = bundle.getString(Commons.BUNDLE_KEYS.EXTRA_ID);
     }
 
     @Override
@@ -63,6 +79,44 @@ public class CommitContractActivity extends BaseActivity {
                     break;
             }
         });
+    }
+
+    @Override
+    protected void loadData() {
+        //查询详情得到之前提交的用户数据
+        if(mOrderId!=null) {
+            AppDAO.getInstance().queryOrderDetail(mOrderId, new JsonUiCallback<ContractDetailDto>(this) {
+                @Override
+                public void onSuccess(ContractDetailDto result) {
+                    fillContractInfo(result);
+                }
+            });
+        }
+    }
+
+    private void fillContractInfo(ContractDetailDto result) {
+        ContractDetailDto.OrderBean order = result.getOrder();
+        mCommitContractInfo.tenancyName = order.getTenancyName();
+        mCommitContractInfo.tenancyMobile = order.getTenancyMobile();
+        mCommitContractInfo.tenancyIdcard = order.getTenancyIdcard();
+        // TODO: 租住类型，待获取
+//        mCommitContractInfo.tenancyType = order.getTenancyType();
+        mCommitContractInfo.cityNo = order.getCityNo();
+        mCommitContractInfo.houseName = order.getHouseName();
+        mCommitContractInfo.houseCode = order.getHouseCode();
+        mCommitContractInfo.roomNum = order.getRoomNum();
+
+        mCommitContractInfo.cash = order.getCash();
+        mCommitContractInfo.startTime = order.getStartTime();
+        mCommitContractInfo.endTime = order.getEndTime();
+        mCommitContractInfo.feeType = result.getFeeReceive();
+        mCommitContractInfo.firstPaytype = result.getFirstPayType();
+        mCommitContractInfo.platformPayType =result.getPayType();
+        mCommitContractInfo.payTerm = order.getPayTerm();
+        mCommitContractInfo.changeNo = order.getChangeNo();
+        mCommitContractInfo.info = order.getInfo();
+        // TODO: 设备标识码，待获取  
+//        mCommitContractInfo.location
     }
 
     /**

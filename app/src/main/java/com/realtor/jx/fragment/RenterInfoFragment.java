@@ -8,8 +8,10 @@ import android.widget.Toast;
 import com.realtor.jx.R;
 import com.realtor.jx.adapter.MyTagAdapter;
 import com.realtor.jx.base.BaseFragment;
-import com.realtor.jx.dto.UserInfoDto;
+import com.realtor.jx.dto.FlowLayoutTypeBean;
+import com.realtor.jx.entity.CommitContractInfo;
 import com.realtor.jx.entity.LocalUser;
+import com.realtor.jx.utils.NullUtil;
 import com.realtor.jx.widget.flowlayout.FlowLayout;
 import com.realtor.jx.widget.flowlayout.TagFlowLayout;
 
@@ -22,7 +24,7 @@ import java.util.List;
  */
 
 public class RenterInfoFragment extends BaseFragment implements TagFlowLayout.OnTagClickListener {
-    private List<UserInfoDto.FlowLayoutTypeBean> mRenterMethodsList;
+    private List<FlowLayoutTypeBean> mRenterMethodsList;
     private EditText mEtContentRenterName;
     private EditText mEtContentPhone;
     private EditText mEtContentIDNum;
@@ -50,10 +52,16 @@ public class RenterInfoFragment extends BaseFragment implements TagFlowLayout.On
         mFLRenterMethod.setOnTagClickListener(this);
     }
 
-    @Override
-    protected void loadData() {
-        super.loadData();
-
+    public void fillData(CommitContractInfo commitContractInfo) {
+        mEtContentRenterName.setText(NullUtil.getString2(commitContractInfo.tenancyName));
+        mEtContentPhone.setText(NullUtil.getString2(commitContractInfo.tenancyMobile));
+        mEtContentIDNum.setText(NullUtil.getString2(commitContractInfo.tenancyIdcard));
+        if(commitContractInfo.tenancyType!=null||commitContractInfo.tenancyType.getValue()!=null){
+            mFLRenterMethod.getAdapter().setSelected(Integer.parseInt(commitContractInfo.tenancyType.getValue())-1);
+        }
+        mEtContentCommunity.setText(NullUtil.getString2(commitContractInfo.houseName));
+        mEtContentHouseNum.setText(NullUtil.getString2(commitContractInfo.houseCode));
+        mEtContentRoomNum.setText(NullUtil.getString2(commitContractInfo.roomNum));
     }
 
     @Override
@@ -67,6 +75,10 @@ public class RenterInfoFragment extends BaseFragment implements TagFlowLayout.On
             Toast.makeText(getActivity(), mRenterMethodsList.get(position).getLable(), Toast.LENGTH_SHORT).show();
         }
         return true;
+    }
+
+    public void saveContractInfo(){
+
     }
 
 }

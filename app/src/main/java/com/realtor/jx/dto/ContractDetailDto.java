@@ -19,26 +19,26 @@ public class ContractDetailDto implements Serializable{
      * order : {"id":"20180114163504100000","timeOffset":"3月1天","orderNo":"","delayDate":"2018-01-17","repayDate":"2018-01-17","lateStatus":"","userId":"","platformPayType":"1","payTerm":3,"changeNo":"string","returnType":"","applyDate":"","status":3,"refuseInfo":"","refuseRemark":"不行，这伙计太穷了，不租！","rate":"","discountRate":"","delayRate":"","cash":3000,"siteUsertotalAmt":10959,"platTotalAmt":0,"tenancyName":"张三","tenancyMobile":"13717537745","tenancyIdcard":"420621199001061215","tenancyType":1,"startTime":"2018-01-09","endTime":"2018-04-18","feeType":"1","firstPaytype":"1","houseName":"远洋天地","houseCode":"64号楼","roomNum":"1007","settleDate":"","info":"输入备注信息","qrcodeUrl":"https://www.baidu.com/","orderUrl":"https://www.baidu.com/","ownerUrl":"https://www.baidu.com/","houseUrl":"https://www.baidu.com/","agentUrl":"https://www.baidu.com/","gmtCreate":"","gmtModify":"","checkDate":"2018-01-17","lateDays":"","cityNo":"000090"}
      */
 
-    private PayTypeBean payType;
-    private FeeReceiveBean feeReceive;
+    private FlowLayoutTypeBean payType;
+    private FlowLayoutTypeBean feeReceive;
     private AreasBean areas;
-    private FirstPayTypeBean firstPayType;
+    private FlowLayoutTypeBean firstPayType;
     private OrderBean order;
     private List<InstalmentOrdersBean> instalmentOrders;
 
-    public PayTypeBean getPayType() {
+    public FlowLayoutTypeBean getPayType() {
         return payType;
     }
 
-    public void setPayType(PayTypeBean payType) {
+    public void setPayType(FlowLayoutTypeBean payType) {
         this.payType = payType;
     }
 
-    public FeeReceiveBean getFeeReceive() {
+    public FlowLayoutTypeBean getFeeReceive() {
         return feeReceive;
     }
 
-    public void setFeeReceive(FeeReceiveBean feeReceive) {
+    public void setFeeReceive(FlowLayoutTypeBean feeReceive) {
         this.feeReceive = feeReceive;
     }
 
@@ -50,11 +50,11 @@ public class ContractDetailDto implements Serializable{
         this.areas = areas;
     }
 
-    public FirstPayTypeBean getFirstPayType() {
+    public FlowLayoutTypeBean getFirstPayType() {
         return firstPayType;
     }
 
-    public void setFirstPayType(FirstPayTypeBean firstPayType) {
+    public void setFirstPayType(FlowLayoutTypeBean firstPayType) {
         this.firstPayType = firstPayType;
     }
 
@@ -72,60 +72,6 @@ public class ContractDetailDto implements Serializable{
 
     public void setInstalmentOrders(List<InstalmentOrdersBean> instalmentOrders) {
         this.instalmentOrders = instalmentOrders;
-    }
-
-    public static class PayTypeBean implements Serializable{
-        /**
-         * lable : 季付
-         * value : 1
-         */
-
-        private String lable;
-        private String value;
-
-        public String getLable() {
-            return lable;
-        }
-
-        public void setLable(String lable) {
-            this.lable = lable;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        public void setValue(String value) {
-            this.value = value;
-        }
-    }
-
-    public static class FeeReceiveBean implements Serializable{
-
-        private static final long serialVersionUID = -5893072781410411197L;
-        /**
-         * lable : 用户
-         * value : 1
-         */
-
-        private String lable;
-        private String value;
-
-        public String getLable() {
-            return lable;
-        }
-
-        public void setLable(String lable) {
-            this.lable = lable;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        public void setValue(String value) {
-            this.value = value;
-        }
     }
 
     public static class AreasBean implements Serializable{
@@ -162,34 +108,6 @@ public class ContractDetailDto implements Serializable{
 
         public void setRegion(String region) {
             this.region = region;
-        }
-    }
-
-    public static class FirstPayTypeBean implements Serializable{
-
-        private static final long serialVersionUID = -4423771073745608208L;
-        /**
-         * lable : 押一付一
-         * value : 1
-         */
-
-        private String lable;
-        private String value;
-
-        public String getLable() {
-            return lable;
-        }
-
-        public void setLable(String lable) {
-            this.lable = lable;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        public void setValue(String value) {
-            this.value = value;
         }
     }
 

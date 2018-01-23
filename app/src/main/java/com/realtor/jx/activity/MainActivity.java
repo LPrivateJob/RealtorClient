@@ -2,7 +2,6 @@ package com.realtor.jx.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.widget.Toast;
 
 import com.realtor.jx.R;
 import com.realtor.jx.base.BaseActivity;
@@ -11,7 +10,6 @@ import com.realtor.jx.fragment.tab.TabContractFragment;
 import com.realtor.jx.fragment.tab.TabMineFragment;
 import com.realtor.jx.widget.BanSlideViewPager;
 import com.realtor.jx.widget.BottomTabLayout;
-import com.realtor.jx.widget.CommitContractStepIndicator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -52,7 +50,7 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void onNewTabClick() {
-                CommitContractActivity.open(MainActivity.this, CommitContractStepIndicator.STEP.LOCATION);
+                CommitContractActivity.open(MainActivity.this, null);
             }
         });
 

@@ -36,6 +36,12 @@ public abstract class TagAdapter<T> {
         mOnDataChangedListener = listener;
     }
 
+    public void setSelected(int poses){
+        Set<Integer> set = new HashSet<>();
+        set.add(poses);
+        setSelectedList(set);
+    }
+
     @Deprecated
     public void setSelectedList(int... poses) {
         Set<Integer> set = new HashSet<>();

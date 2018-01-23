@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.realtor.jx.R;
 import com.realtor.jx.base.BaseActivity;
-import com.realtor.jx.dto.UserInfoDto;
+import com.realtor.jx.dto.FlowLayoutTypeBean;
 import com.realtor.jx.widget.flowlayout.FlowLayout;
 import com.realtor.jx.widget.flowlayout.TagAdapter;
 
@@ -17,11 +17,11 @@ import java.util.List;
  * autour: lewish
  * created at: 2018/1/15 21:20
  */
-public class MyTagAdapter extends TagAdapter<UserInfoDto.FlowLayoutTypeBean> {
+public class MyTagAdapter extends TagAdapter<FlowLayoutTypeBean> {
     private BaseActivity mActivity;
     private ViewGroup mViewGroup;
 
-    public MyTagAdapter(List<UserInfoDto.FlowLayoutTypeBean> datas, BaseActivity activity, ViewGroup root) {
+    public MyTagAdapter(List<FlowLayoutTypeBean> datas, BaseActivity activity, ViewGroup root) {
         super(datas);
         mActivity = activity;
         mViewGroup = root;
@@ -34,7 +34,7 @@ public class MyTagAdapter extends TagAdapter<UserInfoDto.FlowLayoutTypeBean> {
     }
 
     @Override
-    public View getView(FlowLayout parent, int position, UserInfoDto.FlowLayoutTypeBean flowLayoutTypeBean) {
+    public View getView(FlowLayout parent, int position, FlowLayoutTypeBean flowLayoutTypeBean) {
         TextView tv = (TextView) mActivity.getLayoutInflater().inflate(R.layout.widget_flowlayout_tv,
                 mViewGroup, false);
         tv.setText(flowLayoutTypeBean.getLable());

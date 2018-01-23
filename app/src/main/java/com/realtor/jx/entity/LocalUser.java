@@ -1,6 +1,7 @@
 package com.realtor.jx.entity;
 
 import com.realtor.jx.base.RealtorClientApplication;
+import com.realtor.jx.dto.FlowLayoutTypeBean;
 import com.realtor.jx.dto.UserInfoDto;
 import com.realtor.jx.netcore.core.cookie.CookiesManager;
 import com.realtor.jx.utils.BaseUtils;
@@ -95,7 +96,7 @@ public class LocalUser implements Serializable {
     /**
      * 返会平台支持的租住方式 整租，合租
      */
-    public List<UserInfoDto.FlowLayoutTypeBean> getRenterMethodList(){
+    public List<FlowLayoutTypeBean> getRenterMethodList(){
         if(getUserProfile()==null) {
             return  null;
         }
@@ -105,7 +106,7 @@ public class LocalUser implements Serializable {
     /**
      * 返回平台支持的付款方式
      */
-    public List<UserInfoDto.FlowLayoutTypeBean> getPlatformPaymentMethodList() {
+    public List<FlowLayoutTypeBean> getPlatformPaymentMethodList() {
         if (getUserProfile() == null) {
             return null;
         }
@@ -115,7 +116,7 @@ public class LocalUser implements Serializable {
     /**
      * 返回平台支持的首付方式
      */
-    public List<UserInfoDto.FlowLayoutTypeBean> getDownPaymentsMethodList() {
+    public List<FlowLayoutTypeBean> getDownPaymentsMethodList() {
         if (getUserProfile() == null) {
             return null;
         }
@@ -125,7 +126,7 @@ public class LocalUser implements Serializable {
     /**
      * 返回服务费承担方List
      */
-    public List<UserInfoDto.FlowLayoutTypeBean> getServiceFeeBearList() {
+    public List<FlowLayoutTypeBean> getServiceFeeBearList() {
         if (getUserProfile() == null) {
             return null;
         }
