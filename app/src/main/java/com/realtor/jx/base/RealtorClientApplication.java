@@ -8,6 +8,7 @@ import com.orhanobut.logger.FormatStrategy;
 import com.orhanobut.logger.Logger;
 import com.orhanobut.logger.PrettyFormatStrategy;
 import com.realtor.jx.BuildConfig;
+import com.realtor.jx.manager.PhoneInfoManager;
 import com.realtor.jx.netcore.NetConfig;
 import com.realtor.jx.netcore.core.NetEngine;
 
@@ -29,6 +30,7 @@ public class RealtorClientApplication extends Application {
         mContext = getApplicationContext();
         initLogger();
         initNetEngine();
+        PhoneInfoManager.init(mContext);
         Logger.d("Application Start!");
     }
 

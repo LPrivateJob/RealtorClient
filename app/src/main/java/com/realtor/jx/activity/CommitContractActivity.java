@@ -18,7 +18,6 @@ import com.realtor.jx.entity.Commons;
 import com.realtor.jx.fragment.InstallmentInfoFragment;
 import com.realtor.jx.fragment.RenterInfoFragment;
 import com.realtor.jx.fragment.UploadPicFragment;
-import com.realtor.jx.manager.PhoneInfoManager;
 import com.realtor.jx.netcore.JsonUiCallback;
 import com.realtor.jx.widget.CommitContractStepIndicator;
 import com.realtor.jx.widget.Header;
@@ -87,7 +86,9 @@ public class CommitContractActivity extends BaseActivity {
                     }
                     break;
                 case PHOTO:
-                    upLoadPics();
+                    if(mUploadPicFragment.saveContractInfo()) {
+                        upLoadPics();
+                    }
                     break;
             }
         });
@@ -132,7 +133,8 @@ public class CommitContractActivity extends BaseActivity {
         mCommitContractInfo.changeNo = order.getChangeNo();
         mCommitContractInfo.info = order.getInfo();
         // TODO: 设备标识码，待获取  
-        mCommitContractInfo.location = PhoneInfoManager.getDiviceId();
+//        mCommitContractInfo.location = PhoneInfoManager.getDiviceId();
+        mCommitContractInfo.isLoadFromNet = true;
     }
 
     /**
@@ -208,6 +210,7 @@ public class CommitContractActivity extends BaseActivity {
                     break;
                 case AGING:
                     mStep = CommitContractStepIndicator.STEP.LOCATION;
+                    removeFragment();
                     mStepIndicator.refreshUi(mStep);
                     break;
                 case PHOTO:

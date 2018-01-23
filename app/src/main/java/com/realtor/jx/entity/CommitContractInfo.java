@@ -32,4 +32,6 @@ public class CommitContractInfo {
 
     public CommitContractInfo() {
     }
+
+    public boolean isLoadFromNet;
 }

@@ -2,7 +2,6 @@ package com.realtor.jx.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
 import com.realtor.jx.R;
@@ -64,7 +63,7 @@ public class WaitModifyActivity extends BaseActivity {
         });
         // TODO: 走修改订单流程  
         mBtnModify.setOnClickListener(v -> {
-            
+            CommitContractActivity.open(this,mOrderId);
         });
     }
 

@@ -1,9 +1,6 @@
 package com.realtor.jx.fragment;
 
-import android.graphics.drawable.Icon;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -11,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.realtor.jx.R;
+import com.realtor.jx.activity.CommitContractActivity;
 import com.realtor.jx.activity.ContractDetailActivity;
 import com.realtor.jx.activity.WaitModifyActivity;
 import com.realtor.jx.activity.WaitScanQRCodeActivity;
@@ -21,8 +19,6 @@ import com.realtor.jx.base.baseadapter.recylerViewAdapter.OnItemClickListener;
 import com.realtor.jx.dao.AppDAO;
 import com.realtor.jx.dto.OrderListDto;
 import com.realtor.jx.entity.Commons;
-import com.realtor.jx.entity.ContractListItemData;
-import com.realtor.jx.entity.FakeData;
 import com.realtor.jx.fragment.tab.TabContractFragment;
 import com.realtor.jx.manager.IconManager;
 import com.realtor.jx.netcore.JsonUiCallback;
@@ -104,7 +100,7 @@ public class ContractListFragment extends BaseFragment {
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_WAITREVIEW:
                         //申请中,待审核->修改订单流程
                         // TODO: 待编写
-                        Toast.makeText(mActivity, "进修改订单流程", Toast.LENGTH_SHORT).show();
+                        CommitContractActivity.open(mActivity,orderId);
                         break;
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_WAITMODIFY:
                         //待修改->待修改页面

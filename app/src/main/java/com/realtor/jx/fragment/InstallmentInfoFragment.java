@@ -6,10 +6,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.realtor.jx.R;
+import com.realtor.jx.activity.CommitContractActivity;
 import com.realtor.jx.adapter.MyTagAdapter;
 import com.realtor.jx.base.BaseFragment;
 import com.realtor.jx.dto.FlowLayoutTypeBean;
+import com.realtor.jx.entity.CommitContractInfo;
 import com.realtor.jx.entity.LocalUser;
+import com.realtor.jx.utils.NullUtil;
+import com.realtor.jx.utils.StringUtil;
 import com.realtor.jx.widget.flowlayout.FlowLayout;
 import com.realtor.jx.widget.flowlayout.TagFlowLayout;
 
@@ -33,6 +37,9 @@ public class InstallmentInfoFragment extends BaseFragment implements TagFlowLayo
     private TagFlowLayout mFLServiceFeeBear;
     private TagFlowLayout mFLDownPaymentsMethod;
     private TagFlowLayout mFLPlatformPaymentMethod;
+    private EditText mEtContentRepaymentPeriod;
+    private EditText mEtContentAccountNum;
+    private EditText mEtContentRemarks;
 
     @Override
     protected void initView(View rootView, Bundle savedInstanceState) {
@@ -44,6 +51,9 @@ public class InstallmentInfoFragment extends BaseFragment implements TagFlowLayo
         mFLDownPaymentsMethod = findViewById(R.id.mFLDownPaymentsMethod);
         mFLPlatformPaymentMethod = findViewById(R.id.mFLPlatformPaymentMethod);
 
+        mEtContentRepaymentPeriod = findViewById(R.id.mEtContentRepaymentPeriod);
+        mEtContentAccountNum = findViewById(R.id.mEtContentAccountNum);
+        mEtContentRemarks = findViewById(R.id.mEtContentRemarks);
 
         mServiceFeeBearList = LocalUser.getInstance().getServiceFeeBearList();
         mDownPaymentsMethodList = LocalUser.getInstance().getDownPaymentsMethodList();
@@ -65,6 +75,29 @@ public class InstallmentInfoFragment extends BaseFragment implements TagFlowLayo
         mFLServiceFeeBear.setOnTagClickListener(this);
         mFLDownPaymentsMethod.setOnTagClickListener(this);
         mFLPlatformPaymentMethod.setOnTagClickListener(this);
+    }
+
+    @Override
+    protected void loadData() {
+        super.loadData();
+        CommitContractInfo commitContractInfo = ((CommitContractActivity) mActivity).getCommitContractInfo();
+        if(commitContractInfo.isLoadFromNet) {
+            mEtContentMonthlyRent.setText(NullUtil.convertFen2YuanStr(commitContractInfo.cash));
+            mEtContentLeaseFrom.setText(commitContractInfo.startTime);
+            mEtContentLeaseTo.setText(commitContractInfo.endTime);
+            if(commitContractInfo.feeType!=null&& !StringUtil.isEmpty(commitContractInfo.feeType.getValue())) {
+                mFLServiceFeeBear.getAdapter().setSelected(Integer.parseInt(commitContractInfo.feeType.getValue())-1);
+            }
+            if(commitContractInfo.firstPaytype!=null&&!StringUtil.isEmpty(commitContractInfo.firstPaytype.getValue())) {
+                mFLDownPaymentsMethod.getAdapter().setSelected(Integer.parseInt(commitContractInfo.firstPaytype.getValue())-1);
+            }
+            if(commitContractInfo.platformPayType!=null&&!StringUtil.isEmpty(commitContractInfo.platformPayType.getValue())) {
+                mFLPlatformPaymentMethod.getAdapter().setSelected(Integer.parseInt(commitContractInfo.platformPayType.getValue())-1);
+            }
+            mEtContentRepaymentPeriod.setText(""+commitContractInfo.payTerm);
+            mEtContentAccountNum.setText(commitContractInfo.changeNo);
+            mEtContentRemarks.setText(commitContractInfo.info);
+        }
     }
 
     @Override

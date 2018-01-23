@@ -38,4 +38,8 @@ public class UploadPicFragment extends BaseFragment {
     protected int getLayoutResource() {
         return R.layout.fragment_upload_pic;
     }
+
+    public boolean saveContractInfo(){
+        return true;
+    }
 }

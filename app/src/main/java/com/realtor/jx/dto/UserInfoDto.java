@@ -291,7 +291,7 @@ public class UserInfoDto implements Serializable{
         }
     }
 
-    public static class AreasBean {
+    public static class AreasBean implements Serializable{
         /**
          * id : 000086
          * name : 北京
@@ -326,7 +326,7 @@ public class UserInfoDto implements Serializable{
             this.subAreas = subAreas;
         }
 
-        public static class SubAreasBeanX {
+        public static class SubAreasBeanX implements Serializable{
             /**
              * id : 000087
              * name : 北京
@@ -361,7 +361,7 @@ public class UserInfoDto implements Serializable{
                 this.subAreas = subAreas;
             }
 
-            public static class SubAreasBean {
+            public static class SubAreasBean implements Serializable{
                 /**
                  * id : 000088
                  * name : 朝阳

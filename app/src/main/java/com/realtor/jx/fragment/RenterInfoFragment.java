@@ -58,7 +58,7 @@ public class RenterInfoFragment extends BaseFragment implements TagFlowLayout.On
         mEtContentRenterName.setText(NullUtil.getString2(commitContractInfo.tenancyName));
         mEtContentPhone.setText(NullUtil.getString2(commitContractInfo.tenancyMobile));
         mEtContentIDNum.setText(NullUtil.getString2(commitContractInfo.tenancyIdcard));
-        if(commitContractInfo.tenancyType!=null||commitContractInfo.tenancyType.getValue()!=null){
+        if(commitContractInfo.tenancyType!=null&&commitContractInfo.tenancyType.getValue()!=null){
             mFLRenterMethod.getAdapter().setSelected(Integer.parseInt(commitContractInfo.tenancyType.getValue())-1);
         }
         mEtContentCity.setText(NullUtil.getString2(commitContractInfo.cityNo));
