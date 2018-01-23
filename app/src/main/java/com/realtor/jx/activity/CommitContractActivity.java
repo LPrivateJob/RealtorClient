@@ -3,6 +3,7 @@ package com.realtor.jx.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.widget.Button;
 import android.widget.Toast;
@@ -17,6 +18,7 @@ import com.realtor.jx.entity.Commons;
 import com.realtor.jx.fragment.InstallmentInfoFragment;
 import com.realtor.jx.fragment.RenterInfoFragment;
 import com.realtor.jx.fragment.UploadPicFragment;
+import com.realtor.jx.manager.PhoneInfoManager;
 import com.realtor.jx.netcore.JsonUiCallback;
 import com.realtor.jx.widget.CommitContractStepIndicator;
 import com.realtor.jx.widget.Header;
@@ -36,11 +38,14 @@ public class CommitContractActivity extends BaseActivity {
 
     private String mOrderId;
     private CommitContractInfo mCommitContractInfo = new CommitContractInfo();
+    private RenterInfoFragment mRenterInfoFragment;
+    private InstallmentInfoFragment mInstallmentInfoFragment;
+    private UploadPicFragment mUploadPicFragment;
 
     /**
      * orderId为空则为新建，不为空则为修改
      */
-    public static void open(Activity act,String orderId){
+    public static void open(Activity act,@Nullable String orderId){
         Intent intent = new Intent(act, CommitContractActivity.class);
         intent.putExtra(Commons.BUNDLE_KEYS.EXTRA_ID,orderId);
         act.startActivity(intent);
@@ -59,7 +64,9 @@ public class CommitContractActivity extends BaseActivity {
         mStepIndicator = findView(R.id.mStepIndicator);
         mBtnNext = findView(R.id.mBtnNext);
         mStepIndicator.refreshUi(mStep);
-        addFragment(R.id.mFragmentLayout, new RenterInfoFragment());
+
+        mRenterInfoFragment = new RenterInfoFragment();
+        addFragment(R.id.mFragmentLayout, mRenterInfoFragment);
     }
 
     @Override
@@ -67,12 +74,17 @@ public class CommitContractActivity extends BaseActivity {
         mBtnNext.setOnClickListener(v -> {
             switch (mStep) {
                 case LOCATION:
-                    mStep = CommitContractStepIndicator.STEP.AGING;
-                    addFragment(R.id.mFragmentLayout, new InstallmentInfoFragment());
-                    mStepIndicator.refreshUi(mStep);
+                    if(mRenterInfoFragment.saveContractInfo()) {
+                        mStep = CommitContractStepIndicator.STEP.AGING;
+                        mInstallmentInfoFragment = new InstallmentInfoFragment();
+                        addFragment(R.id.mFragmentLayout, mInstallmentInfoFragment);
+                        mStepIndicator.refreshUi(mStep);
+                    }
                     break;
                 case AGING:
-                    commitSigningInfo();
+                    if(mInstallmentInfoFragment.saveContractInfo()) {
+                        commitSigningInfo();
+                    }
                     break;
                 case PHOTO:
                     upLoadPics();
@@ -89,11 +101,15 @@ public class CommitContractActivity extends BaseActivity {
                 @Override
                 public void onSuccess(ContractDetailDto result) {
                     fillContractInfo(result);
+                    mRenterInfoFragment.fillData(mCommitContractInfo);
                 }
             });
         }
     }
 
+    /**
+     * 更新成员对象mCommitContractInfo
+     */
     private void fillContractInfo(ContractDetailDto result) {
         ContractDetailDto.OrderBean order = result.getOrder();
         mCommitContractInfo.tenancyName = order.getTenancyName();
@@ -116,7 +132,7 @@ public class CommitContractActivity extends BaseActivity {
         mCommitContractInfo.changeNo = order.getChangeNo();
         mCommitContractInfo.info = order.getInfo();
         // TODO: 设备标识码，待获取  
-//        mCommitContractInfo.location
+        mCommitContractInfo.location = PhoneInfoManager.getDiviceId();
     }
 
     /**
@@ -138,7 +154,8 @@ public class CommitContractActivity extends BaseActivity {
             case INSTALLMENT_PREVIEW_ACTIVITY_REQUEST_CODE:
                 if (resultCode == RESULT_OK) {
                     mStep = CommitContractStepIndicator.STEP.PHOTO;
-                    addFragment(R.id.mFragmentLayout, new UploadPicFragment());
+                    mUploadPicFragment = new UploadPicFragment();
+                    addFragment(R.id.mFragmentLayout, mUploadPicFragment);
                     mHeader.setIsShowBack(false);
                     mStepIndicator.refreshUi(mStep);
                 }

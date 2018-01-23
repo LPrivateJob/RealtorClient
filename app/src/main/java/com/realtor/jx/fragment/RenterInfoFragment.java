@@ -28,6 +28,7 @@ public class RenterInfoFragment extends BaseFragment implements TagFlowLayout.On
     private EditText mEtContentRenterName;
     private EditText mEtContentPhone;
     private EditText mEtContentIDNum;
+    private EditText mEtContentCity;
     private EditText mEtContentCommunity;
     private EditText mEtContentHouseNum;
     private EditText mEtContentRoomNum;
@@ -38,6 +39,7 @@ public class RenterInfoFragment extends BaseFragment implements TagFlowLayout.On
         mEtContentRenterName = findViewById(R.id.mEtContentRenterName);
         mEtContentPhone = findViewById(R.id.mEtContentPhone);
         mEtContentIDNum = findViewById(R.id.mEtContentIDNum);
+        mEtContentCity = findViewById(R.id.mEtContentCity);
         mEtContentCommunity = findViewById(R.id.mEtContentCommunity);
         mEtContentHouseNum = findViewById(R.id.mEtContentHouseNum);
         mEtContentRoomNum = findViewById(R.id.mEtContentRoomNum);
@@ -59,6 +61,7 @@ public class RenterInfoFragment extends BaseFragment implements TagFlowLayout.On
         if(commitContractInfo.tenancyType!=null||commitContractInfo.tenancyType.getValue()!=null){
             mFLRenterMethod.getAdapter().setSelected(Integer.parseInt(commitContractInfo.tenancyType.getValue())-1);
         }
+        mEtContentCity.setText(NullUtil.getString2(commitContractInfo.cityNo));
         mEtContentCommunity.setText(NullUtil.getString2(commitContractInfo.houseName));
         mEtContentHouseNum.setText(NullUtil.getString2(commitContractInfo.houseCode));
         mEtContentRoomNum.setText(NullUtil.getString2(commitContractInfo.roomNum));
@@ -77,8 +80,8 @@ public class RenterInfoFragment extends BaseFragment implements TagFlowLayout.On
         return true;
     }
 
-    public void saveContractInfo(){
-
+    public boolean saveContractInfo(){
+        return true;
     }
 
 }

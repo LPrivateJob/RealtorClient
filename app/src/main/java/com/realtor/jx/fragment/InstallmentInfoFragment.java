@@ -8,7 +8,7 @@ import android.widget.Toast;
 import com.realtor.jx.R;
 import com.realtor.jx.adapter.MyTagAdapter;
 import com.realtor.jx.base.BaseFragment;
-import com.realtor.jx.dto.UserInfoDto;
+import com.realtor.jx.dto.FlowLayoutTypeBean;
 import com.realtor.jx.entity.LocalUser;
 import com.realtor.jx.widget.flowlayout.FlowLayout;
 import com.realtor.jx.widget.flowlayout.TagFlowLayout;
@@ -24,9 +24,9 @@ import cn.qqtheme.framework.util.ConvertUtils;
  * created at: 2018/1/6 10:35
  */
 public class InstallmentInfoFragment extends BaseFragment implements TagFlowLayout.OnTagClickListener {
-    private List<UserInfoDto.FlowLayoutTypeBean> mServiceFeeBearList;
-    private List<UserInfoDto.FlowLayoutTypeBean> mDownPaymentsMethodList;
-    private List<UserInfoDto.FlowLayoutTypeBean> mPlatformPaymentMethodList;
+    private List<FlowLayoutTypeBean> mServiceFeeBearList;
+    private List<FlowLayoutTypeBean> mDownPaymentsMethodList;
+    private List<FlowLayoutTypeBean> mPlatformPaymentMethodList;
     private EditText mEtContentMonthlyRent;
     private EditText mEtContentLeaseFrom;
     private EditText mEtContentLeaseTo;
@@ -97,6 +97,10 @@ public class InstallmentInfoFragment extends BaseFragment implements TagFlowLayo
             //平台付款方式
             Toast.makeText(mActivity, mPlatformPaymentMethodList.get(position).getLable(), Toast.LENGTH_SHORT).show();
         }
+        return true;
+    }
+
+    public boolean saveContractInfo(){
         return true;
     }
 }
