@@ -133,7 +133,7 @@ public class CommitContractActivity extends BaseActivity {
         mCommitContractInfo.changeNo = order.getChangeNo();
         mCommitContractInfo.info = order.getInfo();
         // TODO: 设备标识码，待获取  
-//        mCommitContractInfo.location = PhoneInfoManager.getDiviceId();
+//        mCommitContractInfo.location =
         mCommitContractInfo.isLoadFromNet = true;
     }
 

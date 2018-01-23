@@ -31,6 +31,7 @@
         android:layout_alignBaseline="@id/mTvTitleRenterName"
         android:layout_marginLeft="@dimen/x142"
         android:layout_toRightOf="@id/mTvTitleRenterName"
+        android:inputType="textPersonName"
         android:hint="请输入内容" />
 
     <TextView
@@ -45,7 +46,8 @@
         style="@style/CommitContractItemContent"
         android:layout_alignBaseline="@id/mTvTitlePhone"
         android:layout_alignLeft="@id/mEtContentRenterName"
-        android:hint="请输入内容" />
+        android:hint="请输入内容"
+        android:inputType="phone"/>
 
     <TextView
         android:id="@+id/mTvTitleIDNum"
@@ -59,7 +61,8 @@
         style="@style/CommitContractItemContent"
         android:layout_alignBaseline="@id/mTvTitleIDNum"
         android:layout_alignLeft="@id/mEtContentRenterName"
-        android:hint="请输入内容" />
+        android:hint="请输入内容"
+        android:inputType="number"/>
 
     <LinearLayout
         android:id="@+id/mLLRenterMethod"
@@ -102,6 +105,7 @@
         android:drawableRight="@drawable/arrow_down"
         android:drawablePadding="@dimen/x50"
         android:editable="false"
+        android:inputType="text"
         android:hint="请输入内容" />
 
 
@@ -117,7 +121,8 @@
         style="@style/CommitContractItemContent"
         android:layout_alignBaseline="@id/mTvTitleCommunity"
         android:layout_alignLeft="@id/mEtContentRenterName"
-        android:hint="请输入内容" />
+        android:hint="请输入内容"
+        android:inputType="text"/>
 
     <TextView
         android:id="@+id/mTvTitleHouseNum"
@@ -131,7 +136,8 @@
         style="@style/CommitContractItemContent"
         android:layout_alignBaseline="@id/mTvTitleHouseNum"
         android:layout_alignLeft="@id/mEtContentRenterName"
-        android:hint="请输入内容" />
+        android:hint="请输入内容"
+        android:inputType="text"/>
 
     <TextView
         android:id="@+id/mTvTitleRoomNum"
@@ -145,5 +151,6 @@
         style="@style/CommitContractItemContent"
         android:layout_alignBaseline="@id/mTvTitleRoomNum"
         android:layout_alignLeft="@id/mEtContentRenterName"
-        android:hint="请输入内容" />
+        android:hint="请输入内容"
+        android:inputType="text"/>
 </RelativeLayout>

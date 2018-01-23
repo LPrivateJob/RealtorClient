@@ -23,6 +23,7 @@ import java.util.regex.Pattern;
  */
 public class InputVerifyUtil implements Commons.BASIC_INFO {
     private static Context mApplicationContext = RealtorClientApplication.getContext();
+    private static final String NAME = "姓名";
     private static final String USER_NAME = "用户名";
     private static final String PASSWORD = "密码";
     private static final String VERIFY_CODE = "验证码";
@@ -36,6 +37,13 @@ public class InputVerifyUtil implements Commons.BASIC_INFO {
     private static final String LENTH_RANGE_FORMAT = "%s必须为%d~%d位字符";
     private static final String EMPTY_FORMAT = "%s不得为空";
 
+
+    public static boolean checkRenterName(String name){
+        if(!checkEmpty(name, NAME)){
+            return false;
+        }
+        return true;
+    }
 
     public static boolean checkUserName(String userName) {
 
