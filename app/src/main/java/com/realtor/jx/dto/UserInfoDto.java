@@ -9,11 +9,12 @@ import java.util.List;
  */
 public class UserInfoDto implements Serializable{
 
+    private static final long serialVersionUID = -3608193019132763660L;
     /**
      * payType : [{"lable":"季付","value":"1"},{"lable":"半年付","value":"2"},{"lable":"年付","value":"3"}]
      * rentType : [{"lable":"整租","value":"1"},{"lable":"合租","value":"2"}]
      * feeReceive : [{"lable":"用户","value":"1"},{"lable":"公寓","value":"2"}]
-     * areas : [{"id":"000086","name":"北京","subAreas":[{"id":"000087","name":"北京","subAreas":[{"id":"000088","name":"朝阳","subAreas":""},{"id":"000089","name":"西城","subAreas":""},{"id":"000090","name":"海淀","subAreas":""}]}]},{"id":"100087","name":"湖北","subAreas":[{"id":"010087","name":"襄阳","subAreas":[{"id":"020087","name":"樊城","subAreas":""},{"id":"020088","name":"襄州","subAreas":""},{"id":"020089","name":"襄城","subAreas":""},{"id":"020090","name":"老河口","subAreas":""},{"id":"020091","name":"枣阳","subAreas":""},{"id":"020092","name":"黄龙","subAreas":""},{"id":"020093","name":"玉山","subAreas":""},{"id":"020094","name":"耿集","subAreas":""},{"id":"020095","name":"卧龙","subAreas":""},{"id":"020096","name":"随州","subAreas":""},{"id":"020097","name":"天门","subAreas":""}]},{"id":"010088","name":"武汉","subAreas":[]},{"id":"010089","name":"十堰","subAreas":[]},{"id":"010090","name":"宜昌","subAreas":[]},{"id":"010091","name":"黄石","subAreas":[]},{"id":"010092","name":"黄冈","subAreas":[]},{"id":"010093","name":"荆门","subAreas":[]},{"id":"010094","name":"孝感","subAreas":[]},{"id":"010095","name":"仙桃","subAreas":[]},{"id":"010096","name":"老河口","subAreas":[]},{"id":"010097","name":"随州","subAreas":[]}]},{"id":"100088","name":"湖南","subAreas":[]},{"id":"100089","name":"河北","subAreas":[]},{"id":"100090","name":"河南","subAreas":[]},{"id":"100091","name":"江苏","subAreas":[]},{"id":"100092","name":"浙江","subAreas":[]},{"id":"100093","name":"福建","subAreas":[]},{"id":"100094","name":"安徽","subAreas":[]},{"id":"100095","name":"黑龙江","subAreas":[]},{"id":"100096","name":"吉林","subAreas":[]},{"id":"100097","name":"四川","subAreas":[]},{"id":"100098","name":"辽宁","subAreas":[]}]
+     * provinceList : [{"id":"000086","name":"北京","cityList":[{"id":"000087","name":"北京","cityList":[{"id":"000088","name":"朝阳","cityList":""},{"id":"000089","name":"西城","cityList":""},{"id":"000090","name":"海淀","cityList":""}]}]},{"id":"100087","name":"湖北","cityList":[{"id":"010087","name":"襄阳","cityList":[{"id":"020087","name":"樊城","cityList":""},{"id":"020088","name":"襄州","cityList":""},{"id":"020089","name":"襄城","cityList":""},{"id":"020090","name":"老河口","cityList":""},{"id":"020091","name":"枣阳","cityList":""},{"id":"020092","name":"黄龙","cityList":""},{"id":"020093","name":"玉山","cityList":""},{"id":"020094","name":"耿集","cityList":""},{"id":"020095","name":"卧龙","cityList":""},{"id":"020096","name":"随州","cityList":""},{"id":"020097","name":"天门","cityList":""}]},{"id":"010088","name":"武汉","cityList":[]},{"id":"010089","name":"十堰","cityList":[]},{"id":"010090","name":"宜昌","cityList":[]},{"id":"010091","name":"黄石","cityList":[]},{"id":"010092","name":"黄冈","cityList":[]},{"id":"010093","name":"荆门","cityList":[]},{"id":"010094","name":"孝感","cityList":[]},{"id":"010095","name":"仙桃","cityList":[]},{"id":"010096","name":"老河口","cityList":[]},{"id":"010097","name":"随州","cityList":[]}]},{"id":"100088","name":"湖南","cityList":[]},{"id":"100089","name":"河北","cityList":[]},{"id":"100090","name":"河南","cityList":[]},{"id":"100091","name":"江苏","cityList":[]},{"id":"100092","name":"浙江","cityList":[]},{"id":"100093","name":"福建","cityList":[]},{"id":"100094","name":"安徽","cityList":[]},{"id":"100095","name":"黑龙江","cityList":[]},{"id":"100096","name":"吉林","cityList":[]},{"id":"100097","name":"四川","cityList":[]},{"id":"100098","name":"辽宁","cityList":[]}]
      * firstPayType : [{"lable":"押一付一","value":"1"},{"lable":"押二付一","value":"2"}]
      * user : {"id":100000,"companyId":"1","officeId":"2","loginName":"13888888888","password":"","no":"0001","name":"张三","email":"thinkgem@163.com","phone":"8675","mobile":"8675","userType":"","photo":"","loginIp":"1.119.129.178","loginDate":"2017-09-01 13:33:18","loginFlag":"1","createBy":"1","createDate":"2013-05-27 08:00:00","updateBy":"1","updateDate":"2017-12-29 10:29:57","remarks":"最高管理员","delFlag":"0"}
      */
@@ -22,8 +23,8 @@ public class UserInfoDto implements Serializable{
     private List<FlowLayoutTypeBean> payType;
     private List<FlowLayoutTypeBean> rentType;
     private List<FlowLayoutTypeBean> feeReceive;
-    private List<AreasBean> areas;
     private List<FlowLayoutTypeBean> firstPayType;
+    private List<Province> provinceList;
 
     public UserBean getUser() {
         return user;
@@ -57,12 +58,12 @@ public class UserInfoDto implements Serializable{
         this.feeReceive = feeReceive;
     }
 
-    public List<AreasBean> getAreas() {
-        return areas;
+    public List<Province> getProvinceList() {
+        return provinceList;
     }
 
-    public void setAreas(List<AreasBean> areas) {
-        this.areas = areas;
+    public void setProvinceList(List<Province> provinceList) {
+        this.provinceList = provinceList;
     }
 
     public List<FlowLayoutTypeBean> getFirstPayType() {
@@ -74,7 +75,6 @@ public class UserInfoDto implements Serializable{
     }
 
     public static class UserBean implements Serializable{
-
         private static final long serialVersionUID = -4408983506436646361L;
         /**
          * id : 100000
@@ -291,16 +291,17 @@ public class UserInfoDto implements Serializable{
         }
     }
 
-    public static class AreasBean implements Serializable{
+    public static class Province implements Serializable{
+        private static final long serialVersionUID = 1803883636749913288L;
         /**
          * id : 000086
          * name : 北京
-         * subAreas : [{"id":"000087","name":"北京","subAreas":[{"id":"000088","name":"朝阳","subAreas":""},{"id":"000089","name":"西城","subAreas":""},{"id":"000090","name":"海淀","subAreas":""}]}]
+         * cityList : [{"id":"000087","name":"北京","cityList":[{"id":"000088","name":"朝阳","cityList":""},{"id":"000089","name":"西城","cityList":""},{"id":"000090","name":"海淀","cityList":""}]}]
          */
 
         private String id;
         private String name;
-        private List<SubAreasBeanX> subAreas;
+        private List<City> cityList;
 
         public String getId() {
             return id;
@@ -318,24 +319,25 @@ public class UserInfoDto implements Serializable{
             this.name = name;
         }
 
-        public List<SubAreasBeanX> getSubAreas() {
-            return subAreas;
+        public List<City> getCityList() {
+            return cityList;
         }
 
-        public void setSubAreas(List<SubAreasBeanX> subAreas) {
-            this.subAreas = subAreas;
+        public void setCityList(List<City> cityList) {
+            this.cityList = cityList;
         }
 
-        public static class SubAreasBeanX implements Serializable{
+        public static class City implements Serializable{
+            private static final long serialVersionUID = -3321676881594743880L;
             /**
              * id : 000087
              * name : 北京
-             * subAreas : [{"id":"000088","name":"朝阳","subAreas":""},{"id":"000089","name":"西城","subAreas":""},{"id":"000090","name":"海淀","subAreas":""}]
+             * districtList : [{"id":"000088","name":"朝阳","cityList":""},{"id":"000089","name":"西城","cityList":""},{"id":"000090","name":"海淀","cityList":""}]
              */
 
             private String id;
             private String name;
-            private List<SubAreasBean> subAreas;
+            private List<District> districtList;
 
             public String getId() {
                 return id;
@@ -353,19 +355,20 @@ public class UserInfoDto implements Serializable{
                 this.name = name;
             }
 
-            public List<SubAreasBean> getSubAreas() {
-                return subAreas;
+            public List<District> getDistrictList() {
+                return districtList;
             }
 
-            public void setSubAreas(List<SubAreasBean> subAreas) {
-                this.subAreas = subAreas;
+            public void setDistrictList(List<District> districtList) {
+                this.districtList = districtList;
             }
 
-            public static class SubAreasBean implements Serializable{
+            public static class District implements Serializable{
+                private static final long serialVersionUID = 7062014422807206375L;
                 /**
                  * id : 000088
                  * name : 朝阳
-                 * subAreas :
+                 * cityList :
                  */
 
                 private String id;

@@ -14,6 +14,11 @@ import java.util.List;
  * created at 2018/1/18 15:41
  */
 public class LocalUser implements Serializable {
+    public static final String USER_INFO_FILENAME = "userInfo";
+    public static final String PROVINCE_LIST_FILENAME = "provinceList";
+
+    private UserInfoDto profile;
+
     private LocalUser() {
     }
 
@@ -25,16 +30,16 @@ public class LocalUser implements Serializable {
         return SingletonHolder.INSTANCE;
     }
 
-    private UserInfoDto profile;
 
     public void updateUserProfile(UserInfoDto userInfoDto) {
         this.profile = userInfoDto;
-        save();
+        saveUserProfile();
+        saveProvinceList(userInfoDto.getProvinceList());
     }
 
     private UserInfoDto getUserProfile() {
         if (profile == null) {
-            load();
+            loadUserProfile();
         }
         return profile;
     }
@@ -42,15 +47,29 @@ public class LocalUser implements Serializable {
     /**
      * 保存用户数据至磁盘
      */
-    public void save() {
-        BaseUtils.saveObject(RealtorClientApplication.getContext(), UserInfoDto.class.getSimpleName(), profile);
+    public void saveUserProfile() {
+        BaseUtils.EncryptObject(RealtorClientApplication.getContext(), USER_INFO_FILENAME, profile);
     }
 
     /**
      * 从磁盘加载用户数据
      */
-    public void load() {
-        profile = (UserInfoDto) BaseUtils.getObject(RealtorClientApplication.getContext(), UserInfoDto.class.getSimpleName());
+    public void loadUserProfile() {
+        profile = (UserInfoDto) BaseUtils.DecipherObject(RealtorClientApplication.getContext(), USER_INFO_FILENAME);
+    }
+
+    /**
+     * 保存地区数据到磁盘
+     */
+    public void saveProvinceList(List<UserInfoDto.Province> provinceList) {
+        BaseUtils.saveObject(RealtorClientApplication.getContext(), PROVINCE_LIST_FILENAME, provinceList);
+    }
+
+    /**
+     * 从磁盘获取地区数据
+     */
+    public List<UserInfoDto.Province> getProvinceList() {
+        return (List<UserInfoDto.Province>) BaseUtils.restoreObject(RealtorClientApplication.getContext(), PROVINCE_LIST_FILENAME);
     }
 
     /**
@@ -58,7 +77,7 @@ public class LocalUser implements Serializable {
      */
     public void clear() {
         this.profile = null;
-        save();
+        saveUserProfile();
         CookiesManager manager = new CookiesManager(RealtorClientApplication.getContext());
         manager.clearAll();
     }
@@ -84,21 +103,11 @@ public class LocalUser implements Serializable {
     }
 
     /**
-     * 返回支持的地区列表
-     */
-    public List<UserInfoDto.AreasBean> getAreaList() {
-        if (getUserProfile() == null) {
-            return null;
-        }
-        return profile.getAreas();
-    }
-
-    /**
      * 返会平台支持的租住方式 整租，合租
      */
-    public List<FlowLayoutTypeBean> getRenterMethodList(){
-        if(getUserProfile()==null) {
-            return  null;
+    public List<FlowLayoutTypeBean> getRenterMethodList() {
+        if (getUserProfile() == null) {
+            return null;
         }
         return profile.getRentType();
     }
