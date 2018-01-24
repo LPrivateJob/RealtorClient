@@ -59,7 +59,7 @@ public abstract class BaseDAO extends ApiRoute implements ApiKeys {
 
         HashMap<String, Object> map = new HashMap<>();
 
-//        map.put(TIME_STAMP, System.currentTimeMillis());
+        map.put(TIME_STAMP, System.currentTimeMillis());
 
         for (int i = 0; i < keys.length; i++) {
             String key = keys[i];
