@@ -3,6 +3,7 @@ package com.realtor.jx.fragment;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.realtor.jx.R;
@@ -32,8 +33,8 @@ public class InstallmentInfoFragment extends BaseFragment implements TagFlowLayo
     private List<FlowLayoutTypeBean> mDownPaymentsMethodList;
     private List<FlowLayoutTypeBean> mPlatformPaymentMethodList;
     private EditText mEtContentMonthlyRent;
-    private EditText mEtContentLeaseFrom;
-    private EditText mEtContentLeaseTo;
+    private TextView mEtContentLeaseFrom;
+    private TextView mEtContentLeaseTo;
     private TagFlowLayout mFLServiceFeeBear;
     private TagFlowLayout mFLDownPaymentsMethod;
     private TagFlowLayout mFLPlatformPaymentMethod;
@@ -135,13 +136,13 @@ public class InstallmentInfoFragment extends BaseFragment implements TagFlowLayo
         } else {
             return false;
         }
-        String startTime = getEditTextStr(mEtContentLeaseFrom);
+        String startTime = mEtContentLeaseFrom.getText().toString();
         if (InputVerifyUtil.checkEmpty(startTime, "起租日")) {
             commitContractInfo.startTime = startTime;
         } else {
             return false;
         }
-        String endTime = getEditTextStr(mEtContentLeaseTo);
+        String endTime = mEtContentLeaseTo.getText().toString();
         if (InputVerifyUtil.checkEmpty(endTime, "到租日")) {
             commitContractInfo.endTime = endTime;
         } else {

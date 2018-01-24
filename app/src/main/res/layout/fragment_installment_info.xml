@@ -41,15 +41,13 @@
         android:layout_below="@id/mTvTitleMonthlyRent"
         android:text="起租日" />
 
-    <EditText
+    <TextView
         android:id="@+id/mEtContentLeaseFrom"
         style="@style/CommitContractItemContent"
         android:layout_alignBaseline="@id/mTvTitleLeaseFrom"
         android:layout_alignLeft="@id/mEtContentMonthlyRent"
         android:drawablePadding="@dimen/x50"
         android:drawableRight="@drawable/arrow_down"
-        android:editable="false"
-        android:inputType="date"
         android:hint="请输入内容" />
 
     <TextView
@@ -59,15 +57,13 @@
         android:layout_below="@id/mTvTitleLeaseFrom"
         android:text="到租日" />
 
-    <EditText
+    <TextView
         android:id="@+id/mEtContentLeaseTo"
         style="@style/CommitContractItemContent"
         android:layout_alignBaseline="@id/mTvTitleLeaseTo"
         android:layout_alignLeft="@id/mEtContentMonthlyRent"
         android:drawablePadding="@dimen/x50"
         android:drawableRight="@drawable/arrow_down"
-        android:editable="false"
-        android:inputType="date"
         android:hint="请输入内容" />
 
     <LinearLayout

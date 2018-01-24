@@ -25,7 +25,7 @@ public class TagFlowLayout extends FlowLayout
         implements TagAdapter.OnDataChangedListener {
 
     private TagAdapter mTagAdapter;
-    private int mSelectedMax = -1;//-1为不限制数量
+    private int mSelectedMax = 1;//-1为不限制数量
     private static final String TAG = "TagFlowLayout";
 
     private Set<Integer> mSelectedView = new HashSet<Integer>();
@@ -167,6 +167,7 @@ public class TagFlowLayout extends FlowLayout
     private void setChildChecked(int position, TagView view) {
         view.setChecked(true);
         mTagAdapter.onSelected(position, view.getTagView());
+        mSelectedView.add(position);
     }
 
     private void setChildUnChecked(int position, TagView view) {
@@ -236,8 +237,14 @@ public class TagFlowLayout extends FlowLayout
                 String[] split = mSelectPos.split("\\|");
                 for (String pos : split) {
                     int index = Integer.parseInt(pos);
+                    Iterator<Integer> iterator = mSelectedView.iterator();
+                    Integer preIndex = iterator.next();
+                    TagView pre = (TagView) getChildAt(preIndex);
+                    if(pre!=null) {
+                        mSelectedView.remove(preIndex);
+                    }
+                    setChildUnChecked(preIndex, pre);
                     mSelectedView.add(index);
-
                     TagView tagView = (TagView) getChildAt(index);
                     if (tagView != null) {
                         setChildChecked(index, tagView);
