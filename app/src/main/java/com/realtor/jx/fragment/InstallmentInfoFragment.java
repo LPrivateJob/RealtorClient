@@ -81,7 +81,7 @@ public class InstallmentInfoFragment extends BaseFragment implements TagFlowLayo
     protected void loadData() {
         super.loadData();
         CommitContractInfo commitContractInfo = ((CommitContractActivity) mActivity).getCommitContractInfo();
-        if (true) {
+        if (!((CommitContractActivity)mActivity).isNewOrder()) {
             mEtContentMonthlyRent.setText(NullUtil.convertFen2YuanStr(commitContractInfo.cash));
             mEtContentLeaseFrom.setText(commitContractInfo.startTime);
             mEtContentLeaseTo.setText(commitContractInfo.endTime);
@@ -153,6 +153,9 @@ public class InstallmentInfoFragment extends BaseFragment implements TagFlowLayo
         } else {
             return false;
         }
+        commitContractInfo.feeType = mFLServiceFeeBear.getSelected();
+        commitContractInfo.firstPaytype = mFLDownPaymentsMethod.getSelected();
+        commitContractInfo.platformPayType = mFLPlatformPaymentMethod.getSelected();
         return true;
     }
 

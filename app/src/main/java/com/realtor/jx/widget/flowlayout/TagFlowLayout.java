@@ -155,6 +155,15 @@ public class TagFlowLayout extends FlowLayout
         return new HashSet<Integer>(mSelectedView);
     }
 
+    public int getSelected(){
+        int pos=1;
+        Iterator<Integer> iterator = mSelectedView.iterator();
+        while (iterator.hasNext()){
+            pos = iterator.next();
+        }
+        return pos+1;
+    }
+
     private void setChildChecked(int position, TagView view) {
         view.setChecked(true);
         mTagAdapter.onSelected(position, view.getTagView());

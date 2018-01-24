@@ -12,7 +12,7 @@ import com.realtor.jx.R;
 import com.realtor.jx.base.BaseActivity;
 import com.realtor.jx.base.baseadapter.ViewHolder;
 import com.realtor.jx.base.baseadapter.absListViewAdapter.AbsListViewAdapter;
-import com.realtor.jx.dto.ContractDetailDto;
+import com.realtor.jx.dto.ContractDto;
 import com.realtor.jx.entity.Commons;
 import com.realtor.jx.utils.NullUtil;
 
@@ -32,9 +32,9 @@ public class InstallmentPreviewActivity extends BaseActivity {
     private InstallmentPreviewAdapter mAdapter;
     private TextView mBtnNext;
     private int mRenterTotalAmount;
-    private List<ContractDetailDto.InstalmentOrdersBean> mDataList;
+    private List<ContractDto.InstalmentOrdersBean> mDataList;
 
-    public static void open(BaseActivity activity, int totalAmount, List<ContractDetailDto.InstalmentOrdersBean> dataList) {
+    public static void open(BaseActivity activity, int totalAmount, List<ContractDto.InstalmentOrdersBean> dataList) {
         Intent intent = new Intent(activity, InstallmentPreviewActivity.class);
         intent.putExtra(Commons.BUNDLE_KEYS.EXTAR_INT, totalAmount);
         intent.putExtra(Commons.BUNDLE_KEYS.EXTRA_LIST, (Serializable) dataList);
@@ -46,7 +46,7 @@ public class InstallmentPreviewActivity extends BaseActivity {
         super.onPreInit();
         Bundle bundle = getIntent().getExtras();
         mRenterTotalAmount = bundle.getInt(Commons.BUNDLE_KEYS.EXTAR_INT);
-        mDataList = (List<ContractDetailDto.InstalmentOrdersBean>) bundle.getSerializable(Commons.BUNDLE_KEYS.EXTRA_LIST);
+        mDataList = (List<ContractDto.InstalmentOrdersBean>) bundle.getSerializable(Commons.BUNDLE_KEYS.EXTRA_LIST);
     }
 
     @Override
@@ -82,14 +82,14 @@ public class InstallmentPreviewActivity extends BaseActivity {
         Toast.makeText(this, "请点击下一步上传照片", Toast.LENGTH_SHORT).show();
     }
 
-    class InstallmentPreviewAdapter extends AbsListViewAdapter<ContractDetailDto.InstalmentOrdersBean> {
+    class InstallmentPreviewAdapter extends AbsListViewAdapter<ContractDto.InstalmentOrdersBean> {
 
-        public InstallmentPreviewAdapter(Context context, int layoutId, List<ContractDetailDto.InstalmentOrdersBean> datas) {
+        public InstallmentPreviewAdapter(Context context, int layoutId, List<ContractDto.InstalmentOrdersBean> datas) {
             super(context, layoutId, datas);
         }
 
         @Override
-        public void convert(int position, ViewHolder holder, ContractDetailDto.InstalmentOrdersBean instalmentOrdersBean) {
+        public void convert(int position, ViewHolder holder, ContractDto.InstalmentOrdersBean instalmentOrdersBean) {
             holder.setText(R.id.mTvRepayTerm, String.format("第%s期", instalmentOrdersBean.getTermNo()));
             holder.setText(R.id.mTvRepayDate, instalmentOrdersBean.getRepayDate());
             holder.setText(R.id.mTvRepayAmount, NullUtil.convertFen2YuanStr(instalmentOrdersBean.getTotalAmt()));

@@ -23,6 +23,8 @@ import com.realtor.jx.netcore.JsonUiCallback;
 import com.realtor.jx.widget.CommitContractStepIndicator;
 import com.realtor.jx.widget.Header;
 
+import java.util.List;
+
 /**
  * description: 新建和修改合同页面
  * autour: lewish
@@ -30,6 +32,7 @@ import com.realtor.jx.widget.Header;
  */
 public class CommitContractActivity extends BaseActivity {
     public static final int INSTALLMENT_PREVIEW_ACTIVITY_REQUEST_CODE = 1;
+    private boolean isNewOrder = true;
     private Header mHeader;
     private CommitContractStepIndicator mStepIndicator;
     private Button mBtnNext;
@@ -41,6 +44,8 @@ public class CommitContractActivity extends BaseActivity {
     private RenterInfoFragment mRenterInfoFragment;
     private InstallmentInfoFragment mInstallmentInfoFragment;
     private UploadPicFragment mUploadPicFragment;
+    private int totalAmount;
+    private List<ContractDto.InstalmentOrdersBean> instalmentOrders;
 
     /**
      * orderId为空则为新建，不为空则为修改
@@ -56,6 +61,7 @@ public class CommitContractActivity extends BaseActivity {
         super.onPreInit();
         Bundle bundle = getIntent().getExtras();
         mOrderId = bundle.getString(Commons.BUNDLE_KEYS.EXTRA_ID);
+        isNewOrder = mOrderId==null;
     }
 
     @Override
@@ -118,7 +124,7 @@ public class CommitContractActivity extends BaseActivity {
         mCommitContractInfo.tenancyMobile = order.getTenancyMobile();
         mCommitContractInfo.tenancyIdcard = order.getTenancyIdcard();
         // TODO: 租住类型，待获取
-//        mCommitContractInfo.tenancyType = order.getTenancyType();
+        mCommitContractInfo.tenancyType = order.getTenancyType();
         mCommitContractInfo.cityNo = order.getCityNo();
         mCommitContractInfo.houseName = order.getHouseName();
         mCommitContractInfo.houseCode = order.getHouseCode();
@@ -133,9 +139,6 @@ public class CommitContractActivity extends BaseActivity {
         mCommitContractInfo.payTerm = order.getPayTerm();
         mCommitContractInfo.changeNo = order.getChangeNo();
         mCommitContractInfo.info = order.getInfo();
-        // TODO: 设备标识码，待获取  
-//        mCommitContractInfo.location ="USEF89WEF7923RF923F78263F23";
-//        mCommitContractInfo.isLoadFromNet = true;
     }
 
     /**
@@ -165,6 +168,9 @@ public class CommitContractActivity extends BaseActivity {
             AppDAO.getInstance().modifyContract("1234",mCommitContractInfo, new JsonUiCallback<ContractDto>(this) {
                 @Override
                 public void onSuccess(ContractDto result) {
+                    totalAmount = result.getOrder().getSiteUsertotalAmt();
+                    instalmentOrders = result.getInstalmentOrders();
+                    InstallmentPreviewActivity.open(CommitContractActivity.this,result.getOrder().getSiteUsertotalAmt(),result.getInstalmentOrders());
                     Toast.makeText(CommitContractActivity.this, "onSuccess", Toast.LENGTH_SHORT).show();
                 }
 
@@ -180,7 +186,7 @@ public class CommitContractActivity extends BaseActivity {
             });
         }
         // TODO: 待调
-//        startActivityForResult(new Intent(this, InstallmentPreviewActivity.class), INSTALLMENT_PREVIEW_ACTIVITY_REQUEST_CODE);
+
     }
 
     private void upLoadPics() {
@@ -260,5 +266,9 @@ public class CommitContractActivity extends BaseActivity {
 
     public CommitContractInfo getCommitContractInfo(){
         return mCommitContractInfo;
+    }
+
+    public boolean isNewOrder() {
+        return isNewOrder;
     }
 }

@@ -4,16 +4,19 @@
     android:layout_height="wrap_content"
     android:paddingTop="@dimen/y50">
     <TextView
+        android:id="@+id/mTvRepayTerm"
         style="@style/ListViewItem"
         android:layout_marginLeft="@dimen/x75"
         android:text="@string/default_txt_placeholder"/>
 
     <TextView
+        android:id="@+id/mTvRepayDate"
         style="@style/ListViewItem"
         android:layout_marginLeft="@dimen/x180"
         android:text="@string/default_txt_placeholder"/>
 
     <TextView
+        android:id="@+id/mTvRepayAmount"
         style="@style/ListViewItem"
         android:layout_marginLeft="@dimen/x160"
         android:text="@string/default_txt_placeholder" />

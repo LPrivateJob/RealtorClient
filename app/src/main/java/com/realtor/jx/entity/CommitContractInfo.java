@@ -4,7 +4,7 @@ package com.realtor.jx.entity;
  * description: 提交合同类
  * autour: lewish
  * created at: 2018/1/20 15:23
-*/
+ */
 
 public class CommitContractInfo {
     //租住信息
@@ -26,11 +26,9 @@ public class CommitContractInfo {
     public int payTerm;//还款期数
     public String changeNo;//台账号
     public String info;//备注信息
-//    public String location;//硬件标识
 
     public CommitContractInfo() {
     }
 
-//    public boolean isLoadFromNet;
 
 }

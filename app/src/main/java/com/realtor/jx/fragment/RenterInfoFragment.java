@@ -50,7 +50,6 @@ public class RenterInfoFragment extends BaseFragment implements TagFlowLayout.On
 
     @Override
     protected void initListener() {
-        // TODO: 待修改成rentType  
         mRenterMethodsList = LocalUser.getInstance().getRenterMethodList();
         mFLRenterMethod.setAdapter(new MyTagAdapter(mRenterMethodsList, mActivity, mFLRenterMethod));
         mFLRenterMethod.setOnTagClickListener(this);
@@ -66,6 +65,7 @@ public class RenterInfoFragment extends BaseFragment implements TagFlowLayout.On
         mEtContentHouseNum.setText(NullUtil.getString2(commitContractInfo.houseCode));
         mEtContentRoomNum.setText(NullUtil.getString2(commitContractInfo.roomNum));
     }
+
 
     @Override
     protected int getLayoutResource() {
@@ -124,6 +124,7 @@ public class RenterInfoFragment extends BaseFragment implements TagFlowLayout.On
         }else {
             return false;
         }
+        commitContractInfo.tenancyType=mFLRenterMethod.getSelected();
         return true;
     }
 
