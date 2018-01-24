@@ -187,3 +187,4 @@
 -dontwarn cn.qqtheme.framework.entity.**
 -keep class cn.qqtheme.framework.entity.** { *;}
 #-ignorewarnings
+-dontwarn com.squareup.picasso.**

@@ -1,1 +1,1 @@
-include ':app', ':takephoto_library', ':library:WheelPicker', ':library:Common'
+include ':app'
