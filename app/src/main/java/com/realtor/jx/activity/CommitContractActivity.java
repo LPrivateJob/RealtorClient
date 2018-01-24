@@ -127,15 +127,15 @@ public class CommitContractActivity extends BaseActivity {
         mCommitContractInfo.cash = order.getCash();
         mCommitContractInfo.startTime = order.getStartTime();
         mCommitContractInfo.endTime = order.getEndTime();
-        mCommitContractInfo.feeType = result.getFeeReceive();
-        mCommitContractInfo.firstPaytype = result.getFirstPayType();
-        mCommitContractInfo.platformPayType =result.getPayType();
+        mCommitContractInfo.feeType = Integer.parseInt(result.getFeeReceive().getValue());
+        mCommitContractInfo.firstPaytype = Integer.parseInt(result.getFirstPayType().getValue());
+        mCommitContractInfo.platformPayType =Integer.parseInt(result.getPayType().getValue());
         mCommitContractInfo.payTerm = order.getPayTerm();
         mCommitContractInfo.changeNo = order.getChangeNo();
         mCommitContractInfo.info = order.getInfo();
         // TODO: 设备标识码，待获取  
-        mCommitContractInfo.location ="USEF89WEF7923RF923F78263F23";
-        mCommitContractInfo.isLoadFromNet = true;
+//        mCommitContractInfo.location ="USEF89WEF7923RF923F78263F23";
+//        mCommitContractInfo.isLoadFromNet = true;
     }
 
     /**

@@ -14,7 +14,6 @@ import com.realtor.jx.entity.CommitContractInfo;
 import com.realtor.jx.entity.LocalUser;
 import com.realtor.jx.utils.InputVerifyUtil;
 import com.realtor.jx.utils.NullUtil;
-import com.realtor.jx.utils.StringUtil;
 import com.realtor.jx.widget.flowlayout.FlowLayout;
 import com.realtor.jx.widget.flowlayout.TagFlowLayout;
 import com.realtor.jx.widget.picker.common.util.ConvertUtils;
@@ -82,20 +81,14 @@ public class InstallmentInfoFragment extends BaseFragment implements TagFlowLayo
     protected void loadData() {
         super.loadData();
         CommitContractInfo commitContractInfo = ((CommitContractActivity) mActivity).getCommitContractInfo();
-        if(commitContractInfo.isLoadFromNet) {
+        if (true) {
             mEtContentMonthlyRent.setText(NullUtil.convertFen2YuanStr(commitContractInfo.cash));
             mEtContentLeaseFrom.setText(commitContractInfo.startTime);
             mEtContentLeaseTo.setText(commitContractInfo.endTime);
-            if(commitContractInfo.feeType!=null&& !StringUtil.isEmpty(commitContractInfo.feeType.getValue())) {
-                mFLServiceFeeBear.getAdapter().setSelected(Integer.parseInt(commitContractInfo.feeType.getValue())-1);
-            }
-            if(commitContractInfo.firstPaytype!=null&&!StringUtil.isEmpty(commitContractInfo.firstPaytype.getValue())) {
-                mFLDownPaymentsMethod.getAdapter().setSelected(Integer.parseInt(commitContractInfo.firstPaytype.getValue())-1);
-            }
-            if(commitContractInfo.platformPayType!=null&&!StringUtil.isEmpty(commitContractInfo.platformPayType.getValue())) {
-                mFLPlatformPaymentMethod.getAdapter().setSelected(Integer.parseInt(commitContractInfo.platformPayType.getValue())-1);
-            }
-            mEtContentRepaymentPeriod.setText(""+commitContractInfo.payTerm);
+            mFLServiceFeeBear.getAdapter().setSelected(commitContractInfo.feeType - 1);
+            mFLDownPaymentsMethod.getAdapter().setSelected(commitContractInfo.firstPaytype - 1);
+            mFLPlatformPaymentMethod.getAdapter().setSelected(commitContractInfo.platformPayType - 1);
+            mEtContentRepaymentPeriod.setText("" + commitContractInfo.payTerm);
             mEtContentAccountNum.setText(commitContractInfo.changeNo);
             mEtContentRemarks.setText(commitContractInfo.info);
         }
@@ -134,36 +127,36 @@ public class InstallmentInfoFragment extends BaseFragment implements TagFlowLayo
         return true;
     }
 
-    public boolean saveContractInfo(){
+    public boolean saveContractInfo() {
         CommitContractInfo commitContractInfo = ((CommitContractActivity) mActivity).getCommitContractInfo();
         String cash = getEditTextStr(mEtContentMonthlyRent);
-        if(InputVerifyUtil.checkEmpty(cash,"月租金")) {
-            commitContractInfo.cash=NullUtil.convertYuan2FenI(cash);
-        }else {
+        if (InputVerifyUtil.checkEmpty(cash, "月租金")) {
+            commitContractInfo.cash = NullUtil.convertYuan2FenI(cash);
+        } else {
             return false;
         }
         String startTime = getEditTextStr(mEtContentLeaseFrom);
-        if(InputVerifyUtil.checkEmpty(startTime,"起租日")) {
+        if (InputVerifyUtil.checkEmpty(startTime, "起租日")) {
             commitContractInfo.startTime = startTime;
-        }else {
+        } else {
             return false;
         }
         String endTime = getEditTextStr(mEtContentLeaseTo);
-        if(InputVerifyUtil.checkEmpty(endTime,"到租日")) {
+        if (InputVerifyUtil.checkEmpty(endTime, "到租日")) {
             commitContractInfo.endTime = endTime;
-        }else {
+        } else {
             return false;
         }
         String payTerm = getEditTextStr(mEtContentRepaymentPeriod);
-        if(InputVerifyUtil.checkEmpty(payTerm,"还款期数")) {
+        if (InputVerifyUtil.checkEmpty(payTerm, "还款期数")) {
             commitContractInfo.payTerm = Integer.parseInt(payTerm);
-        }else {
+        } else {
             return false;
         }
         return true;
     }
 
-    private String getEditTextStr(EditText editText){
+    private String getEditTextStr(EditText editText) {
         return editText.getText().toString();
     }
 }
