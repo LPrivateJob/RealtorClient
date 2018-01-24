@@ -17,4 +17,14 @@ public interface ApiKeys {
     public static final String PAGE_SIZE = "pageSize";
     public static final String ORDER_ID = "orderId";
     public static final String MOBILE_NUM = "mobileNo";
+    public static final String LOCATION = "location";
+
+    public static final String TENANCY_NAME = "tenancyName";
+    public static final String TENANCY_MOBILE = "tenancyMobile";
+    public static final String TENANCY_IDCARD = "tenancyIdcard";
+    public static final String TENANCY_TYPE = "tenancyType";
+    public static final String CITY_NO = "cityNo";
+    public static final String HOUSE_NAME = "houseName";
+    public static final String HOUSE_CODE = "houseCode";
+    public static final String ROOM_NUM = "roomNum";
 }

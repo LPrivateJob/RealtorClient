@@ -13,6 +13,7 @@ import com.realtor.jx.base.BaseActivity;
 import com.realtor.jx.base.BaseFragment;
 import com.realtor.jx.dao.AppDAO;
 import com.realtor.jx.dto.ContractDetailDto;
+import com.realtor.jx.dto.ContractDto;
 import com.realtor.jx.entity.CommitContractInfo;
 import com.realtor.jx.entity.Commons;
 import com.realtor.jx.fragment.InstallmentInfoFragment;
@@ -133,7 +134,7 @@ public class CommitContractActivity extends BaseActivity {
         mCommitContractInfo.changeNo = order.getChangeNo();
         mCommitContractInfo.info = order.getInfo();
         // TODO: 设备标识码，待获取  
-//        mCommitContractInfo.location =
+        mCommitContractInfo.location ="USEF89WEF7923RF923F78263F23";
         mCommitContractInfo.isLoadFromNet = true;
     }
 
@@ -141,6 +142,43 @@ public class CommitContractActivity extends BaseActivity {
      * 向服务器提交签约信息
      */
     private void commitSigningInfo() {
+        if(mOrderId==null) {
+            //新建合同
+            AppDAO.getInstance().createContract("1234",mCommitContractInfo, new JsonUiCallback<ContractDto>(this) {
+                @Override
+                public void onSuccess(ContractDto result) {
+
+                }
+
+                @Override
+                public void onBizFailed(String resultCode, String resultInfo) {
+                    super.onBizFailed(resultCode, resultInfo);
+                }
+
+                @Override
+                public void onConnectionFailed() {
+                    super.onConnectionFailed();
+                }
+            });
+        }else {
+            //修改合同
+            AppDAO.getInstance().modifyContract("1234",mCommitContractInfo, new JsonUiCallback<ContractDto>(this) {
+                @Override
+                public void onSuccess(ContractDto result) {
+                    Toast.makeText(CommitContractActivity.this, "onSuccess", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onBizFailed(String resultCode, String resultInfo) {
+                    super.onBizFailed(resultCode, resultInfo);
+                }
+
+                @Override
+                public void onConnectionFailed() {
+                    super.onConnectionFailed();
+                }
+            });
+        }
         // TODO: 待调
 //        startActivityForResult(new Intent(this, InstallmentPreviewActivity.class), INSTALLMENT_PREVIEW_ACTIVITY_REQUEST_CODE);
     }

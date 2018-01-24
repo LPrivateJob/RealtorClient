@@ -28,9 +28,9 @@ public interface ApiService {
     @POST("{route}")
     Call<ResponseResult> postFormData(@Path(value = "route", encoded = true) String route, @FieldMap Map<String, Object> paramMap);
 
-    @Headers({"Content-Type: application/json","Accept:  application/json"})
+    @Headers({"Content-Type: application/json"})
     @POST("{route}")
-    Call<ResponseResult> postJson(@Path(value = "route", encoded = true) String route, @Body Object body);
+    Call<ResponseResult> postJson(@Path(value = "route", encoded = true) String route, @QueryMap Map<String, Object> paramMap,  @Body Object body);
 
     @Multipart
     @POST("{route}")

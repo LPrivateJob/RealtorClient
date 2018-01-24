@@ -22,6 +22,8 @@ public class ApiRoute {
         private static final String ROOT = BuildConfig.SERVER_ADD+"/app/contract";
         //创建租赁合同
         public static final String CREATE = ROOT+"/create";
+        //修改租赁合同
+        public static final String MODIFY = ROOT + "/modify";
         //获取微信二维码
         public static final String GET_WECHAT_IMAGE = ROOT+"/getWechatImgae";
         //查询订单详情

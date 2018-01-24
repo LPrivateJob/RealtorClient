@@ -42,8 +42,8 @@ public abstract class BaseDAO extends ApiRoute implements ApiKeys {
         invoke(call, callBack, true);
     }
 
-    protected <T> void sendPostJson(String route, Object object, JsonUiCallback<T> callBack) {
-        Call<ResponseResult> call = apiService.postJson(route, object);
+    protected <T> void sendPostJson(String route, Map<String, Object> paramMap,Object object, JsonUiCallback<T> callBack) {
+        Call<ResponseResult> call = apiService.postJson(route, paramMap,object);
         invoke(call, callBack, true);
     }
 
@@ -59,7 +59,7 @@ public abstract class BaseDAO extends ApiRoute implements ApiKeys {
 
         HashMap<String, Object> map = new HashMap<>();
 
-        map.put(TIME_STAMP, System.currentTimeMillis());
+//        map.put(TIME_STAMP, System.currentTimeMillis());
 
         for (int i = 0; i < keys.length; i++) {
             String key = keys[i];
