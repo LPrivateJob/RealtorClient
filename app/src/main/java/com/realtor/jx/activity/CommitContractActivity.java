@@ -19,6 +19,7 @@ import com.realtor.jx.entity.Commons;
 import com.realtor.jx.fragment.InstallmentInfoFragment;
 import com.realtor.jx.fragment.RenterInfoFragment;
 import com.realtor.jx.fragment.UploadPicFragment;
+import com.realtor.jx.manager.PhoneInfoManager;
 import com.realtor.jx.netcore.JsonUiCallback;
 import com.realtor.jx.widget.CommitContractStepIndicator;
 import com.realtor.jx.widget.Header;
@@ -147,7 +148,7 @@ public class CommitContractActivity extends BaseActivity {
     private void commitSigningInfo() {
         if(mOrderId==null) {
             //新建合同
-            AppDAO.getInstance().createContract("1234",mCommitContractInfo, new JsonUiCallback<ContractDto>(this) {
+            AppDAO.getInstance().createContract(PhoneInfoManager.getDiviceId(),mCommitContractInfo, new JsonUiCallback<ContractDto>(this) {
                 @Override
                 public void onSuccess(ContractDto result) {
 
@@ -165,7 +166,7 @@ public class CommitContractActivity extends BaseActivity {
             });
         }else {
             //修改合同
-            AppDAO.getInstance().modifyContract("1234",mCommitContractInfo, new JsonUiCallback<ContractDto>(this) {
+            AppDAO.getInstance().modifyContract(PhoneInfoManager.getDiviceId(),mCommitContractInfo, new JsonUiCallback<ContractDto>(this) {
                 @Override
                 public void onSuccess(ContractDto result) {
                     totalAmount = result.getOrder().getSiteUsertotalAmt();
