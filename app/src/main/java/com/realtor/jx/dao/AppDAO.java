@@ -84,8 +84,8 @@ public class AppDAO extends BaseDAO {
     }
 
     public void upLoadPics(String orderId,Map<String,String> fileMap,JsonUiCallback<String> callback){
-        Set<Map.Entry<String, String>> entries = fileMap.entrySet();
         List<MultipartBody.Part> list = new ArrayList<>();
+        list.add(MultipartBody.Part.createFormData(ApiKeys.ORDER_ID, orderId));
         for (Map.Entry<String,String> entry:fileMap.entrySet()){
             String fileKey = entry.getKey();
             String filePath = entry.getValue();
@@ -93,8 +93,6 @@ public class AppDAO extends BaseDAO {
             MultipartBody.Part formData = MultipartBody.Part.createFormData(fileKey, fileName, RequestBody.create(MediaType.parse("image/jpeg"), new File(filePath)));
             list.add(formData);
         }
-        MultipartBody.Part formData = MultipartBody.Part.createFormData(ApiKeys.ORDER_ID, orderId);
-        Call<ResponseResult> call = apiService.uploadFile(Contract.UPLOAD_IMAGE, formData, list.get(0), list.get(1), list.get(2), list.get(3));
-        invoke(call,callback);
+        upLoadFile(Contract.UPLOAD_IMAGE,list,callback);
     }
 }

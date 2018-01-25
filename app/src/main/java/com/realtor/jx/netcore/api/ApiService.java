@@ -2,6 +2,7 @@ package com.realtor.jx.netcore.api;
 
 import com.realtor.jx.netcore.entity.ResponseResult;
 
+import java.util.List;
 import java.util.Map;
 
 import okhttp3.MultipartBody;
@@ -34,7 +35,7 @@ public interface ApiService {
 
     @Multipart
     @POST("{route}")
-    Call<ResponseResult> uploadFile(@Path(value = "route", encoded = true) String route, @Part() MultipartBody.Part... info);
+    Call<ResponseResult> uploadFile(@Path(value = "route", encoded = true) String route, @Part List<MultipartBody.Part> partList);
 
     @GET("{route}")
     Call<ResponseResult> get(@Path(value = "route", encoded = true) String route, @QueryMap Map<String, Object> paramMap);

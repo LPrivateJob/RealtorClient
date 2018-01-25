@@ -8,8 +8,10 @@ import com.realtor.jx.netcore.core.JsonCallback;
 import com.realtor.jx.netcore.core.NetEngine;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 
 /**
@@ -44,6 +46,11 @@ public abstract class BaseDAO extends ApiRoute implements ApiKeys {
 
     protected <T> void sendPostJson(String route, Map<String, Object> paramMap,Object object, JsonUiCallback<T> callBack) {
         Call<ResponseResult> call = apiService.postJson(route, paramMap,object);
+        invoke(call, callBack, true);
+    }
+
+    protected <T> void upLoadFile(String route, List<MultipartBody.Part> partList, JsonUiCallback<T> callBack) {
+        Call<ResponseResult> call = apiService.uploadFile(route, partList);
         invoke(call, callBack, true);
     }
 
