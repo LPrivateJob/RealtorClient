@@ -5,14 +5,21 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.realtor.jx.R;
 import com.realtor.jx.base.BaseFragment;
+import com.realtor.jx.dao.AppDAO;
+import com.realtor.jx.entity.Commons;
+import com.realtor.jx.netcore.JsonUiCallback;
+import com.realtor.jx.netcore.api.ApiKeys;
+import com.realtor.jx.utils.StringUtil;
 import com.zhihu.matisse.Matisse;
 import com.zhihu.matisse.MimeType;
 import com.zhihu.matisse.engine.impl.GlideEngine;
 import com.zhihu.matisse.internal.entity.CaptureStrategy;
 
+import java.util.HashMap;
 import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
@@ -28,6 +35,8 @@ public class UploadPicFragment extends BaseFragment implements View.OnClickListe
     public static final int REQUEST_CODE_POC = 3;
     public static final int REQUEST_CODE_AGENCY_CONTRACT = 4;
 
+    private String mOrderId;
+
     private ImageView mIvLeasingContractPH;
     private ImageView mIvAddLeasingContract;
     private ImageView mIvIDCardPH;
@@ -41,6 +50,20 @@ public class UploadPicFragment extends BaseFragment implements View.OnClickListe
     private String mIDCardPath;
     private String mPOCPath;
     private String mAgencyContractPath;
+
+    public static UploadPicFragment newInstance(String orderId) {
+        UploadPicFragment instance = new UploadPicFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(Commons.BUNDLE_KEYS.EXTRA_ID, orderId);
+        instance.setArguments(bundle);
+        return instance;
+    }
+
+    @Override
+    protected void getIncomingValue() {
+        super.getIncomingValue();
+        mOrderId = getArguments().getString(Commons.BUNDLE_KEYS.EXTRA_ID);
+    }
 
     @Override
     protected void initView(View rootView, Bundle savedInstanceState) {
@@ -68,15 +91,42 @@ public class UploadPicFragment extends BaseFragment implements View.OnClickListe
         return R.layout.fragment_upload_pic;
     }
 
-    public boolean saveContractInfo() {
+    public void upLoadPics(){
+        if(StringUtil.isEmpty(mLeasingContractPath)) {
+           Toast.makeText(mActivity, "请上传租户和公寓签署的租赁合同", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        HashMap<String, String> fileMap = new HashMap<>();
+        fileMap.put(ApiKeys.FILE_CONTRACT,mLeasingContractPath);
+        if(!StringUtil.isEmpty(mIDCardPath)) {
+            fileMap.put(ApiKeys.FILE_RENTER,mIDCardPath);
+        }
+        if(!StringUtil.isEmpty(mPOCPath)) {
+            fileMap.put(ApiKeys.FILE_HOUSE,mPOCPath);
+        }
+        if(!StringUtil.isEmpty(mAgencyContractPath)) {
+            fileMap.put(ApiKeys.FILE_AGENT,mAgencyContractPath);
+        }
+        AppDAO.getInstance().upLoadPics(mOrderId, fileMap, new JsonUiCallback<String>(mActivity) {
+            @Override
+            public void onSuccess(String result) {
+                Toast.makeText(mActivity, "onSuccess", Toast.LENGTH_SHORT).show();
+            }
 
-        return true;
+            @Override
+            public void onConnectionFailed() {
+                super.onConnectionFailed();
+            }
+
+            @Override
+            public void onBizFailed(String resultCode, String resultInfo) {
+                super.onBizFailed(resultCode, resultInfo);
+            }
+        });
     }
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             String path = null;
             List<String> paths = Matisse.obtainPathResult(data);
@@ -104,7 +154,7 @@ public class UploadPicFragment extends BaseFragment implements View.OnClickListe
      * 跳到图片选择页
      */
     public void selectPics(int requestCode) {
-        Matisse.from(mActivity)
+        Matisse.from(this)
                 .choose(MimeType.ofImage(), false)
                 .showSingleMediaType(true)
                 .countable(false)

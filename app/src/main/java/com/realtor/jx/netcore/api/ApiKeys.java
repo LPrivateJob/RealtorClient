@@ -19,12 +19,9 @@ public interface ApiKeys {
     public static final String MOBILE_NUM = "mobileNo";
     public static final String LOCATION = "location";
 
-    public static final String TENANCY_NAME = "tenancyName";
-    public static final String TENANCY_MOBILE = "tenancyMobile";
-    public static final String TENANCY_IDCARD = "tenancyIdcard";
-    public static final String TENANCY_TYPE = "tenancyType";
-    public static final String CITY_NO = "cityNo";
-    public static final String HOUSE_NAME = "houseName";
-    public static final String HOUSE_CODE = "houseCode";
-    public static final String ROOM_NUM = "roomNum";
+    public static final String FILE_CONTRACT = "fileContract";
+    public static final String FILE_RENTER = "fileRenter";
+    public static final String FILE_HOUSE = "fileHouse";
+    public static final String FILE_AGENT = "fileAgent";
+
 }

@@ -94,9 +94,7 @@ public class CommitContractActivity extends BaseActivity {
                     }
                     break;
                 case PHOTO:
-                    if(mUploadPicFragment.saveContractInfo()) {
-                        upLoadPics();
-                    }
+                    mUploadPicFragment.upLoadPics();
                     break;
             }
         });
@@ -187,18 +185,14 @@ public class CommitContractActivity extends BaseActivity {
         }
     }
 
-    private void upLoadPics() {
-        openActivity(WaitScanQRCodeActivity.class);
-        finish();
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode,resultCode,data);
         switch (requestCode) {
             case INSTALLMENT_PREVIEW_ACTIVITY_REQUEST_CODE:
                 if (resultCode == RESULT_OK) {
                     mStep = CommitContractStepIndicator.STEP.PHOTO;
-                    mUploadPicFragment = new UploadPicFragment();
+                    mUploadPicFragment = UploadPicFragment.newInstance(mOrderId);
                     addFragment(R.id.mFragmentLayout, mUploadPicFragment);
                     mHeader.setIsShowBack(false);
                     mStepIndicator.refreshUi(mStep);

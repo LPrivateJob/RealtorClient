@@ -6,8 +6,20 @@ import com.realtor.jx.dto.OrderListDto;
 import com.realtor.jx.dto.UserInfoDto;
 import com.realtor.jx.netcore.BaseDAO;
 import com.realtor.jx.netcore.JsonUiCallback;
+import com.realtor.jx.netcore.api.ApiKeys;
+import com.realtor.jx.netcore.entity.ResponseResult;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.http.Multipart;
 
 /**
  * author: sundong
@@ -69,5 +81,20 @@ public class AppDAO extends BaseDAO {
     public void getWechatImage(String mobileNo, String orderId, JsonUiCallback<UserInfoDto> callback) {
         Map<String, Object> mapParams = getMapParams(new String[]{MOBILE_NUM, ORDER_ID}, mobileNo, orderId);
         sendPostFormData(Contract.GET_WECHAT_IMAGE, mapParams, callback);
+    }
+
+    public void upLoadPics(String orderId,Map<String,String> fileMap,JsonUiCallback<String> callback){
+        Set<Map.Entry<String, String>> entries = fileMap.entrySet();
+        List<MultipartBody.Part> list = new ArrayList<>();
+        for (Map.Entry<String,String> entry:fileMap.entrySet()){
+            String fileKey = entry.getKey();
+            String filePath = entry.getValue();
+            String fileName = filePath.substring(filePath.lastIndexOf('/')+1);
+            MultipartBody.Part formData = MultipartBody.Part.createFormData(fileKey, fileName, RequestBody.create(MediaType.parse("image/jpeg"), new File(filePath)));
+            list.add(formData);
+        }
+        MultipartBody.Part formData = MultipartBody.Part.createFormData(ApiKeys.ORDER_ID, orderId);
+        Call<ResponseResult> call = apiService.uploadFile(Contract.UPLOAD_IMAGE, formData, list.get(0), list.get(1), list.get(2), list.get(3));
+        invoke(call,callback);
     }
 }

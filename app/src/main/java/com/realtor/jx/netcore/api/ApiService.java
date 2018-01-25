@@ -34,7 +34,7 @@ public interface ApiService {
 
     @Multipart
     @POST("{route}")
-    Call<ResponseResult> uploadFile(@Path(value = "route", encoded = true) String route, @PartMap() Map<String, RequestBody> partMap, @Part() MultipartBody.Part... info);
+    Call<ResponseResult> uploadFile(@Path(value = "route", encoded = true) String route, @Part() MultipartBody.Part... info);
 
     @GET("{route}")
     Call<ResponseResult> get(@Path(value = "route", encoded = true) String route, @QueryMap Map<String, Object> paramMap);
