@@ -124,7 +124,6 @@ public class CommitContractActivity extends BaseActivity {
         mCommitContractInfo.tenancyName = order.getTenancyName();
         mCommitContractInfo.tenancyMobile = order.getTenancyMobile();
         mCommitContractInfo.tenancyIdcard = order.getTenancyIdcard();
-        // TODO: 租住类型，待获取
         mCommitContractInfo.tenancyType = order.getTenancyType();
         mCommitContractInfo.cityNo = order.getCityNo();
         mCommitContractInfo.houseName = order.getHouseName();
@@ -186,8 +185,6 @@ public class CommitContractActivity extends BaseActivity {
                 }
             });
         }
-        // TODO: 待调
-
     }
 
     private void upLoadPics() {

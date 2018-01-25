@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import com.realtor.jx.R;
 import com.realtor.jx.dto.ContractDetailDto;
-import com.realtor.jx.utils.NullUtil;
 
 /**
  * description:
@@ -78,7 +77,6 @@ public class ContractInfoShowView extends RelativeLayout {
         mRlContractInfo.setVisibility(isHideContractInfo?GONE:VISIBLE);
     }
 
-    // TODO: 待修改  
     public void fillData(ContractDetailDto contractDetailDto) {
         mTvContentContractNum.setText(contractDetailDto.getOrder().getId());
         mTvContentName.setText(contractDetailDto.getOrder().getTenancyName());

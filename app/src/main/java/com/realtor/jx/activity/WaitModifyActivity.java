@@ -61,7 +61,6 @@ public class WaitModifyActivity extends BaseActivity {
         mBtnViewBills.setOnClickListener(v -> {
             BillActivity.open(this,mRenterTotalAmount,mDataList);
         });
-        // TODO: 走修改订单流程  
         mBtnModify.setOnClickListener(v -> {
             CommitContractActivity.open(this,mOrderId);
         });

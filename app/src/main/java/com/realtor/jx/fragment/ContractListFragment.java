@@ -99,7 +99,6 @@ public class ContractListFragment extends BaseFragment {
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_APPLYING:
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_WAITREVIEW:
                         //申请中,待审核->修改订单流程
-                        // TODO: 待编写
                         CommitContractActivity.open(mActivity,orderId);
                         break;
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_WAITMODIFY:
