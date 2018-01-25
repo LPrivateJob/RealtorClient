@@ -101,4 +101,10 @@ dependencies {
     compile 'com.orhanobut:logger:2.1.1'
     //Matisse
     compile 'com.zhihu.android:matisse:0.5.0-beta3'
+    // permissionsDispatcher
+    compile('com.github.hotchemi:permissionsdispatcher:3.0.1') {
+        // if you don't use android.app.Fragment you can exclude support for them
+        exclude module: "support-v13"
+    }
+    annotationProcessor "com.github.hotchemi:permissionsdispatcher-processor:3.0.1"
 }
