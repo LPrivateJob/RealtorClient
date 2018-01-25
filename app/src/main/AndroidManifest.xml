@@ -57,11 +57,23 @@
         <activity
             android:name=".activity.CommitContractActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.WaitReviewActivity" />
-        <activity android:name=".activity.ChangePasswordActivity">
+        <activity android:name=".activity.WaitReviewActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.ChangePasswordActivity"
+            android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".activity.TestActivity" />
+        <activity android:name=".activity.TestActivity"
+            android:screenOrientation="portrait"/>
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.realtor.jx.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths_public"></meta-data>
+        </provider>
     </application>
 
 </manifest>

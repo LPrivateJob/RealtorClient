@@ -99,15 +99,15 @@ public class ContractListFragment extends BaseFragment {
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_APPLYING:
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_WAITREVIEW:
                         //申请中,待审核->修改订单流程
-                        CommitContractActivity.open(mActivity,orderId);
+                        CommitContractActivity.open(mActivity, orderId);
                         break;
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_WAITMODIFY:
                         //待修改->待修改页面
-                        WaitModifyActivity.open(mActivity,orderId,"待修改");
+                        WaitModifyActivity.open(mActivity, orderId, "待修改");
                         break;
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_WAITSCANQRCODE:
                         //待扫码->扫码页
-                        WaitScanQRCodeActivity.open(mActivity,orderId);
+                        WaitScanQRCodeActivity.open(mActivity, orderId);
                         break;
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_INREVIEW:
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_INREPAYMENT:
@@ -162,14 +162,17 @@ public class ContractListFragment extends BaseFragment {
             @Override
             public void onSuccess(OrderListDto result) {
                 if (mPage == 1) {
-                    if (result.getOrders() == null || result.getOrders().size() == 0) {
+                    //下拉刷新
+                    if (isListEmpty(result.getOrders())) {
+                        //没数据时
                         Toast.makeText(mActivity, "暂无数据", Toast.LENGTH_SHORT).show();
                     }
                     mContractListAdapter.refreshData(result.getOrders());
                     mRefreshLayout.finishRefresh();
-                } else if (mPage == result.getTotalNum() + 1) {
+                } else if (isListEmpty(result.getOrders())) {
+                    //上拉加载没数据时
+                    mPage--;
                     Toast.makeText(mActivity, "暂无更多数据", Toast.LENGTH_SHORT).show();
-                    mPage = result.getTotalNum();
                     mRefreshLayout.finishLoadmore();
                 } else {
                     mContractListAdapter.loadMoreData(result.getOrders());
@@ -196,6 +199,7 @@ public class ContractListFragment extends BaseFragment {
         } else {
             return "";
         }
-
     }
+
+
 }
