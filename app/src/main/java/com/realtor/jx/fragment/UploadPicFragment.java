@@ -12,6 +12,7 @@ import com.realtor.jx.activity.WaitScanQRCodeActivity;
 import com.realtor.jx.base.BaseFragment;
 import com.realtor.jx.dao.AppDAO;
 import com.realtor.jx.entity.Commons;
+import com.realtor.jx.manager.GlideManager;
 import com.realtor.jx.manager.PicCompressManager;
 import com.realtor.jx.netcore.JsonUiCallback;
 import com.realtor.jx.netcore.api.ApiKeys;
@@ -142,6 +143,7 @@ public class UploadPicFragment extends BaseFragment implements View.OnClickListe
                         @Override
                         public void onSuccess(String picPath) {
                             mLeasingContractPath = picPath;
+                            GlideManager.getInstance().loadImage(mActivity,mIvLeasingContractPH,picPath);
                         }
 
                         @Override
@@ -156,6 +158,7 @@ public class UploadPicFragment extends BaseFragment implements View.OnClickListe
                         @Override
                         public void onSuccess(String picPath) {
                             mIDCardPath = picPath;
+                            GlideManager.getInstance().loadImage(mActivity,mIvIDCardPH,picPath);
                         }
 
                         @Override
@@ -170,6 +173,7 @@ public class UploadPicFragment extends BaseFragment implements View.OnClickListe
                         @Override
                         public void onSuccess(String picPath) {
                             mPOCPath = picPath;
+                            GlideManager.getInstance().loadImage(mActivity,mIvPOCPH,picPath);
                         }
 
                         @Override
@@ -184,6 +188,7 @@ public class UploadPicFragment extends BaseFragment implements View.OnClickListe
                         @Override
                         public void onSuccess(String picPath) {
                             mAgencyContractPath = picPath;
+                            GlideManager.getInstance().loadImage(mActivity,mIvAgencyContractPH,picPath);
                         }
 
                         @Override

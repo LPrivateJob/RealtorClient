@@ -4,11 +4,8 @@ import android.content.Context;
 import android.telephony.TelephonyManager;
 
 /**
- * <br>包名：com.yingu.tinypocket.utils
- * <br>项目名称：Android
- * <br>描述：设备信息管理器
- * <br>创建人：BaoZhi
- * <br>创建时间：2017/8/22 0022 15:32
+ * author: sundong
+ * created at 2018/1/26 14:48
  */
 public class PhoneInfoManager {
 

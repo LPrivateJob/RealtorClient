@@ -26,7 +26,7 @@
         style="@style/UpLoadPicImageView"
         android:layout_below="@id/mLLContract"
         android:layout_marginLeft="@dimen/x75"
-        android:background="@drawable/icon_specimen_contract" />
+        android:src="@drawable/icon_specimen_contract" />
 
     <ImageView
         android:id="@+id/mIvAddLeasingContract"
@@ -59,7 +59,7 @@
         style="@style/UpLoadPicImageView"
         android:layout_below="@id/mLLIDCard"
         android:layout_marginLeft="@dimen/x75"
-        android:background="@drawable/icon_specimen_id" />
+        android:src="@drawable/icon_specimen_id" />
 
     <ImageView
         android:id="@+id/mIvAddIDCard"
@@ -92,7 +92,7 @@
         style="@style/UpLoadPicImageView"
         android:layout_below="@id/mLLPOC"
         android:layout_marginLeft="@dimen/x75"
-        android:background="@drawable/icon_specimen_house" />
+        android:src="@drawable/icon_specimen_house" />
 
     <ImageView
         android:id="@+id/mIvAddPOC"
@@ -125,7 +125,7 @@
         style="@style/UpLoadPicImageView"
         android:layout_below="@id/mLLAgencyContract"
         android:layout_marginLeft="@dimen/x75"
-        android:background="@drawable/icon_specimen_agency" />
+        android:src="@drawable/icon_specimen_agency" />
 
     <ImageView
         android:id="@+id/mIvAddAgencyContract"
