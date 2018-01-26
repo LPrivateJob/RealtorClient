@@ -3,6 +3,7 @@ package com.realtor.jx.fragment;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.realtor.jx.R;
@@ -16,6 +17,10 @@ import com.realtor.jx.utils.InputVerifyUtil;
 import com.realtor.jx.utils.NullUtil;
 import com.realtor.jx.widget.flowlayout.FlowLayout;
 import com.realtor.jx.widget.flowlayout.TagFlowLayout;
+import com.realtor.jx.widget.picker.wheelpicker.entity.City;
+import com.realtor.jx.widget.picker.wheelpicker.entity.County;
+import com.realtor.jx.widget.picker.wheelpicker.entity.Province;
+import com.realtor.jx.widget.regional_linkage.AddressPickTask;
 
 import java.util.List;
 
@@ -30,7 +35,7 @@ public class RenterInfoFragment extends BaseFragment implements TagFlowLayout.On
     private EditText mEtContentRenterName;
     private EditText mEtContentPhone;
     private EditText mEtContentIDNum;
-    private EditText mEtContentCity;
+    private TextView mTvContentCity;
     private EditText mEtContentCommunity;
     private EditText mEtContentHouseNum;
     private EditText mEtContentRoomNum;
@@ -41,7 +46,7 @@ public class RenterInfoFragment extends BaseFragment implements TagFlowLayout.On
         mEtContentRenterName = findViewById(R.id.mEtContentRenterName);
         mEtContentPhone = findViewById(R.id.mEtContentPhone);
         mEtContentIDNum = findViewById(R.id.mEtContentIDNum);
-        mEtContentCity = findViewById(R.id.mEtContentCity);
+        mTvContentCity = findViewById(R.id.mTvContentCity);
         mEtContentCommunity = findViewById(R.id.mEtContentCommunity);
         mEtContentHouseNum = findViewById(R.id.mEtContentHouseNum);
         mEtContentRoomNum = findViewById(R.id.mEtContentRoomNum);
@@ -53,6 +58,31 @@ public class RenterInfoFragment extends BaseFragment implements TagFlowLayout.On
         mRenterMethodsList = LocalUser.getInstance().getRenterMethodList();
         mFLRenterMethod.setAdapter(new MyTagAdapter(mRenterMethodsList, mActivity, mFLRenterMethod));
         mFLRenterMethod.setOnTagClickListener(this);
+
+        mTvContentCity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AddressPickTask task = new AddressPickTask(mActivity);
+                task.setHideProvince(false);
+                task.setHideCounty(false);
+                task.setCallback(new AddressPickTask.Callback() {
+                    @Override
+                    public void onAddressInitFailed() {
+//                        showToast("数据初始化失败");
+                    }
+
+                    @Override
+                    public void onAddressPicked(Province province, City city, County county) {
+//                        if (county == null) {
+//                            showToast(province.getAreaName() + city.getAreaName());
+//                        } else {
+//                            showToast(province.getAreaName() + city.getAreaName() + county.getAreaName());
+//                        }
+                    }
+                });
+                task.execute("北京市", "北京市", "东城区");
+            }
+        });
     }
 
     public void fillData(CommitContractInfo commitContractInfo) {
@@ -60,7 +90,7 @@ public class RenterInfoFragment extends BaseFragment implements TagFlowLayout.On
         mEtContentPhone.setText(NullUtil.getString2(commitContractInfo.tenancyMobile));
         mEtContentIDNum.setText(NullUtil.getString2(commitContractInfo.tenancyIdcard));
         mFLRenterMethod.getAdapter().setSelected(commitContractInfo.tenancyType-1);
-        mEtContentCity.setText(NullUtil.getString2(commitContractInfo.cityNo));
+        mTvContentCity.setText(NullUtil.getString2(commitContractInfo.cityNo));
         mEtContentCommunity.setText(NullUtil.getString2(commitContractInfo.houseName));
         mEtContentHouseNum.setText(NullUtil.getString2(commitContractInfo.houseCode));
         mEtContentRoomNum.setText(NullUtil.getString2(commitContractInfo.roomNum));
@@ -100,7 +130,7 @@ public class RenterInfoFragment extends BaseFragment implements TagFlowLayout.On
         }else {
             return false;
         }
-        String cityNo = getEditTextStr(mEtContentCity);
+        String cityNo = mTvContentCity.getText().toString();
         if(InputVerifyUtil.checkEmpty(cityNo,"所在城市")) {
             commitContractInfo.cityNo = cityNo;
         }else {
