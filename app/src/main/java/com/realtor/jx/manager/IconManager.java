@@ -5,6 +5,7 @@ import android.support.v4.util.ArrayMap;
 import android.util.SparseArray;
 
 import com.realtor.jx.R;
+import com.realtor.jx.utils.StringUtil;
 
 /**
  * description: 合同列表页图标管理类
@@ -65,6 +66,11 @@ public class IconManager {
 
     @DrawableRes
     public int getIcon(int type) {
+        String name = nameMap.get(type);
+        if(StringUtil.isEmpty(name)) {
+            name = "后台返空";
+            return drawableMap.get("申请中");
+        }
         return drawableMap.get(nameMap.get(type));
     }
 

@@ -30,7 +30,7 @@
                 android:layout_height="@dimen/y440"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/y10"
-                android:background="@mipmap/ic_launcher" />
+                android:background="@mipmap/icon" />
 
             <TextView
                 android:id="@+id/mTvTips"
