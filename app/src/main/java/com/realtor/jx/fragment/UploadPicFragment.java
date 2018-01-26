@@ -114,6 +114,7 @@ public class UploadPicFragment extends BaseFragment implements View.OnClickListe
             @Override
             public void onSuccess(String result) {
                 WaitScanQRCodeActivity.open(mActivity,mOrderId);
+                mActivity.finish();
             }
 
             @Override
