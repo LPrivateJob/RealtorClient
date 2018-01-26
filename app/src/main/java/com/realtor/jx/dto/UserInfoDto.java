@@ -1,5 +1,7 @@
 package com.realtor.jx.dto;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -7,7 +9,7 @@ import java.util.List;
  * author: sundong
  * created at 2018/1/16 15:45
  */
-public class UserInfoDto implements Serializable{
+public class UserInfoDto implements Serializable {
 
     private static final long serialVersionUID = -3608193019132763660L;
     /**
@@ -24,6 +26,7 @@ public class UserInfoDto implements Serializable{
     private List<FlowLayoutTypeBean> rentType;
     private List<FlowLayoutTypeBean> feeReceive;
     private List<FlowLayoutTypeBean> firstPayType;
+    @SerializedName(value = "areas")
     private List<Province> provinceList;
 
     public UserBean getUser() {
@@ -74,7 +77,7 @@ public class UserInfoDto implements Serializable{
         this.firstPayType = firstPayType;
     }
 
-    public static class UserBean implements Serializable{
+    public static class UserBean implements Serializable {
         private static final long serialVersionUID = -4408983506436646361L;
         /**
          * id : 100000
@@ -291,43 +294,45 @@ public class UserInfoDto implements Serializable{
         }
     }
 
-    public static class Province implements Serializable{
+    public static class Province implements Serializable {
         private static final long serialVersionUID = 1803883636749913288L;
         /**
          * id : 000086
          * name : 北京
          * cityList : [{"id":"000087","name":"北京","cityList":[{"id":"000088","name":"朝阳","cityList":""},{"id":"000089","name":"西城","cityList":""},{"id":"000090","name":"海淀","cityList":""}]}]
          */
+        @SerializedName(value = "id")
+        private String areaId;
+        @SerializedName(value = "name")
+        private String areaName;
+        @SerializedName(value = "subAreas")
+        private List<City> cities;
 
-        private String id;
-        private String name;
-        private List<City> cityList;
-
-        public String getId() {
-            return id;
+        public String getAreaId() {
+            return areaId;
         }
 
-        public void setId(String id) {
-            this.id = id;
+        public void setAreaId(String areaId) {
+            this.areaId = areaId;
         }
 
-        public String getName() {
-            return name;
+        public String getAreaName() {
+            return areaName;
         }
 
-        public void setName(String name) {
-            this.name = name;
+        public void setAreaName(String areaName) {
+            this.areaName = areaName;
         }
 
-        public List<City> getCityList() {
-            return cityList;
+        public List<City> getCities() {
+            return cities;
         }
 
-        public void setCityList(List<City> cityList) {
-            this.cityList = cityList;
+        public void setCities(List<City> cities) {
+            this.cities = cities;
         }
 
-        public static class City implements Serializable{
+        public static class City implements Serializable {
             private static final long serialVersionUID = -3321676881594743880L;
             /**
              * id : 000087
@@ -335,35 +340,38 @@ public class UserInfoDto implements Serializable{
              * districtList : [{"id":"000088","name":"朝阳","cityList":""},{"id":"000089","name":"西城","cityList":""},{"id":"000090","name":"海淀","cityList":""}]
              */
 
-            private String id;
-            private String name;
-            private List<District> districtList;
+            @SerializedName(value = "id")
+            private String areaId;
+            @SerializedName(value = "name")
+            private String areaName;
+            @SerializedName(value = "subAreas")
+            private List<District> counties;
 
-            public String getId() {
-                return id;
+            public String getAreaId() {
+                return areaId;
             }
 
-            public void setId(String id) {
-                this.id = id;
+            public void setAreaId(String areaId) {
+                this.areaId = areaId;
             }
 
-            public String getName() {
-                return name;
+            public String getAreaName() {
+                return areaName;
             }
 
-            public void setName(String name) {
-                this.name = name;
+            public void setAreaName(String areaName) {
+                this.areaName = areaName;
             }
 
-            public List<District> getDistrictList() {
-                return districtList;
+            public List<District> getCounties() {
+                return counties;
             }
 
-            public void setDistrictList(List<District> districtList) {
-                this.districtList = districtList;
+            public void setCounties(List<District> counties) {
+                this.counties = counties;
             }
 
-            public static class District implements Serializable{
+            public static class District implements Serializable {
                 private static final long serialVersionUID = 7062014422807206375L;
                 /**
                  * id : 000088
@@ -371,32 +379,25 @@ public class UserInfoDto implements Serializable{
                  * cityList :
                  */
 
-                private String id;
-                private String name;
-                private String subAreas;
+                @SerializedName(value = "id")
+                private String areaId;
+                @SerializedName(value = "name")
+                private String areaName;
 
-                public String getId() {
-                    return id;
+                public String getAreaId() {
+                    return areaId;
                 }
 
-                public void setId(String id) {
-                    this.id = id;
+                public void setAreaId(String areaId) {
+                    this.areaId = areaId;
                 }
 
-                public String getName() {
-                    return name;
+                public String getAreaName() {
+                    return areaName;
                 }
 
-                public void setName(String name) {
-                    this.name = name;
-                }
-
-                public String getSubAreas() {
-                    return subAreas;
-                }
-
-                public void setSubAreas(String subAreas) {
-                    this.subAreas = subAreas;
+                public void setAreaName(String areaName) {
+                    this.areaName = areaName;
                 }
             }
         }
