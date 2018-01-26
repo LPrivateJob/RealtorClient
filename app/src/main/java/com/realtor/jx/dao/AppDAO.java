@@ -7,19 +7,15 @@ import com.realtor.jx.dto.UserInfoDto;
 import com.realtor.jx.netcore.BaseDAO;
 import com.realtor.jx.netcore.JsonUiCallback;
 import com.realtor.jx.netcore.api.ApiKeys;
-import com.realtor.jx.netcore.entity.ResponseResult;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
-import retrofit2.Call;
-import retrofit2.http.Multipart;
 
 /**
  * author: sundong
@@ -90,7 +86,8 @@ public class AppDAO extends BaseDAO {
             String fileKey = entry.getKey();
             String filePath = entry.getValue();
             String fileName = filePath.substring(filePath.lastIndexOf('/')+1);
-            MultipartBody.Part formData = MultipartBody.Part.createFormData(fileKey, fileName, RequestBody.create(MediaType.parse("image/jpeg"), new File(filePath)));
+            MultipartBody.Part formData = MultipartBody.Part.createFormData(fileKey, fileName,
+                    RequestBody.create(MediaType.parse("image/jpeg"), new File(filePath)));
             list.add(formData);
         }
         upLoadFile(Contract.UPLOAD_IMAGE,list,callback);

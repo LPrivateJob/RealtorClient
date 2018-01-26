@@ -8,9 +8,11 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.realtor.jx.R;
+import com.realtor.jx.activity.WaitScanQRCodeActivity;
 import com.realtor.jx.base.BaseFragment;
 import com.realtor.jx.dao.AppDAO;
 import com.realtor.jx.entity.Commons;
+import com.realtor.jx.manager.PicCompressManager;
 import com.realtor.jx.netcore.JsonUiCallback;
 import com.realtor.jx.netcore.api.ApiKeys;
 import com.realtor.jx.utils.StringUtil;
@@ -110,7 +112,7 @@ public class UploadPicFragment extends BaseFragment implements View.OnClickListe
         AppDAO.getInstance().upLoadPics(mOrderId, fileMap, new JsonUiCallback<String>(mActivity) {
             @Override
             public void onSuccess(String result) {
-                Toast.makeText(mActivity, "onSuccess", Toast.LENGTH_SHORT).show();
+                WaitScanQRCodeActivity.open(mActivity,mOrderId);
             }
 
             @Override
@@ -136,15 +138,59 @@ public class UploadPicFragment extends BaseFragment implements View.OnClickListe
             switch (requestCode) {
                 case REQUEST_CODE_LEASING_CONTRACT:
                     mLeasingContractPath = path;
+                    PicCompressManager.getInstance().compress(mActivity, path, new PicCompressManager.OnCompressResultListener() {
+                        @Override
+                        public void onSuccess(String picPath) {
+                            mLeasingContractPath = picPath;
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+
+                        }
+                    });
                     break;
                 case REQUEST_CODE_IDCARD:
                     mIDCardPath = path;
+                    PicCompressManager.getInstance().compress(mActivity, path, new PicCompressManager.OnCompressResultListener() {
+                        @Override
+                        public void onSuccess(String picPath) {
+                            mIDCardPath = picPath;
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+
+                        }
+                    });
                     break;
                 case REQUEST_CODE_POC:
                     mPOCPath = path;
+                    PicCompressManager.getInstance().compress(mActivity, path, new PicCompressManager.OnCompressResultListener() {
+                        @Override
+                        public void onSuccess(String picPath) {
+                            mPOCPath = picPath;
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+
+                        }
+                    });
                     break;
                 case REQUEST_CODE_AGENCY_CONTRACT:
                     mAgencyContractPath = path;
+                    PicCompressManager.getInstance().compress(mActivity, path, new PicCompressManager.OnCompressResultListener() {
+                        @Override
+                        public void onSuccess(String picPath) {
+                            mAgencyContractPath = picPath;
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+
+                        }
+                    });
                     break;
             }
         }
@@ -166,6 +212,8 @@ public class UploadPicFragment extends BaseFragment implements View.OnClickListe
                 .imageEngine(new GlideEngine())
                 .forResult(requestCode);
     }
+
+
 
     @Override
     public void onClick(View v) {
