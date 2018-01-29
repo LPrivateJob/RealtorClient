@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.realtor.jx.R;
 import com.realtor.jx.dto.ContractDetailDto;
+import com.realtor.jx.utils.NullUtil;
 
 /**
  * description:
@@ -82,7 +83,7 @@ public class ContractInfoShowView extends RelativeLayout {
         mTvContentName.setText(contractDetailDto.getOrder().getTenancyName());
         mTvContentPhoneNum.setText(contractDetailDto.getOrder().getTenancyMobile());
         mTvContentIDCardNum.setText(contractDetailDto.getOrder().getTenancyIdcard());
-        mTvContentMonthlyRent.setText(""+contractDetailDto.getOrder().getCash());
+        mTvContentMonthlyRent.setText(NullUtil.convertFen2YuanStr(contractDetailDto.getOrder().getCash()));
         mTvContentLeaseFrom.setText(""+contractDetailDto.getOrder().getStartTime());//起租日
         mTvContentLeaseTo.setText(""+contractDetailDto.getOrder().getEndTime());//到租日
         mTvContentTenancy.setText(""+contractDetailDto.getOrder().getTimeOffset());//租期

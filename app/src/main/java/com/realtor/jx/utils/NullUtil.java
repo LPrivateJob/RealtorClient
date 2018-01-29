@@ -79,6 +79,6 @@ public class NullUtil {
 
     public static String convertFen2YuanStr(int num) {
         DecimalFormat df = new DecimalFormat("#.00");
-        return df.format(num);
+        return df.format(num/100.00);
     }
 }

@@ -17,7 +17,6 @@ import com.realtor.jx.entity.LocalUser;
 import com.realtor.jx.utils.InputVerifyUtil;
 import com.realtor.jx.utils.NullUtil;
 import com.realtor.jx.utils.StringUtil;
-import com.realtor.jx.widget.flowlayout.FlowLayout;
 import com.realtor.jx.widget.flowlayout.TagFlowLayout;
 import com.realtor.jx.widget.picker.wheelpicker.entity.City;
 import com.realtor.jx.widget.picker.wheelpicker.entity.County;
@@ -32,7 +31,7 @@ import java.util.List;
  * created at: 2018/1/6 10:33
  */
 
-public class RenterInfoFragment extends BaseFragment implements TagFlowLayout.OnTagClickListener {
+public class RenterInfoFragment extends BaseFragment{
     private List<FlowLayoutTypeBean> mRenterMethodsList;
     private EditText mEtContentRenterName;
     private EditText mEtContentPhone;
@@ -65,7 +64,6 @@ public class RenterInfoFragment extends BaseFragment implements TagFlowLayout.On
         //租住方式
         mRenterMethodsList = LocalUser.getInstance().getRenterMethodList();
         mFLRenterMethod.setAdapter(new MyTagAdapter(mRenterMethodsList, mActivity, mFLRenterMethod));
-        mFLRenterMethod.setOnTagClickListener(this);
         //地址选择三级联动
         mTvContentCity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,14 +135,6 @@ public class RenterInfoFragment extends BaseFragment implements TagFlowLayout.On
     @Override
     protected int getLayoutResource() {
         return R.layout.fragment_renter_info;
-    }
-
-    @Override
-    public boolean onTagClick(View view, int position, FlowLayout parent) {
-        if (parent == mFLRenterMethod) {
-            Toast.makeText(getActivity(), mRenterMethodsList.get(position).getLable(), Toast.LENGTH_SHORT).show();
-        }
-        return true;
     }
 
     public boolean saveContractInfo() {

@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.realtor.jx.R;
 import com.realtor.jx.activity.CommitContractActivity;
@@ -15,7 +14,7 @@ import com.realtor.jx.entity.CommitContractInfo;
 import com.realtor.jx.entity.LocalUser;
 import com.realtor.jx.utils.InputVerifyUtil;
 import com.realtor.jx.utils.NullUtil;
-import com.realtor.jx.widget.flowlayout.FlowLayout;
+import com.realtor.jx.utils.StringUtil;
 import com.realtor.jx.widget.flowlayout.TagFlowLayout;
 import com.realtor.jx.widget.picker.common.util.ConvertUtils;
 import com.realtor.jx.widget.picker.wheelpicker.picker.DatePicker;
@@ -28,7 +27,7 @@ import java.util.List;
  * autour: lewish
  * created at: 2018/1/6 10:35
  */
-public class InstallmentInfoFragment extends BaseFragment implements TagFlowLayout.OnTagClickListener {
+public class InstallmentInfoFragment extends BaseFragment{
     private List<FlowLayoutTypeBean> mServiceFeeBearList;
     private List<FlowLayoutTypeBean> mDownPaymentsMethodList;
     private List<FlowLayoutTypeBean> mPlatformPaymentMethodList;
@@ -73,24 +72,30 @@ public class InstallmentInfoFragment extends BaseFragment implements TagFlowLayo
         mEtContentLeaseTo.setOnClickListener(v -> {
             showYearMonthDayPicker((year, month, day) -> mEtContentLeaseTo.setText(year + "-" + month + "-" + day));
         });
-        mFLServiceFeeBear.setOnTagClickListener(this);
-        mFLDownPaymentsMethod.setOnTagClickListener(this);
-        mFLPlatformPaymentMethod.setOnTagClickListener(this);
     }
 
     @Override
     protected void loadData() {
         super.loadData();
         CommitContractInfo commitContractInfo = ((CommitContractActivity) mActivity).getCommitContractInfo();
-        if (!((CommitContractActivity)mActivity).isNewOrder()) {
+        if (commitContractInfo.cash != 0) {
             mEtContentMonthlyRent.setText(NullUtil.convertFen2YuanStr(commitContractInfo.cash));
+        }
+        if (!StringUtil.isEmpty(commitContractInfo.startTime)) {
             mEtContentLeaseFrom.setText(commitContractInfo.startTime);
+        }
+        if (!StringUtil.isEmpty(commitContractInfo.endTime)) {
             mEtContentLeaseTo.setText(commitContractInfo.endTime);
-            mFLServiceFeeBear.getAdapter().setSelected(commitContractInfo.feeType - 1);
-            mFLDownPaymentsMethod.getAdapter().setSelected(commitContractInfo.firstPaytype - 1);
-            mFLPlatformPaymentMethod.getAdapter().setSelected(commitContractInfo.platformPayType - 1);
-            mEtContentRepaymentPeriod.setText("" + commitContractInfo.payTerm);
+        }
+        mFLServiceFeeBear.getAdapter().setSelected(commitContractInfo.feeType == 0 ? 0 : commitContractInfo.feeType - 1);
+        mFLDownPaymentsMethod.getAdapter().setSelected(commitContractInfo.firstPaytype == 0 ? 0 : commitContractInfo.firstPaytype - 1);
+        mFLPlatformPaymentMethod.getAdapter().setSelected(commitContractInfo.platformPayType == 0 ? 0 : commitContractInfo.platformPayType - 1);
+        // TODO: 期数待计算
+//            mEtContentRepaymentPeriod.setText("" + commitContractInfo.payTerm);
+        if (!StringUtil.isEmpty(commitContractInfo.changeNo)) {
             mEtContentAccountNum.setText(commitContractInfo.changeNo);
+        }
+        if (!StringUtil.isEmpty(commitContractInfo.info)) {
             mEtContentRemarks.setText(commitContractInfo.info);
         }
     }
@@ -102,7 +107,7 @@ public class InstallmentInfoFragment extends BaseFragment implements TagFlowLayo
 
     public void showYearMonthDayPicker(DatePicker.OnYearMonthDayPickListener onYearMonthDayPickListener) {
         final DatePicker picker = new DatePicker(mActivity);
-        picker.setCanceledOnTouchOutside(true);
+        picker.setCanceledOnTouchOutside(false);
         picker.setUseWeight(true);
         picker.setTopPadding(ConvertUtils.toPx(mActivity, 10));
         picker.setRangeEnd(2100, 1, 1);
@@ -111,21 +116,6 @@ public class InstallmentInfoFragment extends BaseFragment implements TagFlowLayo
         picker.setResetWhileWheel(false);
         picker.setOnDatePickListener(onYearMonthDayPickListener);
         picker.show();
-    }
-
-    @Override
-    public boolean onTagClick(View view, int position, FlowLayout parent) {
-        if (parent == mFLServiceFeeBear) {
-            //服务费承担方
-            Toast.makeText(mActivity, mServiceFeeBearList.get(position).getLable(), Toast.LENGTH_SHORT).show();
-        } else if (parent == mFLDownPaymentsMethod) {
-            //租客首付方式
-            Toast.makeText(mActivity, mDownPaymentsMethodList.get(position).getLable(), Toast.LENGTH_SHORT).show();
-        } else if (parent == mFLPlatformPaymentMethod) {
-            //平台付款方式
-            Toast.makeText(mActivity, mPlatformPaymentMethodList.get(position).getLable(), Toast.LENGTH_SHORT).show();
-        }
-        return true;
     }
 
     public boolean saveContractInfo() {
@@ -154,10 +144,39 @@ public class InstallmentInfoFragment extends BaseFragment implements TagFlowLayo
         } else {
             return false;
         }
+        commitContractInfo.changeNo = getEditTextStr(mEtContentAccountNum);
+        commitContractInfo.info = getEditTextStr(mEtContentRemarks);
         commitContractInfo.feeType = mFLServiceFeeBear.getSelected();
         commitContractInfo.firstPaytype = mFLDownPaymentsMethod.getSelected();
         commitContractInfo.platformPayType = mFLPlatformPaymentMethod.getSelected();
         return true;
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        CommitContractInfo commitContractInfo = ((CommitContractActivity) mActivity).getCommitContractInfo();
+        String cash = getEditTextStr(mEtContentMonthlyRent);
+        if (!StringUtil.isEmpty(cash)) {
+            commitContractInfo.cash = NullUtil.convertYuan2FenI(cash);
+        }
+        String startTime = mEtContentLeaseFrom.getText().toString();
+        if (!StringUtil.isEmpty(startTime)) {
+            commitContractInfo.startTime = startTime;
+        }
+        String endTime = mEtContentLeaseTo.getText().toString();
+        if (!StringUtil.isEmpty(endTime)) {
+            commitContractInfo.endTime = endTime;
+        }
+        String payTerm = getEditTextStr(mEtContentRepaymentPeriod);
+        if (!StringUtil.isEmpty(payTerm)) {
+            commitContractInfo.payTerm = Integer.parseInt(payTerm);
+        }
+        commitContractInfo.changeNo = getEditTextStr(mEtContentAccountNum);
+        commitContractInfo.info = getEditTextStr(mEtContentRemarks);
+        commitContractInfo.feeType = mFLServiceFeeBear.getSelected();
+        commitContractInfo.firstPaytype = mFLDownPaymentsMethod.getSelected();
+        commitContractInfo.platformPayType = mFLPlatformPaymentMethod.getSelected();
     }
 
     private String getEditTextStr(EditText editText) {
