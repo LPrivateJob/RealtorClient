@@ -12,6 +12,7 @@ import com.realtor.jx.fragment.tab.TabContractFragment;
 import com.realtor.jx.fragment.tab.TabMineFragment;
 import com.realtor.jx.widget.BanSlideViewPager;
 import com.realtor.jx.widget.BottomTabLayout;
+import com.realtor.jx.widget.CommonMsgDialog;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -52,13 +53,7 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void onNewTabClick() {
-                showTip("这是一条提示", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(MainActivity.this, "你点击了确定", Toast.LENGTH_SHORT).show();
-                    }
-                });
-//                CommitContractActivity.open(MainActivity.this, null);
+                CommitContractActivity.open(MainActivity.this, null);
             }
         });
 

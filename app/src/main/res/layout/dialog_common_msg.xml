@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_widget_common_dialog"
+    android:paddingBottom="@dimen/y35"
+    android:paddingLeft="@dimen/x50"
+    android:paddingRight="@dimen/x50"
+    android:paddingTop="@dimen/y35">
+
+    <TextView
+        android:id="@+id/mTvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="提示"
+        android:textColor="#212121"
+        android:textSize="@dimen/x45" />
+
+    <TextView
+        android:id="@+id/mTvMsg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/mTvTitle"
+        android:layout_below="@id/mTvTitle"
+        android:layout_marginTop="@dimen/y15"
+        android:text="这是一条消息"
+        android:textColor="#1b1b1b"
+        android:textSize="@dimen/x33" />
+
+    <TextView
+        android:id="@+id/mTvConfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/mTvMsg"
+        android:layout_marginTop="@dimen/y30"
+        android:text="我知道了"
+        android:textColor="#f5cc3f" />
+
+    <TextView
+        android:id="@+id/mTvCancle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/mTvConfirm"
+        android:layout_marginRight="@dimen/x60"
+        android:layout_toLeftOf="@id/mTvConfirm"
+        android:text="取消"
+        android:textColor="#f5cc3f" />
+</RelativeLayout>

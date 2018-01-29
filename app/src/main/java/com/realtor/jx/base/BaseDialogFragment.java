@@ -119,8 +119,4 @@ public abstract class BaseDialogFragment extends DialogFragment {
         return isShow;
     }
 
-    protected boolean neverReceiveEvents() {
-        return false;
-    }
-
 }
