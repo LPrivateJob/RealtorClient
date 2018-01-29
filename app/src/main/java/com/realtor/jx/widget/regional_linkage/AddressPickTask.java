@@ -4,15 +4,11 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 
-import com.alibaba.fastjson.JSON;
-import com.orhanobut.logger.Logger;
-import com.realtor.jx.dto.UserInfoDto;
 import com.realtor.jx.entity.LocalUser;
 import com.realtor.jx.widget.picker.wheelpicker.entity.Province;
 import com.realtor.jx.widget.picker.wheelpicker.picker.AddressPicker;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -70,11 +66,7 @@ public class AddressPickTask extends AsyncTask<String, Void, ArrayList<Province>
                     break;
             }
         }
-        ArrayList<Province> data = new ArrayList<>();
-        List<UserInfoDto.Province> provinceList = LocalUser.getInstance().getProvinceList();
-        String json = JSON.toJSON(provinceList).toString();
-        data.addAll(JSON.parseArray(json, Province.class));
-        return data;
+        return LocalUser.getInstance().getProvinceList();
     }
 
     @Override

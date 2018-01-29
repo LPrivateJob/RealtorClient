@@ -83,23 +83,23 @@ public class ContractDetailDto implements Serializable{
          * region : {"name":"海淀","id":"000090"}
          */
 
-        private ProvinceBean province;
-        private CityBean city;
+        private RegionBean province;
+        private RegionBean city;
         private RegionBean region;
 
-        public ProvinceBean getProvince() {
+        public RegionBean getProvince() {
             return province;
         }
 
-        public void setProvince(ProvinceBean province) {
+        public void setProvince(RegionBean province) {
             this.province = province;
         }
 
-        public CityBean getCity() {
+        public RegionBean getCity() {
             return city;
         }
 
-        public void setCity(CityBean city) {
+        public void setCity(RegionBean city) {
             this.city = city;
         }
 
@@ -109,62 +109,6 @@ public class ContractDetailDto implements Serializable{
 
         public void setRegion(RegionBean region) {
             this.region = region;
-        }
-
-        public static class ProvinceBean implements Serializable{
-
-            private static final long serialVersionUID = 1463330938588311725L;
-            /**
-             * province : 北京
-             * id : 000086
-             */
-
-            private String province;
-            private String id;
-
-            public String getProvince() {
-                return province;
-            }
-
-            public void setProvince(String province) {
-                this.province = province;
-            }
-
-            public String getId() {
-                return id;
-            }
-
-            public void setId(String id) {
-                this.id = id;
-            }
-        }
-
-        public static class CityBean implements Serializable{
-
-            private static final long serialVersionUID = -697101143324786704L;
-            /**
-             * name : 北京
-             * id : 000087
-             */
-
-            private String name;
-            private String id;
-
-            public String getName() {
-                return name;
-            }
-
-            public void setName(String name) {
-                this.name = name;
-            }
-
-            public String getId() {
-                return id;
-            }
-
-            public void setId(String id) {
-                this.id = id;
-            }
         }
 
         public static class RegionBean implements Serializable{

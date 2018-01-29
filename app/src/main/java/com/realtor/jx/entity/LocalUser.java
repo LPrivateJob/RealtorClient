@@ -1,12 +1,15 @@
 package com.realtor.jx.entity;
 
+import com.alibaba.fastjson.JSON;
 import com.realtor.jx.base.RealtorClientApplication;
 import com.realtor.jx.dto.FlowLayoutTypeBean;
 import com.realtor.jx.dto.UserInfoDto;
 import com.realtor.jx.netcore.core.cookie.CookiesManager;
 import com.realtor.jx.utils.BaseUtils;
+import com.realtor.jx.widget.picker.wheelpicker.entity.Province;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -62,14 +65,16 @@ public class LocalUser implements Serializable {
      * 保存地区数据到磁盘
      */
     public void saveProvinceList(List<UserInfoDto.Province> provinceList) {
-        BaseUtils.saveObject(RealtorClientApplication.getContext(), PROVINCE_LIST_FILENAME, provinceList);
+        ArrayList<Province> data = new ArrayList<>();
+        data.addAll(JSON.parseArray(JSON.toJSON(provinceList).toString(), Province.class));
+        BaseUtils.saveObject(RealtorClientApplication.getContext(), PROVINCE_LIST_FILENAME, data);
     }
 
     /**
      * 从磁盘获取地区数据
      */
-    public List<UserInfoDto.Province> getProvinceList() {
-        return (List<UserInfoDto.Province>) BaseUtils.restoreObject(RealtorClientApplication.getContext(), PROVINCE_LIST_FILENAME);
+    public ArrayList<Province> getProvinceList() {
+        return (ArrayList<Province>) BaseUtils.restoreObject(RealtorClientApplication.getContext(), PROVINCE_LIST_FILENAME);
     }
 
     /**

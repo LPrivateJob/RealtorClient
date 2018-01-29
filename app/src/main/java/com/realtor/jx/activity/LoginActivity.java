@@ -13,8 +13,6 @@ import com.realtor.jx.entity.LocalUser;
 import com.realtor.jx.netcore.JsonUiCallback;
 import com.realtor.jx.utils.InputVerifyUtil;
 
-import java.util.List;
-
 /**
  * description: 登录页
  * autour: lewish
@@ -47,7 +45,6 @@ public class LoginActivity extends BaseActivity {
                     @Override
                     public void onSuccess(UserInfoDto result) {
                         LocalUser.getInstance().updateUserProfile(result);
-                        List<UserInfoDto.Province> provinceList = LocalUser.getInstance().getProvinceList();
                         openActivity(MainActivity.class);
                         finish();
                     }
