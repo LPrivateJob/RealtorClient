@@ -50,15 +50,21 @@ public class AppDAO extends BaseDAO {
     }
 
     //创建合同
-    public void createContract(String location,Object object, JsonUiCallback<ContractDto> callback) {
+    public void createContract(String location, Object object, JsonUiCallback<ContractDto> callback) {
         Map<String, Object> mapParams = getMapParams(new String[]{LOCATION}, location);
-        sendPostJson(Contract.CREATE, mapParams,object, callback);
+        sendPostJson(Contract.CREATE, mapParams, object, callback);
     }
 
     //修改合同
-    public void modifyContract(String location,Object object, JsonUiCallback<ContractDto> callback){
+    public void modifyContract(String location, Object object, JsonUiCallback<ContractDto> callback) {
         Map<String, Object> mapParams = getMapParams(new String[]{LOCATION}, location);
-        sendPostJson(Contract.CREATE, mapParams,object, callback);
+        sendPostJson(Contract.CREATE, mapParams, object, callback);
+    }
+
+    //删除合同
+    public void deleteContrace(String orderId, JsonUiCallback<Object> callback) {
+        Map<String, Object> mapParams = getMapParams(new String[]{ORDER_ID}, orderId);
+        sendPostFormData(Contract.DELETE, mapParams, callback);
     }
 
     //查询订单列表
@@ -73,23 +79,18 @@ public class AppDAO extends BaseDAO {
         sendPostFormData(Contract.QUERY_ORDER_DETAIL, mapParams, callback);
     }
 
-    //获取微信二维码
-    public void getWechatImage(String mobileNo, String orderId, JsonUiCallback<UserInfoDto> callback) {
-        Map<String, Object> mapParams = getMapParams(new String[]{MOBILE_NUM, ORDER_ID}, mobileNo, orderId);
-        sendPostFormData(Contract.GET_WECHAT_IMAGE, mapParams, callback);
-    }
-
-    public void upLoadPics(String orderId,Map<String,String> fileMap,JsonUiCallback<String> callback){
+    //上传照片
+    public void upLoadPics(String orderId, Map<String, String> fileMap, JsonUiCallback<String> callback) {
         List<MultipartBody.Part> list = new ArrayList<>();
         list.add(MultipartBody.Part.createFormData(ApiKeys.ORDER_ID, orderId));
-        for (Map.Entry<String,String> entry:fileMap.entrySet()){
+        for (Map.Entry<String, String> entry : fileMap.entrySet()) {
             String fileKey = entry.getKey();
             String filePath = entry.getValue();
-            String fileName = filePath.substring(filePath.lastIndexOf('/')+1);
+            String fileName = filePath.substring(filePath.lastIndexOf('/') + 1);
             MultipartBody.Part formData = MultipartBody.Part.createFormData(fileKey, fileName,
                     RequestBody.create(MediaType.parse("image/jpeg"), new File(filePath)));
             list.add(formData);
         }
-        upLoadFile(Contract.UPLOAD_IMAGE,list,callback);
+        upLoadFile(Contract.UPLOAD_IMAGE, list, callback);
     }
 }

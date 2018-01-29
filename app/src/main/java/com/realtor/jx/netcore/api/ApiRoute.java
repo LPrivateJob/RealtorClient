@@ -9,29 +9,29 @@ import com.realtor.jx.BuildConfig;
 public class ApiRoute {
 
     public final class User {
-        private static final String ROOT = BuildConfig.SERVER_ADD+"/app/user";
+        private static final String ROOT = BuildConfig.SERVER_ADD + "/app/user";
         // 登录
         public static final String LOGIN = ROOT + "/login";
         // 判断是否登录
         public static final String IS_LOGIN = ROOT + "/is_login";
         //登出
-        public static final String LOGOUT = ROOT+"/loginOut";
+        public static final String LOGOUT = ROOT + "/loginOut";
     }
 
-    public final class Contract{
-        private static final String ROOT = BuildConfig.SERVER_ADD+"/app/contract";
+    public final class Contract {
+        private static final String ROOT = BuildConfig.SERVER_ADD + "/app/contract";
         //创建租赁合同
-        public static final String CREATE = ROOT+"/create";
+        public static final String CREATE = ROOT + "/create";
         //修改租赁合同
         public static final String MODIFY = ROOT + "/modify";
-        //获取微信二维码
-        public static final String GET_WECHAT_IMAGE = ROOT+"/getWechatImgae";
+        //删除合同
+        public static final String DELETE = ROOT + "/delOrder";
         //查询订单详情
-        public static final String QUERY_ORDER_DETAIL = ROOT+"/querOrderDetail";
+        public static final String QUERY_ORDER_DETAIL = ROOT + "/querOrderDetail";
         //查询订单列表
-        public static final String QUERY_ORDER_LIST = ROOT+"/querOrderList";
+        public static final String QUERY_ORDER_LIST = ROOT + "/querOrderList";
         //上传照片
-        public static final String UPLOAD_IMAGE = ROOT+"/upload";
+        public static final String UPLOAD_IMAGE = ROOT + "/upload";
     }
 
 }

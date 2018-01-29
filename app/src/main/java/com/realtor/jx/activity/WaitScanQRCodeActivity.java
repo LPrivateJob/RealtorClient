@@ -3,8 +3,8 @@ package com.realtor.jx.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
-import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.realtor.jx.R;
 import com.realtor.jx.base.BaseActivity;
@@ -13,6 +13,7 @@ import com.realtor.jx.dto.ContractDetailDto;
 import com.realtor.jx.entity.Commons;
 import com.realtor.jx.netcore.JsonUiCallback;
 import com.realtor.jx.widget.ContractInfoShowView;
+import com.realtor.jx.widget.Header;
 
 /**
  * description: 待扫码页
@@ -46,9 +47,25 @@ public class WaitScanQRCodeActivity extends BaseActivity {
 
     @Override
     protected void initListener() {
-        findViewById(R.id.mBtnReturnHome).setOnClickListener(v->{
+        findViewById(R.id.mBtnReturnHome).setOnClickListener(v -> {
             openActivity(MainActivity.class);
             finish();
+        });
+        ((Header) findViewById(R.id.mHeader)).setOnInteractListener(new Header.OnInteractListener() {
+            @Override
+            public void onBackClick() {
+
+            }
+
+            @Override
+            public void onDeleteClick() {
+                AppDAO.getInstance().deleteContrace(mOrderId, new JsonUiCallback<Object>(WaitScanQRCodeActivity.this) {
+                    @Override
+                    public void onSuccess(Object result) {
+                        Toast.makeText(WaitScanQRCodeActivity.this, "onSuccess", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
         });
     }
 
