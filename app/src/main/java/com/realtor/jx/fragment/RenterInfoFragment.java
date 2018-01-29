@@ -6,15 +6,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.orhanobut.logger.Logger;
 import com.realtor.jx.R;
 import com.realtor.jx.activity.CommitContractActivity;
 import com.realtor.jx.adapter.MyTagAdapter;
 import com.realtor.jx.base.BaseFragment;
+import com.realtor.jx.dto.ContractDetailDto;
 import com.realtor.jx.dto.FlowLayoutTypeBean;
 import com.realtor.jx.entity.CommitContractInfo;
 import com.realtor.jx.entity.LocalUser;
 import com.realtor.jx.utils.InputVerifyUtil;
 import com.realtor.jx.utils.NullUtil;
+import com.realtor.jx.utils.StringUtil;
 import com.realtor.jx.widget.flowlayout.FlowLayout;
 import com.realtor.jx.widget.flowlayout.TagFlowLayout;
 import com.realtor.jx.widget.picker.wheelpicker.entity.City;
@@ -41,6 +44,11 @@ public class RenterInfoFragment extends BaseFragment implements TagFlowLayout.On
     private EditText mEtContentRoomNum;
     private TagFlowLayout mFLRenterMethod;
 
+    private String mSelectedProvince = "";
+    private String mSelectedCity = "";
+    private String mSelectedRegion = "";
+    private String mSelectedCityId = "";
+
     @Override
     protected void initView(View rootView, Bundle savedInstanceState) {
         mEtContentRenterName = findViewById(R.id.mEtContentRenterName);
@@ -62,35 +70,65 @@ public class RenterInfoFragment extends BaseFragment implements TagFlowLayout.On
         mTvContentCity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 AddressPickTask task = new AddressPickTask(mActivity);
                 task.setHideProvince(false);
                 task.setHideCounty(false);
                 task.setCallback(new AddressPickTask.Callback() {
                     @Override
                     public void onAddressInitFailed() {
-//                        showToast("数据初始化失败");
+                        Logger.e("地址选择器初始化失败");
                     }
 
                     @Override
                     public void onAddressPicked(Province province, City city, County county) {
-//                        if (county == null) {
-//                            showToast(province.getAreaName() + city.getAreaName());
-//                        } else {
-//                            showToast(province.getAreaName() + city.getAreaName() + county.getAreaName());
-//                        }
+                        String mTvStr = "";
+                        if (city == null) {
+                            mTvStr = province.getAreaName() + "  ";
+                            mSelectedCityId = province.getAreaId();
+                        } else if (county == null) {
+                            mTvStr = province.getAreaName() + "  " + city.getAreaName() + "  ";
+                            mSelectedCityId = city.getAreaId();
+                        } else {
+                            mTvStr = province.getAreaName() + "  " + city.getAreaName() + "  " + county.getAreaName();
+                            mSelectedCityId = county.getAreaId();
+                        }
+                        Toast.makeText(mActivity, "txt=" + mTvStr + ",id=" + mSelectedCityId, Toast.LENGTH_SHORT).show();
+                        mTvContentCity.setText(mTvStr);
                     }
                 });
-                task.execute("北京市", "北京市", "东城区");
+                task.execute(mSelectedProvince, mSelectedCity, mSelectedRegion);
             }
         });
     }
 
-    public void fillData(CommitContractInfo commitContractInfo) {
+    public void fillData(CommitContractInfo commitContractInfo, ContractDetailDto result) {
+        //三级联动部分UI展示处理
+        mSelectedCityId = NullUtil.getString2(commitContractInfo.cityNo);
+        ContractDetailDto.AreasBean areas = result.getAreas();
+        //市、县防止后台返null，省返null就gg
+        mSelectedProvince = areas.getProvince().getName();
+        if (areas.getCity() != null) {
+            mSelectedCity = areas.getCity().getName();
+        }
+        if (areas.getRegion() != null) {
+            mSelectedRegion = areas.getRegion().getName();
+        }
+        //后台懒得直接返一个字符串，自己拼。。。
+        String mTvStr;
+        if (StringUtil.isEmpty(mSelectedCity)) {
+            mTvStr = mSelectedProvince + "  ";
+        } else if (StringUtil.isEmpty(mSelectedRegion)) {
+            mTvStr = mSelectedProvince + "  " + mSelectedCity + "  ";
+        } else {
+            mTvStr = mSelectedProvince + "  " + mSelectedCity + "  " + mSelectedRegion;
+        }
+        mTvContentCity.setText(mTvStr);
+        //其他UI展示
         mEtContentRenterName.setText(NullUtil.getString2(commitContractInfo.tenancyName));
         mEtContentPhone.setText(NullUtil.getString2(commitContractInfo.tenancyMobile));
         mEtContentIDNum.setText(NullUtil.getString2(commitContractInfo.tenancyIdcard));
-        mFLRenterMethod.getAdapter().setSelected(commitContractInfo.tenancyType-1);
-        mTvContentCity.setText(NullUtil.getString2(commitContractInfo.cityNo));
+        mFLRenterMethod.getAdapter().setSelected(commitContractInfo.tenancyType - 1);
         mEtContentCommunity.setText(NullUtil.getString2(commitContractInfo.houseName));
         mEtContentHouseNum.setText(NullUtil.getString2(commitContractInfo.houseCode));
         mEtContentRoomNum.setText(NullUtil.getString2(commitContractInfo.roomNum));
@@ -110,55 +148,54 @@ public class RenterInfoFragment extends BaseFragment implements TagFlowLayout.On
         return true;
     }
 
-    public boolean saveContractInfo(){
+    public boolean saveContractInfo() {
         String tenancyName = getEditTextStr(mEtContentRenterName);
         CommitContractInfo commitContractInfo = ((CommitContractActivity) mActivity).getCommitContractInfo();
-        if(InputVerifyUtil.checkRenterName(tenancyName)) {
+        if (InputVerifyUtil.checkRenterName(tenancyName)) {
             commitContractInfo.tenancyName = tenancyName;
-        }else {
+        } else {
             return false;
         }
         String tenancyMobile = getEditTextStr(mEtContentPhone);
-        if(InputVerifyUtil.checkMobile(tenancyMobile)) {
+        if (InputVerifyUtil.checkMobile(tenancyMobile)) {
             commitContractInfo.tenancyMobile = tenancyMobile;
-        }else {
+        } else {
             return false;
         }
         String tenancyIdcard = getEditTextStr(mEtContentIDNum);
-        if(InputVerifyUtil.checkIdCard(tenancyIdcard)) {
+        if (InputVerifyUtil.checkIdCard(tenancyIdcard)) {
             commitContractInfo.tenancyIdcard = tenancyIdcard;
-        }else {
+        } else {
             return false;
         }
-        String cityNo = mTvContentCity.getText().toString();
-        if(InputVerifyUtil.checkEmpty(cityNo,"所在城市")) {
-            commitContractInfo.cityNo = cityNo;
-        }else {
+        if (InputVerifyUtil.checkEmpty(mSelectedCityId, "所在城市")) {
+            commitContractInfo.cityNo = mSelectedCityId;
+        } else {
             return false;
         }
         String houseName = getEditTextStr(mEtContentCommunity);
-        if(InputVerifyUtil.checkEmpty(houseName,"小区名称")) {
+        if (InputVerifyUtil.checkEmpty(houseName, "小区名称")) {
             commitContractInfo.houseName = houseName;
-        }else {
+        } else {
             return false;
         }
         String houseCode = getEditTextStr(mEtContentHouseNum);
-        if(InputVerifyUtil.checkEmpty(houseCode,"门牌号")) {
+        if (InputVerifyUtil.checkEmpty(houseCode, "门牌号")) {
             commitContractInfo.houseCode = houseCode;
-        }else{
+        } else {
             return false;
         }
         String roomNum = getEditTextStr(mEtContentRoomNum);
-        if(InputVerifyUtil.checkEmpty(roomNum,"房间号")) {
+        if (InputVerifyUtil.checkEmpty(roomNum, "房间号")) {
             commitContractInfo.roomNum = roomNum;
-        }else {
+        } else {
             return false;
         }
-        commitContractInfo.tenancyType=mFLRenterMethod.getSelected();
+        commitContractInfo.tenancyType = mFLRenterMethod.getSelected();
         return true;
     }
 
-    private String getEditTextStr(EditText editText){
+    private String getEditTextStr(EditText editText) {
         return editText.getText().toString();
     }
 }

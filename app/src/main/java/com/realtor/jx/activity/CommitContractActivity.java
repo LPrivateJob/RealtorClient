@@ -108,7 +108,7 @@ public class CommitContractActivity extends BaseActivity {
                 @Override
                 public void onSuccess(ContractDetailDto result) {
                     fillContractInfo(result);
-                    mRenterInfoFragment.fillData(mCommitContractInfo);
+                    mRenterInfoFragment.fillData(mCommitContractInfo,result);
                 }
             });
         }

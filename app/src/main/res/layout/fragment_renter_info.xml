@@ -101,11 +101,12 @@
         android:id="@+id/mTvContentCity"
         style="@style/CommitContractItemContent"
         android:layout_alignBaseline="@id/mTvTitleCity"
+        android:layout_width="@dimen/x300"
         android:layout_alignLeft="@id/mEtContentRenterName"
         android:drawableRight="@drawable/arrow_down"
         android:drawablePadding="@dimen/x50"
         android:inputType="text"
-        android:hint="请输入内容" />
+        android:hint="北京 北京 朝阳" />
 
 
     <TextView
