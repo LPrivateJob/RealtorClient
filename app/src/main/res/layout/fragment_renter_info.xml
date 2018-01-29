@@ -84,7 +84,7 @@
             android:id="@+id/mFLRenterMethod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/x40"
+            android:layout_marginLeft="@dimen/x90"
             app:max_select="1" />
     </LinearLayout>
 
@@ -97,7 +97,7 @@
         android:layout_below="@id/mLLRenterMethod"
         android:text="所在城市" />
 
-    <TextView
+    <EditText
         android:id="@+id/mTvContentCity"
         style="@style/CommitContractItemContent"
         android:layout_alignBaseline="@id/mTvTitleCity"
@@ -106,7 +106,10 @@
         android:drawableRight="@drawable/arrow_down"
         android:drawablePadding="@dimen/x50"
         android:inputType="text"
-        android:hint="北京 北京 朝阳" />
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:hint="请选择地区" />
 
 
     <TextView

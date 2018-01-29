@@ -3,7 +3,6 @@ package com.realtor.jx.fragment;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.orhanobut.logger.Logger;
@@ -38,7 +37,7 @@ public class RenterInfoFragment extends BaseFragment implements TagFlowLayout.On
     private EditText mEtContentRenterName;
     private EditText mEtContentPhone;
     private EditText mEtContentIDNum;
-    private TextView mTvContentCity;
+    private EditText mTvContentCity;
     private EditText mEtContentCommunity;
     private EditText mEtContentHouseNum;
     private EditText mEtContentRoomNum;
@@ -63,14 +62,14 @@ public class RenterInfoFragment extends BaseFragment implements TagFlowLayout.On
 
     @Override
     protected void initListener() {
+        //租住方式
         mRenterMethodsList = LocalUser.getInstance().getRenterMethodList();
         mFLRenterMethod.setAdapter(new MyTagAdapter(mRenterMethodsList, mActivity, mFLRenterMethod));
         mFLRenterMethod.setOnTagClickListener(this);
-
+        //地址选择三级联动
         mTvContentCity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 AddressPickTask task = new AddressPickTask(mActivity);
                 task.setHideProvince(false);
                 task.setHideCounty(false);
@@ -104,7 +103,7 @@ public class RenterInfoFragment extends BaseFragment implements TagFlowLayout.On
 
     public void fillData(CommitContractInfo commitContractInfo, ContractDetailDto result) {
         //三级联动部分UI展示处理
-        mSelectedCityId = NullUtil.getString2(commitContractInfo.cityNo);
+        mSelectedCityId = NullUtil.getString(commitContractInfo.cityNo);
         ContractDetailDto.AreasBean areas = result.getAreas();
         //市、县防止后台返null，省返null就gg
         mSelectedProvince = areas.getProvince().getName();
@@ -193,6 +192,11 @@ public class RenterInfoFragment extends BaseFragment implements TagFlowLayout.On
         }
         commitContractInfo.tenancyType = mFLRenterMethod.getSelected();
         return true;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
     }
 
     private String getEditTextStr(EditText editText) {
