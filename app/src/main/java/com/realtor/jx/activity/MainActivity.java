@@ -1,7 +1,9 @@
 package com.realtor.jx.activity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.widget.Toast;
 
 import com.realtor.jx.R;
 import com.realtor.jx.base.BaseActivity;
@@ -50,7 +52,13 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void onNewTabClick() {
-                CommitContractActivity.open(MainActivity.this, null);
+                showTip("这是一条提示", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(MainActivity.this, "你点击了确定", Toast.LENGTH_SHORT).show();
+                    }
+                });
+//                CommitContractActivity.open(MainActivity.this, null);
             }
         });
 

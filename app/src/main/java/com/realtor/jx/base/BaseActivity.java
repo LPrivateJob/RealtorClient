@@ -3,6 +3,7 @@ package com.realtor.jx.base;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -136,5 +137,35 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void openSystemSetting() {
         Intent intent = new Intent(Settings.ACTION_APPLICATION_SETTINGS);
         startActivity(intent);
+    }
+
+    public void showTip(String content, DialogInterface.OnClickListener onClickListener) {
+        android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(this, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
+        builder.setTitle("提示")
+                .setMessage(content)
+                .setPositiveButton("我知道了", onClickListener)
+                .setCancelable(false)
+                .create()
+                .show();
+    }
+
+    public void showCommonNotice(String content, DialogInterface.OnClickListener onConfirmClickListener) {
+        showNotice(content, "确定", "取消", onConfirmClickListener);
+    }
+
+    public void showNotice(String content, String rightBtn, String leftBtn, DialogInterface.OnClickListener onConfirmClickListener) {
+        android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(this);
+        builder.setTitle("提示")
+                .setMessage(content)
+                .setPositiveButton(rightBtn, onConfirmClickListener)
+                .setNegativeButton(leftBtn, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .setCancelable(false)
+                .create()
+                .show();
     }
 }
