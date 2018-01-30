@@ -28,6 +28,7 @@ import java.util.List;
 
 public class TabContractFragment extends BaseFragment {
     private Integer mOrderStatus;
+    private String mStrSearchKeyWords="";
     private SearchBar mSearchBar;
     private ImageView mIvFilter;
     private DrawerLayout mDrawerLayout;
@@ -83,6 +84,8 @@ public class TabContractFragment extends BaseFragment {
     protected void initListener() {
         mSearchBar.setOnInteractListener(content -> {
             // TODO: 调Fragment方法刷新UI
+            mStrSearchKeyWords = content;
+            ((ContractListFragment)fragments.get(mViewPager.getCurrentItem())).refreshData();
         });
         mIvFilter.setOnClickListener(v -> {
             mActivity.ifShowHideKeyboard();
@@ -109,6 +112,10 @@ public class TabContractFragment extends BaseFragment {
 
     public Integer getOrderStatus() {
         return mOrderStatus;
+    }
+
+    public String getSearchKeyWords(){
+        return mStrSearchKeyWords;
     }
 
 }

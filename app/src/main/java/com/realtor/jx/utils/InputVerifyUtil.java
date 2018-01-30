@@ -37,12 +37,26 @@ public class InputVerifyUtil implements Commons.BASIC_INFO {
     private static final String LENTH_RANGE_FORMAT = "%s必须为%d~%d位字符";
     private static final String EMPTY_FORMAT = "%s不得为空";
 
-
     public static boolean checkRenterName(String name){
         if(!checkEmpty(name, NAME)){
             return false;
         }
         return true;
+//        if (name.contains("·") || name.contains("•")){
+//            if (name.matches("^[\\u4e00-\\u9fa5]+[·•][\\u4e00-\\u9fa5]+$")){
+//                return true;
+//            }else {
+//                Toast.makeText(mApplicationContext, "您输入的姓名格式不正确", Toast.LENGTH_SHORT).show();
+//                return false;
+//            }
+//        }else {
+//            if (name.matches("^[\\u4e00-\\u9fa5]+$")){
+//                return true;
+//            }else {
+//                Toast.makeText(mApplicationContext, "您输入的姓名格式不正确", Toast.LENGTH_SHORT).show();
+//                return false;
+//            }
+//        }
     }
 
     public static boolean checkUserName(String userName) {
