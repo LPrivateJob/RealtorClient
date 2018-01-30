@@ -1,9 +1,7 @@
 package com.realtor.jx.activity;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.widget.Toast;
 
 import com.realtor.jx.R;
 import com.realtor.jx.base.BaseActivity;
@@ -12,7 +10,6 @@ import com.realtor.jx.fragment.tab.TabContractFragment;
 import com.realtor.jx.fragment.tab.TabMineFragment;
 import com.realtor.jx.widget.BanSlideViewPager;
 import com.realtor.jx.widget.BottomTabLayout;
-import com.realtor.jx.widget.CommonMsgDialog;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -43,16 +40,19 @@ public class MainActivity extends BaseActivity {
         mBottomTabLayout.setOnInteractListener(new BottomTabLayout.OnInteractListener() {
             @Override
             public void onContractTabSelect() {
+                ifShowHideKeyboard();
                 mViewPager.setCurrentItem(0);
             }
 
             @Override
             public void onMineTabSelect() {
+                ifShowHideKeyboard();
                 mViewPager.setCurrentItem(1);
             }
 
             @Override
             public void onNewTabClick() {
+                ifShowHideKeyboard();
                 CommitContractActivity.open(MainActivity.this, null);
             }
         });

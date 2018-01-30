@@ -85,6 +85,7 @@ public class TabContractFragment extends BaseFragment {
             // TODO: 调Fragment方法刷新UI
         });
         mIvFilter.setOnClickListener(v -> {
+            mActivity.ifShowHideKeyboard();
             if (mDrawerLayout.isDrawerOpen(mSlidingMenu)) {
                 mDrawerLayout.closeDrawers();
             } else {

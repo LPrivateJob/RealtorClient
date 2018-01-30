@@ -10,6 +10,8 @@
         android:layout_height="match_parent"
         android:background="@drawable/bg_widget_searchbar_left"
         android:gravity="center_vertical"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:orientation="horizontal">
 
         <ImageView

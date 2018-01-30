@@ -3,6 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:orientation="vertical"
     android:paddingTop="@dimen/y10">
 
@@ -31,8 +33,8 @@
         android:layout_alignBaseline="@id/mTvTitleMonthlyRent"
         android:layout_marginLeft="@dimen/x120"
         android:layout_toRightOf="@id/mTvTitleMonthlyRent"
-        android:inputType="numberDecimal"
-        android:hint="请输入内容" />
+        android:hint="请输入内容"
+        android:inputType="numberDecimal" />
 
     <TextView
         android:id="@+id/mTvTitleLeaseFrom"
@@ -141,10 +143,10 @@
 
     <TextView
         android:id="@+id/mTvTitleRepaymentPeriod"
-        android:layout_marginTop="@dimen/y43"
         style="@style/CommitContractItemTitle"
         android:layout_alignLeft="@id/mTvTitleMonthlyRent"
         android:layout_below="@id/mLLPlatformPaymentMethod"
+        android:layout_marginTop="@dimen/y43"
         android:text="还款期数" />
 
     <EditText
@@ -152,8 +154,8 @@
         style="@style/CommitContractItemContent"
         android:layout_alignBaseline="@id/mTvTitleRepaymentPeriod"
         android:layout_alignLeft="@id/mEtContentMonthlyRent"
-        android:inputType="number"
-        android:hint="请输入内容" />
+        android:hint="请输入内容"
+        android:inputType="number" />
 
     <TextView
         android:id="@+id/mTvTitleAccountNum"
@@ -167,8 +169,8 @@
         style="@style/CommitContractItemContent"
         android:layout_alignBaseline="@id/mTvTitleAccountNum"
         android:layout_alignLeft="@id/mEtContentMonthlyRent"
-        android:inputType="text"
-        android:hint="请输入内容" />
+        android:hint="请输入内容"
+        android:inputType="text" />
 
     <TextView
         android:id="@+id/mTvTitleRemarks"
@@ -182,6 +184,6 @@
         style="@style/CommitContractItemContent"
         android:layout_alignBaseline="@id/mTvTitleRemarks"
         android:layout_alignLeft="@id/mEtContentMonthlyRent"
-        android:inputType="text"
-        android:hint="请输入内容" />
+        android:hint="请输入内容"
+        android:inputType="text" />
 </RelativeLayout>
