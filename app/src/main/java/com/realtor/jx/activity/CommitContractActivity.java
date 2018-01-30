@@ -41,6 +41,8 @@ public class CommitContractActivity extends BaseActivity {
     private CommitContractStepIndicator.STEP mStep = CommitContractStepIndicator.STEP.LOCATION;
 
     private String mOrderId;
+    private String mMobileNo;
+
     private CommitContractInfo mCommitContractInfo = new CommitContractInfo();
     private RenterInfoFragment mRenterInfoFragment;
     private InstallmentInfoFragment mInstallmentInfoFragment;
@@ -148,7 +150,12 @@ public class CommitContractActivity extends BaseActivity {
             AppDAO.getInstance().createContract(PhoneInfoManager.getDiviceId(),mCommitContractInfo, new JsonUiCallback<ContractDto>(this) {
                 @Override
                 public void onSuccess(ContractDto result) {
-
+                    mOrderId = result.getOrder().getId();
+                    mMobileNo = result.getOrder().getTenancyMobile();
+                    totalAmount = result.getOrder().getSiteUsertotalAmt();
+                    instalmentOrders = result.getInstalmentOrders();
+                    InstallmentPreviewActivity.open(CommitContractActivity.this,result.getOrder().getSiteUsertotalAmt(),result.getInstalmentOrders());
+                    Toast.makeText(CommitContractActivity.this, "onSuccess", Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
@@ -166,6 +173,8 @@ public class CommitContractActivity extends BaseActivity {
             AppDAO.getInstance().modifyContract(PhoneInfoManager.getDiviceId(),mCommitContractInfo, new JsonUiCallback<ContractDto>(this) {
                 @Override
                 public void onSuccess(ContractDto result) {
+                    mOrderId = result.getOrder().getId();
+                    mMobileNo = result.getOrder().getTenancyMobile();
                     totalAmount = result.getOrder().getSiteUsertotalAmt();
                     instalmentOrders = result.getInstalmentOrders();
                     InstallmentPreviewActivity.open(CommitContractActivity.this,result.getOrder().getSiteUsertotalAmt(),result.getInstalmentOrders());
@@ -192,7 +201,7 @@ public class CommitContractActivity extends BaseActivity {
             case INSTALLMENT_PREVIEW_ACTIVITY_REQUEST_CODE:
                 if (resultCode == RESULT_OK) {
                     mStep = CommitContractStepIndicator.STEP.PHOTO;
-                    mUploadPicFragment = UploadPicFragment.newInstance(mOrderId);
+                    mUploadPicFragment = UploadPicFragment.newInstance(mOrderId,mMobileNo);
                     addFragment(R.id.mFragmentLayout, mUploadPicFragment);
                     mHeader.setIsShowBack(false);
                     mStepIndicator.refreshUi(mStep);

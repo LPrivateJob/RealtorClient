@@ -29,6 +29,7 @@
             android:layout_toRightOf="@id/mIvSearch"
             android:background="@null"
             android:hint="请输入搜索内容"
+            android:inputType="textPersonName|number"
             android:textSize="@dimen/x20" />
 
         <ImageView

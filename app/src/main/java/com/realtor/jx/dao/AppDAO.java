@@ -80,9 +80,10 @@ public class AppDAO extends BaseDAO {
     }
 
     //上传照片
-    public void upLoadPics(String orderId, Map<String, String> fileMap, JsonUiCallback<String> callback) {
+    public void upLoadPics(String orderId, String mobileNo, Map<String, String> fileMap, JsonUiCallback<Object> callback) {
         List<MultipartBody.Part> list = new ArrayList<>();
         list.add(MultipartBody.Part.createFormData(ApiKeys.ORDER_ID, orderId));
+        list.add(MultipartBody.Part.createFormData(ApiKeys.MOBILE_NUM, mobileNo));
         for (Map.Entry<String, String> entry : fileMap.entrySet()) {
             String fileKey = entry.getKey();
             String filePath = entry.getValue();

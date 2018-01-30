@@ -39,6 +39,7 @@ public class UploadPicFragment extends BaseFragment implements View.OnClickListe
     public static final int REQUEST_CODE_AGENCY_CONTRACT = 4;
 
     private String mOrderId;
+    private String mMobileNo;
 
     private ImageView mIvLeasingContractPH;
     private ImageView mIvAddLeasingContract;
@@ -54,10 +55,11 @@ public class UploadPicFragment extends BaseFragment implements View.OnClickListe
     private String mPOCPath;
     private String mAgencyContractPath;
 
-    public static UploadPicFragment newInstance(String orderId) {
+    public static UploadPicFragment newInstance(String orderId, String mobileNo) {
         UploadPicFragment instance = new UploadPicFragment();
         Bundle bundle = new Bundle();
         bundle.putString(Commons.BUNDLE_KEYS.EXTRA_ID, orderId);
+        bundle.putString(Commons.BUNDLE_KEYS.EXTRA_CODE, mobileNo);
         instance.setArguments(bundle);
         return instance;
     }
@@ -66,6 +68,7 @@ public class UploadPicFragment extends BaseFragment implements View.OnClickListe
     protected void getIncomingValue() {
         super.getIncomingValue();
         mOrderId = getArguments().getString(Commons.BUNDLE_KEYS.EXTRA_ID);
+        mMobileNo = getArguments().getString(Commons.BUNDLE_KEYS.EXTRA_CODE);
     }
 
     @Override
@@ -94,37 +97,27 @@ public class UploadPicFragment extends BaseFragment implements View.OnClickListe
         return R.layout.fragment_upload_pic;
     }
 
-    public void upLoadPics(){
-        if(StringUtil.isEmpty(mLeasingContractPath)) {
-           Toast.makeText(mActivity, "请上传租户和公寓签署的租赁合同", Toast.LENGTH_SHORT).show();
+    public void upLoadPics() {
+        if (StringUtil.isEmpty(mLeasingContractPath)) {
+            Toast.makeText(mActivity, "请上传租户和公寓签署的租赁合同", Toast.LENGTH_SHORT).show();
             return;
         }
         HashMap<String, String> fileMap = new HashMap<>();
-        fileMap.put(ApiKeys.FILE_CONTRACT,mLeasingContractPath);
-        if(!StringUtil.isEmpty(mIDCardPath)) {
-            fileMap.put(ApiKeys.FILE_RENTER,mIDCardPath);
+        fileMap.put(ApiKeys.FILE_CONTRACT, mLeasingContractPath);
+        if (!StringUtil.isEmpty(mIDCardPath)) {
+            fileMap.put(ApiKeys.FILE_RENTER, mIDCardPath);
         }
-        if(!StringUtil.isEmpty(mPOCPath)) {
-            fileMap.put(ApiKeys.FILE_HOUSE,mPOCPath);
+        if (!StringUtil.isEmpty(mPOCPath)) {
+            fileMap.put(ApiKeys.FILE_HOUSE, mPOCPath);
         }
-        if(!StringUtil.isEmpty(mAgencyContractPath)) {
-            fileMap.put(ApiKeys.FILE_AGENT,mAgencyContractPath);
+        if (!StringUtil.isEmpty(mAgencyContractPath)) {
+            fileMap.put(ApiKeys.FILE_AGENT, mAgencyContractPath);
         }
-        AppDAO.getInstance().upLoadPics(mOrderId, fileMap, new JsonUiCallback<String>(mActivity) {
+        AppDAO.getInstance().upLoadPics(mOrderId, mMobileNo, fileMap, new JsonUiCallback<Object>(mActivity) {
             @Override
-            public void onSuccess(String result) {
-                WaitScanQRCodeActivity.open(mActivity,mOrderId);
+            public void onSuccess(Object result) {
+                WaitScanQRCodeActivity.open(mActivity, mOrderId);
                 mActivity.finish();
-            }
-
-            @Override
-            public void onConnectionFailed() {
-                super.onConnectionFailed();
-            }
-
-            @Override
-            public void onBizFailed(String resultCode, String resultInfo) {
-                super.onBizFailed(resultCode, resultInfo);
             }
         });
     }
@@ -134,7 +127,7 @@ public class UploadPicFragment extends BaseFragment implements View.OnClickListe
         if (resultCode == RESULT_OK) {
             String path = null;
             List<String> paths = Matisse.obtainPathResult(data);
-            if(!paths.isEmpty()) {
+            if (!paths.isEmpty()) {
                 path = paths.get(0);
             }
             switch (requestCode) {
@@ -144,7 +137,7 @@ public class UploadPicFragment extends BaseFragment implements View.OnClickListe
                         @Override
                         public void onSuccess(String picPath) {
                             mLeasingContractPath = picPath;
-                            GlideManager.getInstance().loadImage(mActivity,mIvLeasingContractPH,picPath);
+                            GlideManager.getInstance().loadImage(mActivity, mIvLeasingContractPH, picPath);
                         }
 
                         @Override
@@ -159,7 +152,7 @@ public class UploadPicFragment extends BaseFragment implements View.OnClickListe
                         @Override
                         public void onSuccess(String picPath) {
                             mIDCardPath = picPath;
-                            GlideManager.getInstance().loadImage(mActivity,mIvIDCardPH,picPath);
+                            GlideManager.getInstance().loadImage(mActivity, mIvIDCardPH, picPath);
                         }
 
                         @Override
@@ -174,7 +167,7 @@ public class UploadPicFragment extends BaseFragment implements View.OnClickListe
                         @Override
                         public void onSuccess(String picPath) {
                             mPOCPath = picPath;
-                            GlideManager.getInstance().loadImage(mActivity,mIvPOCPH,picPath);
+                            GlideManager.getInstance().loadImage(mActivity, mIvPOCPH, picPath);
                         }
 
                         @Override
@@ -189,7 +182,7 @@ public class UploadPicFragment extends BaseFragment implements View.OnClickListe
                         @Override
                         public void onSuccess(String picPath) {
                             mAgencyContractPath = picPath;
-                            GlideManager.getInstance().loadImage(mActivity,mIvAgencyContractPH,picPath);
+                            GlideManager.getInstance().loadImage(mActivity, mIvAgencyContractPH, picPath);
                         }
 
                         @Override
@@ -218,7 +211,6 @@ public class UploadPicFragment extends BaseFragment implements View.OnClickListe
                 .imageEngine(new GlideEngine())
                 .forResult(requestCode);
     }
-
 
 
     @Override
