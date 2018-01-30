@@ -133,12 +133,12 @@
     public void *(android.webkit.WebView, jav.lang.String);
 }
 #############################################
-# 应用特有的Library混淆
+# DTO
 #############################################
-#RealtorClient
 -dontwarn com.realtor.jx.dto.**
--keep public class com.realtor.jx.dto.** { *; }
--keep public class com.realtor.jx.entity.**{*;}
+-keep class com.realtor.jx.dto.** { *; }
+-dontwarn com.realtor.jx.entity.**
+-keep class com.realtor.jx.entity.**{*;}
 #--NetCore--
 -dontwarn com.realtor.jx.netcore.entity.**
 -keep class com.realtor.jx.netcore.entity.**{*;}
@@ -180,11 +180,20 @@
 #--GSON--
 -dontwarn com.google.**
 -keep class com.google.gson.* {*;}
+#--FASTJSON
+-dontwarn com.alibaba.fastjson.**
+-keep class com.alibaba.fastjson.**{*; }
 #--AndroidPicker--
--keepattributes InnerClasses,Signature
--keepattributes *Annotation*
-
--dontwarn cn.qqtheme.framework.entity.**
--keep class cn.qqtheme.framework.entity.** { *;}
+-dontwarn com.realtor.jx.widget.picker.common.entity.**
+-keep class com.realtor.jx.widget.picker.common.entity.**{*;}
+-dontwarn com.realtor.jx.widget.picker.wheelpicker.entity.**
+-keep class com.realtor.jx.widget.picker.wheelpicker.entity.** { *;}
 #-ignorewarnings
+#--Matisse-- 奇怪的混淆规则
 -dontwarn com.squareup.picasso.**
+
+-dontwarn permissions.dispatcher.**
+-keep class permissions.dispatcher.**{*;}
+
+-dontwarn com.realtor.jx.netcore.**
+-keep class com.realtor.jx.netcore.**{*;}
