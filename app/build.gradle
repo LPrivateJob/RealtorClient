@@ -9,6 +9,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode VERSION_CODE as int
         versionName VERSION_NAME
+        resConfigs "zh"
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
