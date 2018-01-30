@@ -117,6 +117,8 @@ public class UploadPicFragment extends BaseFragment implements View.OnClickListe
             @Override
             public void onSuccess(Object result) {
                 WaitScanQRCodeActivity.open(mActivity, mOrderId);
+                // TODO: 待测试  
+                PicCompressManager.getInstance().deletePicFromDisk();
                 mActivity.finish();
             }
         });

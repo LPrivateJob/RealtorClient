@@ -20,9 +20,10 @@ import top.zibin.luban.OnCompressListener;
 
 public class PicCompressManager {
     private LoadingDialog loadingDialog;
+    private String imageCompressPath;
 
     private PicCompressManager() {
-
+        imageCompressPath = getCompressPath();
     }
 
     private static class SingletonHolder {
@@ -96,8 +97,21 @@ public class PicCompressManager {
         return filePath.substring(filePath.lastIndexOf('/') + 1);
     }
 
-    // TODO: 待实现  
-    public void deletePicFromDisk(){
+    public void deletePicFromDisk() {
+        deleteAllFilesOfDir(new File(imageCompressPath));
+    }
 
+    private static void deleteAllFilesOfDir(File path) {
+        if (!path.exists())
+            return;
+        if (path.isFile()) {
+            path.delete();
+            return;
+        }
+        File[] files = path.listFiles();
+        for (int i = 0; i < files.length; i++) {
+            deleteAllFilesOfDir(files[i]);
+        }
+        path.delete();
     }
 }

@@ -157,7 +157,6 @@ public class ContractListFragment extends BaseFragment {
     }
 
     private void invokeInterface() {
-        // TODO: 2018/1/7  调接口
         AppDAO.getInstance().queryOrderList(getSearchKeyWords(), getOrderStatus(), "" + mOrderType, "" + mPage, "" + 10, new JsonUiCallback<OrderListDto>(mActivity) {
             @Override
             public void onSuccess(OrderListDto result) {

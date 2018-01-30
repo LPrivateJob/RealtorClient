@@ -83,7 +83,6 @@ public class TabContractFragment extends BaseFragment {
     @Override
     protected void initListener() {
         mSearchBar.setOnInteractListener(content -> {
-            // TODO: 调Fragment方法刷新UI
             mStrSearchKeyWords = content;
             ((ContractListFragment)fragments.get(mViewPager.getCurrentItem())).refreshData();
         });

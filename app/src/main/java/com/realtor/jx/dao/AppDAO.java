@@ -21,7 +21,6 @@ import okhttp3.RequestBody;
  * author: sundong
  * created at 2018/1/16 14:15
  */
-// TODO: 数据类待替换
 public class AppDAO extends BaseDAO {
     private static class SingletonHolder {
         private static AppDAO INSTANCE = new AppDAO();
@@ -38,10 +37,10 @@ public class AppDAO extends BaseDAO {
     }
 
     //是否登录
-    public void isLogin(String userId, JsonUiCallback<UserInfoDto> callback) {
-        Map<String, Object> mapParams = getMapParams(new String[]{USER_ID}, userId);
-        sendPostFormData(User.IS_LOGIN, mapParams, callback);
-    }
+//    public void isLogin(String userId, JsonUiCallback<UserInfoDto> callback) {
+//        Map<String, Object> mapParams = getMapParams(new String[]{USER_ID}, userId);
+//        sendPostFormData(User.IS_LOGIN, mapParams, callback);
+//    }
 
     //登出
     public void loginOut(String userId, JsonUiCallback<String> callback) {
