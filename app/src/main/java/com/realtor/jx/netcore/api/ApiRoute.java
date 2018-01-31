@@ -17,6 +17,8 @@ public class ApiRoute {
         public static final String IS_LOGIN = ROOT + "/is_login";
         //登出
         public static final String LOGOUT = ROOT + "/loginOut";
+        //修改密码
+        public static final String MOD_PASSWORD = ROOT +"/modPassword";
     }
 
     public final class Contract {

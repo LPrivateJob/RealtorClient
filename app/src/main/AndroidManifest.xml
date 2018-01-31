@@ -61,7 +61,7 @@
             android:screenOrientation="portrait" />
         <activity android:name=".activity.WaitReviewActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activity.ChangePasswordActivity"
+        <activity android:name=".activity.ModifyPasswordActivity"
             android:screenOrientation="portrait">
 
         </activity>

@@ -19,6 +19,8 @@ public interface ApiKeys {
     public static final String ORDER_ID = "orderId";
     public static final String MOBILE_NUM = "mobileNo";
     public static final String LOCATION = "location";
+    public static final String OLD_PASSWORD = "oldPassword";
+    public static final String NEW_PASSWORD = "newPassword";
 
     public static final String FILE_CONTRACT = "fileContract";
     public static final String FILE_RENTER = "fileRenter";

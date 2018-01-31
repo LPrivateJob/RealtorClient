@@ -42,6 +42,11 @@ public class AppDAO extends BaseDAO {
 //        Map<String, Object> mapParams = getMapParams(new String[]{USER_ID}, userId);
 //        sendPostFormData(User.IS_LOGIN, mapParams, callback);
 //    }
+    // TODO: 数据类待替换
+    public void modPassword(String loginName, String oldPassword, String newPassword, JsonUiCallback<Object> callback) {
+        Map<String, Object> mapParams = getMapParams(new String[]{LOGIN_NAME, OLD_PASSWORD, NEW_PASSWORD}, loginName, oldPassword, newPassword);
+        sendPostFormData(User.MOD_PASSWORD, mapParams, callback);
+    }
 
     //登出
     public void loginOut(String userId, JsonUiCallback<String> callback) {

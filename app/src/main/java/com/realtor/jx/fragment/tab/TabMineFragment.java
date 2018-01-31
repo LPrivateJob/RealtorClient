@@ -7,7 +7,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.realtor.jx.R;
-import com.realtor.jx.activity.ChangePasswordActivity;
+import com.realtor.jx.activity.ModifyPasswordActivity;
 import com.realtor.jx.base.BaseFragment;
 import com.realtor.jx.dao.AppDAO;
 import com.realtor.jx.entity.LocalUser;
@@ -50,7 +50,7 @@ public class TabMineFragment extends BaseFragment {
 
             }
         });
-        mRlChangePassword.setOnClickListener(v -> openActivity(ChangePasswordActivity.class));
+        mRlChangePassword.setOnClickListener(v -> openActivity(ModifyPasswordActivity.class));
         mBtnLogout.setOnClickListener(v -> {
             AppDAO.getInstance().loginOut(LocalUser.getInstance().getUserId(), new JsonUiCallback<String>(mActivity) {
                 @Override
