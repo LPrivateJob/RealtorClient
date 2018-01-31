@@ -11,10 +11,10 @@ import com.realtor.jx.R;
 import com.realtor.jx.base.BaseActivity;
 
 /**
- * autour: lewish
+ * description:
+ * autour: Tait
  * created at: 2018/1/7 23:20
  */
-
 public class Header extends RelativeLayout implements View.OnClickListener {
     private Context mContext;
     private TextView mTvTitle;

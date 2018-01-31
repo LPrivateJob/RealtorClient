@@ -6,7 +6,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 
 /**
- * author: sundong
+ * description: TagView
+ * autour: Tait
  * created at 2018/1/10 9:50
  */
 public class BanSlideViewPager extends ViewPager {
@@ -17,6 +18,7 @@ public class BanSlideViewPager extends ViewPager {
     public BanSlideViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         return false;

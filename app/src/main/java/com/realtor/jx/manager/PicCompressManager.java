@@ -14,10 +14,10 @@ import top.zibin.luban.Luban;
 import top.zibin.luban.OnCompressListener;
 
 /**
- * author: sundong
+ * description:
+ * autour: Tait
  * created at 2018/1/26 13:41
  */
-
 public class PicCompressManager {
     private LoadingDialog loadingDialog;
     private String imageCompressPath;

@@ -7,7 +7,8 @@ import com.realtor.jx.R;
 import com.realtor.jx.base.BaseFragment;
 
 /**
- * author: sundong
+ * description:
+ * autour: Tait
  * created at 2018/1/11 15:32
  */
 public class ContractDetailOverdueFragment extends BaseFragment {

@@ -10,7 +10,8 @@ import com.realtor.jx.R;
 import com.realtor.jx.entity.Commons;
 
 /**
- * author: sundong
+ * description:
+ * autour: Tait
  * created at 2018/1/9 17:25
  */
 public class SlidingMenu extends LinearLayout {

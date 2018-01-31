@@ -6,8 +6,9 @@ import com.realtor.jx.R;
 import com.realtor.jx.base.BaseActivity;
 
 /**
- * author: sundong
- * created at 2018/1/11 15:04
+ * description: 待修改页面
+ * autour: Tait
+ * created at: 2018/1/11 15:04
  */
 public class WaitReviewActivity extends BaseActivity {
     @Override

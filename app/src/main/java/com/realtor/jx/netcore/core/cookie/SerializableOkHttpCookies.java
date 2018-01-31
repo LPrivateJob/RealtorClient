@@ -8,7 +8,8 @@ import java.io.Serializable;
 import okhttp3.Cookie;
 
 /**
- * author: sundong
+ * description:
+ * autour: Tait
  * created at 2018/1/4 15:10
  */
 public class SerializableOkHttpCookies implements Serializable {
@@ -58,6 +59,6 @@ public class SerializableOkHttpCookies implements Serializable {
         builder = builder.path(path);
         builder = secure ? builder.secure() : builder;
         builder = httpOnly ? builder.httpOnly() : builder;
-        clientCookies =builder.build();
+        clientCookies = builder.build();
     }
 }

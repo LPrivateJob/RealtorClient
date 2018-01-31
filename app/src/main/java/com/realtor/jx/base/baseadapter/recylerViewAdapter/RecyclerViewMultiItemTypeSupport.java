@@ -1,7 +1,8 @@
 package com.realtor.jx.base.baseadapter.recylerViewAdapter;
 
 /**
- * author: sundong
+ * description:
+ * autour: Tait
  * created at 2017/4/24 14:21
  */
 public interface RecyclerViewMultiItemTypeSupport<T> {

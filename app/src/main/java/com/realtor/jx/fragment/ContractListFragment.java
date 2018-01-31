@@ -22,6 +22,7 @@ import com.realtor.jx.entity.Commons;
 import com.realtor.jx.fragment.tab.TabContractFragment;
 import com.realtor.jx.manager.IconManager;
 import com.realtor.jx.netcore.JsonUiCallback;
+import com.realtor.jx.widget.CommonMsgDialog;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
@@ -32,7 +33,7 @@ import java.util.List;
 
 /**
  * description: 合同列表页Fragment
- * autour: lewish
+ * autour: Tait
  * created at: 2018/1/7 15:12
  */
 public class ContractListFragment extends BaseFragment {
@@ -117,11 +118,11 @@ public class ContractListFragment extends BaseFragment {
                         break;
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_RENEGE:
                         //已违约->提示暂不可点击
-                        Toast.makeText(mActivity, "暂不支持查看已违约详情", Toast.LENGTH_SHORT).show();
+                        CommonMsgDialog.newTip("暂不支持查看已违约详情").show(getChildFragmentManager());
                         break;
                     case Commons.CONTRACT_STATUS.CONTRACT_STATE_REJECT:
                         //审核拒绝->提示被拒绝原因
-                        Toast.makeText(mActivity, ordersBean.getRefuseRemark(), Toast.LENGTH_SHORT).show();
+                        CommonMsgDialog.newTip(ordersBean.getRefuseRemark()).show(getChildFragmentManager());
                         break;
                 }
             }
@@ -200,7 +201,7 @@ public class ContractListFragment extends BaseFragment {
         }
     }
 
-    public String getSearchKeyWords(){
+    public String getSearchKeyWords() {
         return ((TabContractFragment) getParentFragment()).getSearchKeyWords();
     }
 }

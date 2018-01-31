@@ -14,10 +14,9 @@ import com.realtor.jx.netcore.core.NetEngine;
 
 /**
  * description:
- * autour: lewish
+ * autour: Tait
  * created at: 2018/1/9 23:22
  */
-
 public class RealtorClientApplication extends Application {
     private static RealtorClientApplication instannce;
     private static Context mContext;

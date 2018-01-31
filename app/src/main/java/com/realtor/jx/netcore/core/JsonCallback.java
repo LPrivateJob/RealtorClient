@@ -11,7 +11,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
- * author: sundong
+ * description:
+ * autour: Tait
  * created at 2018/1/4 15:10
  */
 public abstract class JsonCallback<T> implements Callback<ResponseResult> {

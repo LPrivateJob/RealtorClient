@@ -22,8 +22,8 @@ import java.util.List;
 import static com.realtor.jx.activity.CommitContractActivity.INSTALLMENT_PREVIEW_ACTIVITY_REQUEST_CODE;
 
 /**
- * description: 分期预览页
- * autour: lewish
+ * description: 分期预览页，本页面不联网
+ * autour: Tait
  * created at: 2018/1/6 14:42
  */
 public class InstallmentPreviewActivity extends BaseActivity {
@@ -38,7 +38,7 @@ public class InstallmentPreviewActivity extends BaseActivity {
         Intent intent = new Intent(activity, InstallmentPreviewActivity.class);
         intent.putExtra(Commons.BUNDLE_KEYS.EXTAR_INT, totalAmount);
         intent.putExtra(Commons.BUNDLE_KEYS.EXTRA_LIST, (Serializable) dataList);
-        activity.startActivityForResult(intent,INSTALLMENT_PREVIEW_ACTIVITY_REQUEST_CODE);
+        activity.startActivityForResult(intent, INSTALLMENT_PREVIEW_ACTIVITY_REQUEST_CODE);
     }
 
     @Override

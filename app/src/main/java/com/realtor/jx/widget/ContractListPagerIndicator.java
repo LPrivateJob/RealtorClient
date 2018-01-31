@@ -22,9 +22,9 @@ import java.util.List;
 
 /**
  * description: 合同列表页ViewpagerIndicator
- * autour: lewish
+ * autour: Tait
  * created at: 2018/1/6 15:02
-*/
+ */
 public class ContractListPagerIndicator extends LinearLayout {
     private static final String DEFAULT_TXT_NORMAL_COLOR = "#ffcdd4";
     private static final String DEFAULT_TXT_SELECT_COLOR = "#ffffff";

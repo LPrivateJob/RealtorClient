@@ -10,11 +10,12 @@ import com.realtor.jx.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  * description: FlowLayout
- * autour: lewish
+ * autour: Tait
  * created at: 2018/1/8 21:22
-*/
+ */
 public class FlowLayout extends ViewGroup {
     private static final String TAG = "FlowLayout";
     private static final int LEFT = -1;

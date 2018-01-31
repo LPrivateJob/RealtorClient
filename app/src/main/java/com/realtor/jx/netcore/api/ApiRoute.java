@@ -3,7 +3,8 @@ package com.realtor.jx.netcore.api;
 import com.realtor.jx.BuildConfig;
 
 /**
- * author: sundong
+ * description:
+ * autour: Tait
  * created at 2018/1/4 15:10
  */
 public class ApiRoute {

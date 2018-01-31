@@ -24,10 +24,10 @@ import java.util.List;
 
 /**
  * description: 分期信息UI
- * autour: lewish
+ * autour: Tait
  * created at: 2018/1/6 10:35
  */
-public class InstallmentInfoFragment extends BaseFragment{
+public class InstallmentInfoFragment extends BaseFragment {
     private List<FlowLayoutTypeBean> mServiceFeeBearList;
     private List<FlowLayoutTypeBean> mDownPaymentsMethodList;
     private List<FlowLayoutTypeBean> mPlatformPaymentMethodList;

@@ -9,7 +9,8 @@ import okhttp3.CookieJar;
 import okhttp3.HttpUrl;
 
 /**
- * author: sundong
+ * description:
+ * autour: Tait
  * created at 2018/1/4 15:10
  */
 public class CookiesManager implements CookieJar {

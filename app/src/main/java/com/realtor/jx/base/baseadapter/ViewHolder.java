@@ -20,9 +20,9 @@ import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-
 /**
- * author: sundong
+ * description:
+ * autour: Tait
  * created at 2017/4/24 14:21
  */
 public class ViewHolder extends RecyclerView.ViewHolder {

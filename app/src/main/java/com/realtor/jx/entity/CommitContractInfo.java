@@ -2,10 +2,9 @@ package com.realtor.jx.entity;
 
 /**
  * description: 提交合同类
- * autour: lewish
+ * autour: Tait
  * created at: 2018/1/20 15:23
  */
-
 public class CommitContractInfo {
     //租住信息
     public String tenancyName;//姓名

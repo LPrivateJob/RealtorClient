@@ -18,7 +18,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * author: sundong
+ * description:
+ * autour: Tait
  * created at 2018/1/18 14:47
  */
 public class InputVerifyUtil implements Commons.BASIC_INFO {
@@ -37,8 +38,8 @@ public class InputVerifyUtil implements Commons.BASIC_INFO {
     private static final String LENTH_RANGE_FORMAT = "%s必须为%d~%d位字符";
     private static final String EMPTY_FORMAT = "%s不得为空";
 
-    public static boolean checkRenterName(String name){
-        if(!checkEmpty(name, NAME)){
+    public static boolean checkRenterName(String name) {
+        if (!checkEmpty(name, NAME)) {
             return false;
         }
         return true;

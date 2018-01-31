@@ -18,9 +18,9 @@ import java.util.Set;
 
 /**
  * description: TagFlowLayout
- * autour: lewish
+ * autour: Tait
  * created at: 2018/1/8 21:22
-*/
+ */
 public class TagFlowLayout extends FlowLayout
         implements TagAdapter.OnDataChangedListener {
 
@@ -155,13 +155,13 @@ public class TagFlowLayout extends FlowLayout
         return new HashSet<Integer>(mSelectedView);
     }
 
-    public int getSelected(){
-        int pos=1;
+    public int getSelected() {
+        int pos = 1;
         Iterator<Integer> iterator = mSelectedView.iterator();
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             pos = iterator.next();
         }
-        return pos+1;
+        return pos + 1;
     }
 
     private void setChildChecked(int position, TagView view) {
@@ -240,7 +240,7 @@ public class TagFlowLayout extends FlowLayout
                     Iterator<Integer> iterator = mSelectedView.iterator();
                     Integer preIndex = iterator.next();
                     TagView pre = (TagView) getChildAt(preIndex);
-                    if(pre!=null) {
+                    if (pre != null) {
                         mSelectedView.remove(preIndex);
                     }
                     setChildUnChecked(preIndex, pre);

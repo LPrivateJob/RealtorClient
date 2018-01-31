@@ -6,7 +6,8 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * author: sundong
+ * description:
+ * autour: Tait
  * created at 2018/1/16 15:45
  */
 public class UserInfoDto implements Serializable {

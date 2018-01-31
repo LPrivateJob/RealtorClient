@@ -9,9 +9,9 @@ import android.util.TypedValue;
 import android.view.View;
 
 /**
- * author: sundong
- * created at 2017/4/24 15:35
- * 自定义RecyclerView分割线
+ * description:自定义RecyclerView分割线
+ * autour: Tait
+ * created at: 2017/4/24 15:35
  */
 public class DividerItemDecoration extends RecyclerView.ItemDecoration {
     public static final int ORIENTATION_VERTICAL = 0;
@@ -55,7 +55,7 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
         int bottom = parent.getHeight() - parent.getPaddingBottom();
         int childCount = parent.getChildCount();
 
-        for (int i = 0; i <(hasLast ? childCount : childCount - 1); i++) {
+        for (int i = 0; i < (hasLast ? childCount : childCount - 1); i++) {
             View child = parent.getChildAt(i);
             RecyclerView.LayoutParams layoutParams =
                     (RecyclerView.LayoutParams) child.getLayoutParams();

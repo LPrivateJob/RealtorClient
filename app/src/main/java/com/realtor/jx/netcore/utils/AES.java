@@ -16,15 +16,10 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 
 /**
- * <br>包名：com.netcore.utils
- * <br>项目名称：jr
- * <br>描述：AES 加解密工具类
- * <br>创建人：BaoZhi
- * <br>创建时间：2016/9/29 0029 14:38
- * <p>
- * <br>注意: 这里的password(秘钥必须是16位的)
+ * description: 注意: 这里的password(秘钥必须是16位的)
+ * autour: Tait
+ * created at 2018/1/4 15:10
  */
-
 public class AES {
 
     private static final String MAIN_KEY = BuildConfig.SYMMETRIC_ENCRYPTION_KEY; // 16位密钥

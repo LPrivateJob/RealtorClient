@@ -18,7 +18,8 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
 /**
- * author: sundong
+ * description:
+ * autour: Tait
  * created at 2018/1/16 14:15
  */
 public class AppDAO extends BaseDAO {

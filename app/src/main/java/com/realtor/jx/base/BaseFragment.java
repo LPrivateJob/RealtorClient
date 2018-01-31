@@ -14,10 +14,10 @@ import android.view.ViewGroup;
 import java.util.List;
 
 /**
- * author: sundong
+ * description:
+ * autour: Tait
  * created at 2018/1/4 15:22
  */
-
 public abstract class BaseFragment extends Fragment {
     protected BaseActivity mActivity;
     protected View rootView;
@@ -71,10 +71,11 @@ public abstract class BaseFragment extends Fragment {
     }
 
     public void openSystemSetting() {
-        Intent intent =  new Intent(Settings.ACTION_APPLICATION_SETTINGS);
+        Intent intent = new Intent(Settings.ACTION_APPLICATION_SETTINGS);
         startActivity(intent);
     }
-    protected boolean isListEmpty(List list){
+
+    protected boolean isListEmpty(List list) {
         return list == null || list.size() == 0;
     }
 }

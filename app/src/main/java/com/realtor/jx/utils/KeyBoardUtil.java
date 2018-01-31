@@ -7,10 +7,10 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 /**
- * author: sundong
+ * description:
+ * autour: Tait
  * created at 2017/9/28 10:19
  */
-
 public class KeyBoardUtil {
     /**
      * 打开软键盘

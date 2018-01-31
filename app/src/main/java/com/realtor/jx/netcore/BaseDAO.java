@@ -15,7 +15,8 @@ import okhttp3.MultipartBody;
 import retrofit2.Call;
 
 /**
- * author: sundong
+ * description:
+ * autour: Tait
  * created at 2018/1/4 15:10
  */
 public abstract class BaseDAO extends ApiRoute implements ApiKeys {
@@ -44,8 +45,8 @@ public abstract class BaseDAO extends ApiRoute implements ApiKeys {
         invoke(call, callBack, true);
     }
 
-    protected <T> void sendPostJson(String route, Map<String, Object> paramMap,Object object, JsonUiCallback<T> callBack) {
-        Call<ResponseResult> call = apiService.postJson(route, paramMap,object);
+    protected <T> void sendPostJson(String route, Map<String, Object> paramMap, Object object, JsonUiCallback<T> callBack) {
+        Call<ResponseResult> call = apiService.postJson(route, paramMap, object);
         invoke(call, callBack, true);
     }
 
@@ -58,6 +59,7 @@ public abstract class BaseDAO extends ApiRoute implements ApiKeys {
         Call<ResponseResult> call = apiService.get(route, paramMap);
         invoke(call, callBack, true);
     }
+
     protected Map<String, Object> getMapParams(String[] keys, Object... values) {
 
         if (keys.length != values.length) {

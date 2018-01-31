@@ -13,7 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * author: sundong
+ * description:
+ * autour: Tait
  * created at 2018/1/18 15:41
  */
 public class LocalUser implements Serializable {

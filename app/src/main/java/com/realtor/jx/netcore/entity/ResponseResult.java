@@ -3,7 +3,8 @@ package com.realtor.jx.netcore.entity;
 import com.google.gson.JsonElement;
 
 /**
- * author: sundong
+ * description:
+ * autour: Tait
  * created at 2018/1/4 15:10
  */
 public class ResponseResult {

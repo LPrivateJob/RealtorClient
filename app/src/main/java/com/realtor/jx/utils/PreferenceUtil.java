@@ -9,11 +9,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * <br>包名：com.yingu.tinypocket.utils
- * <br>项目名称：TinyPocket
- * <br>描述：Sharepreference工具
- * <br>创建人：BaoZhi
- * <br>创建时间：2016/5/24 0024 19:32
+ * description:
+ * autour: Tait
+ * created at 2016/5/24
  */
 public class PreferenceUtil {
 

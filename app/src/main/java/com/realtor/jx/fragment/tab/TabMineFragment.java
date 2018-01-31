@@ -15,10 +15,9 @@ import com.realtor.jx.netcore.JsonUiCallback;
 
 /**
  * description: 我的
- * autour: lewish
+ * autour: Tait
  * created at: 2018/1/9 22:57
  */
-
 public class TabMineFragment extends BaseFragment {
     private TextView mTvRealtorName;
     private TextView mTvPhone;
@@ -40,7 +39,7 @@ public class TabMineFragment extends BaseFragment {
     protected void initListener() {
         super.initListener();
         mRlChangePassword.setOnClickListener(v -> openActivity(ChangePasswordActivity.class));
-        mBtnLogout.setOnClickListener(v->{
+        mBtnLogout.setOnClickListener(v -> {
             AppDAO.getInstance().loginOut(LocalUser.getInstance().getUserId(), new JsonUiCallback<String>(mActivity) {
                 @Override
                 public void onSuccess(String result) {

@@ -1,7 +1,6 @@
 package com.realtor.jx.widget;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -10,9 +9,9 @@ import com.realtor.jx.R;
 
 /**
  * description: 获取验证码的倒计时View
- * autour: lewish
+ * autour: Tait
  * created at: 2018/1/12 17:12
-*/
+ */
 public class CountDownView extends android.support.v7.widget.AppCompatButton {
     private CountDownTimer timer;
     private static final int COUNTDOWN_TIMER = 60 * 1000;

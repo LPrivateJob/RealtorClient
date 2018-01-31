@@ -12,7 +12,7 @@ import com.realtor.jx.utils.NullUtil;
 
 /**
  * description:
- * autour: lewish
+ * autour: Tait
  * created at: 2018/1/10 21:08
  */
 public class ContractInfoShowView extends RelativeLayout {
@@ -49,7 +49,7 @@ public class ContractInfoShowView extends RelativeLayout {
         mContext = context;
         inflate(mContext, R.layout.widget_contractinfo_view, this);
         TypedArray typedArray = mContext.obtainStyledAttributes(R.styleable.ContractInfoShowView);
-        isHideContractInfo = typedArray.getBoolean(R.styleable.ContractInfoShowView_isHideContractInfo,false);
+        isHideContractInfo = typedArray.getBoolean(R.styleable.ContractInfoShowView_isHideContractInfo, false);
         typedArray.recycle();
         initView(context);
     }
@@ -75,7 +75,7 @@ public class ContractInfoShowView extends RelativeLayout {
         mTvContentAccountNum = findViewById(R.id.mTvContentAccountNum);
         mTvContentRemarks = findViewById(R.id.mTvContentRemarks);
 
-        mRlContractInfo.setVisibility(isHideContractInfo?GONE:VISIBLE);
+        mRlContractInfo.setVisibility(isHideContractInfo ? GONE : VISIBLE);
     }
 
     public void fillData(ContractDetailDto contractDetailDto) {
@@ -84,9 +84,9 @@ public class ContractInfoShowView extends RelativeLayout {
         mTvContentPhoneNum.setText(contractDetailDto.getOrder().getTenancyMobile());
         mTvContentIDCardNum.setText(contractDetailDto.getOrder().getTenancyIdcard());
         mTvContentMonthlyRent.setText(NullUtil.convertFen2YuanStr(contractDetailDto.getOrder().getCash()));
-        mTvContentLeaseFrom.setText(""+contractDetailDto.getOrder().getStartTime());//起租日
-        mTvContentLeaseTo.setText(""+contractDetailDto.getOrder().getEndTime());//到租日
-        mTvContentTenancy.setText(""+contractDetailDto.getOrder().getTimeOffset());//租期
+        mTvContentLeaseFrom.setText("" + contractDetailDto.getOrder().getStartTime());//起租日
+        mTvContentLeaseTo.setText("" + contractDetailDto.getOrder().getEndTime());//到租日
+        mTvContentTenancy.setText("" + contractDetailDto.getOrder().getTimeOffset());//租期
         mTvContentServiceFeeBear.setText(contractDetailDto.getFeeReceive().getLable());//服务费承担方
         mTvContentDownPaymentsMethod.setText(contractDetailDto.getFirstPayType().getLable());//租客首付方式
         mTvContentPlatformPaymentMethod.setText(contractDetailDto.getPayType().getLable());//平台付款方式

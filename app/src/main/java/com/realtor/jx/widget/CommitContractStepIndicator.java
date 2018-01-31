@@ -12,10 +12,10 @@ import com.realtor.jx.R;
 import static com.realtor.jx.widget.CommitContractStepIndicator.STEP.LOCATION;
 
 /**
- * author: sundong
+ * description: BottomTabLayout
+ * autour: Tait
  * created at 2018/1/8 14:47
  */
-
 public class CommitContractStepIndicator extends RelativeLayout {
     private static final String NORMAL_COLOR = "#cccccc";
     private static final String SELECTED_COLOR = "#333333";

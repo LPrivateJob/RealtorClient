@@ -9,7 +9,6 @@ import com.realtor.jx.R;
 import com.realtor.jx.base.BaseActivity;
 import com.realtor.jx.dao.AppDAO;
 import com.realtor.jx.dto.ContractDetailDto;
-import com.realtor.jx.dto.UserInfoDto;
 import com.realtor.jx.entity.Commons;
 import com.realtor.jx.netcore.JsonUiCallback;
 import com.realtor.jx.widget.ContractInfoShowView;
@@ -19,7 +18,7 @@ import java.util.List;
 
 /**
  * description: 合同详情页
- * autour: lewish
+ * autour: Tait
  * created at: 2018/1/6 14:38
  */
 public class ContractDetailActivity extends BaseActivity {
@@ -31,10 +30,10 @@ public class ContractDetailActivity extends BaseActivity {
     private List<ContractDetailDto.InstalmentOrdersBean> mDataList;
     private Header mHeader;
 
-    public static void open(BaseActivity activity, String orderId,String title) {
+    public static void open(BaseActivity activity, String orderId, String title) {
         Intent intent = new Intent(activity, ContractDetailActivity.class);
         intent.putExtra(Commons.BUNDLE_KEYS.EXTRA_ID, orderId);
-        intent.putExtra(Commons.BUNDLE_KEYS.EXTRA_TITLE,title);
+        intent.putExtra(Commons.BUNDLE_KEYS.EXTRA_TITLE, title);
         activity.startActivity(intent);
     }
 
@@ -58,7 +57,7 @@ public class ContractDetailActivity extends BaseActivity {
     protected void initListener() {
         super.initListener();
         mBtn.setOnClickListener(v -> {
-            BillActivity.open(this,mRenterTotalAmount,mDataList);
+            BillActivity.open(this, mRenterTotalAmount, mDataList);
         });
     }
 

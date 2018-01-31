@@ -2,18 +2,17 @@ package com.realtor.jx.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.realtor.jx.R;
 import com.realtor.jx.base.BaseActivity;
-import com.realtor.jx.widget.CountDownView;
 import com.realtor.jx.widget.Header;
 
 /**
- * author: sundong
- * created at 2018/1/11 18:25
+ * description: 账单页,本页面不联网
+ * autour: Tait
+ * created at: 2018/1/11 18:25
  */
 public class ChangePasswordActivity extends BaseActivity {
     private Header mHeader;

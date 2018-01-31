@@ -15,7 +15,7 @@ import com.realtor.jx.utils.InputVerifyUtil;
 
 /**
  * description: 登录页
- * autour: lewish
+ * autour: Tait
  * created at: 2018/1/6 14:42
  */
 public class LoginActivity extends BaseActivity {
@@ -40,7 +40,7 @@ public class LoginActivity extends BaseActivity {
         mBtnConfirm.setOnClickListener(v -> {
             String pwd = mEtPassword.getText().toString();
             String phoneNum = mEtPhone.getText().toString();
-            if (InputVerifyUtil.checkMobile(phoneNum)&&InputVerifyUtil.checkPassword(pwd)) {
+            if (InputVerifyUtil.checkMobile(phoneNum) && InputVerifyUtil.checkPassword(pwd)) {
                 AppDAO.getInstance().login(phoneNum, pwd, new JsonUiCallback<UserInfoDto>(this) {
                     @Override
                     public void onSuccess(UserInfoDto result) {

@@ -5,11 +5,10 @@ import java.util.List;
 
 /**
  * description: 合同文本信息提交、修改后返回的实体类
- * autour: lewish
+ * autour: Tait
  * created at: 2018/1/21 15:54
-*/
-
-public class ContractDto implements Serializable{
+ */
+public class ContractDto implements Serializable {
 
     /**
      * instalmentOrders : [{"id":"201801211548351000001","overdueDays":0,"orderId":"20180121154835100000","siteUserMobile":"13886286698","apartmentId":"113417667","repayDate":"2018-02-07","termNo":1,"totalAmt":5500,"principalAmt":5000,"interestAmt":500,"overdueAmt":0,"repayType":"","status":"0","createTime":"","modTime":""},{"id":"201801211548351000002","overdueDays":0,"orderId":"20180121154835100000","siteUserMobile":"13886286698","apartmentId":"113417667","repayDate":"2018-03-07","termNo":2,"totalAmt":5500,"principalAmt":5000,"interestAmt":500,"overdueAmt":0,"repayType":"","status":"0","createTime":"","modTime":""},{"id":"201801211548351000003","overdueDays":0,"orderId":"20180121154835100000","siteUserMobile":"13886286698","apartmentId":"113417667","repayDate":"2018-04-07","termNo":3,"totalAmt":5500,"principalAmt":5000,"interestAmt":500,"overdueAmt":0,"repayType":"","status":"0","createTime":"","modTime":""}]
@@ -35,7 +34,7 @@ public class ContractDto implements Serializable{
         this.instalmentOrders = instalmentOrders;
     }
 
-    public static class OrderBean implements Serializable{
+    public static class OrderBean implements Serializable {
         /**
          * id : 20180121154835100000
          * timeOffset : 3,0
@@ -481,7 +480,7 @@ public class ContractDto implements Serializable{
         }
     }
 
-    public static class InstalmentOrdersBean implements Serializable{
+    public static class InstalmentOrdersBean implements Serializable {
         /**
          * id : 201801211548351000001
          * overdueDays : 0

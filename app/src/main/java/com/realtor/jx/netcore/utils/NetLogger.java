@@ -6,11 +6,9 @@ import com.realtor.jx.BuildConfig;
 
 
 /**
- * <br>包名：netcore.utils
- * <br>项目名称：ygam-android
- * <br>描述：
- * <br>创建人：BaoZhi
- * <br>创建时间：2017/5/24 0024 15:58
+ * description:
+ * autour: Tait
+ * created at 2017/5/24 15:10
  */
 public class NetLogger {
 

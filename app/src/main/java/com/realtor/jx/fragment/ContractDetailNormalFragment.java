@@ -7,7 +7,8 @@ import com.realtor.jx.R;
 import com.realtor.jx.base.BaseFragment;
 
 /**
- * author: sundong
+ * description:
+ * autour: Tait
  * created at 2018/1/10 10:30
  */
 public class ContractDetailNormalFragment extends BaseFragment {

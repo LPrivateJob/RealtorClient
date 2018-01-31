@@ -25,8 +25,9 @@ import com.realtor.jx.R;
 
 
 /**
- * author: sundong
- * created at 2018/1/4 15:04
+ * description:
+ * autour: Tait
+ * created at 2018/1/4 15:10
  */
 
 public class LoadingDialog extends Dialog {

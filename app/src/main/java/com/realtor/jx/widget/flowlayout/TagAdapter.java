@@ -8,11 +8,12 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 /**
  * description: TagAdapter
- * autour: lewish
+ * autour: Tait
  * created at: 2018/1/8 21:22
-*/
+ */
 public abstract class TagAdapter<T> {
     private List<T> mTagDatas;
     private OnDataChangedListener mOnDataChangedListener;
@@ -36,7 +37,7 @@ public abstract class TagAdapter<T> {
         mOnDataChangedListener = listener;
     }
 
-    public void setSelected(int poses){
+    public void setSelected(int poses) {
         Set<Integer> set = new HashSet<>();
         set.add(poses);
         setSelectedList(set);
@@ -82,12 +83,12 @@ public abstract class TagAdapter<T> {
     public abstract View getView(FlowLayout parent, int position, T t);
 
 
-    public void onSelected(int position, View view){
-        Log.d("zhy","onSelected " + position);
+    public void onSelected(int position, View view) {
+        Log.d("zhy", "onSelected " + position);
     }
 
-    public void unSelected(int position, View view){
-        Log.d("zhy","unSelected " + position);
+    public void unSelected(int position, View view) {
+        Log.d("zhy", "unSelected " + position);
     }
 
     public boolean setSelected(int position, T t) {

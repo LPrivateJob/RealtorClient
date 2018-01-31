@@ -12,21 +12,31 @@ import com.realtor.jx.dao.AppDAO;
 import com.realtor.jx.dto.ContractDetailDto;
 import com.realtor.jx.entity.Commons;
 import com.realtor.jx.netcore.JsonUiCallback;
+import com.realtor.jx.widget.CommonMsgDialog;
 import com.realtor.jx.widget.ContractInfoShowView;
 import com.realtor.jx.widget.Header;
 
 /**
  * description: 待扫码页
- * autour: lewish
+ * autour: Tait
  * created at: 2018/1/6 14:48
  */
 public class WaitScanQRCodeActivity extends BaseActivity {
+    private Header mHeader;
     private TextView mTvTips;
     private String mOrderId;
+    private boolean isShowBack;
     private ContractInfoShowView mContractInfoShowView;
 
     public static void open(BaseActivity activity, String orderId) {
         Intent intent = new Intent(activity, WaitScanQRCodeActivity.class);
+        if (activity instanceof CommitContractActivity) {
+            //合同页面跳转来的不可回退
+            intent.putExtra(Commons.BUNDLE_KEYS.EXTRA_BOOL, false);
+        } else {
+            //其他可以回退到上一级页面
+            intent.putExtra(Commons.BUNDLE_KEYS.EXTRA_BOOL, true);
+        }
         intent.putExtra(Commons.BUNDLE_KEYS.EXTRA_ID, orderId);
         activity.startActivity(intent);
     }
@@ -36,10 +46,13 @@ public class WaitScanQRCodeActivity extends BaseActivity {
         super.onPreInit();
         Bundle bundle = getIntent().getExtras();
         mOrderId = bundle.getString(Commons.BUNDLE_KEYS.EXTRA_ID);
+        isShowBack = bundle.getBoolean(Commons.BUNDLE_KEYS.EXTRA_BOOL);
     }
 
     @Override
     protected void initView(Bundle savedInstanceState) {
+        mHeader = findViewById(R.id.mHeader);
+        mHeader.setIsShowBack(isShowBack);
         mTvTips = findViewById(R.id.mTvTips);
         mTvTips.setText(Html.fromHtml("<font color='#CC0000'style='font-weight:bold;'>请租户用本人微信在72小时内</font>用微信扫二维码完善确认"));
         mContractInfoShowView = findViewById(R.id.mContractInfoShowView);
@@ -54,17 +67,25 @@ public class WaitScanQRCodeActivity extends BaseActivity {
         ((Header) findViewById(R.id.mHeader)).setOnInteractListener(new Header.OnInteractListener() {
             @Override
             public void onBackClick() {
-
+                onBackPressed();
             }
 
             @Override
             public void onDeleteClick() {
-                AppDAO.getInstance().deleteContrace(mOrderId, new JsonUiCallback<Object>(WaitScanQRCodeActivity.this) {
+                CommonMsgDialog.newNotice("您确定要删除此合同吗？").onInteractListener(new CommonMsgDialog.OnInteractListener() {
                     @Override
-                    public void onSuccess(Object result) {
-                        Toast.makeText(WaitScanQRCodeActivity.this, "onSuccess", Toast.LENGTH_SHORT).show();
+                    public void onClick(boolean flag) {
+                        if (flag) {
+                            AppDAO.getInstance().deleteContrace(mOrderId, new JsonUiCallback<Object>(WaitScanQRCodeActivity.this) {
+                                @Override
+                                public void onSuccess(Object result) {
+                                    Toast.makeText(WaitScanQRCodeActivity.this, "已成功删除合同", Toast.LENGTH_SHORT).show();
+                                    finish();
+                                }
+                            });
+                        }
                     }
-                });
+                }).show(getSupportFragmentManager());
             }
         });
     }

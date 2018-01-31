@@ -13,7 +13,8 @@ import okhttp3.Request;
 import retrofit2.Retrofit;
 
 /**
- * author: sundong
+ * description:
+ * autour: Tait
  * created at 2018/1/4 15:10
  */
 public class NetEngine {

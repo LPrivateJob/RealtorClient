@@ -10,16 +10,18 @@ import com.realtor.jx.base.BaseDialogFragment;
 
 /**
  * description:
- * autour: lewish
+ * autour: Tait
  * created at: 2018/1/29 20:39
-*/
+ */
 
 public class CommonMsgDialog extends BaseDialogFragment implements View.OnClickListener {
     private static final String TAG = "CommonMsgDialog";
-    public enum DialogStyle{
+
+    public enum DialogStyle {
         TIP,
         NOTICE
     }
+
     public static final String KEY_MSG = "msg";
     public static final String KEY_STYLE = "style";
 
@@ -38,20 +40,20 @@ public class CommonMsgDialog extends BaseDialogFragment implements View.OnClickL
 
     private OnInteractListener mOnInteractListener;
 
-    public static CommonMsgDialog newTip(String mStrMsg){
+    public static CommonMsgDialog newTip(String mStrMsg) {
         CommonMsgDialog commonMsgDialog = new CommonMsgDialog();
         Bundle bundle = new Bundle();
-        bundle.putString(KEY_MSG,mStrMsg);
-        bundle.putSerializable(KEY_STYLE,DialogStyle.TIP);
+        bundle.putString(KEY_MSG, mStrMsg);
+        bundle.putSerializable(KEY_STYLE, DialogStyle.TIP);
         commonMsgDialog.setArguments(bundle);
         return commonMsgDialog;
     }
 
-    public static CommonMsgDialog newNotice(String mStrMsg){
+    public static CommonMsgDialog newNotice(String mStrMsg) {
         CommonMsgDialog commonMsgDialog = new CommonMsgDialog();
         Bundle bundle = new Bundle();
-        bundle.putString(KEY_MSG,mStrMsg);
-        bundle.putSerializable(KEY_STYLE,DialogStyle.NOTICE);
+        bundle.putString(KEY_MSG, mStrMsg);
+        bundle.putSerializable(KEY_STYLE, DialogStyle.NOTICE);
         commonMsgDialog.setArguments(bundle);
         return commonMsgDialog;
     }
@@ -78,10 +80,10 @@ public class CommonMsgDialog extends BaseDialogFragment implements View.OnClickL
         mTvCancle.setText(DEFAULT_CANCLE_TXT);
         mTvMsg.setText(mStrMsg);
 
-        if(mDialogStyle==DialogStyle.TIP) {
+        if (mDialogStyle == DialogStyle.TIP) {
             mTvCancle.setVisibility(View.GONE);
             mTvConfirm.setText(DEFAULT_IKNOW_TXT);
-        }else if(mDialogStyle == DialogStyle.NOTICE) {
+        } else if (mDialogStyle == DialogStyle.NOTICE) {
             mTvCancle.setVisibility(View.VISIBLE);
             mTvConfirm.setText(DEFAULT_CONFIRM_TXT);
         }
@@ -101,14 +103,14 @@ public class CommonMsgDialog extends BaseDialogFragment implements View.OnClickL
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.mTvConfirm :
-                if(mOnInteractListener!=null) {
+            case R.id.mTvConfirm:
+                if (mOnInteractListener != null) {
                     dismiss();
                     mOnInteractListener.onClick(true);
                 }
                 break;
             case R.id.mTvCancle:
-                if(mOnInteractListener!=null) {
+                if (mOnInteractListener != null) {
                     dismiss();
                     mOnInteractListener.onClick(false);
                 }
@@ -121,7 +123,7 @@ public class CommonMsgDialog extends BaseDialogFragment implements View.OnClickL
         return this;
     }
 
-    public interface OnInteractListener{
+    public interface OnInteractListener {
         void onClick(boolean flag);
     }
 

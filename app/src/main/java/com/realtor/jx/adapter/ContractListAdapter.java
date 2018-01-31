@@ -1,8 +1,6 @@
 package com.realtor.jx.adapter;
 
 import android.content.Context;
-import android.graphics.drawable.Icon;
-import android.support.v7.widget.RecyclerView;
 
 import com.realtor.jx.R;
 import com.realtor.jx.base.baseadapter.ViewHolder;
@@ -16,17 +14,17 @@ import java.util.List;
 
 /**
  * description: 合同列表适配器
- * autour: lewish
+ * autour: Tait
  * created at: 2018/1/7 16:09
-*/
+ */
 public class ContractListAdapter extends RecyclerViewMultiItemAdapter<OrderListDto.OrdersBean> {
     public ContractListAdapter(Context context, List datas) {
         super(context, datas, new RecyclerViewMultiItemTypeSupport<OrderListDto.OrdersBean>() {
             @Override
             public int getLayoutId(int itemType) {
-                if(itemType==1) {
+                if (itemType == 1) {
                     return R.layout.item_contractlist_overdue;
-                }else {
+                } else {
                     return R.layout.item_contractlist_normal;
                 }
             }
@@ -34,7 +32,7 @@ public class ContractListAdapter extends RecyclerViewMultiItemAdapter<OrderListD
             @Override
             public int getItemViewType(int position, OrderListDto.OrdersBean ordersBean) {
                 int status = ordersBean.getStatus();
-                if(status==7) {
+                if (status == 7) {
                     return 1;
                 } else {
                     return 2;
@@ -46,20 +44,20 @@ public class ContractListAdapter extends RecyclerViewMultiItemAdapter<OrderListD
     @Override
     public void convert(ViewHolder holder, OrderListDto.OrdersBean ordersBean) {
         switch (holder.getLayoutId()) {
-            case R.layout.item_contractlist_normal :
+            case R.layout.item_contractlist_normal:
                 holder.setImageResource(R.id.mIvIcon, IconManager.getInstance().getIcon(ordersBean.getStatus()));
                 holder.setText(R.id.mTvStatus, IconManager.getInstance().getName(ordersBean.getStatus()));
                 holder.setText(R.id.mTvContentRenter, NullUtil.getString(ordersBean.getTenancyName()));
-                holder.setText(R.id.mTvContentPhone,NullUtil.getString(ordersBean.getTenancyMobile()));
-                holder.setText(R.id.mTvContentReviewingTime,NullUtil.getString(ordersBean.getCheckDate()));
+                holder.setText(R.id.mTvContentPhone, NullUtil.getString(ordersBean.getTenancyMobile()));
+                holder.setText(R.id.mTvContentReviewingTime, NullUtil.getString(ordersBean.getCheckDate()));
                 break;
             case R.layout.item_contractlist_overdue:
                 holder.setImageResource(R.id.mIvIcon, IconManager.getInstance().getIcon(ordersBean.getStatus()));
                 holder.setText(R.id.mTvStatus, IconManager.getInstance().getName(ordersBean.getStatus()));
                 holder.setText(R.id.mTvContentRenter, NullUtil.getString(ordersBean.getTenancyName()));
-                holder.setText(R.id.mTvContentPhone,NullUtil.getString(ordersBean.getTenancyMobile()));
-                holder.setText(R.id.mTvContentRepaymentDate,NullUtil.getString(ordersBean.getRepayDate()));
-                holder.setText(R.id.mTvOverDueTime,NullUtil.getString(ordersBean.getLateDays()));
+                holder.setText(R.id.mTvContentPhone, NullUtil.getString(ordersBean.getTenancyMobile()));
+                holder.setText(R.id.mTvContentRepaymentDate, NullUtil.getString(ordersBean.getRepayDate()));
+                holder.setText(R.id.mTvOverDueTime, NullUtil.getString(ordersBean.getLateDays()));
                 break;
         }
     }

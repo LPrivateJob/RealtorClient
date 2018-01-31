@@ -1,8 +1,9 @@
 package com.realtor.jx.base.baseadapter.absListViewAdapter;
 
 /**
- * author: sundong
- * created at 2016/11/24 16:31
+ * description:
+ * autour: Tait
+ * created at: 2016/11/24 16:31
  */
 public interface AbsListViewMultiItemTypeSupport<T> {
     /**

@@ -16,7 +16,11 @@ import java.io.ObjectOutputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-
+/**
+ * description:
+ * autour: Tait
+ * created at 2018/1/18 14:47
+ */
 public class BaseUtils {
     public static String UrlEncodeUnicode(final String s) {
         if (s == null) {

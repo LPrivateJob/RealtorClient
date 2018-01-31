@@ -13,7 +13,8 @@ import com.realtor.jx.R;
 import com.realtor.jx.utils.StringUtil;
 
 /**
- * author: sundong
+ * description:
+ * autour: Tait
  * created at 2018/1/9 15:05
  */
 public class SearchBar extends LinearLayout {

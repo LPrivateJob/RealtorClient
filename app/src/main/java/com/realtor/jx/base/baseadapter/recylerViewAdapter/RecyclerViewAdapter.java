@@ -11,7 +11,8 @@ import com.realtor.jx.base.baseadapter.ViewHolder;
 import java.util.List;
 
 /**
- * author: sundong
+ * description:
+ * autour: Tait
  * created at 2017/4/24 14:21
  */
 public abstract class RecyclerViewAdapter<T> extends RecyclerView.Adapter<ViewHolder> {

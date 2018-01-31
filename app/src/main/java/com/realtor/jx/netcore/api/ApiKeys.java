@@ -1,7 +1,8 @@
 package com.realtor.jx.netcore.api;
 
 /**
- * author: sundong
+ * description:
+ * autour: Tait
  * created at 2018/1/4 15:09
  */
 public interface ApiKeys {

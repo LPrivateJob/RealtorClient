@@ -16,8 +16,9 @@ import com.realtor.jx.base.RealtorClientApplication;
 
 
 /**
- * @see
- * @since JDK 1.6
+ * description:
+ * autour: Tait
+ * created at 2018/1/18 14:47
  */
 public class DensityUtil {
 
@@ -98,6 +99,7 @@ public class DensityUtil {
         DisplayMetrics dm = RealtorClientApplication.getContext().getResources().getDisplayMetrics();
         return dm.heightPixels;
     }
+
     public static void setViewDrawableLeft(TextView view, Drawable drawable) {
         if (drawable != null) {
             drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
@@ -106,6 +108,7 @@ public class DensityUtil {
             view.setCompoundDrawables(null, null, null, null);
         }
     }
+
     public static void setViewDrawableRight(TextView view, Drawable drawable) {
         if (drawable != null) {
             drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());

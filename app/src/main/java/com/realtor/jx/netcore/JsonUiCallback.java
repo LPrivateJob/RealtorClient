@@ -10,7 +10,8 @@ import retrofit2.Call;
 import retrofit2.Response;
 
 /**
- * author: sundong
+ * description:
+ * autour: Tait
  * created at 2018/1/4 15:10
  */
 public abstract class JsonUiCallback<T> extends JsonCallback<T> {

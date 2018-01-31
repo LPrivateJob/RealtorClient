@@ -2,7 +2,8 @@ package com.realtor.jx.entity;
 
 
 /**
- * author: sundong
+ * description:
+ * autour: Tait
  * created at 2018/1/18 14:41
  */
 public class Commons {

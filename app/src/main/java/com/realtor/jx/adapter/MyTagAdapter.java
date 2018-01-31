@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * description: MyTagAdapter
- * autour: lewish
+ * autour: Tait
  * created at: 2018/1/15 21:20
  */
 public class MyTagAdapter extends TagAdapter<FlowLayoutTypeBean> {

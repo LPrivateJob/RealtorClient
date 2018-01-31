@@ -19,8 +19,8 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * description: 账单页
- * autour: lewish
+ * description: 账单页,本页面不联网
+ * autour: Tait
  * created at: 2018/1/6 14:46
  */
 public class BillActivity extends BaseActivity {

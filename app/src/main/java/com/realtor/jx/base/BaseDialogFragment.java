@@ -19,10 +19,10 @@ import android.view.WindowManager;
 import com.realtor.jx.R;
 
 /**
- * author: sundong
+ * description:
+ * autour: Tait
  * created at 2017/8/31 20:33
  */
-
 public abstract class BaseDialogFragment extends DialogFragment {
     private static boolean isShow;
     protected Activity mActivity;

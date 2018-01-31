@@ -2,7 +2,6 @@ package com.realtor.jx.base;
 
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -14,6 +13,7 @@ import android.view.View;
 
 import com.orhanobut.logger.Logger;
 import com.realtor.jx.utils.KeyBoardUtil;
+import com.realtor.jx.widget.CommonMsgDialog;
 
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.OnNeverAskAgain;
@@ -23,7 +23,8 @@ import permissions.dispatcher.PermissionRequest;
 import permissions.dispatcher.RuntimePermissions;
 
 /**
- * author: sundong
+ * description:
+ * autour: Tait
  * created at 2018/1/4 15:22
  */
 @RuntimePermissions
@@ -83,11 +84,17 @@ public abstract class BaseActivity extends AppCompatActivity {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE})
     void onPermissionRationale(final PermissionRequest request) {
-        new AlertDialog.Builder(this)
-                .setMessage("住分期请求您赋予必要的访问权限，以保证相关功能的使用")
-                .setPositiveButton("确认", (dialog, button) -> request.proceed())
-                .setNegativeButton("取消", (dialog, button) -> request.cancel())
-                .show();
+        CommonMsgDialog.newNotice("住分期请求您赋予必要的访问权限，以保证相关功能的使用")
+                .onInteractListener(new CommonMsgDialog.OnInteractListener() {
+                    @Override
+                    public void onClick(boolean flag) {
+                        if (flag) {
+                            request.proceed();
+                        } else {
+                            request.cancel();
+                        }
+                    }
+                }).show(getSupportFragmentManager());
     }
 
     @OnPermissionDenied({Manifest.permission.CAMERA,
@@ -95,15 +102,17 @@ public abstract class BaseActivity extends AppCompatActivity {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE})
     void onPermissionDenied() {
-        new AlertDialog.Builder(this)
-                .setMessage("住分期请求您赋予必要的访问权限，以保证相关功能的使用")
-                .setPositiveButton("确认", (dialog, button) -> {
+        CommonMsgDialog.newNotice("住分期请求您赋予必要的访问权限，以保证相关功能的使用")
+                .onInteractListener(new CommonMsgDialog.OnInteractListener() {
+                    @Override
+                    public void onClick(boolean flag) {
+                        if (flag) {
 
-                })
-                .setNegativeButton("取消", (dialog, button) -> {
-                    System.exit(0);
-                })
-                .show();
+                        } else {
+                            System.exit(0);
+                        }
+                    }
+                }).show(getSupportFragmentManager());
     }
 
     @OnNeverAskAgain({Manifest.permission.CAMERA,
@@ -111,15 +120,17 @@ public abstract class BaseActivity extends AppCompatActivity {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE})
     void onNeverAskAgain() {
-        new AlertDialog.Builder(this)
-                .setMessage("住分期请求您赋予必要的访问权限，以保证相关功能的使用")
-                .setPositiveButton("确认", (dialog, button) -> {
+        CommonMsgDialog.newNotice("住分期请求您赋予必要的访问权限，以保证相关功能的使用")
+                .onInteractListener(new CommonMsgDialog.OnInteractListener() {
+                    @Override
+                    public void onClick(boolean flag) {
+                        if (flag) {
 
-                })
-                .setNegativeButton("取消", (dialog, button) -> {
-                    System.exit(0);
-                })
-                .show();
+                        } else {
+                            System.exit(0);
+                        }
+                    }
+                }).show(getSupportFragmentManager());
     }
 
     protected void openActivity(Class<?> cls, Bundle bundle) {
@@ -139,7 +150,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void ifShowHideKeyboard(){
+    public void ifShowHideKeyboard() {
         if (KeyBoardUtil.isSoftInputShow(this)) {
             KeyBoardUtil.hideKeyboard(this);
         }

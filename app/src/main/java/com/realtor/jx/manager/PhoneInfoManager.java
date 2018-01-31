@@ -4,7 +4,8 @@ import android.content.Context;
 import android.telephony.TelephonyManager;
 
 /**
- * author: sundong
+ * description:
+ * autour: Tait
  * created at 2018/1/26 14:48
  */
 public class PhoneInfoManager {

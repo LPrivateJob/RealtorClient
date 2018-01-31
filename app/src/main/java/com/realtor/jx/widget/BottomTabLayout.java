@@ -16,7 +16,7 @@ import static com.realtor.jx.widget.BottomTabLayout.SelectedTab.MINE;
 
 /**
  * description: BottomTabLayout
- * autour: lewish
+ * autour: Tait
  * created at: 2018/1/9 23:56
  */
 

@@ -4,10 +4,11 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by Lewish on 2018/1/20.
+ * description:
+ * autour: Tait
+ * created at 2018/1/20
  */
-
-public class ContractDetailDto implements Serializable{
+public class ContractDetailDto implements Serializable {
 
     private static final long serialVersionUID = -5701087269781362667L;
     /**
@@ -74,7 +75,7 @@ public class ContractDetailDto implements Serializable{
         this.instalmentOrders = instalmentOrders;
     }
 
-    public static class AreasBean implements Serializable{
+    public static class AreasBean implements Serializable {
 
         private static final long serialVersionUID = -5434908005138257713L;
         /**
@@ -111,7 +112,7 @@ public class ContractDetailDto implements Serializable{
             this.region = region;
         }
 
-        public static class RegionBean implements Serializable{
+        public static class RegionBean implements Serializable {
 
             private static final long serialVersionUID = -7197508492469342484L;
             /**
@@ -140,7 +141,7 @@ public class ContractDetailDto implements Serializable{
         }
     }
 
-    public static class OrderBean implements Serializable{
+    public static class OrderBean implements Serializable {
         private static final long serialVersionUID = -963953118993563275L;
         /**
          * id : 20180114163504100000
@@ -587,7 +588,7 @@ public class ContractDetailDto implements Serializable{
         }
     }
 
-    public static class InstalmentOrdersBean implements Serializable{
+    public static class InstalmentOrdersBean implements Serializable {
 
         private static final long serialVersionUID = 2193459239777887200L;
         /**

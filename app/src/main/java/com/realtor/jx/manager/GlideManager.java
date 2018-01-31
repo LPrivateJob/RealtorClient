@@ -6,11 +6,10 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 
 /**
- * author: sundong
+ * description:
+ * autour: Tait
  * created at 2018/1/26 14:47
  */
-
-
 public class GlideManager {
     private GlideManager() {
     }
@@ -23,7 +22,7 @@ public class GlideManager {
         return GlideManager.SingletonHolder.INSTANCE;
     }
 
-    public static void loadImage(Context context,ImageView imageView,String url){
+    public static void loadImage(Context context, ImageView imageView, String url) {
         Glide.with(context)
                 .load(url)
                 .into(imageView);

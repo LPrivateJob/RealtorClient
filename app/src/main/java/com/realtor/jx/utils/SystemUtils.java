@@ -10,9 +10,9 @@ import java.util.List;
 import static android.content.Context.ACTIVITY_SERVICE;
 
 /**
- * Author: Mr.Z
- * Date: 2017/11/15
- * Desc:
+ * description:
+ * autour: Tait
+ * created at 2016/5/24
  */
 public class SystemUtils {
     /**
@@ -40,7 +40,7 @@ public class SystemUtils {
     }
 
     /**
-     *判断当前应用程序处于前台还是后台
+     * 判断当前应用程序处于前台还是后台
      */
     public static boolean isApplicationBroughtToBackground(final Context context) {
         ActivityManager am = (ActivityManager) context.getSystemService(ACTIVITY_SERVICE);
@@ -53,7 +53,8 @@ public class SystemUtils {
         }
         return false;
     }
-    public static boolean isExsitMianActivity(Context context, Class<?> cls){
+
+    public static boolean isExsitMianActivity(Context context, Class<?> cls) {
         Intent intent = new Intent(context, cls);
         ComponentName cmpName = intent.resolveActivity(context.getPackageManager());
         if (cmpName != null) { // 说明系统中存在这个activity
@@ -61,7 +62,7 @@ public class SystemUtils {
             List<ActivityManager.RunningTaskInfo> taskInfoList = am.getRunningTasks(10);
             for (ActivityManager.RunningTaskInfo taskInfo : taskInfoList) {
                 if (taskInfo.baseActivity.equals(cmpName)) { // 说明它已经启动了
-                   return true;
+                    return true;
                 }
             }
         }

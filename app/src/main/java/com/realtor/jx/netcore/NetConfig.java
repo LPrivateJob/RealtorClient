@@ -16,7 +16,8 @@ import retrofit2.Converter;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * author: sundong
+ * description:
+ * autour: Tait
  * created at 2018/1/4 15:11
  */
 public class NetConfig {

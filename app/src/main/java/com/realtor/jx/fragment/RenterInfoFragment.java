@@ -27,11 +27,11 @@ import java.util.List;
 
 /**
  * description: 租赁信息UI
- * autour: lewish
+ * autour: Tait
  * created at: 2018/1/6 10:33
  */
 
-public class RenterInfoFragment extends BaseFragment{
+public class RenterInfoFragment extends BaseFragment {
     private List<FlowLayoutTypeBean> mRenterMethodsList;
     private EditText mEtContentRenterName;
     private EditText mEtContentPhone;

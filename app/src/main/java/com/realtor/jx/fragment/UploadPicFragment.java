@@ -29,7 +29,7 @@ import static android.app.Activity.RESULT_OK;
 
 /**
  * description: 上传照片UI
- * autour: lewish
+ * autour: Tait
  * created at: 2018/1/6 10:38
  */
 public class UploadPicFragment extends BaseFragment implements View.OnClickListener {

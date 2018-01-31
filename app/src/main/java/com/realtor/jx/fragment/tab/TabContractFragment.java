@@ -22,13 +22,12 @@ import java.util.List;
 
 /**
  * description: 合同Tab
- * autour: lewish
+ * autour: Tait
  * created at: 2018/1/9 23:00
  */
-
 public class TabContractFragment extends BaseFragment {
     private Integer mOrderStatus;
-    private String mStrSearchKeyWords="";
+    private String mStrSearchKeyWords = "";
     private SearchBar mSearchBar;
     private ImageView mIvFilter;
     private DrawerLayout mDrawerLayout;
@@ -70,7 +69,7 @@ public class TabContractFragment extends BaseFragment {
             public void onPageSelected(int position) {
                 //只有全部时可对合同列表进行按状态筛选
                 mIvFilter.setVisibility(position == 0 ? View.VISIBLE : View.GONE);
-                ((ContractListFragment)fragments.get(0)).refreshData();
+                ((ContractListFragment) fragments.get(0)).refreshData();
             }
 
             @Override
@@ -84,7 +83,7 @@ public class TabContractFragment extends BaseFragment {
     protected void initListener() {
         mSearchBar.setOnInteractListener(content -> {
             mStrSearchKeyWords = content;
-            ((ContractListFragment)fragments.get(mViewPager.getCurrentItem())).refreshData();
+            ((ContractListFragment) fragments.get(mViewPager.getCurrentItem())).refreshData();
         });
         mIvFilter.setOnClickListener(v -> {
             mActivity.ifShowHideKeyboard();
@@ -99,7 +98,7 @@ public class TabContractFragment extends BaseFragment {
             public void onChecked(Integer filterContractStateCode) {
                 mDrawerLayout.closeDrawers();
                 mOrderStatus = filterContractStateCode;
-                ((ContractListFragment)fragments.get(0)).refreshData();
+                ((ContractListFragment) fragments.get(0)).refreshData();
             }
         });
     }
@@ -113,7 +112,7 @@ public class TabContractFragment extends BaseFragment {
         return mOrderStatus;
     }
 
-    public String getSearchKeyWords(){
+    public String getSearchKeyWords() {
         return mStrSearchKeyWords;
     }
 

@@ -27,8 +27,8 @@ import com.realtor.jx.widget.Header;
 import java.util.List;
 
 /**
- * description: 新建和修改合同页面
- * autour: lewish
+ * description: 新建和修改合同页面 修改合同时需先联网，新建则不需要
+ * autour: Tait
  * created at: 2018/1/6 16:34
  */
 public class CommitContractActivity extends BaseActivity {
@@ -53,9 +53,9 @@ public class CommitContractActivity extends BaseActivity {
     /**
      * orderId为空则为新建，不为空则为修改
      */
-    public static void open(Activity act,@Nullable String orderId){
+    public static void open(Activity act, @Nullable String orderId) {
         Intent intent = new Intent(act, CommitContractActivity.class);
-        intent.putExtra(Commons.BUNDLE_KEYS.EXTRA_ID,orderId);
+        intent.putExtra(Commons.BUNDLE_KEYS.EXTRA_ID, orderId);
         act.startActivity(intent);
     }
 
@@ -64,7 +64,7 @@ public class CommitContractActivity extends BaseActivity {
         super.onPreInit();
         Bundle bundle = getIntent().getExtras();
         mOrderId = bundle.getString(Commons.BUNDLE_KEYS.EXTRA_ID);
-        isNewOrder = mOrderId==null;
+        isNewOrder = mOrderId == null;
     }
 
     @Override
@@ -83,7 +83,7 @@ public class CommitContractActivity extends BaseActivity {
         mBtnNext.setOnClickListener(v -> {
             switch (mStep) {
                 case LOCATION:
-                    if(mRenterInfoFragment.saveContractInfo()) {
+                    if (mRenterInfoFragment.saveContractInfo()) {
                         mStep = CommitContractStepIndicator.STEP.AGING;
                         mInstallmentInfoFragment = new InstallmentInfoFragment();
                         addFragment(R.id.mFragmentLayout, mInstallmentInfoFragment);
@@ -91,7 +91,7 @@ public class CommitContractActivity extends BaseActivity {
                     }
                     break;
                 case AGING:
-                    if(mInstallmentInfoFragment.saveContractInfo()) {
+                    if (mInstallmentInfoFragment.saveContractInfo()) {
                         commitSigningInfo();
                     }
                     break;
@@ -105,12 +105,12 @@ public class CommitContractActivity extends BaseActivity {
     @Override
     protected void loadData() {
         //查询详情得到之前提交的用户数据
-        if(mOrderId!=null) {
+        if (mOrderId != null) {
             AppDAO.getInstance().queryOrderDetail(mOrderId, new JsonUiCallback<ContractDetailDto>(this) {
                 @Override
                 public void onSuccess(ContractDetailDto result) {
                     fillContractInfo(result);
-                    mRenterInfoFragment.fillData(mCommitContractInfo,result);
+                    mRenterInfoFragment.fillData(mCommitContractInfo, result);
                 }
             });
         }
@@ -135,7 +135,7 @@ public class CommitContractActivity extends BaseActivity {
         mCommitContractInfo.endTime = order.getEndTime();
         mCommitContractInfo.feeType = Integer.parseInt(result.getFeeReceive().getValue());
         mCommitContractInfo.firstPaytype = Integer.parseInt(result.getFirstPayType().getValue());
-        mCommitContractInfo.platformPayType =Integer.parseInt(result.getPayType().getValue());
+        mCommitContractInfo.platformPayType = Integer.parseInt(result.getPayType().getValue());
         mCommitContractInfo.payTerm = order.getPayTerm();
         mCommitContractInfo.changeNo = order.getChangeNo();
         mCommitContractInfo.info = order.getInfo();
@@ -145,16 +145,16 @@ public class CommitContractActivity extends BaseActivity {
      * 向服务器提交签约信息
      */
     private void commitSigningInfo() {
-        if(mOrderId==null) {
+        if (mOrderId == null) {
             //新建合同
-            AppDAO.getInstance().createContract(PhoneInfoManager.getDiviceId(),mCommitContractInfo, new JsonUiCallback<ContractDto>(this) {
+            AppDAO.getInstance().createContract(PhoneInfoManager.getDiviceId(), mCommitContractInfo, new JsonUiCallback<ContractDto>(this) {
                 @Override
                 public void onSuccess(ContractDto result) {
                     mOrderId = result.getOrder().getId();
                     mMobileNo = result.getOrder().getTenancyMobile();
                     totalAmount = result.getOrder().getSiteUsertotalAmt();
                     instalmentOrders = result.getInstalmentOrders();
-                    InstallmentPreviewActivity.open(CommitContractActivity.this,result.getOrder().getSiteUsertotalAmt(),result.getInstalmentOrders());
+                    InstallmentPreviewActivity.open(CommitContractActivity.this, result.getOrder().getSiteUsertotalAmt(), result.getInstalmentOrders());
                     Toast.makeText(CommitContractActivity.this, "onSuccess", Toast.LENGTH_SHORT).show();
                 }
 
@@ -168,16 +168,16 @@ public class CommitContractActivity extends BaseActivity {
                     super.onConnectionFailed();
                 }
             });
-        }else {
+        } else {
             //修改合同
-            AppDAO.getInstance().modifyContract(PhoneInfoManager.getDiviceId(),mCommitContractInfo, new JsonUiCallback<ContractDto>(this) {
+            AppDAO.getInstance().modifyContract(PhoneInfoManager.getDiviceId(), mCommitContractInfo, new JsonUiCallback<ContractDto>(this) {
                 @Override
                 public void onSuccess(ContractDto result) {
                     mOrderId = result.getOrder().getId();
                     mMobileNo = result.getOrder().getTenancyMobile();
                     totalAmount = result.getOrder().getSiteUsertotalAmt();
                     instalmentOrders = result.getInstalmentOrders();
-                    InstallmentPreviewActivity.open(CommitContractActivity.this,result.getOrder().getSiteUsertotalAmt(),result.getInstalmentOrders());
+                    InstallmentPreviewActivity.open(CommitContractActivity.this, result.getOrder().getSiteUsertotalAmt(), result.getInstalmentOrders());
                     Toast.makeText(CommitContractActivity.this, "onSuccess", Toast.LENGTH_SHORT).show();
                 }
 
@@ -196,12 +196,12 @@ public class CommitContractActivity extends BaseActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode,resultCode,data);
+        super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
             case INSTALLMENT_PREVIEW_ACTIVITY_REQUEST_CODE:
                 if (resultCode == RESULT_OK) {
                     mStep = CommitContractStepIndicator.STEP.PHOTO;
-                    mUploadPicFragment = UploadPicFragment.newInstance(mOrderId,mMobileNo);
+                    mUploadPicFragment = UploadPicFragment.newInstance(mOrderId, mMobileNo);
                     addFragment(R.id.mFragmentLayout, mUploadPicFragment);
                     mHeader.setIsShowBack(false);
                     mStepIndicator.refreshUi(mStep);
@@ -265,7 +265,7 @@ public class CommitContractActivity extends BaseActivity {
         }
     }
 
-    public CommitContractInfo getCommitContractInfo(){
+    public CommitContractInfo getCommitContractInfo() {
         return mCommitContractInfo;
     }
 
