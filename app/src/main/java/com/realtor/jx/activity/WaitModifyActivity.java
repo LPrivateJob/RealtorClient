@@ -2,6 +2,9 @@ package com.realtor.jx.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +27,8 @@ import java.util.List;
  */
 public class WaitModifyActivity extends BaseActivity {
     private Header mHeader;
+    private RelativeLayout mRLWlycView;
+    private ImageView mRetryRefresh;
     private TextView mTvRejectedReason;
     private ContractInfoShowView mContractInfoShowView;
     private TextView mBtnViewBills;
@@ -51,6 +56,8 @@ public class WaitModifyActivity extends BaseActivity {
     @Override
     protected void initView(Bundle savedInstanceState) {
         mHeader = findViewById(R.id.mHeader);
+        mRLWlycView = findViewById(R.id.mRLWlycView);
+        mRetryRefresh = findViewById(R.id.mRetryRefresh);
         mTvRejectedReason = findViewById(R.id.mTvRejectedReason);
         mContractInfoShowView = findViewById(R.id.mContractInfoShowView);
         mBtnViewBills = findViewById(R.id.mBtnViewBills);
@@ -78,6 +85,16 @@ public class WaitModifyActivity extends BaseActivity {
                                     Toast.makeText(WaitModifyActivity.this, "已成功删除合同", Toast.LENGTH_SHORT).show();
                                     finish();
                                 }
+
+                                @Override
+                                public void onBizFailed(String resultCode, String resultInfo) {
+                                    super.onBizFailed(resultCode,resultInfo);
+                                }
+
+                                @Override
+                                public void onConnectionFailed() {
+                                    super.onConnectionFailed();
+                                }
                             });
                         }
                     }
@@ -90,6 +107,9 @@ public class WaitModifyActivity extends BaseActivity {
         mBtnModify.setOnClickListener(v -> {
             CommitContractActivity.open(this, mOrderId);
         });
+        mRetryRefresh.setOnClickListener(v -> {
+            loadData();
+        });
     }
 
     @Override
@@ -99,6 +119,7 @@ public class WaitModifyActivity extends BaseActivity {
         AppDAO.getInstance().queryOrderDetail(mOrderId, new JsonUiCallback<ContractDetailDto>(this) {
             @Override
             public void onSuccess(ContractDetailDto result) {
+                showNormalView();
                 mTvRejectedReason.setText(result.getOrder().getRefuseRemark());
                 mContractInfoShowView.fillData(result);
                 mRenterTotalAmount = result.getOrder().getSiteUsertotalAmt();
@@ -108,11 +129,13 @@ public class WaitModifyActivity extends BaseActivity {
             @Override
             public void onBizFailed(String resultCode, String resultInfo) {
                 super.onBizFailed(resultCode, resultInfo);
+                showNetErrorView();
             }
 
             @Override
             public void onConnectionFailed() {
                 super.onConnectionFailed();
+                showNetErrorView();
             }
         });
     }
@@ -120,5 +143,17 @@ public class WaitModifyActivity extends BaseActivity {
     @Override
     protected int getLayoutResource() {
         return R.layout.activity_waitmodify;
+    }
+
+    private void showNetErrorView() {
+        mRLWlycView.setVisibility(View.VISIBLE);
+        mHeader.setTitle("加载失败");
+        mHeader.setIsShowDelete(false);
+    }
+
+    private void showNormalView() {
+        mRLWlycView.setVisibility(View.GONE);
+        mHeader.setTitle("待修改");
+        mHeader.setIsShowDelete(true);
     }
 }

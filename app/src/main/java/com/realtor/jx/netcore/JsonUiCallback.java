@@ -47,12 +47,12 @@ public abstract class JsonUiCallback<T> extends JsonCallback<T> {
 
     @Override
     public void onBizFailed(String resultCode, String resultInfo) {
-        Toast.makeText(context, "服务器内部错误", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "服务器内部错误,请稍后重试", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onConnectionFailed() {
-        Toast.makeText(context, "网络连接异常", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "网络连接异常,请稍后重试", Toast.LENGTH_SHORT).show();
     }
 
     public void onFinish() {

@@ -10,7 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:isShowDelete="true"
-        app:title="待修改"/>
+        app:title="待修改" />
+
+    <include
+        layout="@layout/data_wlyc_view"
+        android:visibility="gone" />
 
     <ScrollView
         android:layout_width="match_parent"
