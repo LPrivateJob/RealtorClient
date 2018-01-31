@@ -33,7 +33,6 @@ import java.util.List;
  */
 public class CommitContractActivity extends BaseActivity {
     public static final int INSTALLMENT_PREVIEW_ACTIVITY_REQUEST_CODE = 1;
-    private boolean isNewOrder = true;
     private Header mHeader;
     private CommitContractStepIndicator mStepIndicator;
     private Button mBtnNext;
@@ -64,7 +63,6 @@ public class CommitContractActivity extends BaseActivity {
         super.onPreInit();
         Bundle bundle = getIntent().getExtras();
         mOrderId = bundle.getString(Commons.BUNDLE_KEYS.EXTRA_ID);
-        isNewOrder = mOrderId == null;
     }
 
     @Override
@@ -269,7 +267,4 @@ public class CommitContractActivity extends BaseActivity {
         return mCommitContractInfo;
     }
 
-    public boolean isNewOrder() {
-        return isNewOrder;
-    }
 }
