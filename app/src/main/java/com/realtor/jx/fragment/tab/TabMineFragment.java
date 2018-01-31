@@ -12,6 +12,7 @@ import com.realtor.jx.base.BaseFragment;
 import com.realtor.jx.dao.AppDAO;
 import com.realtor.jx.entity.LocalUser;
 import com.realtor.jx.netcore.JsonUiCallback;
+import com.realtor.jx.widget.Header;
 
 /**
  * description: 我的
@@ -38,6 +39,17 @@ public class TabMineFragment extends BaseFragment {
     @Override
     protected void initListener() {
         super.initListener();
+        ((Header) findViewById(R.id.mHeader)).setOnInteractListener(new Header.OnInteractListener() {
+            @Override
+            public void onBackClick() {
+//                ((MainActivity) mActivity).goToContractTab();
+            }
+
+            @Override
+            public void onDeleteClick() {
+
+            }
+        });
         mRlChangePassword.setOnClickListener(v -> openActivity(ChangePasswordActivity.class));
         mBtnLogout.setOnClickListener(v -> {
             AppDAO.getInstance().loginOut(LocalUser.getInstance().getUserId(), new JsonUiCallback<String>(mActivity) {

@@ -63,4 +63,5 @@ public class MainActivity extends BaseActivity {
     protected int getLayoutResource() {
         return R.layout.activity_main;
     }
+
 }
