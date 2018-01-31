@@ -20,17 +20,20 @@
         android:theme="@style/AppTheme">
         <activity
             android:name="com.realtor.jx.activity.MainActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask">
 
         </activity>
         <activity
             android:name=".activity.ContractDetailActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask">
 
         </activity>
         <activity
             android:name=".activity.LoginActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
