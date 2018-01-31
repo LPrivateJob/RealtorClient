@@ -3,6 +3,9 @@ package com.realtor.jx.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +26,8 @@ import com.realtor.jx.widget.Header;
  */
 public class WaitScanQRCodeActivity extends BaseActivity {
     private Header mHeader;
+    private RelativeLayout mRLWlycView;
+    private ImageView mRetryRefresh;
     private TextView mTvTips;
     private String mOrderId;
     private boolean isShowBack;
@@ -52,6 +57,8 @@ public class WaitScanQRCodeActivity extends BaseActivity {
     @Override
     protected void initView(Bundle savedInstanceState) {
         mHeader = findViewById(R.id.mHeader);
+        mRLWlycView = findViewById(R.id.mRLWlycView);
+        mRetryRefresh = findViewById(R.id.mRetryRefresh);
         mHeader.setIsShowBack(isShowBack);
         mTvTips = findViewById(R.id.mTvTips);
         mTvTips.setText(Html.fromHtml("<font color='#CC0000'style='font-weight:bold;'>请租户用本人微信在72小时内</font>用微信扫二维码完善确认"));
@@ -88,6 +95,9 @@ public class WaitScanQRCodeActivity extends BaseActivity {
                 }).show(getSupportFragmentManager());
             }
         });
+        mRetryRefresh.setOnClickListener(v -> {
+            loadData();
+        });
     }
 
     @Override
@@ -97,16 +107,19 @@ public class WaitScanQRCodeActivity extends BaseActivity {
             @Override
             public void onSuccess(ContractDetailDto result) {
                 mContractInfoShowView.fillData(result);
+                showNormalView();
             }
 
             @Override
             public void onBizFailed(String resultCode, String resultInfo) {
                 super.onBizFailed(resultCode, resultInfo);
+                showNetErrorView();
             }
 
             @Override
             public void onConnectionFailed() {
                 super.onConnectionFailed();
+                showNetErrorView();
             }
         });
     }
@@ -116,5 +129,17 @@ public class WaitScanQRCodeActivity extends BaseActivity {
         return R.layout.activity_scan_qrcode;
     }
 
+    private void showNetErrorView() {
+        mRLWlycView.setVisibility(View.VISIBLE);
+        mHeader.setTitle("加载失败");
+        mHeader.setIsShowDelete(false);
+        mHeader.setIsShowBack(true);
+    }
 
+    private void showNormalView() {
+        mRLWlycView.setVisibility(View.GONE);
+        mHeader.setTitle("待扫码");
+        mHeader.setIsShowBack(isShowBack);
+        mHeader.setIsShowDelete(true);
+    }
 }
