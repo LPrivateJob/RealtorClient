@@ -5,6 +5,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.realtor.jx.R;
@@ -39,6 +41,8 @@ import java.util.List;
 public class ContractListFragment extends BaseFragment {
     private int mOrderType = 0;
     private int mPage;
+    private RelativeLayout mRLWlycView;
+    private ImageView mRetryRefresh;
     private SmartRefreshLayout mRefreshLayout;
     private RecyclerView mRecView;
     private ContractListAdapter mContractListAdapter;
@@ -67,6 +71,8 @@ public class ContractListFragment extends BaseFragment {
 
     @Override
     protected void initView(View rootView, Bundle savedInstanceState) {
+        mRLWlycView = findViewById(R.id.mRLWlycView);
+        mRetryRefresh = findViewById(R.id.mRetryRefresh);
         mRecView = findViewById(R.id.mRecView);
         mRefreshLayout = findViewById(R.id.mRefreshLayout);
 
@@ -132,6 +138,9 @@ public class ContractListFragment extends BaseFragment {
                 return false;
             }
         });
+        mRetryRefresh.setOnClickListener(v -> {
+            refreshData();
+        });
     }
 
     @Override
@@ -161,6 +170,7 @@ public class ContractListFragment extends BaseFragment {
         AppDAO.getInstance().queryOrderList(getSearchKeyWords(), getOrderStatus(), "" + mOrderType, "" + mPage, "" + 10, new JsonUiCallback<OrderListDto>(mActivity) {
             @Override
             public void onSuccess(OrderListDto result) {
+                showNormalView();
                 if (mPage == 1) {
                     //下拉刷新
                     if (isListEmpty(result.getOrders())) {
@@ -183,11 +193,27 @@ public class ContractListFragment extends BaseFragment {
             @Override
             public void onBizFailed(String resultCode, String resultInfo) {
                 super.onBizFailed(resultCode, resultInfo);
+                if (mRefreshLayout != null) {
+                    if (mPage == 1) {
+                        mRefreshLayout.finishRefresh();
+                    } else {
+                        mRefreshLayout.finishLoadmore();
+                    }
+                }
+                showNetErrorView();
             }
 
             @Override
             public void onConnectionFailed() {
                 super.onConnectionFailed();
+                if (mRefreshLayout != null) {
+                    if (mPage == 1) {
+                        mRefreshLayout.finishRefresh();
+                    } else {
+                        mRefreshLayout.finishLoadmore();
+                    }
+                }
+                showNetErrorView();
             }
         });
     }
@@ -203,5 +229,13 @@ public class ContractListFragment extends BaseFragment {
 
     public String getSearchKeyWords() {
         return ((TabContractFragment) getParentFragment()).getSearchKeyWords();
+    }
+
+    private void showNetErrorView() {
+        mRLWlycView.setVisibility(View.VISIBLE);
+    }
+
+    private void showNormalView() {
+        mRLWlycView.setVisibility(View.GONE);
     }
 }

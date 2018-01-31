@@ -7,11 +7,6 @@ import android.widget.TextView;
 
 import com.realtor.jx.R;
 import com.realtor.jx.base.BaseActivity;
-import com.realtor.jx.dao.AppDAO;
-import com.realtor.jx.dto.UserInfoDto;
-import com.realtor.jx.entity.LocalUser;
-import com.realtor.jx.netcore.JsonUiCallback;
-import com.realtor.jx.utils.InputVerifyUtil;
 
 /**
  * description: 登录页
@@ -38,18 +33,20 @@ public class LoginActivity extends BaseActivity {
     protected void initListener() {
         super.initListener();
         mBtnConfirm.setOnClickListener(v -> {
-            String pwd = mEtPassword.getText().toString();
-            String phoneNum = mEtPhone.getText().toString();
-            if (InputVerifyUtil.checkMobile(phoneNum) && InputVerifyUtil.checkPassword(pwd)) {
-                AppDAO.getInstance().login(phoneNum, pwd, new JsonUiCallback<UserInfoDto>(this) {
-                    @Override
-                    public void onSuccess(UserInfoDto result) {
-                        LocalUser.getInstance().updateUserProfile(result);
-                        openActivity(MainActivity.class);
-                        finish();
-                    }
-                });
-            }
+            openActivity(MainActivity.class);
+            finish();
+//            String pwd = mEtPassword.getText().toString();
+//            String phoneNum = mEtPhone.getText().toString();
+//            if (InputVerifyUtil.checkMobile(phoneNum) && InputVerifyUtil.checkPassword(pwd)) {
+//                AppDAO.getInstance().login(phoneNum, pwd, new JsonUiCallback<UserInfoDto>(this) {
+//                    @Override
+//                    public void onSuccess(UserInfoDto result) {
+//                        LocalUser.getInstance().updateUserProfile(result);
+//                        openActivity(MainActivity.class);
+//                        finish();
+//                    }
+//                });
+//            }
         });
     }
 

@@ -69,7 +69,7 @@ public class TabContractFragment extends BaseFragment {
             public void onPageSelected(int position) {
                 //只有全部时可对合同列表进行按状态筛选
                 mIvFilter.setVisibility(position == 0 ? View.VISIBLE : View.GONE);
-                ((ContractListFragment) fragments.get(0)).refreshData();
+                ((ContractListFragment) fragments.get(position)).refreshData();
             }
 
             @Override

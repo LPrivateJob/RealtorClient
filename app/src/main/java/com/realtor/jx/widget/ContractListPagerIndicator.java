@@ -21,7 +21,7 @@ import com.realtor.jx.R;
 import java.util.List;
 
 /**
- * description: 合同列表页ViewpagerIndicator
+ * description: 合同列表页ViewPagerIndicator
  * autour: Tait
  * created at: 2018/1/6 15:02
  */
