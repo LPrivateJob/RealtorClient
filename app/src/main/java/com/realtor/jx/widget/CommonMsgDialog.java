@@ -107,12 +107,16 @@ public class CommonMsgDialog extends BaseDialogFragment implements View.OnClickL
                 if (mOnInteractListener != null) {
                     dismiss();
                     mOnInteractListener.onClick(true);
+                }else {
+                    dismiss();
                 }
                 break;
             case R.id.mTvCancle:
                 if (mOnInteractListener != null) {
                     dismiss();
                     mOnInteractListener.onClick(false);
+                }else {
+                    dismiss();
                 }
                 break;
         }
@@ -128,6 +132,8 @@ public class CommonMsgDialog extends BaseDialogFragment implements View.OnClickL
     }
 
     public void show(FragmentManager manager) {
+        setCanceledOnTouchOutside(false);
+        setCancelable(false);
         super.show(manager, TAG);
     }
 }
