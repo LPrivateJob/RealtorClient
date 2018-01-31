@@ -22,6 +22,7 @@ import com.realtor.jx.fragment.UploadPicFragment;
 import com.realtor.jx.manager.PhoneInfoManager;
 import com.realtor.jx.netcore.JsonUiCallback;
 import com.realtor.jx.widget.CommitContractStepIndicator;
+import com.realtor.jx.widget.CommonMsgDialog;
 import com.realtor.jx.widget.Header;
 
 import java.util.List;
@@ -110,6 +111,34 @@ public class CommitContractActivity extends BaseActivity {
                     fillContractInfo(result);
                     mRenterInfoFragment.fillData(mCommitContractInfo, result);
                 }
+
+                @Override
+                public void onBizFailed(String resultCode, String resultInfo) {
+                    CommonMsgDialog.newNotice("服务器内部错误，是否刷新重试？").onInteractListener(new CommonMsgDialog.OnInteractListener() {
+                        @Override
+                        public void onClick(boolean flag) {
+                            if (flag) {
+                                loadData();
+                            } else {
+                                onBackPressed();
+                            }
+                        }
+                    }).show(getSupportFragmentManager());
+                }
+
+                @Override
+                public void onConnectionFailed() {
+                    CommonMsgDialog.newNotice("网络连接异常，是否刷新重试？").onInteractListener(new CommonMsgDialog.OnInteractListener() {
+                        @Override
+                        public void onClick(boolean flag) {
+                            if (flag) {
+                                loadData();
+                            } else {
+                                onBackPressed();
+                            }
+                        }
+                    }).show(getSupportFragmentManager());
+                }
             });
         }
     }
@@ -153,7 +182,6 @@ public class CommitContractActivity extends BaseActivity {
                     totalAmount = result.getOrder().getSiteUsertotalAmt();
                     instalmentOrders = result.getInstalmentOrders();
                     InstallmentPreviewActivity.open(CommitContractActivity.this, result.getOrder().getSiteUsertotalAmt(), result.getInstalmentOrders());
-                    Toast.makeText(CommitContractActivity.this, "onSuccess", Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
