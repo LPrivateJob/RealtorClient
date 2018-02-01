@@ -1,5 +1,6 @@
 package com.realtor.jx.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.widget.EditText;
@@ -58,7 +59,9 @@ public class ModifyPasswordActivity extends BaseActivity {
             AppDAO.getInstance().modPassword(userName, oldPassword, newPassword, new JsonUiCallback<Object>(ModifyPasswordActivity.this) {
                 @Override
                 public void onSuccess(Object result) {
-                    Toast.makeText(ModifyPasswordActivity.this, "密码修改成功", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ModifyPasswordActivity.this, "密码修改成功,请重新登录", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(ModifyPasswordActivity.this,LoginActivity.class));
+                    finish();
                 }
 
                 @Override
