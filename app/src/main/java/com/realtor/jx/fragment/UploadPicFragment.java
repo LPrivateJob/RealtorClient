@@ -206,7 +206,7 @@ public class UploadPicFragment extends BaseFragment implements View.OnClickListe
                 .showSingleMediaType(true)
                 .countable(false)
                 .capture(true)
-                .captureStrategy(new CaptureStrategy(true, "com.realtor.jx.fileprovider"))
+                .captureStrategy(new CaptureStrategy(true, "$(BuildConfig.APPLICATION_ID).fileProvider"))
                 .maxSelectable(1)
                 .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
                 .thumbnailScale(0.85f)

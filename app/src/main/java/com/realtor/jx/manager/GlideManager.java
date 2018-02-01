@@ -15,7 +15,7 @@ public class GlideManager {
     }
 
     private static class SingletonHolder {
-        private static GlideManager INSTANCE = new GlideManager();
+        private static final GlideManager INSTANCE = new GlideManager();
     }
 
     public static GlideManager getInstance() {

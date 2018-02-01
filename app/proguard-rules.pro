@@ -197,3 +197,7 @@
 
 -dontwarn com.realtor.jx.netcore.**
 -keep class com.realtor.jx.netcore.**{*;}
+#--Bugly--
+-dontwarn com.tencent.bugly.**
+-keep public class com.tencent.bugly.**{*;}
+-keep class android.support.**{*;}
