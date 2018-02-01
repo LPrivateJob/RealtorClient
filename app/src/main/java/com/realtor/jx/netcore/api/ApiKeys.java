@@ -27,4 +27,6 @@ public interface ApiKeys {
     public static final String FILE_HOUSE = "fileHouse";
     public static final String FILE_AGENT = "fileAgent";
 
+    public static final String START_DATE = "startDate";
+    public static final String END_DATE = "endDate";
 }

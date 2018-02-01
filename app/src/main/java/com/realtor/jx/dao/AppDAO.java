@@ -99,4 +99,10 @@ public class AppDAO extends BaseDAO {
         }
         upLoadFile(Contract.UPLOAD_IMAGE, list, callback);
     }
+
+    // TODO: 数据类待替换
+    public void calTerm(String startDate, String endDate, JsonUiCallback<Object> callback) {
+        Map<String, Object> mapParams = getMapParams(new String[]{START_DATE, END_DATE}, startDate, endDate);
+        sendPostFormData(Contract.CAL_TERM, mapParams, callback);
+    }
 }

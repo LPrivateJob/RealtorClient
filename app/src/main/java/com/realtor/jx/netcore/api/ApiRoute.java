@@ -35,6 +35,8 @@ public class ApiRoute {
         public static final String QUERY_ORDER_LIST = ROOT + "/querOrderList";
         //上传照片
         public static final String UPLOAD_IMAGE = ROOT + "/upload";
+        //计算期数
+        public static final String CAL_TERM = ROOT +"/getTerms";
     }
 
 }
