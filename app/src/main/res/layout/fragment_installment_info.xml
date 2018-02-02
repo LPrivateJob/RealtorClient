@@ -45,6 +45,8 @@
 
     <TextView
         android:id="@+id/mEtContentLeaseFrom"
+        android:paddingTop="@dimen/y10"
+        android:paddingBottom="@dimen/y10"
         style="@style/CommitContractItemContent"
         android:layout_alignBaseline="@id/mTvTitleLeaseFrom"
         android:layout_alignLeft="@id/mEtContentMonthlyRent"
@@ -62,6 +64,8 @@
     <TextView
         android:id="@+id/mEtContentLeaseTo"
         style="@style/CommitContractItemContent"
+        android:paddingTop="@dimen/y10"
+        android:paddingBottom="@dimen/y10"
         android:layout_alignBaseline="@id/mTvTitleLeaseTo"
         android:layout_alignLeft="@id/mEtContentMonthlyRent"
         android:drawablePadding="@dimen/x50"
