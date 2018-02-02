@@ -83,16 +83,16 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths_public"></meta-data>
         </provider>
-        <provider
-            android:name="com.realtor.jx.utils.BuglyFileProvider"
-            android:authorities="${applicationId}.fileProvider"
-            android:exported="false"
-            android:grantUriPermissions="true"
-            tools:replace="name,authorities,exported,grantUriPermissions">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths" />
-        </provider>
+        <!--<provider-->
+            <!--android:name="com.realtor.jx.utils.BuglyFileProvider"-->
+            <!--android:authorities="${applicationId}.fileProvider"-->
+            <!--android:exported="false"-->
+            <!--android:grantUriPermissions="true"-->
+            <!--tools:replace="name,authorities,exported,grantUriPermissions">-->
+            <!--<meta-data-->
+                <!--android:name="android.support.FILE_PROVIDER_PATHS"-->
+                <!--android:resource="@xml/provider_paths" />-->
+        <!--</provider>-->
 
         <activity
             android:name="com.tencent.bugly.beta.ui.BetaActivity"
