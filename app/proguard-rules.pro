@@ -64,8 +64,6 @@
 -keep public class * extends android.support.v4.**
 -keep public class * extends android.support.v7.**
 -keep public class * extends android.support.annotation.**
-#如果有引用v4包可以添加下面这行
--keep public class * extends android.support.v4.app.Fragment
 # 保留R下面的资源
 -keep class **.R$* {*;}
 # 保留本地native方法不被混淆

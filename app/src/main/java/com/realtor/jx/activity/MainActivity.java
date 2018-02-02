@@ -10,6 +10,7 @@ import com.realtor.jx.base.baseadapter.fragmentAdapter.CommonFragmentPagerAdapte
 import com.realtor.jx.entity.Commons;
 import com.realtor.jx.fragment.tab.TabContractFragment;
 import com.realtor.jx.fragment.tab.TabMineFragment;
+import com.realtor.jx.manager.BuglyManager;
 import com.realtor.jx.widget.BanSlideViewPager;
 import com.realtor.jx.widget.BottomTabLayout;
 
@@ -98,7 +99,7 @@ public class MainActivity extends BaseActivity {
                 CommitContractActivity.open(MainActivity.this, null);
             }
         });
-
+        BuglyManager.getInstance().checkUpgrade(false);
     }
 
     @Override

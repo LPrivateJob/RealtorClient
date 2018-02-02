@@ -17,7 +17,7 @@ import com.tencent.bugly.beta.UpgradeInfo;
  * created at 2018/2/1 11:24.
  */
 public class BuglyManager {
-    private static final String APP_ID = "7e06210d8a";
+    private static final String APP_ID = "db9ec35b4f";
     private boolean isDebug = true;
     private Context mApplicationContext;
 
@@ -103,7 +103,7 @@ public class BuglyManager {
     }
 
     private String getAppChannel() {
-        return "DEBUG";
+        return WalleManager.getInstance().getChannel();
     }
 
     /**
