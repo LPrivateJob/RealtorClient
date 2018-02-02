@@ -51,7 +51,6 @@ public class InstallmentInfoFragment extends BaseFragment {
     private Spinner mTermSpinner;
     private List<Integer> mSpinnerList = new ArrayList<>();
     private ArrayAdapter<Integer> mSpinnerAdapter;
-    private CommitContractInfo mCommitContractInfo;
 
     @Override
     protected void initView(View rootView, Bundle savedInstanceState) {
@@ -100,7 +99,7 @@ public class InstallmentInfoFragment extends BaseFragment {
     @Override
     protected void loadData() {
         super.loadData();
-        mCommitContractInfo = ((CommitContractActivity) mActivity).getCommitContractInfo();
+        CommitContractInfo mCommitContractInfo = ((CommitContractActivity) mActivity).getCommitContractInfo();
         if (mCommitContractInfo.cash != 0) {
             mEtContentMonthlyRent.setText(NullUtil.convertFen2YuanStr(mCommitContractInfo.cash));
         }
