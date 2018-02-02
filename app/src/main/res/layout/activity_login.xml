@@ -35,7 +35,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="吉星分期"
+            android:text="住分期"
             android:textColor="#f5cc3f"
             android:textSize="@dimen/x30" />
     </LinearLayout>

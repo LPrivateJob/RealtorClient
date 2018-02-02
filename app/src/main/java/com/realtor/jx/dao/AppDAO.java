@@ -1,5 +1,6 @@
 package com.realtor.jx.dao;
 
+import com.realtor.jx.dto.CalTermDto;
 import com.realtor.jx.dto.ContractDetailDto;
 import com.realtor.jx.dto.ContractDto;
 import com.realtor.jx.dto.OrderListDto;
@@ -101,7 +102,7 @@ public class AppDAO extends BaseDAO {
     }
 
     // TODO: 数据类待替换
-    public void calTerm(String startDate, String endDate, JsonUiCallback<Object> callback) {
+    public void calTerm(String startDate, String endDate, JsonUiCallback<CalTermDto> callback) {
         Map<String, Object> mapParams = getMapParams(new String[]{START_DATE, END_DATE}, startDate, endDate);
         sendPostFormData(Contract.CAL_TERM, mapParams, callback);
     }

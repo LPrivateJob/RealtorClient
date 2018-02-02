@@ -2,23 +2,30 @@ package com.realtor.jx.fragment;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.realtor.jx.R;
 import com.realtor.jx.activity.CommitContractActivity;
 import com.realtor.jx.adapter.MyTagAdapter;
 import com.realtor.jx.base.BaseFragment;
+import com.realtor.jx.dao.AppDAO;
+import com.realtor.jx.dto.CalTermDto;
 import com.realtor.jx.dto.FlowLayoutTypeBean;
 import com.realtor.jx.entity.CommitContractInfo;
 import com.realtor.jx.entity.LocalUser;
+import com.realtor.jx.netcore.JsonUiCallback;
 import com.realtor.jx.utils.InputVerifyUtil;
 import com.realtor.jx.utils.NullUtil;
 import com.realtor.jx.utils.StringUtil;
+import com.realtor.jx.widget.CommonMsgDialog;
 import com.realtor.jx.widget.flowlayout.TagFlowLayout;
 import com.realtor.jx.widget.picker.common.util.ConvertUtils;
 import com.realtor.jx.widget.picker.wheelpicker.picker.DatePicker;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -31,15 +38,20 @@ public class InstallmentInfoFragment extends BaseFragment {
     private List<FlowLayoutTypeBean> mServiceFeeBearList;
     private List<FlowLayoutTypeBean> mDownPaymentsMethodList;
     private List<FlowLayoutTypeBean> mPlatformPaymentMethodList;
+    private String mStartDate;
+    private String mEndDate;
     private EditText mEtContentMonthlyRent;
     private TextView mEtContentLeaseFrom;
     private TextView mEtContentLeaseTo;
     private TagFlowLayout mFLServiceFeeBear;
     private TagFlowLayout mFLDownPaymentsMethod;
     private TagFlowLayout mFLPlatformPaymentMethod;
-    private EditText mEtContentRepaymentPeriod;
     private EditText mEtContentAccountNum;
     private EditText mEtContentRemarks;
+    private Spinner mTermSpinner;
+    private List<Integer> mSpinnerList = new ArrayList<>();
+    private ArrayAdapter<Integer> mSpinnerAdapter;
+    private CommitContractInfo mCommitContractInfo;
 
     @Override
     protected void initView(View rootView, Bundle savedInstanceState) {
@@ -51,9 +63,9 @@ public class InstallmentInfoFragment extends BaseFragment {
         mFLDownPaymentsMethod = findViewById(R.id.mFLDownPaymentsMethod);
         mFLPlatformPaymentMethod = findViewById(R.id.mFLPlatformPaymentMethod);
 
-        mEtContentRepaymentPeriod = findViewById(R.id.mEtContentRepaymentPeriod);
         mEtContentAccountNum = findViewById(R.id.mEtContentAccountNum);
         mEtContentRemarks = findViewById(R.id.mEtContentRemarks);
+        mTermSpinner = findViewById(R.id.mTermSpinner);
 
         mServiceFeeBearList = LocalUser.getInstance().getServiceFeeBearList();
         mDownPaymentsMethodList = LocalUser.getInstance().getDownPaymentsMethodList();
@@ -67,36 +79,49 @@ public class InstallmentInfoFragment extends BaseFragment {
     @Override
     protected void initListener() {
         mEtContentLeaseFrom.setOnClickListener(v -> {
-            showYearMonthDayPicker((year, month, day) -> mEtContentLeaseFrom.setText(year + "-" + month + "-" + day));
+            showYearMonthDayPicker((year, month, day) -> {
+                mStartDate = year + "-" + month + "-" + day;
+                mEtContentLeaseFrom.setText(mStartDate);
+                calTerm();
+            });
         });
         mEtContentLeaseTo.setOnClickListener(v -> {
-            showYearMonthDayPicker((year, month, day) -> mEtContentLeaseTo.setText(year + "-" + month + "-" + day));
+            showYearMonthDayPicker((year, month, day) -> {
+                mEndDate = year + "-" + month + "-" + day;
+                mEtContentLeaseTo.setText(mEndDate);
+                calTerm();
+            });
         });
+        mSpinnerAdapter = new ArrayAdapter<Integer>(mActivity, android.R.layout.simple_spinner_item, mSpinnerList);
+        mSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mTermSpinner.setAdapter(mSpinnerAdapter);
     }
 
     @Override
     protected void loadData() {
         super.loadData();
-        CommitContractInfo commitContractInfo = ((CommitContractActivity) mActivity).getCommitContractInfo();
-        if (commitContractInfo.cash != 0) {
-            mEtContentMonthlyRent.setText(NullUtil.convertFen2YuanStr(commitContractInfo.cash));
+        mCommitContractInfo = ((CommitContractActivity) mActivity).getCommitContractInfo();
+        if (mCommitContractInfo.cash != 0) {
+            mEtContentMonthlyRent.setText(NullUtil.convertFen2YuanStr(mCommitContractInfo.cash));
         }
-        if (!StringUtil.isEmpty(commitContractInfo.startTime)) {
-            mEtContentLeaseFrom.setText(commitContractInfo.startTime);
+        if (!StringUtil.isEmpty(mCommitContractInfo.startTime)) {
+            mEtContentLeaseFrom.setText(mCommitContractInfo.startTime);
         }
-        if (!StringUtil.isEmpty(commitContractInfo.endTime)) {
-            mEtContentLeaseTo.setText(commitContractInfo.endTime);
+        if (!StringUtil.isEmpty(mCommitContractInfo.endTime)) {
+            mEtContentLeaseTo.setText(mCommitContractInfo.endTime);
         }
-        mFLServiceFeeBear.getAdapter().setSelected(commitContractInfo.feeType == 0 ? 0 : commitContractInfo.feeType - 1);
-        mFLDownPaymentsMethod.getAdapter().setSelected(commitContractInfo.firstPaytype == 0 ? 0 : commitContractInfo.firstPaytype - 1);
-        mFLPlatformPaymentMethod.getAdapter().setSelected(commitContractInfo.platformPayType == 0 ? 0 : commitContractInfo.platformPayType - 1);
-        // TODO: 期数待计算
-//            mEtContentRepaymentPeriod.setText("" + commitContractInfo.payTerm);
-        if (!StringUtil.isEmpty(commitContractInfo.changeNo)) {
-            mEtContentAccountNum.setText(commitContractInfo.changeNo);
+        mFLServiceFeeBear.getAdapter().setSelected(mCommitContractInfo.feeType == 0 ? 0 : mCommitContractInfo.feeType - 1);
+        mFLDownPaymentsMethod.getAdapter().setSelected(mCommitContractInfo.firstPaytype == 0 ? 0 : mCommitContractInfo.firstPaytype - 1);
+        mFLPlatformPaymentMethod.getAdapter().setSelected(mCommitContractInfo.platformPayType == 0 ? 0 : mCommitContractInfo.platformPayType - 1);
+
+        mSpinnerList.add(mCommitContractInfo.payTerm);
+        mSpinnerAdapter.notifyDataSetChanged();
+
+        if (!StringUtil.isEmpty(mCommitContractInfo.changeNo)) {
+            mEtContentAccountNum.setText(mCommitContractInfo.changeNo);
         }
-        if (!StringUtil.isEmpty(commitContractInfo.info)) {
-            mEtContentRemarks.setText(commitContractInfo.info);
+        if (!StringUtil.isEmpty(mCommitContractInfo.info)) {
+            mEtContentRemarks.setText(mCommitContractInfo.info);
         }
     }
 
@@ -138,10 +163,11 @@ public class InstallmentInfoFragment extends BaseFragment {
         } else {
             return false;
         }
-        String payTerm = getEditTextStr(mEtContentRepaymentPeriod);
-        if (InputVerifyUtil.checkEmpty(payTerm, "还款期数")) {
-            commitContractInfo.payTerm = Integer.parseInt(payTerm);
+        int selectedTerm = (int) mTermSpinner.getSelectedItem();
+        if (selectedTerm != 0) {
+            commitContractInfo.payTerm = selectedTerm;
         } else {
+            CommonMsgDialog.newTip("还款期数不能为0，您选择的起租日期与到租日期不正确,请重新选择").show(getChildFragmentManager());
             return false;
         }
         commitContractInfo.changeNo = getEditTextStr(mEtContentAccountNum);
@@ -168,9 +194,10 @@ public class InstallmentInfoFragment extends BaseFragment {
         if (!StringUtil.isEmpty(endTime)) {
             commitContractInfo.endTime = endTime;
         }
-        String payTerm = getEditTextStr(mEtContentRepaymentPeriod);
-        if (!StringUtil.isEmpty(payTerm)) {
-            commitContractInfo.payTerm = Integer.parseInt(payTerm);
+
+        int selectedTerm = (int) mTermSpinner.getSelectedItem();
+        if (selectedTerm != 0) {
+            commitContractInfo.payTerm = selectedTerm;
         }
         commitContractInfo.changeNo = getEditTextStr(mEtContentAccountNum);
         commitContractInfo.info = getEditTextStr(mEtContentRemarks);
@@ -181,5 +208,22 @@ public class InstallmentInfoFragment extends BaseFragment {
 
     private String getEditTextStr(EditText editText) {
         return editText.getText().toString();
+    }
+
+    private void calTerm() {
+        String startDate = mEtContentLeaseFrom.getText().toString();
+        String endDate = mEtContentLeaseTo.getText().toString();
+        if (!StringUtil.isEmpty(startDate) && !StringUtil.isEmpty(endDate)) {
+            AppDAO.getInstance().calTerm(startDate, endDate, new JsonUiCallback<CalTermDto>(mActivity) {
+                @Override
+                public void onSuccess(CalTermDto result) {
+                    List<Integer> terms = result.getTerms();
+                    mSpinnerList.clear();
+                    mSpinnerList.addAll(terms);
+                    mSpinnerAdapter.notifyDataSetChanged();
+                }
+            });
+
+        }
     }
 }

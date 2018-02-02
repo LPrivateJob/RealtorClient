@@ -149,13 +149,12 @@
         android:layout_marginTop="@dimen/y43"
         android:text="还款期数" />
 
-    <EditText
-        android:id="@+id/mEtContentRepaymentPeriod"
-        style="@style/CommitContractItemContent"
-        android:layout_alignBaseline="@id/mTvTitleRepaymentPeriod"
-        android:layout_alignLeft="@id/mEtContentMonthlyRent"
-        android:hint="请输入内容"
-        android:inputType="number" />
+    <Spinner
+        android:id="@+id/mTermSpinner"
+        android:layout_width="@dimen/x250"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/mTvTitleRepaymentPeriod"
+        android:layout_alignLeft="@id/mEtContentMonthlyRent" />
 
     <TextView
         android:id="@+id/mTvTitleAccountNum"
