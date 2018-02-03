@@ -90,7 +90,7 @@ public class RenterInfoFragment extends BaseFragment {
                             mTvStr = province.getAreaName() + "  " + city.getAreaName() + "  " + county.getAreaName();
                             mSelectedCityId = county.getAreaId();
                         }
-                        Toast.makeText(mActivity, "txt=" + mTvStr + ",id=" + mSelectedCityId, Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(mActivity, "txt=" + mTvStr + ",id=" + mSelectedCityId, Toast.LENGTH_SHORT).show();
                         mTvContentCity.setText(mTvStr);
                     }
                 });
