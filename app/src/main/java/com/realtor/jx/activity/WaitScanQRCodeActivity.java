@@ -3,6 +3,7 @@ package com.realtor.jx.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -14,7 +15,9 @@ import com.realtor.jx.base.BaseActivity;
 import com.realtor.jx.dao.AppDAO;
 import com.realtor.jx.dto.ContractDetailDto;
 import com.realtor.jx.entity.Commons;
+import com.realtor.jx.manager.GlideManager;
 import com.realtor.jx.netcore.JsonUiCallback;
+import com.realtor.jx.utils.StringUtil;
 import com.realtor.jx.widget.CommonMsgDialog;
 import com.realtor.jx.widget.ContractInfoShowView;
 import com.realtor.jx.widget.Header;
@@ -26,6 +29,7 @@ import com.realtor.jx.widget.Header;
  */
 public class WaitScanQRCodeActivity extends BaseActivity {
     private Header mHeader;
+    private ImageView mIvQRCode;
     private RelativeLayout mRLWlycView;
     private ImageView mRetryRefresh;
     private TextView mTvTips;
@@ -57,6 +61,7 @@ public class WaitScanQRCodeActivity extends BaseActivity {
     @Override
     protected void initView(Bundle savedInstanceState) {
         mHeader = findViewById(R.id.mHeader);
+        mIvQRCode = findViewById(R.id.mIvQRCode);
         mRLWlycView = findViewById(R.id.mRLWlycView);
         mRetryRefresh = findViewById(R.id.mRetryRefresh);
         mHeader.setIsShowBack(isShowBack);
@@ -106,6 +111,12 @@ public class WaitScanQRCodeActivity extends BaseActivity {
         AppDAO.getInstance().queryOrderDetail(mOrderId, new JsonUiCallback<ContractDetailDto>(this) {
             @Override
             public void onSuccess(ContractDetailDto result) {
+                String qrcodeUrl = result.getOrder().getQrcodeUrl();
+                if(StringUtil.isEmpty(qrcodeUrl)) {
+                    CommonMsgDialog.newTip("二维码暂未生成,请稍后到产品列表待扫码中查看。").show(getSupportFragmentManager());
+                }else {
+                    GlideManager.getInstance().loadImage(WaitScanQRCodeActivity.this, mIvQRCode, qrcodeUrl);
+                }
                 mContractInfoShowView.fillData(result);
                 showNormalView();
             }
