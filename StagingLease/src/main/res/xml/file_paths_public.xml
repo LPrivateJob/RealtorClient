@@ -14,9 +14,11 @@
   limitations under the License.
   -->
 <paths>
+    <!--Matisse-->
     <external-path
         name="my_images"
         path="Pictures" />
+    <!--Bugly升级下载时可能的路径-->
     <!-- /storage/emulated/0/Download/com.bugly.upgrade.demo/.beta/apk-->
     <external-path
         name="beta_external_path"
@@ -25,8 +27,13 @@
     <external-path
         name="beta_external_files_path"
         path="Android/data/" />
-
+    <!--storage/emulated/0/Android/data/包名/cache-->
+    <external-cache-path
+        name="tinkerPatch"
+        path="tinkerPatch" />
+    <!--Luban-->
     <external-path
         name="pic_compress_path"
         path="Luban/" />
+
 </paths>

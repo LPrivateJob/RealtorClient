@@ -10,6 +10,7 @@ import com.realtor.jx.base.BaseActivity;
 import com.realtor.jx.dao.AppDAO;
 import com.realtor.jx.dto.UserInfoDto;
 import com.realtor.jx.entity.LocalUser;
+import com.realtor.jx.manager.BuglyManager;
 import com.realtor.jx.netcore.JsonUiCallback;
 import com.realtor.jx.utils.InputVerifyUtil;
 
@@ -38,18 +39,19 @@ public class LoginActivity extends BaseActivity {
     protected void initListener() {
         super.initListener();
         mBtnConfirm.setOnClickListener(v -> {
-            String pwd = mEtPassword.getText().toString();
-            String phoneNum = mEtPhone.getText().toString();
-            if (InputVerifyUtil.checkMobile(phoneNum) && InputVerifyUtil.checkPassword(pwd)) {
-                AppDAO.getInstance().login(phoneNum, pwd, new JsonUiCallback<UserInfoDto>(this) {
-                    @Override
-                    public void onSuccess(UserInfoDto result) {
-                        LocalUser.getInstance().updateUserProfile(result);
-                        MainActivity.open(LoginActivity.this, MainActivity.TAB.TAB_CONTRACT);
-                        finish();
-                    }
-                });
-            }
+//            BuglyManager.getInstance().loadPatchFromLocal();
+//            String pwd = mEtPassword.getText().toString();
+//            String phoneNum = mEtPhone.getText().toString();
+//            if (InputVerifyUtil.checkMobile(phoneNum) && InputVerifyUtil.checkPassword(pwd)) {
+//                AppDAO.getInstance().login(phoneNum, pwd, new JsonUiCallback<UserInfoDto>(this) {
+//                    @Override
+//                    public void onSuccess(UserInfoDto result) {
+//                        LocalUser.getInstance().updateUserProfile(result);
+//                        MainActivity.open(LoginActivity.this, MainActivity.TAB.TAB_CONTRACT);
+//                        finish();
+//                    }
+//                });
+//            }
         });
     }
 

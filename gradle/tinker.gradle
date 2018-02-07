@@ -1,10 +1,10 @@
 def bakPath = file("${buildDir}/bakApk/") //指定基准文件存放位置
 ext {
     tinkerEnable = true
-    tinkerOldApkPath = "${bakPath}/buglyHotfixDemo-release-0207-112438.apk"
+    tinkerOldApkPath = "${bakPath}/StagingLease-Test-release-0207-172458.apk"
     tinkerID = "1.0"
-    tinkerApplyMappingPath = "${bakPath}/buglyHotfixDemo-release-0207-112438-mapping.txt"
-    tinkerApplyResourcePath = "${bakPath}/buglyHotfixDemo-release-0207-112438-R.txt"
+    tinkerApplyMappingPath = "${bakPath}/StagingLease-Test-release-0207-172458-mapping.txt"
+    tinkerApplyResourcePath = "${bakPath}/StagingLease-Test-release-0207-172458-R.txt"
     patchMessage = "fix the 1.0 version's bugs"
     patchVersion = "1.0"
     isProtectedApp = false

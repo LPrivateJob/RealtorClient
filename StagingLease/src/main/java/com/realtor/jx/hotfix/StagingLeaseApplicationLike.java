@@ -25,7 +25,7 @@ import com.tencent.tinker.loader.app.DefaultApplicationLike;
  */
 public class StagingLeaseApplicationLike extends DefaultApplicationLike {
     private static final String TAG = "StagingLeaseApplication";
-    private static StagingLeaseApplication instannce;
+    public static StagingLeaseApplication ApplicationInstance;
     private static Context mContext;
 
     public StagingLeaseApplicationLike(Application application, int tinkerFlags, boolean tinkerLoadVerifyFlag, long applicationStartElapsedTime, long applicationStartMillisTime, Intent tinkerResultIntent) {
@@ -35,7 +35,7 @@ public class StagingLeaseApplicationLike extends DefaultApplicationLike {
     @Override
     public void onCreate() {
         super.onCreate();
-        instannce = (StagingLeaseApplication) getApplication();
+        ApplicationInstance = (StagingLeaseApplication) getApplication();
         mContext = getApplication().getApplicationContext();
         initLogger();
         initNetEngine();
@@ -69,7 +69,7 @@ public class StagingLeaseApplicationLike extends DefaultApplicationLike {
 
     // 网络引擎框架初始化
     private void initNetEngine() {
-        NetEngine.init(NetConfig.create(instannce));
+        NetEngine.init(NetConfig.create(ApplicationInstance));
     }
 
     public static Context getContext() {
