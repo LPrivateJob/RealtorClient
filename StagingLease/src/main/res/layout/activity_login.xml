@@ -56,7 +56,6 @@
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/y22"
             android:hint="手机号"
-            android:text="13888888888"
             android:inputType="phone"
             android:maxLines="1"/>
     </android.support.design.widget.TextInputLayout>
@@ -78,7 +77,6 @@
             android:layout_height="wrap_content"
             android:hint="密码"
             android:inputType="textPassword"
-            android:text="111111"
             android:maxLines="1"/>
     </android.support.design.widget.TextInputLayout>
 
