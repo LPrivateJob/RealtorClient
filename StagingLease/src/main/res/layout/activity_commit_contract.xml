@@ -13,6 +13,12 @@
         app:isShowDelete="false"
         app:title="租住信息" />
 
+    <Button
+        android:id="@+id/mBtnNext"
+        style="@style/BottomButtonRed"
+        android:layout_alignParentBottom="true"
+        android:background="#f5cc3f"
+        android:text="下一步" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,12 +44,7 @@
     </ScrollView>
 
 
-    <Button
-        android:id="@+id/mBtnNext"
-        style="@style/BottomButtonRed"
-        android:layout_alignParentBottom="true"
-        android:background="#f5cc3f"
-        android:text="下一步" />
+
 
 
 </RelativeLayout>

@@ -10,7 +10,6 @@
         android:id="@+id/mViewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_above="@id/mBottomTabLayout"
         android:layout_weight="1" />
 
     <com.realtor.jx.widget.BottomTabLayout

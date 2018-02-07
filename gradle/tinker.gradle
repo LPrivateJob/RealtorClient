@@ -1,0 +1,186 @@
+def bakPath = file("${buildDir}/bakApk/") //指定基准文件存放位置
+ext {
+    tinkerEnable = true
+    tinkerOldApkPath = "${bakPath}/buglyHotfixDemo-release-0207-112438.apk"
+    tinkerID = "1.0"
+    tinkerApplyMappingPath = "${bakPath}/buglyHotfixDemo-release-0207-112438-mapping.txt"
+    tinkerApplyResourcePath = "${bakPath}/buglyHotfixDemo-release-0207-112438-R.txt"
+    patchMessage = "fix the 1.0 version's bugs"
+    patchVersion = "1.0"
+    isProtectedApp = false
+}
+
+def releaseTime() {
+    return new Date().format("yyyy-MMdd-HH-mm-ss")
+}
+
+def buildWithTinker() {
+
+    return ext.tinkerEnable
+}
+
+def getOldApkPath() {
+
+    return ext.tinkerOldApkPath
+}
+
+def getApplyMappingPath() {
+    return ext.tinkerApplyMappingPath
+}
+
+def getApplyResourceMappingPath() {
+    return ext.tinkerApplyResourcePath
+}
+
+def getTinkerIdValue() {
+    return ext.tinkerID
+}
+
+def getTinkerBuildFlavorDirectory() {
+
+    return ext.tinkerBuildFlavorDirectory
+}
+
+def String getTinkerPatchMessage() {
+    return ext.patchMessage
+}
+
+def String getTinkerPatchVersion() {
+    return ext.patchVersion
+}
+
+def boolean isProtectedApp() {
+    return ext.isProtectedApp
+}
+
+if (buildWithTinker()) {
+    //启用tinker
+    apply plugin: 'com.tencent.tinker.patch'
+
+    //所有tinker相关的参数配置
+    tinkerPatch {
+
+        tinkerEnable = true //指定是否启用tinker
+
+        oldApk = getOldApkPath() //指定old apk文件径
+
+        ignoreWarning = false   //不忽略tinker的警告，有则中止patch文件的生成
+
+        useSign = true  //强制patch文件也使用签名
+
+        buildConfig {
+
+            applyMapping = getApplyMappingPath()  //指定old apk打包时所使用的混淆文件
+
+            applyResourceMapping = getApplyResourceMappingPath()  //指定old apk的资源文件
+            /**
+             * 指定TinkerID
+             * 在运行过程中，我们需要验证基准apk包的tinkerId是否等于补丁包的tinkerId。这个是决定补丁包能运行在哪些基准包上面，一般来说我们可以使用git版本号、versionName等等。
+             */
+            tinkerId = getTinkerIdValue()
+            /**
+             * 如果我们有多个dex,编译补丁时可能会由于类的移动导致变更增多。若打开keepDexApply模式，补丁包将根据基准包的类分布来编译。
+             */
+            keepDexApply = false
+            /**
+             * 是否使用加固模式，仅仅将变更的类合成补丁。注意，这种模式仅仅可以用于加固应用中。
+             */
+            isProtectedApp = isProtectedApp()
+        }
+
+        dex {
+            dexMode = "jar" //jar、raw
+            pattern = ["classes*.dex", "assets/secondary-dex-?.jar"] //指定dex文件目录
+            /**
+             *  这一项非常重要，它定义了哪些类在加载补丁包的时候会用到。这些类是通过Tinker无法修改的类，也是一定要放在main dex的类。
+             这里需要定义的类有：
+             1. 你自己定义的Application类；
+             2. Tinker库中用于加载补丁包的部分类，即com.tencent.tinker.loader.*；
+             3. 如果你自定义了TinkerLoader，需要将它以及它引用的所有类也加入loader中；
+             4. 其他一些你不希望被更改的类，例如Sample中的BaseBuildInfo类。这里需要注意的是，这些类的直接引用类也需要加入到loader中。或者你需要将这个类变成非preverify。
+             5. 使用1.7.6版本之后版本，参数1、2会自动填写。
+             */
+//            loader = ["com.imooc.tinker.MyApplication"] //指定加载patch文件时用到的类
+        }
+
+        lib {
+            pattern = ["libs/*/*.so"]
+        }
+
+        res {
+            /**
+             * 需要处理res路径，支持*、?通配符，必须使用'/'分割。与dex.pattern一致, 路径是相对安装包的，例如assets/...，
+             * 务必注意的是，只有满足pattern的资源才会放到合成后的资源包。
+             */
+            pattern = ["res/*", "r/*", "assets/*", "resources.arsc", "AndroidManifest.xml"]
+            /**
+             * 指定tinker可以修改的资源路径
+             * 支持*、?通配符，必须使用'/'分割。若满足ignoreChange的pattern，在编译时会忽略该文件的新增、删除与修改。
+             */
+//            ignoreChange = ["assets/sample_meta.txt"] //指定不受影响的资源路径
+
+            largeModSize = 100 //资源修改大小默认值
+        }
+        /**
+         * 用于生成补丁包中的'package_meta.txt'文件
+         */
+        packageConfig {
+            /**
+             * configField("key", "value"), 默认我们自动从基准安装包与新安装包的Manifest中读取tinkerId,并自动写入configField。
+             * 在这里，你可以定义其他的信息，在运行时可以通过TinkerLoadResult.getPackageConfigByName得到相应的数值。但是建议直接通过修改代码来实现，例如BuildConfig
+             */
+            configField("patchMessage", getTinkerPatchMessage())
+
+            configField("patchVersion", getTinkerPatchVersion())
+        }
+    }
+    def date = new Date().format("MMdd-HHmmss")
+
+    /**
+     * bak apk and mapping
+     */
+    android.applicationVariants.all { variant ->
+        /**
+         * task type, you want to bak
+         */
+        def taskName = variant.name
+
+        tasks.all {
+            if ("assemble${taskName.capitalize()}".equalsIgnoreCase(it.name)) {
+
+                it.doLast {
+                    copy {
+                        def fileNamePrefix = "${project.name}-${variant.baseName}"
+                        def newFileNamePrefix = "${fileNamePrefix}-${date}"
+
+                        def destPath = bakPath
+                        from variant.outputs[0].outputFile
+                        into destPath
+                        rename { String fileName ->
+                            fileName.replace("${fileNamePrefix}.apk", "${newFileNamePrefix}.apk")
+                        }
+
+                        from "${buildDir}/outputs/mapping/${variant.dirName}/mapping.txt"
+                        into destPath
+                        rename { String fileName ->
+                            fileName.replace("mapping.txt", "${newFileNamePrefix}-mapping.txt")
+                        }
+
+                        from "${buildDir}/intermediates/symbols/${variant.dirName}/R.txt"
+                        into destPath
+                        rename { String fileName ->
+                            fileName.replace("R.txt", "${newFileNamePrefix}-R.txt")
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+    //生成appilcation时使用
+//    implementation("com.tencent.tinker:tinker-android-lib:1.9.0") { changing = true }
+//    annotationProcessor("com.tencent.tinker:tinker-android-anno:1.9.0") { changing = true }
+//    compileOnly("com.tencent.tinker:tinker-android-anno:1.9.0") { changing = true }
+}

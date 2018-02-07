@@ -11,8 +11,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.realtor.jx.base.RealtorClientApplication;
 import com.realtor.jx.entity.Commons;
+import com.realtor.jx.hotfix.StagingLeaseApplicationLike;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -23,7 +23,7 @@ import java.util.regex.Pattern;
  * created at 2018/1/18 14:47
  */
 public class InputVerifyUtil implements Commons.BASIC_INFO {
-    private static Context mApplicationContext = RealtorClientApplication.getContext();
+    private static Context mApplicationContext = StagingLeaseApplicationLike.getContext();
     private static final String NAME = "姓名";
     private static final String USER_NAME = "用户名";
     private static final String PASSWORD = "密码";

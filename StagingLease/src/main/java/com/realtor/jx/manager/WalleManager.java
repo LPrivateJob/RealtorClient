@@ -1,9 +1,11 @@
 package com.realtor.jx.manager;
 
+import android.content.Context;
+
 import com.meituan.android.walle.ChannelInfo;
 import com.meituan.android.walle.WalleChannelReader;
 import com.realtor.jx.BuildConfig;
-import com.realtor.jx.base.RealtorClientApplication;
+import com.realtor.jx.hotfix.StagingLeaseApplicationLike;
 
 import java.util.Map;
 /**
@@ -13,9 +15,10 @@ import java.util.Map;
  */
 public class WalleManager {
     private String channel;
-
+    private Context mApplicationContext;
     private WalleManager() {
-        channel = WalleChannelReader.getChannel(RealtorClientApplication.getContext());
+        mApplicationContext = StagingLeaseApplicationLike.getContext();
+        channel = WalleChannelReader.getChannel(mApplicationContext);
     }
 
     private static class SingletonHolder {
@@ -34,7 +37,7 @@ public class WalleManager {
         if (channel != null && !channel.isEmpty()) {
             return channel;
         }
-        channel = WalleChannelReader.getChannel(RealtorClientApplication.getContext());
+        channel = WalleChannelReader.getChannel(mApplicationContext);
 
         if (BuildConfig.DEBUG || channel==null||channel.isEmpty()) {
             if (BuildConfig.V_TAG.isEmpty()) {
@@ -51,7 +54,7 @@ public class WalleManager {
      */
     public Map<String, String> getChannelMsg() {
         Map<String, String> extraInfo = null;
-        ChannelInfo channelInfo = WalleChannelReader.getChannelInfo(RealtorClientApplication.getContext());
+        ChannelInfo channelInfo = WalleChannelReader.getChannelInfo(mApplicationContext);
         if (channelInfo != null) {
             String channel = channelInfo.getChannel();
             extraInfo = channelInfo.getExtraInfo();
@@ -63,6 +66,6 @@ public class WalleManager {
      * 得到渠道信息----String
      */
     public String getChannelMsg(String key) {
-        return WalleChannelReader.get(RealtorClientApplication.getContext(), key);
+        return WalleChannelReader.get(mApplicationContext, key);
     }
 }

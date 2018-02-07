@@ -5,7 +5,7 @@ import android.os.Environment;
 
 import com.realtor.jx.R;
 import com.realtor.jx.activity.MainActivity;
-import com.realtor.jx.base.RealtorClientApplication;
+import com.realtor.jx.hotfix.StagingLeaseApplicationLike;
 import com.tencent.bugly.Bugly;
 import com.tencent.bugly.BuglyStrategy;
 import com.tencent.bugly.beta.Beta;
@@ -22,7 +22,7 @@ public class BuglyManager {
     private Context mApplicationContext;
 
     private BuglyManager() {
-        mApplicationContext = RealtorClientApplication.getContext();
+        mApplicationContext = StagingLeaseApplicationLike.getContext();
     }
 
     private static class SingletonHolder {

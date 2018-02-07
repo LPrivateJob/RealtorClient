@@ -1,9 +1,9 @@
 package com.realtor.jx.entity;
 
 import com.alibaba.fastjson.JSON;
-import com.realtor.jx.base.RealtorClientApplication;
 import com.realtor.jx.dto.FlowLayoutTypeBean;
 import com.realtor.jx.dto.UserInfoDto;
+import com.realtor.jx.hotfix.StagingLeaseApplicationLike;
 import com.realtor.jx.netcore.core.cookie.CookiesManager;
 import com.realtor.jx.utils.BaseUtils;
 import com.realtor.jx.widget.picker.wheelpicker.entity.Province;
@@ -52,14 +52,14 @@ public class LocalUser implements Serializable {
      * 保存用户数据至磁盘
      */
     public void saveUserProfile() {
-        BaseUtils.EncryptObject(RealtorClientApplication.getContext(), USER_INFO_FILENAME, profile);
+        BaseUtils.EncryptObject(StagingLeaseApplicationLike.getContext(), USER_INFO_FILENAME, profile);
     }
 
     /**
      * 从磁盘加载用户数据
      */
     public void loadUserProfile() {
-        profile = (UserInfoDto) BaseUtils.DecipherObject(RealtorClientApplication.getContext(), USER_INFO_FILENAME);
+        profile = (UserInfoDto) BaseUtils.DecipherObject(StagingLeaseApplicationLike.getContext(), USER_INFO_FILENAME);
     }
 
     /**
@@ -68,14 +68,14 @@ public class LocalUser implements Serializable {
     public void saveProvinceList(List<UserInfoDto.Province> provinceList) {
         ArrayList<Province> data = new ArrayList<>();
         data.addAll(JSON.parseArray(JSON.toJSON(provinceList).toString(), Province.class));
-        BaseUtils.saveObject(RealtorClientApplication.getContext(), PROVINCE_LIST_FILENAME, data);
+        BaseUtils.saveObject(StagingLeaseApplicationLike.getContext(), PROVINCE_LIST_FILENAME, data);
     }
 
     /**
      * 从磁盘获取地区数据
      */
     public ArrayList<Province> getProvinceList() {
-        return (ArrayList<Province>) BaseUtils.restoreObject(RealtorClientApplication.getContext(), PROVINCE_LIST_FILENAME);
+        return (ArrayList<Province>) BaseUtils.restoreObject(StagingLeaseApplicationLike.getContext(), PROVINCE_LIST_FILENAME);
     }
 
     /**
@@ -84,7 +84,7 @@ public class LocalUser implements Serializable {
     public void clear() {
         this.profile = null;
         saveUserProfile();
-        CookiesManager manager = new CookiesManager(RealtorClientApplication.getContext());
+        CookiesManager manager = new CookiesManager(StagingLeaseApplicationLike.getContext());
         manager.clearAll();
     }
 

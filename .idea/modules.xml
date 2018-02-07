@@ -4,8 +4,9 @@
     <modules>
       <module fileurl="file://F:\GitHub\RealtorClient\library\Common\Common.iml" filepath="F:\GitHub\RealtorClient\library\Common\Common.iml" />
       <module fileurl="file://$PROJECT_DIR$/RealtorClient.iml" filepath="$PROJECT_DIR$/RealtorClient.iml" />
-      <module fileurl="file://$PROJECT_DIR$/StagingLease/app.iml" filepath="$PROJECT_DIR$/StagingLease/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/StagingLease/StagingLease.iml" filepath="$PROJECT_DIR$/StagingLease/StagingLease.iml" />
       <module fileurl="file://F:\GitHub\RealtorClient\library\WheelPicker\WheelPicker.iml" filepath="F:\GitHub\RealtorClient\library\WheelPicker\WheelPicker.iml" />
+      <module fileurl="file://E:\GitHub\RealtorClient\StagingLease\app.iml" filepath="E:\GitHub\RealtorClient\StagingLease\app.iml" />
       <module fileurl="file://F:\GitHub\RealtorClient\library\library.iml" filepath="F:\GitHub\RealtorClient\library\library.iml" />
     </modules>
   </component>
