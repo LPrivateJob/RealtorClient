@@ -92,7 +92,7 @@ dependencies {
     // retsrofit 解析器
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
     // EventBus
-    compile 'org.greenrobot:eventbus:3.1.1'
+//    compile 'org.greenrobot:eventbus:3.1.1'
     // okhttp log打印
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
     // glide 图片处理

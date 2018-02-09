@@ -1,10 +1,10 @@
 def bakPath = file("${buildDir}/bakApk/") //指定基准文件存放位置
 ext {
     tinkerEnable = true
-    tinkerOldApkPath = "${bakPath}/StagingLease-Test-release-0207-172458.apk"
+    tinkerOldApkPath = "${bakPath}/StagingLease-Test-release-0208-161746.apk"
     tinkerID = "1.0"
-    tinkerApplyMappingPath = "${bakPath}/StagingLease-Test-release-0207-172458-mapping.txt"
-    tinkerApplyResourcePath = "${bakPath}/StagingLease-Test-release-0207-172458-R.txt"
+    tinkerApplyMappingPath = "${bakPath}/StagingLease-Test-release-0208-161746-mapping.txt"
+    tinkerApplyResourcePath = "${bakPath}/StagingLease-Test-release-0208-161746-R.txt"
     patchMessage = "fix the 1.0 version's bugs"
     patchVersion = "1.0"
     isProtectedApp = false
@@ -55,8 +55,8 @@ def boolean isProtectedApp() {
 
 if (buildWithTinker()) {
     //启用tinker
-    apply plugin: 'com.tencent.tinker.patch'
-
+//    apply plugin: 'com.tencent.tinker.patch'
+    apply plugin: 'com.tencent.bugly.tinker-support'
     //所有tinker相关的参数配置
     tinkerPatch {
 

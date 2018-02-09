@@ -26,7 +26,7 @@
 # 代码混淆压缩比，在0~7之间，默认为5，一般不做修改
 -optimizationpasses 5
 # 混合时不使用大小写混合，混合后的类名为小写
-#-dontusemixedcaseclassnames
+-dontusemixedcaseclassnames
 # 指定不去忽略非公共库的类
 #-dontskipnonpubliclibraryclasses
 # 指定不去忽略非公共库的类成员
@@ -140,34 +140,43 @@
 #--NetCore--
 -dontwarn com.realtor.jx.netcore.entity.**
 -keep class com.realtor.jx.netcore.entity.**{*;}
+#--AndroidPicker--
+-dontwarn com.realtor.jx.widget.picker.common.entity.**
+-keep class com.realtor.jx.widget.picker.common.entity.**{*;}
+-dontwarn com.realtor.jx.widget.picker.wheelpicker.entity.**
+-keep class com.realtor.jx.widget.picker.wheelpicker.entity.** { *;}
 #############################################
 # 第三方Library混淆
 #############################################
 #retrofit2
--dontwarn okio.**
--dontwarn javax.annotation.**
-
-# Platform calls Class.forName on types which do not exist on Android to determine platform.
--dontnote retrofit2.Platform
-# Platform used when running on Java 8 VMs. Will not be used at runtime.
--dontwarn retrofit2.Platform$Java8
 # Retain generic type information for use by reflection by converters and adapters.
 -keepattributes Signature
-# Retain declared checked exceptions for use by a Proxy instance.
--keepattributes Exceptions
-
-#eventbus3.0
--keepattributes *Annotation*
--keepclassmembers class ** {
-    @org.greenrobot.eventbus.Subscribe <methods>;
+# Retain service method parameters.
+-keepclassmembernames,allowobfuscation interface * {
+    @retrofit2.http.* <methods>;
 }
--keep enum org.greenrobot.eventbus.ThreadMode { *; }
+# Ignore annotation used for build tooling.
+-dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
+#OKHttp3
+-dontwarn okhttp3.**
+-dontwarn okio.**
+-dontwarn javax.annotation.**
+# A resource is loaded with a relative path so the package of this class must be preserved.
+-keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
+#eventbus3.0
+#-keepattributes *Annotation*
+#-keepclassmembers class ** {
+#    @org.greenrobot.eventbus.Subscribe <methods>;
+#}
+#-keep enum org.greenrobot.eventbus.ThreadMode { *; }
 
 # Only required if you use AsyncExecutor
 #-keepclassmembers class * extends org.greenrobot.eventbus.util.ThrowableFailureEvent {
 #    <init>(java.lang.Throwable);
 #}
 #Gide
+#-dontwarn com.bumptech.glide.**
+#-keep class com.bumptech.glide.** { *; }
 -keep public class * implements com.bumptech.glide.module.GlideModule
 -keep public class * extends com.bumptech.glide.AppGlideModule
 -keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
@@ -176,16 +185,25 @@
 }
 -dontwarn com.bumptech.glide.load.**
 #--GSON--
--dontwarn com.google.**
--keep class com.google.gson.* {*;}
-#--FASTJSON
+-keep class com.google.gson.** {*;}
+-keep class com.google.**{*;}
+-keep class sun.misc.Unsafe { *; }
+-keep class com.google.gson.stream.** { *; }
+-keep class com.google.gson.examples.android.model.** { *; }
+
+-keepclassmembers class * implements java.io.Serializable {
+    static final long serialVersionUID;
+    private static final java.io.ObjectStreamField[] serialPersistentFields;
+    private void writeObject(java.io.ObjectOutputStream);
+    private void readObject(java.io.ObjectInputStream);
+    java.lang.Object writeReplace();
+    java.lang.Object readResolve();
+}
+-keep public class * implements java.io.Serializable {*;}
+#fastJson
 -dontwarn com.alibaba.fastjson.**
--keep class com.alibaba.fastjson.**{*; }
-#--AndroidPicker--
--dontwarn com.realtor.jx.widget.picker.common.entity.**
--keep class com.realtor.jx.widget.picker.common.entity.**{*;}
--dontwarn com.realtor.jx.widget.picker.wheelpicker.entity.**
--keep class com.realtor.jx.widget.picker.wheelpicker.entity.** { *;}
+-keep class com.alibaba.fastjson.** { *; }
+
 #-ignorewarnings
 #--Matisse-- 奇怪的混淆规则
 -dontwarn com.squareup.picasso.**
@@ -193,8 +211,6 @@
 -dontwarn permissions.dispatcher.**
 -keep class permissions.dispatcher.**{*;}
 
--dontwarn com.realtor.jx.netcore.**
--keep class com.realtor.jx.netcore.**{*;}
 #--Bugly--
 -dontwarn com.tencent.bugly.**
 -keep public class com.tencent.bugly.**{*;}
